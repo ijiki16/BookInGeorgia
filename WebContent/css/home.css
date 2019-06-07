@@ -31,12 +31,12 @@ a {
 
 .header-section {
 	width: 100%;
-	height: 50px;
+	
 }
 
 .header {
 	display: block;
-	position: absolute;
+	position: relative;
 	width:100%;
 	height: 50px;
 	background: #7b0e0e;
@@ -95,6 +95,17 @@ a {
     box-shadow: 0 0 0 1px #fff, 0 0 0 1px #fff;
     color: black;
     top: 13%;
+}
+
+.navbar {
+	display: block;
+    height: 50px !important;
+    background-color: #7b0e0e !important;
+}
+
+.nav-link {
+	font-size: 15px;
+	color: white !important;
 }
 
 .main h1 {
