@@ -83,5 +83,21 @@ public class HotelsDB {
 			}		
 	}
 	
+	public static void addHotel(String name, String rating, String img, String status, String number, String acc_id) {
+		try {
+			Connection con = getConnection();
+			PreparedStatement stmt = con.prepareStatement("select max(hotel_id) from Hotels");
+			ResultSet rs = stmt.executeQuery("select max(hotel_id) from Hotels");
+			String id = "none";
+			if(rs.next()) id = rs.getString("hotel_id");
+			String query = "insert into Hotels (hotel_id, name, rating, img, status, phone_number, account_id) values (";
+			query += id + name + "," + rating + "," + img + "," + status + "," + number + "," + acc_id  + ")";
+			stmt = con.prepareStatement(query);
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	
 	
 }
