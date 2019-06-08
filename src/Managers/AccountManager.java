@@ -4,8 +4,8 @@ package Managers;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import Models.Account;
 import DataBases.AccountDB;
+import Models.Account;
 
 public class AccountManager {
 	
@@ -24,7 +24,7 @@ public class AccountManager {
 	
 	public boolean loginAccount(String email, String password) {
 		Account user = getAccount(email);
-		if(user != null) {
+		if(user != null && password != null) {
 			password = getHash(password);
 			if(password.equals(user.getPassword())) {
 				return true;
@@ -38,9 +38,7 @@ public class AccountManager {
 		try {
 			md = MessageDigest.getInstance(ALGORITHM);
 		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.exit(-1);
 		}
 		byte[] passwwordByte = password.getBytes();
 		byte[] hashByte = md.digest(passwwordByte);
@@ -63,6 +61,12 @@ public class AccountManager {
 	}
 	
 	public boolean updateAccount(Account account, String field, String newArg) {
+		if(field.equals("password")) {
+			if(newArg != null)
+				newArg = getHash(newArg);
+			else
+				return false;
+		}
 		return database.updateAccount(account, field, newArg);
 	}
 	
@@ -70,9 +74,5 @@ public class AccountManager {
 		if(password != null)
 			password = getHash(password);
 		return database.deleteAccount(email, password);
-	}
-	
-	public static void main(String[] args) {
-		System.out.println("hi");
 	}
 }

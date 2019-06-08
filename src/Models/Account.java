@@ -1,5 +1,6 @@
 package Models;
 
+//Shecvlili.
 
 public class Account {
 	
@@ -133,11 +134,6 @@ public class Account {
 	}
 	
 	@Override
-	/**
-	 * Overrides equals method.
-	 * Compares another accounts info to this accounts info and returns true if they are same,
-	 * or false otherwise.
-	 */
 	public boolean equals(Object obj) {
 		if (obj == this) 
 			return true;
