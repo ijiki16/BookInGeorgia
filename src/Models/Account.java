@@ -10,6 +10,7 @@ public class Account {
 	private String username;
 	private String password;
 	private String birthDate;
+	private String id;
 	
 	/**
 	 * Creates new Account Object
@@ -18,13 +19,14 @@ public class Account {
 	 * @param email
 	 * @param password
 	 */
-	public Account(String firstName, String lastName, String email, String username, String password, String birthDate) {
+	public Account(String firstName, String lastName, String email, String username, String password, String birthDate, String id) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.username = username;
 		this.password = password;
 		this.birthDate = birthDate;
+		this.id = id;
 	}
 	
 	/**
@@ -67,6 +69,10 @@ public class Account {
 	 */
 	public String getBirthDate() {
 		return this.birthDate;
+	}
+	
+	public String getId() {
+		return this.id;
 	}
 	
 	/**

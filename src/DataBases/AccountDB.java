@@ -23,10 +23,10 @@ public class AccountDB{
 	 */
 	public AccountDB(){
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			connection = DriverManager.getConnection("jdbc:mysql://"
-					+ server + "?useSSL=false", account, password);
+					+ server, account, password);
 
 			Statement statement = connection.createStatement();
 			statement.executeQuery("USE " + database);
@@ -111,7 +111,8 @@ public class AccountDB{
 					result.getString("email"),
 					result.getString("username"),
 					result.getString("password"),
-					result.getString("birth_date"));
+					result.getString("birth_date"),
+					result.getString("account_id"));
 				return user;
 			}
 		} catch (SQLException e) {
@@ -162,7 +163,7 @@ public class AccountDB{
 			return false;
 		}
 	}
-		
+	
 }
 
 
