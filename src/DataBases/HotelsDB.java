@@ -85,7 +85,6 @@ public class HotelsDB {
 	}
 	
 	public String addHotel(String name, String rating, String img, String status, String number, String acc_id) {
-		System.out.println("shemovetrieee");
 		try {
 			Connection con = getConnection();
 			String query = "insert into Hotels (name, rating, img, status, phone_number, account_id) values (";
