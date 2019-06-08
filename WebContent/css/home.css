@@ -46,13 +46,15 @@ a {
 .header a {
 	position: absolute;
 	font-size: 175%;
-	top: 13%;
-	left: 1%;
+	top: 10%;
 	color: white;
 }
 
+.site-logo {
+	left: 1%;
+}
+
 .header a:hover {
-	color: white;
 	text-decoration: none;
 }
 
@@ -65,10 +67,10 @@ a {
 
 .user-panel i {
 	position: relative;
-    top: 13%;
+    top: 15%;
 }
 
-.user-panel a {
+.user-panel .log {
 	margin-right: 15px;
     background: transparent;
     border: none;
@@ -108,6 +110,12 @@ a {
 	color: white !important;
 }
 
+.logged {
+	display: block;
+    position: absolute;
+    top: 20%;
+}
+
 .main h1 {
 	font-size: 80px;
 	position: absolute;
@@ -115,6 +123,62 @@ a {
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+
+.menu-but {
+  	width: max-content;
+	font-size: 120% !important;
+	display: block;
+	vertical-align: middle;
+	top: 23% !important;
+	right: 5%;
+}
+
+.menu-but i {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  border-color: white;
+  vertical-align: middle;
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+
+.menu {
+  display: none;
+  position: absolute;
+  width: 20%;
+  right: 0%;
+  top: 25px;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.menu a {
+  display: inline-block;
+  color: black;
+  padding: 4.75% 4.75%;
+  text-decoration: none;
+  position: relative;
+  width: 100%;
+  font-size: 100%;
+}
+
+.logged:hover .menu {
+	display: block;
+}
+
+.logged:hover .menu a:hover {
+	background-color: #7b0e0e;
+	color: white;
+}
+
 
 .flaticon-profile:before {
     content: "\f13b";
