@@ -42,15 +42,20 @@ body {
 }
 .birth-date {
 	display: inline-block;
+	
 }
 
+.date-box {
+	display: inline-block;
+	max-width: 80px;
+}
 
 .date-box input{
 	display: inline;
 	border: none;
 	outline: none;
 	background: none;
-	width: 33%;
+	width: 40%;
 	overflow: hidden;
 	color: white;
 }
