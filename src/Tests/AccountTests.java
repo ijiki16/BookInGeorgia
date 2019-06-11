@@ -18,10 +18,10 @@ public class AccountTests {
 	
 	@Before
 	public void Create() {
-		account1 = new Account("Nika", "Basiashvili", "nbasi@gmail.com", "nika97", "123456", "1997-12-19");
-		account2 = new Account("Nika", "Basiashvili", "nbasi@gmail.com", "nika97", "123456", "1997-12-19");
-		account3 = new Account("James", "Charles", "jchar@gmail.com", "james123", "789554", "1992-02-20");
-		account4 = new Account("James", "Charles", "jchar@gmail.com", "james123", "789554", "1992-02-20");
+		account1 = new Account("Nika", "Basiashvili", "nbasi@gmail.com", "nika97", "123456", "1997-12-19", "1");
+		account2 = new Account("Nika", "Basiashvili", "nbasi@gmail.com", "nika97", "123456", "1997-12-19", "2");
+		account3 = new Account("James", "Charles", "jchar@gmail.com", "james123", "789554", "1992-02-20", "3");
+		account4 = new Account("James", "Charles", "jchar@gmail.com", "james123", "789554", "1992-02-20", "4");
 	}
 
 	@Test

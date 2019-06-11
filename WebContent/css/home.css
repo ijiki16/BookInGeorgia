@@ -40,19 +40,30 @@ a {
 	width:100%;
 	height: 50px;
 	background: #7b0e0e;
-	text-align: center;
 }
 
-.header a {
+.site-logo {
+	display: block;
 	position: absolute;
-	font-size: 175%;
-	top: 13%;
 	left: 1%;
+	height: inherit;
+}
+
+.site-logo a {
+	display: table-cell;
+	position: sticky;
+	font-size: 175%;
+	top: 10%;
 	color: white;
+}
+
+#logo {
+	height: 3.5%;
+    position: relative;
+    top: -2px;
 }
 
 .header a:hover {
-	color: white;
 	text-decoration: none;
 }
 
@@ -65,10 +76,10 @@ a {
 
 .user-panel i {
 	position: relative;
-    top: 13%;
+    top: 15%;
 }
 
-.user-panel a {
+.user-panel .log {
 	margin-right: 15px;
     background: transparent;
     border: none;
@@ -108,13 +119,90 @@ a {
 	color: white !important;
 }
 
+.logged {
+	display: block;
+    position: absolute;
+    top: 20%;
+    right: 5%;
+}
+
+
+.menu-but {
+  	width: max-content;
+	font-size: 120% !important;
+	display: block;
+	vertical-align: middle;
+	top: 23% !important;
+	right: 5%;
+	color: white;
+}
+
+.menu-but i {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  border-color: white;
+  vertical-align: middle;
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+
+.menu {
+  display: none;
+  position: absolute;
+  width: 20%;
+  right: 0%;
+  top: 25px;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.menu a {
+  display: inline-block;
+  color: black;
+  padding: 4.75% 4.75%;
+  text-decoration: none;
+  position: relative;
+  width: 100%;
+  font-size: 100%;
+}
+
+.menu-but:hover {
+	color: white;
+}
+
+.logged:hover .menu {
+	display: block;
+	color: white;
+}
+
+.logged:hover .menu a:hover {
+	background-color: #7b0e0e;
+	color: white;
+}
+
+
 .main h1 {
 	font-size: 80px;
 	position: absolute;
+	width: max-content;
 	top: 30%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	color: #2c2c2c;
+    letter-spacing: .05em;
+    text-shadow: 
+      4px 4px 0px #d5d5d5, 
+      7px 7px 0px rgba(0, 0, 0, 0.2);
 }
+
 
 .flaticon-profile:before {
     content: "\f13b";
@@ -123,4 +211,47 @@ a {
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before, [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
     font-family: Flaticon;
     font-style: normal;
+}
+
+.search-sec{
+    padding: 2rem;
+}
+.search-slt{
+    display: block;
+    width: 100%;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #55595c;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    height: calc(3rem + 2px) !important;
+    border-radius:0;
+}
+.wrn-btn{
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: capitalize;
+    height: calc(3rem + 2px) !important;
+    border-radius:0;
+}
+@media (min-width: 992px){
+    .search-sec{
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        background: rgba(26, 70, 104, 0.51);
+    }
+}
+
+@media (max-width: 992px){
+    .search-sec{
+        background: #1A4668;
+    }
+}
+
+.btn {
+	background-color: #7b0e0e;
+	border-color: #7b0e0e;
 }
