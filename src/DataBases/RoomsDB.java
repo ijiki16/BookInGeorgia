@@ -62,7 +62,7 @@ public class RoomsDB {
 		}
 	}
 	
-	public static void addRoom(/*Date startDate, Date endData,*/ long hottelId) {
+	public static void addRoom(/*Date startDate, Date endData,*/ int hottelId) {
 		try {
 			Connection con = getConnection();
 			//
@@ -70,12 +70,12 @@ public class RoomsDB {
 			stmt.executeQuery("USE " + database);
 			//
 			String ins = "insert into rooms(reserved_start, reserved_end, hotel_id) values (?, ?, ?);";
-			PreparedStatement quer = con.prepareStatement(ins);
+			PreparedStatement quer = con.prepareStatement(ins, stmt.RETURN_GENERATED_KEYS);
 			quer.setDate(1,  null);
 			quer.setDate(2, null);
-			BigDecimal htId = new BigDecimal(hottelId);
-			quer.setBigDecimal(3, htId);
+			quer.setInt(3, hottelId);
 			quer.executeUpdate();
+			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
