@@ -14,52 +14,49 @@ import java.util.Map;
 
 public class HotelsDB {
 	private static HotelsDB db;
-	
+
 	static String account = MyDBInfo.MYSQL_USERNAME;
 	static String password = MyDBInfo.MYSQL_PASSWORD;
 	static String server = MyDBInfo.MYSQL_DATABASE_SERVER;
 	static String database = MyDBInfo.MYSQL_DATABASE_NAME;
 
-	
 	private HotelsDB() {
-			try {
-				Class.forName("com.mysql.cj.jdbc.Driver");
-	
-				Connection con = DriverManager.getConnection("jdbc:mysql://"
-						+ server, account, password);
-	
-				Statement stmt = con.createStatement();
-				stmt.executeQuery("USE " + database);
-				con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}			
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			Connection con = DriverManager.getConnection("jdbc:mysql://" + server, account, password);
+
+			Statement stmt = con.createStatement();
+			stmt.executeQuery("USE " + database);
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
-	
-	public static HotelsDB getInstance(){
-		if(db == null){
-			synchronized (HotelsDB.class){
-                if (db == null){
-                    db = new HotelsDB();
-                }
-            }
+
+	public static HotelsDB getInstance() {
+		if (db == null) {
+			synchronized (HotelsDB.class) {
+				if (db == null) {
+					db = new HotelsDB();
+				}
+			}
 		}
 		updateBase();
 		return db;
 	}
-	
-	
-	public static Connection getConnection(){
+
+	public static Connection getConnection() {
 		try {
-			return DriverManager.getConnection("jdbc:mysql://"
-					+ server, account, password);
+			return DriverManager.getConnection("jdbc:mysql://" + server, account, password);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		};
+		}
+		;
 		return null;
-		
+
 	}
 	
 	private static void updateBase(){

@@ -33,11 +33,34 @@ create table Hotels (
 
 alter table Hotels add constraint fk_account_id foreign key(account_id) references Accounts(account_id);
 
+create table HotelInfo (
+	wifi boolean,
+    swimmingpool boolean,
+    parking boolean,
+    beachfront boolean,
+    woodfront boolean,
+	hotel_id int
+);
+
+alter table HotelInfo add constraint fk1_hotel_id foreign key(hotel_id) references Hotels(hotel_id);
+
+create table Locations (
+	address1 char(64),
+	address2 char(64),
+	hotel_id decimal(10)
+);
+
+alter table Locations add constraint fk2_hotel_id foreign key(hotel_id) references Hotels(hotel_id);
+
 create table Rooms (
 	room_id int primary key auto_increment,
-    rooms decimal(10),
+    reserved_start date,
+    reserved_end date,
     hotel_id int
 );
+
+alter table Rooms add constraint fk_hotel_id foreign key(hotel_id) references Hotels(hotel_id);
+
 
 create table RoomInfo (
 	room_id int
@@ -54,34 +77,10 @@ create table Reservation (
 
 alter table Reservation add constraint fk1_room_id foreign key(room_id) references Rooms(room_id);
 
-
-create table HotelInfo (
-	wifi boolean,
-    swimmingpool boolean,
-    parking boolean,
-    beachfront boolean,
-    woodfront boolean,
-    facility char(64),
-	hotel_id int
-);
-
-
-alter table HotelInfo add constraint fk1_hotel_id foreign key(hotel_id) references Hotels(hotel_id);
-
 create table Images (
 	id int primary key auto_increment,
     imgfile char(64),
     room_id int
 );
 
-
 alter table Images add constraint fk_img_id foreign key(room_id) references Rooms(room_id);
-
-create table Locations (
-	address1 char(64),
-	address2 char(64),
-	hotel_id int
-);
-
-alter table Locations add constraint fk2_hotel_id foreign key(hotel_id) references Hotels(hotel_id);
-

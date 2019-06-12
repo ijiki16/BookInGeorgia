@@ -3,3 +3,7 @@
 \.classpath
 
 /bin/
+
+\.settings/
+
+src/DataBases/MyDBInfo\.java
