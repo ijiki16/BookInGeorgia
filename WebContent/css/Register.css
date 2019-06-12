@@ -4,17 +4,17 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: sans-serif;
+	background: url(../images/registerback.jfif) no-repeat;
 	background-size: cover;
 }
 
 .register-box{
-	width: 70%;
+	width: 280px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	color: white;
-	background-color: rgba(0,0,0,0.3);
 }
 
 .register-box h1{
@@ -23,10 +23,9 @@ body {
 	border-bottom: 6px solid white;
 	margin-bottom: 50px;
 	padding: 10px 0;
-	color: white;
 }
 
-.rtext-box{
+.text-box{
 	width: 100%;
 	font-size: 18;
 	padding-size: 8px 0;
@@ -34,15 +33,13 @@ body {
 	border-bottom: 2px solid white;	 
 }
 
-.rtext-box input{
+.text-box input{
 	border: none;
 	outline: none;
 	background: none;
 	width: 80%;
 	color: white;
 }
-
-
 .birth-date {
 	display: inline-block;
 	
@@ -64,7 +61,7 @@ body {
 }
 
 
-.reg-btn {
+.butt {
 	width: 100%;
 	background: none;
 	border: 2px solid white;

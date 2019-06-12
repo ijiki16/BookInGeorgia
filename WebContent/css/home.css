@@ -5,7 +5,7 @@ html, body {
     font-family: 'Josefin Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
     font-smoothing: antialiased;
-	background: url(./images/back.jpg);
+	background: url(../images/back.jpg);
     margin: 0px;
 }
 
