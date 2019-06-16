@@ -8,6 +8,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import Models.Room;
 
 public class RoomsDB {
 	
@@ -62,7 +66,7 @@ public class RoomsDB {
 		}
 	}
 	
-	public static void addRoom(/*Date startDate, Date endData,*/ int hottelId) {
+	public static boolean addRoom(java.util.Date startDate, java.util.Date endData, int hottelId) {
 		try {
 			Connection con = getConnection();
 			//
@@ -71,15 +75,81 @@ public class RoomsDB {
 			//
 			String ins = "insert into rooms(reserved_start, reserved_end, hotel_id) values (?, ?, ?);";
 			PreparedStatement quer = con.prepareStatement(ins, stmt.RETURN_GENERATED_KEYS);
-			quer.setDate(1,  null);
-			quer.setDate(2, null);
+			//
+			java.sql.Date stD = new Date(startDate.getTime());
+			quer.setDate(1,  stD);
+			java.sql.Date edD = new Date(endData.getTime());
+			quer.setDate(2, edD);
 			quer.setInt(3, hottelId);
 			quer.executeUpdate();
 			con.close();
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
+	
+	public Room getRoom(int id) {
+		Connection con = getConnection();
+		//
+		try {
+			Statement stmt = con.createStatement();
+			stmt.executeQuery("USE " + database);
+			//
+			String ins = "select * from rooms where room_id = ?;";
+			PreparedStatement quer = con.prepareStatement(ins, stmt.RETURN_GENERATED_KEYS);
+			quer.setInt(1, id);
+			ResultSet res = quer.executeQuery();
+			if(!res.next()) {
+				con.close();
+				return null;
+			}else {
+				Room rm = new Room(res.getDate("reserved_start"), res.getDate("reserved_end"), res.getInt("hotel_id"));
+				con.close();
+				return rm;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public static List<Room> getRoomByHottel(int hottelId) {
+		Connection con = getConnection();
+		//
+		try {
+			Statement stmt = con.createStatement();
+			stmt.executeQuery("USE " + database);
+			//
+			String ins = "select * from rooms where hotel_id = ?;";
+			PreparedStatement quer = con.prepareStatement(ins, stmt.RETURN_GENERATED_KEYS);
+			quer.setInt(1, hottelId);
+			ResultSet res = quer.executeQuery();
+			if(!res.next()) {
+				con.close();
+				return null;
+			}else {
+				List<Room> rooms = new ArrayList<Room>();
+				Room rm = new Room(res.getDate("reserved_start"), res.getDate("reserved_end"), res.getInt("hotel_id"));
+				rooms.add(rm);
+				while(res.next()) {
+					Room curRoom = new Room(res.getDate("reserved_start"), res.getDate("reserved_end"), res.getInt("hotel_id"));
+					rooms.add(curRoom);
+				}
+				con.close();
+				return rooms;
+				//return rm;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	public static Connection getConnection(){
 		try {
 			return DriverManager.getConnection("jdbc:mysql://"+ server, account, password);
