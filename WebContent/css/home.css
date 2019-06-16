@@ -5,7 +5,24 @@ html, body {
     font-family: 'Josefin Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
     font-smoothing: antialiased;
+	background: url(../images/back.jpg);
     margin: 0px;
+}
+
+.log-in {
+	position: fixed;
+    min-width: 100vw;
+    min-height: 100vh;
+    z-index: 777;
+    visibility:hidden;
+}
+
+.register-box {
+	position: fixed;
+    min-width: 100vw;
+    min-height: 100vh;
+    z-index: 777;
+    visibility:hidden;
 }
 
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section, div {
@@ -22,6 +39,7 @@ img {
 
 i {
 	font-style: italic;
+	color: white;
 }
 
 a {
@@ -80,6 +98,35 @@ a {
 }
 
 .user-panel .log {
+	margin-right: 15px;
+    background: transparent;
+    border: none;
+    border-radius: 25px;
+    box-sizing: border-box;
+    color: white !important;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    font-family: "pp-sans-small-regular",Helvetica Neue,Arial,sans-serif;
+    font-weight: normal;
+    font-variant: normal;
+    line-height: 12px;
+    min-width: 84px;
+    overflow: hidden;
+    padding: 12px 15px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    -ms-touch-action: none;
+    touch-action: none;
+    vertical-align: middle;
+    font-weight: bold;
+    box-shadow: 0 0 0 1px #fff, 0 0 0 1px #fff;
+    color: black;
+    top: 13%;
+}
+
+.user-panel .reg {
 	margin-right: 15px;
     background: transparent;
     border: none;
@@ -190,17 +237,16 @@ a {
 
 
 .main h1 {
-	font-size: 80px;
+	font-size: 70px;
 	position: absolute;
-	width: max-content;
+	color:red;
 	top: 30%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	color: #2c2c2c;
     letter-spacing: .05em;
-    text-shadow: 
-      4px 4px 0px #d5d5d5, 
-      7px 7px 0px rgba(0, 0, 0, 0.2);
+    text-shadow: 4px 4px 0px #d5d5d5, 
+      			7px 7px 0px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -255,3 +301,4 @@ a {
 	background-color: #7b0e0e;
 	border-color: #7b0e0e;
 }
+
