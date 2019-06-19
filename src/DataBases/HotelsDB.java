@@ -19,16 +19,14 @@ public class HotelsDB {
 	static String password = MyDBInfo.MYSQL_PASSWORD;
 	static String server = MyDBInfo.MYSQL_DATABASE_SERVER;
 	static String database = MyDBInfo.MYSQL_DATABASE_NAME;
+	static Connection con;
 
 	private HotelsDB() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-
-			Connection con = DriverManager.getConnection("jdbc:mysql://" + server, account, password);
-
+			con = DriverManager.getConnection("jdbc:mysql://" + server, account, password);
 			Statement stmt = con.createStatement();
 			stmt.executeQuery("USE " + database);
-			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -49,13 +47,7 @@ public class HotelsDB {
 	}
 
 	public static Connection getConnection() {
-		try {
-			return DriverManager.getConnection("jdbc:mysql://" + server, account, password);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		;
-		return null;
+		return con;
 
 	}
 	
@@ -74,8 +66,6 @@ public class HotelsDB {
 					String number = rs.getString("phone_number");
 					String acc_id = rs.getString("account_id");
 				}
-				
-				con.close();
 			}catch (SQLException e) {
 				e.printStackTrace();
 			}		
@@ -85,15 +75,18 @@ public class HotelsDB {
 		try {
 			Connection con = getConnection();
 			String query = "insert into Hotels (name, rating, img, status, phone_number, account_id) values (";
-			query += name + "," + rating + "," + img + "," + status + "," + number + "," + acc_id  + ")";
+			query += "?, ?, ?, ?, ?, ?);";
 			PreparedStatement stmt = con.prepareStatement(query);
 			stmt.execute();
-			
+			stmt.setString(0, name);
+			stmt.setString(1, rating);
+			stmt.setString(2, img);
+			stmt.setString(3, status);
+			stmt.setString(4, number);
+			stmt.setString(5, acc_id);
 			query = "select max(hotel_id) max_id from Hotels";
 			stmt = con.prepareStatement(query);
-			ResultSet rs = stmt.executeQuery();
-			con.close();
-					
+			ResultSet rs = stmt.executeQuery();	
 			if(rs.next()) return rs.getString("max_id");
 		}catch (SQLException e) {
 			e.printStackTrace();
@@ -117,21 +110,19 @@ public class HotelsDB {
 				row.add(rs.getString("phone_number"));
 				row.add(rs.getString("account_id"));
 			}
-			con.close();
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return row;
 	}
 
-	public void addFecilities(String hotel_id, String facility, boolean wifi, boolean parking, boolean beachfront, boolean woodfront) {
+	public void addFacilities(String hotel_id, String facility, boolean wifi, boolean parking, boolean beachfront, boolean woodfront) {
 		try {
 			Connection con = getConnection();
 			String query = "insert into Hotels (wifi, parking, beachfront, woodfront, facility, hotel_id) values (";
 			query += wifi + "," + parking + "," + beachfront + "," + woodfront + "," + facility + "," + hotel_id  + ")";
 			PreparedStatement stmt = con.prepareStatement(query);
 			stmt.execute();
-			con.close();
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -148,7 +139,6 @@ public class HotelsDB {
 			query = "delete from Hotels where hotel_id = '" + hotel_id + "'";
 			stmt = con.prepareStatement(query);
 			stmt.execute();
-			con.close();
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}

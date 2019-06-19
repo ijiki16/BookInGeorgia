@@ -13,20 +13,20 @@ DROP TABLE IF EXISTS Locations;
 
 create table Accounts (
 	account_id int primary key auto_increment,
-    username char(64),
-    password char(64),
-    first_name char(64),
-    last_name char(64),
-    age decimal(3),
-	email char(64)
+    username char(128),
+    password char(128),
+    first_name char(128),
+    last_name char(128),
+    birth_date date,
+	email char(128)
 );
 
 create table Hotels (
 	hotel_id int primary key auto_increment,
-	name char(64),
-    rating char(64),
-    img char(64),
-    status char(64),
+	name char(128),
+    rating char(128),
+    img char(128),
+    status char(128),
     phone_number char(20),
     account_id int
 );
@@ -45,9 +45,9 @@ create table HotelInfo (
 alter table HotelInfo add constraint fk1_hotel_id foreign key(hotel_id) references Hotels(hotel_id);
 
 create table Locations (
-	address1 char(64),
-	address2 char(64),
-	hotel_id decimal(10)
+	address1 char(128),
+	address2 char(128),
+	hotel_id int
 );
 
 alter table Locations add constraint fk2_hotel_id foreign key(hotel_id) references Hotels(hotel_id);
@@ -79,7 +79,7 @@ alter table Reservation add constraint fk1_room_id foreign key(room_id) referenc
 
 create table Images (
 	id int primary key auto_increment,
-    imgfile char(64),
+    imgfile char(128),
     room_id int
 );
 
