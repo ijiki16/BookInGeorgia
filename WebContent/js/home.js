@@ -6,14 +6,16 @@ $(document).ready(function(){
 	
 	$('.log').click(function() {
 		$('.log-in').css({"visibility":"visible"});
+		$('.homepage').css({"visibility":"visible"});
 	});
 	
-
-	$('.reg').click(function() {
-		$('.register-box').css({"visibility":"visible"});
+	
+	$('#close').click(function() {
+		$('.log-in').css({"visibility":"hidden"});
+		$('.homepage').css({"visibility":"hidden"});
 	});
 	
-
+	
 	$('.go-to-reg').click(function() {
 		$('.log-in').css({"visibility":"hidden"});
 		$('.register-box').css({"visibility":"visible"});
@@ -28,19 +30,17 @@ $(document).ready(function(){
 					password: _password
 				}, 
 				function(response) {
-					if(response) {
+					if(false) {
 						alert(response);
 						$('.log-in').css({"visibility":"hidden"});
-						$('.log').css({"display":"none"});
+						$('#log-and-reg').css({"visibility":"hidden"});
 						$('.menu-but').css({"display": "block"});
-						$('#log-fail').css({"visibility":"visible"});
+						$('.homepage').css({"visibility":"hidden"});
+					}else{
+						$('.log-fail').html("Wrong User or Password");
+						$('.log-fail').css({"font-size":"25px"});
 					}
-		});
-		
-	$('.reg-btn').click(function() {
-		alert("she kitro shena");
-	});
-		
+		});		
 	});
 	
 
