@@ -17,8 +17,8 @@ public class AccountManager {
 	}
 	
 	public boolean createAccount(String firstName, String lastName, String email, String username, String password, String birthDate) {
-		if(password != null)
-			password = getHash(password);
+		if(firstName == null || lastName == null || email == null || username == null || password == null || birthDate == null) return false;
+		password = getHash(password);
 		return database.add(firstName, lastName, email, username, password, birthDate);
 	}
 	
@@ -61,11 +61,9 @@ public class AccountManager {
 	}
 	
 	public boolean updateAccount(Account account, String field, String newArg) {
+		if(account == null || field == null || newArg == null) return false;
 		if(field.equals("password")) {
-			if(newArg != null)
-				newArg = getHash(newArg);
-			else
-				return false;
+			newArg = getHash(newArg);
 		}
 		return database.updateAccount(account, field, newArg);
 	}
