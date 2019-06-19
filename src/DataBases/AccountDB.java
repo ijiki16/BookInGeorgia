@@ -50,6 +50,7 @@ public class AccountDB{
 	 */
 	public boolean add(String firstName, String lastName, String email, String username, String password, String birthdate){
 		try {
+			if(contains(email, username)) return false;
 			PreparedStatement p = connection.prepareStatement(getAddingString());
 			p.setString(1, firstName);
 			p.setString(2, lastName);
@@ -61,14 +62,14 @@ public class AccountDB{
 			//statement.executeUpdate(getAddingString(firstName, lastName, email, username, password, birthdate));
 			return true;
 		} catch (SQLException e) {
+			e.printStackTrace();
 			return false;
 		}
-		
 	}
 	
 	//Returns SQL statement for adding row.
 	private String getAddingString() {
-		String result = "insert into accounts(first_name, last_name, email, username, password, birth_date) values (";
+		String result = "insert into Accounts(first_name, last_name, email, username, password, birth_date) values (";
 		result += "?, ?, ?, ?, ?, ?);";
 		return result;
 	}
@@ -77,10 +78,11 @@ public class AccountDB{
 	 * @param email
 	 * @return True if row with given email exists, false otherwise.
 	 */
-	public boolean contains(String email) {
+	public boolean contains(String email, String username) {
 		try {
-			PreparedStatement p = connection.prepareStatement("select count(email) as num from accounts where email = ?;");
+			PreparedStatement p = connection.prepareStatement("select count(*) as num from Accounts where email = ? or username = ?;");
 			p.setString(1, email);
+			p.setString(2, username);
 			ResultSet result = p.executeQuery();
 			result.next();
 			if(result.getInt("num") > 0) {
@@ -100,7 +102,8 @@ public class AccountDB{
 	 */
 	public Account getAccount(String email) {
 		try {
-			PreparedStatement p = connection.prepareStatement("select * from accounts where email = ?;");
+			if(email == null) return null;
+			PreparedStatement p = connection.prepareStatement("select * from Accounts where email = ?;");
 			p.setString(1, email);
 			ResultSet result = p.executeQuery();
 			if(!result.next()) {
@@ -129,7 +132,8 @@ public class AccountDB{
 	 */
 	public boolean updateAccount(Account account, String field, String newArg) {
 		try {
-			PreparedStatement p = connection.prepareStatement("update accounts set " + field + " = ? where email = ?;");
+			if((field.equals("username") && contains("", newArg)) || (field.equals("email") && contains(newArg, ""))) return false;
+			PreparedStatement p = connection.prepareStatement("update Accounts set " + field + " = ? where email = ?;");
 			p.setString(1, newArg);
 			p.setString(2, account.getEmail());
 			p.executeUpdate();
@@ -147,13 +151,13 @@ public class AccountDB{
 	 */
 	public boolean deleteAccount(String email, String password) {
 		try {
-			if(!contains(email)) {
+			if(getAccount(email) == null) {
 				return false;
 			}else {
 				if(!getAccount(email).getPassword().equals(password))
 					return false;
 			}
-			PreparedStatement p = connection.prepareStatement("delete from accounts where email = ? and password = ?;");
+			PreparedStatement p = connection.prepareStatement("delete from Accounts where email = ? and password = ?;");
 			p.setString(1, email);
 			p.setString(2, password);
 			p.executeUpdate();
