@@ -28,6 +28,16 @@ body {
 	color: white;
 }
 
+#log-fail{
+	float: top;
+	font-size: 40px;
+	border-bottom: 6px solid #7b0e0e;
+	margin-bottom: 50px;
+	padding: 10px 0;
+	color: white;
+	visibility: hidden;
+}
+
 .text-box{
 	width: 100%;
 	font-size: 18;

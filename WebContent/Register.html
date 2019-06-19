@@ -5,45 +5,46 @@
 <title>Create Account</title>
 <link rel="stylesheet" href="css/Register.css">
 <script src="https://kit.fontawesome.com/13f325d0c5.js"></script>
+<script src="js/register.js" type="text/javascript"></script>
 </head>
 <body>
 	<div class="register-box">
 		<h1> Register </h1>
 		
-		<div class="text-box">
+		<div class="text-box" id="firstname">
 			<i class="fas fa-user"></i>
 			<input type="text" placeholder="First Name" name="" value="">
 		</div>
 		
-		<div class="text-box">
+		<div class="text-box" id="lastname">
 			<i class="fas fa-user-plus"></i>
 			<input type="text" placeholder="Last Name" name="" value="">
 		</div>
 		
-		<div class="text-box">
+		<div class="text-box" id="email">
 			<i class="fas fa-envelope"></i>
 			<input type="text" placeholder="Email" name="" value="">
 		</div>
 		
-		<div class="text-box">
+		<div class="text-box" id="user">
 			<i class="fas fa-user-secret"></i>	
 			<input type="text" placeholder="Username" name="" value="">
 		</div>
 		
 		
-		<div class="text-box">
+		<div class="text-box" id="password">
 			<i class="fas fa-lock-open"></i>
 			<input type="password" placeholder="Password" name="" value="">
 		</div>
 	
 		
-		<div class="text-box">
+		<div class="text-box" id="rep-password">
 			<i class="fas fa-lock"></i>
 			<input type="password" placeholder="Repeat Password" name="" value="">
 		</div>
 		
 		
-			<select name="date-box">
+			<select name="date-box" id="bd-month">
 				<option value="month"> Month </option>
 				<option value="jan"> January </option>
 				<option value="feb"> February </option>
@@ -59,12 +60,12 @@
 				<option value="dec"> December </option>	
 			</select>
 			
-			<div class="date-box">
+			<div class="date-box" id="bd-day">
 				<i class="fas fa-birthday-cake"></i>
 				<input type="text" placeholder="day" name="" value="">
 			</div>
 			
-			<div class="date-box">
+			<div class="date-box" id="bd-year">
 				<input type="text" placeholder="year" name="" value="">
 			</div>
 		

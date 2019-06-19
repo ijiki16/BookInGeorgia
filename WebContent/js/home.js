@@ -22,7 +22,7 @@ $(document).ready(function(){
 	$('.log-btn').click(function(){
 		let _user = $('.user').val();
 		let _password = $('.password').val();
-		$.post('./js/logged.jsp', 
+		$.post('./js/logging.jsp', 
 				{
 					user: _user,
 					password: _password
@@ -32,7 +32,8 @@ $(document).ready(function(){
 						alert(response);
 						$('.log-in').css({"visibility":"hidden"});
 						$('.log').css({"display":"none"});
-						$(".menu-but").css({"display": "block"}); 
+						$('.menu-but').css({"display": "block"});
+						$('#log-fail').css({"visibility":"visible"});
 					}
 		});
 		
