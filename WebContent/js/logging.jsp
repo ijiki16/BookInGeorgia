@@ -2,6 +2,6 @@
 <% String user = (String)request.getParameter("user");
 String password = (String)request.getParameter("password");
 AccountManager manager = new AccountManager();
-String res = "success";
+String res = user+"?"+password;
 if(!manager.loginAccount(user, password)) res = "fail"; %> 
 <%=res%>

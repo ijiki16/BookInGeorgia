@@ -47,21 +47,21 @@ body {
 
 .date-box {
 	display: inline-block;
-	max-width: 80px;
 }
 
 .date-box input{
-	display: inline;
+	position: relative;
+	display: inline-block;
 	border: none;
 	outline: none;
 	background: none;
-	width: 40%;
+	max-width: 20%;
 	overflow: hidden;
 	color: white;
 }
 
 
-.butt {
+.reg-btn {
 	width: 100%;
 	background: none;
 	border: 2px solid white;
@@ -69,4 +69,9 @@ body {
 	padding: 5px;
 	font-size: 18px;
 	cursor: pointer;
+}
+
+#birth-date {
+	display: inline-block;
+	max-width: 20%;
 }

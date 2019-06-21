@@ -30,7 +30,7 @@ $(document).ready(function(){
 					password: _password
 				}, 
 				function(response) {
-					if(false) {
+					if(response == "success") {
 						alert(response);
 						$('.log-in').css({"visibility":"hidden"});
 						$('#log-and-reg').css({"visibility":"hidden"});

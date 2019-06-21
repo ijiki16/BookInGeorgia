@@ -48,7 +48,6 @@ public class HotelsDB {
 
 	public static Connection getConnection() {
 		return con;
-
 	}
 	
 	private static void updateBase(){
