@@ -42,7 +42,7 @@ public class HotelsDB {
 				}
 			}
 		}
-		updateBase();
+		//updateBase();
 		return db;
 	}
 
@@ -73,19 +73,17 @@ public class HotelsDB {
 	public String addHotel(String name, String rating, String img, String status, String number, String acc_id) {
 		try {
 			Connection con = getConnection();
-			String query = "insert into Hotels (name, rating, img, status, phone_number, account_id) values (";
-			query += "?, ?, ?, ?, ?, ?);";
+			String query = "insert into Hotels (name, rating, img, status, phone_number, account_id) values (?, ?, ?, ?, ?, ?);";
 			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setString(1, name);
+			stmt.setString(2, rating);
+			stmt.setString(3, img);
+			stmt.setString(4, status);
+			stmt.setString(5, number);
+			stmt.setString(6, acc_id);
 			stmt.execute();
-			stmt.setString(0, name);
-			stmt.setString(1, rating);
-			stmt.setString(2, img);
-			stmt.setString(3, status);
-			stmt.setString(4, number);
-			stmt.setString(5, acc_id);
 			query = "select max(hotel_id) max_id from Hotels";
-			stmt = con.prepareStatement(query);
-			ResultSet rs = stmt.executeQuery();	
+			ResultSet rs = stmt.executeQuery(query);	
 			if(rs.next()) return rs.getString("max_id");
 		}catch (SQLException e) {
 			e.printStackTrace();
@@ -118,9 +116,14 @@ public class HotelsDB {
 	public void addFacilities(String hotel_id, String facility, boolean wifi, boolean parking, boolean beachfront, boolean woodfront) {
 		try {
 			Connection con = getConnection();
-			String query = "insert into Hotels (wifi, parking, beachfront, woodfront, facility, hotel_id) values (";
-			query += wifi + "," + parking + "," + beachfront + "," + woodfront + "," + facility + "," + hotel_id  + ")";
+			String query = "insert into HotelInfo (wifi, parking, beachfront, woodfront, facility, hotel_id) values (?, ?, ?, ?, ?, ?)";
 			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setBoolean(1, wifi);
+			stmt.setBoolean(2, parking);
+			stmt.setBoolean(3, beachfront);
+			stmt.setBoolean(4, woodfront);
+			stmt.setString(5, facility);
+			stmt.setString(6, hotel_id);
 			stmt.execute();
 		}catch (SQLException e) {
 			e.printStackTrace();
