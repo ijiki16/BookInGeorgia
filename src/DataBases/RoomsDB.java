@@ -66,21 +66,22 @@ public class RoomsDB {
 		}
 	}
 	
-	public static boolean addRoom(java.util.Date startDate, java.util.Date endData, int hottelId) {
+	public static boolean addRoom(java.util.Date startDate, java.util.Date endData, int hottelId, int numberOfBeds, boolean wifi, boolean tv, boolean hotWater) {
 		try {
 			Connection con = getConnection();
 			//
 			Statement stmt = con.createStatement();
 			stmt.executeQuery("USE " + database);
 			//
-			String ins = "insert into rooms(reserved_start, reserved_end, hotel_id) values (?, ?, ?);";
+			String ins = "insert into rooms(reserved_start, reserved_end, number_of_beds, hotel_id) values (?, ?, ?, ?);";
 			PreparedStatement quer = con.prepareStatement(ins, stmt.RETURN_GENERATED_KEYS);
 			//
 			java.sql.Date stD = new Date(startDate.getTime());
 			quer.setDate(1,  stD);
 			java.sql.Date edD = new Date(endData.getTime());
 			quer.setDate(2, edD);
-			quer.setInt(3, hottelId);
+			quer.setInt(3, numberOfBeds);
+			quer.setInt(4, hottelId);
 			quer.executeUpdate();
 			con.close();
 			return true;
