@@ -5,15 +5,28 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import DataBases.AccountDB;
+import DataBases.HotelsDB;
 import Models.Account;
 
 public class AccountManager {
 	
 	private static String ALGORITHM = "SHA-512";
+	private static AccountManager manager;
 	private AccountDB database;
 	
-	public AccountManager() {
+	private AccountManager() {
 		database = new AccountDB();
+	}
+	
+	public static AccountManager getInstance() {
+		if (manager == null) {
+			synchronized (AccountManager.class) {
+				if (manager == null) {
+					manager = new AccountManager();
+				}
+			}
+		}
+		return manager;
 	}
 	
 	public boolean createAccount(String firstName, String lastName, String email, String username, String password, String birthDate) {
