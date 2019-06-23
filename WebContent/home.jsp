@@ -92,7 +92,45 @@
 				</div>
 			</section>
 		</section>
-		
+		<div class="filter">
+			<div class="filter-wrap">
+				<form action="#" method="get">
+					<h2>Filter by</h2>
+					<div class="check">
+						<h5>Star rating</h5>
+						<input type="checkbox">
+						<span class="checkmark"> 5 stars </span> <br>
+						<input type="checkbox">
+						<span class="checkmark"> 4 stars </span> <br>
+						<input type="checkbox">
+						<span class="checkmark"> 3 stars </span> <br>
+						<input type="checkbox">
+						<span class="checkmark"> 2 stars </span> <br>
+						<input type="checkbox">
+						<span class="checkmark"> 1 stars </span> <br>
+					</div>
+					<div class="check">
+						<h5>Facilities</h5>
+						<input type="checkbox">
+						<span class="checkmark"> Beachfront </span> <br>
+						<input type="checkbox">
+						<span class="checkmark"> Near forest </span> <br>
+						<input type="checkbox">
+						<span class="checkmark"> In the center </span> <br>
+						<input type="checkbox">
+						<span class="checkmark"> Wi-Fi </span> <br>
+						<input type="checkbox">
+						<span class="checkmark"> Pool </span> <br>
+						<input type="checkbox">
+						<span class="checkmark"> Parking </span> <br>
+						<input type="checkbox">
+						<span class="checkmark"> Air Conditioning </span> <br>
+						<input type="checkbox">
+						<span class="checkmark"> Heating </span> <br>
+					</div>
+				</form>
+			</div>
+		</div>
 		<div class="log-in"> 
 			<div class="login-box">
 				<i class="fas fa-times-circle" id="close"></i>

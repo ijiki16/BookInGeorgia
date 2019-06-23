@@ -273,7 +273,7 @@ a {
 @media (min-width: 992px){
     .search-sec{
         position: absolute;
-        top: 50%;
+        top: 10.65%;
         width: 100%;
         background: rgba(26, 70, 104, 0.51);
     }
@@ -290,3 +290,54 @@ a {
 	border-color: #7b0e0e;
 }
 
+.filter {
+	position: absolute;
+	top: 25%;
+    left: 1%;
+    width: 15%;
+    min-height: 100px;
+    border-top: none;
+    border-radius: 3px;
+    height: fit-content;
+    background-color: #7b0e0e; 
+    border-radius: 5px;
+}
+
+.filter-wrap {
+	padding: 6%;
+}
+
+.filter-wrap h2{
+	color: white;
+}
+
+.check h5{
+	margin-top: 5px;
+	color: white;
+}
+
+.check-box-container input {
+	background: none;
+}
+
+.check-box-container {
+	display: inline-block;
+	padding-left: 30px;
+	font-family: sans-serif;	
+	position: relative;
+	cursor: pointer;
+}
+
+.check-box-container {
+	width: 25px;
+	height: 25px;
+	background: #eee;
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: white !important;
+}
+
+.checkmark {
+	color:white;
+}
