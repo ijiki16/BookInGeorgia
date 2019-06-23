@@ -17,40 +17,15 @@ public class Hotel {
 	private Integer rating, account_id, hotel_id;
 	private Facilities facilities;
 	private Room rooms;
-	private HotelsDB db;
 	
-	public Hotel(String name, Integer rating, String img, String status, String number, Integer account_id) {
+	public Hotel(String name, Integer rating, String img, String status, String number, Integer account_id, Integer hotel_id) {
 		setName(name);
 		setRating(rating);
 		setImage(img);
 		setStatus(status);
 		setNumber(number);
 		setAccountId(account_id);
-		insertHotel();
-	}
-	
-	/**
-	 * @inserts Hotel into Data Base.
-	 */
-	public void insertHotel() {
-		db = HotelsDB.getInstance();
-		setHotelId((db.addHotel(name, rating, img, status, number, account_id)));
-	}
-	
-	/**
-	 * @add Facilities to Hotel.
-	 */
-	public void addFacilities(Integer hotel_id, String facility, boolean wifi, boolean parking, boolean beachfront, boolean woodfront) {
-		setFacilities(new Facilities(hotel_id, facility, wifi, parking, beachfront, woodfront));
-	}
-	
-	/**
-	 * @deletes Hotel from Data Base.
-	 */
-	public void eraseHotel() {
-		db = HotelsDB.getInstance();
-		this.facilities.eraseFacilities(hotel_id);
-		db.deleteHotel(hotel_id);
+		setHotelId(hotel_id);
 	}
 	
 	/**
@@ -187,5 +162,5 @@ public class Hotel {
 	public void setRooms(Room rooms) {
 		this.rooms = rooms;
 	}
-	
+
 }
