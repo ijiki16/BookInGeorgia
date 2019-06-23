@@ -128,6 +128,7 @@
 						<input type="checkbox">
 						<span class="checkmark"> Heating </span> <br>
 					</div>
+					<input class="filter-btn" type="button" name="" value="Filter"> 
 				</form>
 			</div>
 		</div>
