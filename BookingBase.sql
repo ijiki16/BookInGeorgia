@@ -59,6 +59,7 @@ create table Rooms (
 	room_id int primary key auto_increment,
     reserved_start date,
     reserved_end date,
+    number_of_beds int,
     hotel_id int
 );
 
@@ -66,6 +67,10 @@ alter table Rooms add constraint fk_hotel_id foreign key(hotel_id) references Ho
 
 
 create table RoomInfo (
+	wifi boolean,
+	tv boolean,
+	hot_water boolean,
+	air_conditioning boolean,
 	room_id int
 );
 
