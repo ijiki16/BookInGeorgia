@@ -8,7 +8,7 @@ String birthDate = (String)request.getParameter("bdate");
 System.out.println(firstName + "#" + lastName + "#" + email + "#" + username + "#" + password + "#" + birthDate);
 
 String res = "success";
-AccountManager manager = new AccountManager();
+AccountManager manager = AccountManager.getInstance();
 if(!manager.createAccount(firstName, lastName, email, username, password, birthDate)) res = "fail";
 %>
 <%=res%>

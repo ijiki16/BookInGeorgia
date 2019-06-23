@@ -22,7 +22,7 @@ public class HotelDBTests {
 	@Before
 	public void Create() {
 		db = HotelsDB.getInstance();
-		mng = new AccountManager();
+		mng = AccountManager.getInstance();
 		adb = new AccountDB();
 	}
 	
