@@ -22,7 +22,7 @@ public class AccountManagerTests {
 	
 	@Before
 	public void setup() {
-		manager = new AccountManager();
+		manager = AccountManager.getInstance();
 	}
 	
 	@Test

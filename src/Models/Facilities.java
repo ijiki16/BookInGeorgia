@@ -13,7 +13,6 @@ public class Facilities {
 	 * @param beach/wood front
 	 */
 	
-	private HotelsDB db;
 	private String facility;
 	private Integer hotel_id;
 	private boolean wifi, parking, beachfront, woodfront;
@@ -25,14 +24,6 @@ public class Facilities {
 		setParking(parking);
 		setBeachfront(beachfront);
 		setWoodfront(woodfront);
-	}
-	
-	/**
-	 * @inserts Hotel Facilities into Data Base.
-	 */
-	public void insertFacilities() {
-		db = HotelsDB.getInstance();
-		db.addFacilities(hotel_id, facility, wifi, parking, beachfront, woodfront);
 	}
 	
 	/**
@@ -123,14 +114,6 @@ public class Facilities {
 	 */
 	public void setBeachfront(boolean beachfront) {
 		this.beachfront = beachfront;
-	}
-	
-	/**
-	 * @deletes facilities from Data Base.
-	 */
-	public void eraseFacilities(Integer hotel_id) {
-		db = HotelsDB.getInstance();
-		db.deleteFacilities(hotel_id);		
 	}
 	
 }
