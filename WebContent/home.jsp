@@ -9,6 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="css/flaticon.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="css/font-awesome.min.css">
 <link rel="stylesheet" href="css/home.css">
 <link rel="stylesheet" href="css/Login.css">
 <script src="https://kit.fontawesome.com/13f325d0c5.js"></script>
@@ -130,6 +131,36 @@
 					</div>
 					<input class="filter-btn" type="button" name="" value="Filter"> 
 				</form>
+			</div>
+		</div>
+		<div class="hotels">
+			<div class="hotel">
+				<figure class="image">
+					
+				</figure>
+				<div class="hotel-info">
+					<div class="name">
+						<h5>Hotel name</h5>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star"></span>
+					</div>
+					<div class="facil">
+						<div> <i class="fa fa-check-circle"></i><h6>Wi-Fi</h6></div>
+						<div> <i class="fa fa-ban" ></i><h6>Parking</h6></div>
+						<div> <i class="fa fa-check-circle"></i><h6>Beachfront</h6></div>
+						<div> <i class="fa fa-ban"></i><h6>Swimming Pool</h6></div>
+					</div>
+					<div class="text">
+						<p>magaaaari sastumroaaaa!!!!!!</p>
+					</div>
+				</div>
+				<div class="price">
+					<div class="per">Price per day</div>
+					<div class="from-to"> <span><i class="fas fa-dollar-sign">50</i> - <i class="fas fa-dollar-sign">100</i></span></div>
+				</div> 
 			</div>
 		</div>
 		<div class="log-in"> 
