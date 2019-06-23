@@ -162,6 +162,204 @@
 					<div class="from-to"> <span><i class="fas fa-dollar-sign">50</i> - <i class="fas fa-dollar-sign">100</i></span></div>
 				</div> 
 			</div>
+			
+			<div class="hotel">
+				<figure class="image">
+					
+				</figure>
+				<div class="hotel-info">
+					<div class="name">
+						<h5>Hotel name</h5>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star"></span>
+					</div>
+					<div class="facil">
+						<div> <i class="fa fa-check-circle"></i><h6>Wi-Fi</h6></div>
+						<div> <i class="fa fa-ban" ></i><h6>Parking</h6></div>
+						<div> <i class="fa fa-check-circle"></i><h6>Beachfront</h6></div>
+						<div> <i class="fa fa-ban"></i><h6>Swimming Pool</h6></div>
+					</div>
+					<div class="text">
+						<p>magaaaari sastumroaaaa!!!!!!</p>
+					</div>
+				</div>
+				<div class="price">
+					<div class="per">Price per day</div>
+					<div class="from-to"> <span><i class="fas fa-dollar-sign">50</i> - <i class="fas fa-dollar-sign">100</i></span></div>
+				</div> 
+			</div>
+			<div class="hotel">
+				<figure class="image">
+					
+				</figure>
+				<div class="hotel-info">
+					<div class="name">
+						<h5>Hotel name</h5>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star"></span>
+					</div>
+					<div class="facil">
+						<div> <i class="fa fa-check-circle"></i><h6>Wi-Fi</h6></div>
+						<div> <i class="fa fa-ban" ></i><h6>Parking</h6></div>
+						<div> <i class="fa fa-check-circle"></i><h6>Beachfront</h6></div>
+						<div> <i class="fa fa-ban"></i><h6>Swimming Pool</h6></div>
+					</div>
+					<div class="text">
+						<p>magaaaari sastumroaaaa!!!!!!</p>
+					</div>
+				</div>
+				<div class="price">
+					<div class="per">Price per day</div>
+					<div class="from-to"> <span><i class="fas fa-dollar-sign">50</i> - <i class="fas fa-dollar-sign">100</i></span></div>
+				</div> 
+			</div>
+			<div class="hotel">
+				<figure class="image">
+					
+				</figure>
+				<div class="hotel-info">
+					<div class="name">
+						<h5>Hotel name</h5>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star"></span>
+					</div>
+					<div class="facil">
+						<div> <i class="fa fa-check-circle"></i><h6>Wi-Fi</h6></div>
+						<div> <i class="fa fa-ban" ></i><h6>Parking</h6></div>
+						<div> <i class="fa fa-check-circle"></i><h6>Beachfront</h6></div>
+						<div> <i class="fa fa-ban"></i><h6>Swimming Pool</h6></div>
+					</div>
+					<div class="text">
+						<p>magaaaari sastumroaaaa!!!!!!</p>
+					</div>
+				</div>
+				<div class="price">
+					<div class="per">Price per day</div>
+					<div class="from-to"> <span><i class="fas fa-dollar-sign">50</i> - <i class="fas fa-dollar-sign">100</i></span></div>
+				</div> 
+			</div>
+			<div class="hotel">
+				<figure class="image">
+					
+				</figure>
+				<div class="hotel-info">
+					<div class="name">
+						<h5>Hotel name</h5>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star"></span>
+					</div>
+					<div class="facil">
+						<div> <i class="fa fa-check-circle"></i><h6>Wi-Fi</h6></div>
+						<div> <i class="fa fa-ban" ></i><h6>Parking</h6></div>
+						<div> <i class="fa fa-check-circle"></i><h6>Beachfront</h6></div>
+						<div> <i class="fa fa-ban"></i><h6>Swimming Pool</h6></div>
+					</div>
+					<div class="text">
+						<p>magaaaari sastumroaaaa!!!!!!</p>
+					</div>
+				</div>
+				<div class="price">
+					<div class="per">Price per day</div>
+					<div class="from-to"> <span><i class="fas fa-dollar-sign">50</i> - <i class="fas fa-dollar-sign">100</i></span></div>
+				</div> 
+			</div>
+			<div class="hotel">
+				<figure class="image">
+					
+				</figure>
+				<div class="hotel-info">
+					<div class="name">
+						<h5>Hotel name</h5>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star"></span>
+					</div>
+					<div class="facil">
+						<div> <i class="fa fa-check-circle"></i><h6>Wi-Fi</h6></div>
+						<div> <i class="fa fa-ban" ></i><h6>Parking</h6></div>
+						<div> <i class="fa fa-check-circle"></i><h6>Beachfront</h6></div>
+						<div> <i class="fa fa-ban"></i><h6>Swimming Pool</h6></div>
+					</div>
+					<div class="text">
+						<p>magaaaari sastumroaaaa!!!!!!</p>
+					</div>
+				</div>
+				<div class="price">
+					<div class="per">Price per day</div>
+					<div class="from-to"> <span><i class="fas fa-dollar-sign">50</i> - <i class="fas fa-dollar-sign">100</i></span></div>
+				</div> 
+			</div>
+			<div class="hotel">
+				<figure class="image">
+					
+				</figure>
+				<div class="hotel-info">
+					<div class="name">
+						<h5>Hotel name</h5>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star"></span>
+					</div>
+					<div class="facil">
+						<div> <i class="fa fa-check-circle"></i><h6>Wi-Fi</h6></div>
+						<div> <i class="fa fa-ban" ></i><h6>Parking</h6></div>
+						<div> <i class="fa fa-check-circle"></i><h6>Beachfront</h6></div>
+						<div> <i class="fa fa-ban"></i><h6>Swimming Pool</h6></div>
+					</div>
+					<div class="text">
+						<p>magaaaari sastumroaaaa!!!!!!</p>
+					</div>
+				</div>
+				<div class="price">
+					<div class="per">Price per day</div>
+					<div class="from-to"> <span><i class="fas fa-dollar-sign">50</i> - <i class="fas fa-dollar-sign">100</i></span></div>
+				</div> 
+			</div>
+			<div class="hotel">
+				<figure class="image">
+					
+				</figure>
+				<div class="hotel-info">
+					<div class="name">
+						<h5>Hotel name</h5>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star"></span>
+					</div>
+					<div class="facil">
+						<div> <i class="fa fa-check-circle"></i><h6>Wi-Fi</h6></div>
+						<div> <i class="fa fa-ban" ></i><h6>Parking</h6></div>
+						<div> <i class="fa fa-check-circle"></i><h6>Beachfront</h6></div>
+						<div> <i class="fa fa-ban"></i><h6>Swimming Pool</h6></div>
+					</div>
+					<div class="text">
+						<p>magaaaari sastumroaaaa!!!!!!</p>
+					</div>
+				</div>
+				<div class="price">
+					<div class="per">Price per day</div>
+					<div class="from-to"> <span><i class="fas fa-dollar-sign">50</i> - <i class="fas fa-dollar-sign">100</i></span></div>
+				</div> 
+			</div>
+			
 		</div>
 		<div class="log-in"> 
 			<div class="login-box">

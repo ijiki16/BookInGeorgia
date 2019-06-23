@@ -5,7 +5,11 @@ html, body {
     font-family: 'Josefin Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
     font-smoothing: antialiased;
-	background: url(../images/back.jpg);
+	background-image: url(../images/back.jpg);
+	background-attachment: fixed;
+	background-position: center; 
+	background-repeat: no-repeat;
+	background-size: cover;
     margin: 0px;
 }
 
@@ -389,6 +393,7 @@ a {
     z-index: 5;
     background: rgba(26, 70, 104, 0.61);
     overflow: hidden;
+    margin-bottom: 10px;
 }
 
 .image {
