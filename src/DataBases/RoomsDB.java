@@ -11,6 +11,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.namespace.QName;
+
 import Models.Room;
 
 public class RoomsDB {
@@ -66,13 +68,13 @@ public class RoomsDB {
 		}
 	}
 	
-	public static boolean addRoom(java.util.Date startDate, java.util.Date endData, int hottelId, int numberOfBeds, boolean wifi, boolean tv, boolean hotWater) {
+	public static boolean addRoom(java.util.Date startDate, java.util.Date endData, int hottelId, int numberOfBeds, 
+					boolean wifi, boolean tv, boolean hotWater, boolean airConditioning) {
+		Connection con = getConnection();
 		try {
-			Connection con = getConnection();
-			//
 			Statement stmt = con.createStatement();
 			stmt.executeQuery("USE " + database);
-			//
+			//insert room
 			String ins = "insert into rooms(reserved_start, reserved_end, number_of_beds, hotel_id) values (?, ?, ?, ?);";
 			PreparedStatement quer = con.prepareStatement(ins, stmt.RETURN_GENERATED_KEYS);
 			//
@@ -83,6 +85,22 @@ public class RoomsDB {
 			quer.setInt(3, numberOfBeds);
 			quer.setInt(4, hottelId);
 			quer.executeUpdate();
+			//get last room id
+			PreparedStatement quer2 = con.prepareStatement("SELECT  max(room_id)  from rooms;");
+			ResultSet res = quer2.executeQuery();
+			res.next();
+			int roomId = res.getInt("max(room_id)");
+			//insert room info
+			String ins3 = "insert into roominfo (wifi, tv, hot_water, air_conditioning, room_id) values (?, ?, ?, ?, ?);";
+			PreparedStatement quer3 = con.prepareStatement(ins3);
+			quer3.setBoolean(1, wifi);
+			quer3.setBoolean(2, tv);
+			quer3.setBoolean(3, hotWater);
+			quer3.setBoolean(4, airConditioning);
+			quer3.setInt(5, roomId);
+			quer3.executeUpdate();
+			//
+			System.out.println(roomId);
 			con.close();
 			return true;
 		} catch (SQLException e) {
@@ -91,6 +109,25 @@ public class RoomsDB {
 		}
 	}
 	
+	public void deleteRoom(int roomId) {
+		Connection con = getConnection();
+		try {
+			Statement stmt = con.createStatement();
+			//delete from roominfo
+			String del1 = "delete from roominfo where room_id = ?";
+			PreparedStatement quer1 = con.prepareStatement(del1);
+			quer1.setInt(1, roomId);
+			quer1.executeUpdate();
+			//delete from rooms
+			String del2 = "delete from rooms where room_id = ?";
+			PreparedStatement quer2 = con.prepareStatement(del2);
+			quer2.setInt(1, roomId);
+			quer2.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public Room getRoom(int id) {
 		Connection con = getConnection();
 		//
@@ -106,7 +143,8 @@ public class RoomsDB {
 				con.close();
 				return null;
 			}else {
-				Room rm = new Room(res.getDate("reserved_start"), res.getDate("reserved_end"), res.getInt("hotel_id"));
+				Room rm = new Room(res.getDate("reserved_start"), res.getDate("reserved_end"), res.getInt("hotel_id"),res.getInt("number_of_beds"), 
+						false, false, false ,false);
 				con.close();
 				return rm;
 			}
@@ -129,21 +167,14 @@ public class RoomsDB {
 			PreparedStatement quer = con.prepareStatement(ins, stmt.RETURN_GENERATED_KEYS);
 			quer.setInt(1, hottelId);
 			ResultSet res = quer.executeQuery();
-			if(!res.next()) {
-				con.close();
-				return null;
-			}else {
-				List<Room> rooms = new ArrayList<Room>();
-				Room rm = new Room(res.getDate("reserved_start"), res.getDate("reserved_end"), res.getInt("hotel_id"));
+			List<Room> rooms = new ArrayList<Room>();
+			while(res.next()) {
+				Room rm = new Room(res.getDate("reserved_start"), res.getDate("reserved_end"), res.getInt("hotel_id"),res.getInt("number_of_beds"), 
+						false, false, false ,false);
 				rooms.add(rm);
-				while(res.next()) {
-					Room curRoom = new Room(res.getDate("reserved_start"), res.getDate("reserved_end"), res.getInt("hotel_id"));
-					rooms.add(curRoom);
-				}
-				con.close();
-				return rooms;
-				//return rm;
 			}
+			con.close();
+			return rooms;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -67,6 +67,7 @@ create table RoomInfo (
 	wifi boolean,
 	tv boolean,
 	hot_water boolean,
+	air_conditioning boolean,
 	room_id int
 );
 
