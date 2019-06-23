@@ -30,11 +30,11 @@ $(document).ready(function(){
 					password: _password
 				}, 
 				function(response) {
-					if(response == "success") {
-						alert(response);
+					if($.trim(response) != 'fail') {
 						$('.log-in').css({"visibility":"hidden"});
 						$('#log-and-reg').css({"visibility":"hidden"});
 						$('.menu-but').css({"display": "block"});
+						$('.menu-but').html("Hello " + response);
 						$('.homepage').css({"visibility":"hidden"});
 					}else{
 						$('.log-fail').html("Wrong User or Password");

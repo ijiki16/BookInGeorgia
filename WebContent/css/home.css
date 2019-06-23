@@ -83,9 +83,9 @@ a {
 .site-logo a {
 	display: table-cell;
 	position: sticky;
-	font-size: 175%;
+	font-size: 175% !important;
 	top: 10%;
-	color: white;
+	color: white !important;
 }
 
 #logo {
@@ -169,7 +169,7 @@ a {
 	vertical-align: middle;
 	top: 23% !important;
 	right: 5%;
-	color: white;
+	color: white !important;
 }
 
 .menu-but i {
