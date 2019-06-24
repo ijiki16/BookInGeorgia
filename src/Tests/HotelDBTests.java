@@ -28,9 +28,8 @@ public class HotelDBTests {
 	
 	@Test
 	public void test() {
-		assertTrue(HotelsDB.getConnection() != null);
 		assertTrue(mng.createAccount("Nika", "Basiashvili", "nbasi@gmail.com", "nika97", "123456", "1997-12-19"));
-//		acc = mng.getAccount("nbasi@gmail.com");
+		acc = mng.getAccount("nbasi@gmail.com");
 //		
 //		System.out.println(acc.getId());
 //		String hotel_id = db.addHotel("Tiflisi", "5", "abcdef", "Hotel Tiflisi 24/24", "+995 999 955", acc.getId());

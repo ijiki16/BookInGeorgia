@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@page import="java.util.*"%>
+    <%@page import="DataBases.HotelsDB"%>
+    <%@page import="Models.Hotel"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +14,7 @@
 <link rel="stylesheet" href="css/font-awesome.min.css">
 <link rel="stylesheet" href="css/home.css">
 <link rel="stylesheet" href="css/Login.css">
+<link rel="stylesheet" href="css/Post.css">
 <script src="https://kit.fontawesome.com/13f325d0c5.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
@@ -133,233 +136,25 @@
 				</form>
 			</div>
 		</div>
+		
 		<div class="hotels">
-			<div class="hotel">
-				<figure class="image">
-					
-				</figure>
-				<div class="hotel-info">
-					<div class="name">
-						<h5>Hotel name</h5>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star"></span>
-					</div>
-					<div class="facil">
-						<div> <i class="fa fa-check-circle"></i><h6>Wi-Fi</h6></div>
-						<div> <i class="fa fa-ban" ></i><h6>Parking</h6></div>
-						<div> <i class="fa fa-check-circle"></i><h6>Beachfront</h6></div>
-						<div> <i class="fa fa-ban"></i><h6>Swimming Pool</h6></div>
-					</div>
-					<div class="text">
-						<p>magaaaari sastumroaaaa!!!!!!</p>
-					</div>
-				</div>
-				<div class="price">
-					<div class="per">Price per day</div>
-					<div class="from-to"> <span><i class="fas fa-dollar-sign">50</i> - <i class="fas fa-dollar-sign">100</i></span></div>
-				</div> 
-			</div>
+		<% HotelsDB db = HotelsDB.getInstance();
+			List<Integer> IDs = db.getAllHotelIDs();
+			for(Integer hotel_id : IDs){
+				Hotel hotel = db.getHotel(hotel_id);
+				request.setAttribute("name", hotel.getName());
+				request.setAttribute("rating", hotel.getRating());
+				request.setAttribute("status", hotel.getStatus());
+				request.setAttribute("img", hotel.getImage());
+				request.setAttribute("number", hotel.getNumber());
+				request.setAttribute("wifi", hotel.getFacilities().getWiFi());
+				request.setAttribute("parking", hotel.getFacilities().getParking());
+				request.setAttribute("beachfront", hotel.getFacilities().getBeachfront());
+				request.setAttribute("woodfront", hotel.getFacilities().getWoodfront());
+			%>
 			
-			<div class="hotel">
-				<figure class="image">
-					
-				</figure>
-				<div class="hotel-info">
-					<div class="name">
-						<h5>Hotel name</h5>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star"></span>
-					</div>
-					<div class="facil">
-						<div> <i class="fa fa-check-circle"></i><h6>Wi-Fi</h6></div>
-						<div> <i class="fa fa-ban" ></i><h6>Parking</h6></div>
-						<div> <i class="fa fa-check-circle"></i><h6>Beachfront</h6></div>
-						<div> <i class="fa fa-ban"></i><h6>Swimming Pool</h6></div>
-					</div>
-					<div class="text">
-						<p>magaaaari sastumroaaaa!!!!!!</p>
-					</div>
-				</div>
-				<div class="price">
-					<div class="per">Price per day</div>
-					<div class="from-to"> <span><i class="fas fa-dollar-sign">50</i> - <i class="fas fa-dollar-sign">100</i></span></div>
-				</div> 
-			</div>
-			<div class="hotel">
-				<figure class="image">
-					
-				</figure>
-				<div class="hotel-info">
-					<div class="name">
-						<h5>Hotel name</h5>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star"></span>
-					</div>
-					<div class="facil">
-						<div> <i class="fa fa-check-circle"></i><h6>Wi-Fi</h6></div>
-						<div> <i class="fa fa-ban" ></i><h6>Parking</h6></div>
-						<div> <i class="fa fa-check-circle"></i><h6>Beachfront</h6></div>
-						<div> <i class="fa fa-ban"></i><h6>Swimming Pool</h6></div>
-					</div>
-					<div class="text">
-						<p>magaaaari sastumroaaaa!!!!!!</p>
-					</div>
-				</div>
-				<div class="price">
-					<div class="per">Price per day</div>
-					<div class="from-to"> <span><i class="fas fa-dollar-sign">50</i> - <i class="fas fa-dollar-sign">100</i></span></div>
-				</div> 
-			</div>
-			<div class="hotel">
-				<figure class="image">
-					
-				</figure>
-				<div class="hotel-info">
-					<div class="name">
-						<h5>Hotel name</h5>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star"></span>
-					</div>
-					<div class="facil">
-						<div> <i class="fa fa-check-circle"></i><h6>Wi-Fi</h6></div>
-						<div> <i class="fa fa-ban" ></i><h6>Parking</h6></div>
-						<div> <i class="fa fa-check-circle"></i><h6>Beachfront</h6></div>
-						<div> <i class="fa fa-ban"></i><h6>Swimming Pool</h6></div>
-					</div>
-					<div class="text">
-						<p>magaaaari sastumroaaaa!!!!!!</p>
-					</div>
-				</div>
-				<div class="price">
-					<div class="per">Price per day</div>
-					<div class="from-to"> <span><i class="fas fa-dollar-sign">50</i> - <i class="fas fa-dollar-sign">100</i></span></div>
-				</div> 
-			</div>
-			<div class="hotel">
-				<figure class="image">
-					
-				</figure>
-				<div class="hotel-info">
-					<div class="name">
-						<h5>Hotel name</h5>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star"></span>
-					</div>
-					<div class="facil">
-						<div> <i class="fa fa-check-circle"></i><h6>Wi-Fi</h6></div>
-						<div> <i class="fa fa-ban" ></i><h6>Parking</h6></div>
-						<div> <i class="fa fa-check-circle"></i><h6>Beachfront</h6></div>
-						<div> <i class="fa fa-ban"></i><h6>Swimming Pool</h6></div>
-					</div>
-					<div class="text">
-						<p>magaaaari sastumroaaaa!!!!!!</p>
-					</div>
-				</div>
-				<div class="price">
-					<div class="per">Price per day</div>
-					<div class="from-to"> <span><i class="fas fa-dollar-sign">50</i> - <i class="fas fa-dollar-sign">100</i></span></div>
-				</div> 
-			</div>
-			<div class="hotel">
-				<figure class="image">
-					
-				</figure>
-				<div class="hotel-info">
-					<div class="name">
-						<h5>Hotel name</h5>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star"></span>
-					</div>
-					<div class="facil">
-						<div> <i class="fa fa-check-circle"></i><h6>Wi-Fi</h6></div>
-						<div> <i class="fa fa-ban" ></i><h6>Parking</h6></div>
-						<div> <i class="fa fa-check-circle"></i><h6>Beachfront</h6></div>
-						<div> <i class="fa fa-ban"></i><h6>Swimming Pool</h6></div>
-					</div>
-					<div class="text">
-						<p>magaaaari sastumroaaaa!!!!!!</p>
-					</div>
-				</div>
-				<div class="price">
-					<div class="per">Price per day</div>
-					<div class="from-to"> <span><i class="fas fa-dollar-sign">50</i> - <i class="fas fa-dollar-sign">100</i></span></div>
-				</div> 
-			</div>
-			<div class="hotel">
-				<figure class="image">
-					
-				</figure>
-				<div class="hotel-info">
-					<div class="name">
-						<h5>Hotel name</h5>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star"></span>
-					</div>
-					<div class="facil">
-						<div> <i class="fa fa-check-circle"></i><h6>Wi-Fi</h6></div>
-						<div> <i class="fa fa-ban" ></i><h6>Parking</h6></div>
-						<div> <i class="fa fa-check-circle"></i><h6>Beachfront</h6></div>
-						<div> <i class="fa fa-ban"></i><h6>Swimming Pool</h6></div>
-					</div>
-					<div class="text">
-						<p>magaaaari sastumroaaaa!!!!!!</p>
-					</div>
-				</div>
-				<div class="price">
-					<div class="per">Price per day</div>
-					<div class="from-to"> <span><i class="fas fa-dollar-sign">50</i> - <i class="fas fa-dollar-sign">100</i></span></div>
-				</div> 
-			</div>
-			<div class="hotel">
-				<figure class="image">
-					
-				</figure>
-				<div class="hotel-info">
-					<div class="name">
-						<h5>Hotel name</h5>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star"></span>
-					</div>
-					<div class="facil">
-						<div> <i class="fa fa-check-circle"></i><h6>Wi-Fi</h6></div>
-						<div> <i class="fa fa-ban" ></i><h6>Parking</h6></div>
-						<div> <i class="fa fa-check-circle"></i><h6>Beachfront</h6></div>
-						<div> <i class="fa fa-ban"></i><h6>Swimming Pool</h6></div>
-					</div>
-					<div class="text">
-						<p>magaaaari sastumroaaaa!!!!!!</p>
-					</div>
-				</div>
-				<div class="price">
-					<div class="per">Price per day</div>
-					<div class="from-to"> <span><i class="fas fa-dollar-sign">50</i> - <i class="fas fa-dollar-sign">100</i></span></div>
-				</div> 
-			</div>
-			
+				<jsp:include page="Post.jsp"/>
+			<%}%>
 		</div>
 		<div class="log-in"> 
 			<div class="login-box">
@@ -382,20 +177,7 @@
 			</div>
 		</div>
 		
-		<button id="minus">-</button><input type="number" id="count" value="1"  redaonly><button id="plus">+</button>
-		<script type="text/javascript">
-			$('#minus').click(function(){
-				let val = $('#count').val();
-				if (val > 0) {
-					--val;
-					$('#count').val(val);
-				}
-			});
-			$('#plus').click(function(){
-				let val = $('#count').val();
-				++val;
-				$('#count').val(val);			
-			});
-		</script>
+		<button id="minus">-</button><input type="number" id="count" value="1"  readonly><button id="plus">+</button>
+		
 </body>
 </html>

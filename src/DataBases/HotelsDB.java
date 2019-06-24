@@ -73,6 +73,21 @@ public class HotelsDB {
 //			}		
 //	}
 	
+	public List<Integer> getAllHotelIDs(){
+		try {
+			List<Integer> hotel_ids = new ArrayList<Integer>();
+			String query = "select hotel_id from Hotels;";
+			PreparedStatement stmt = con.prepareStatement(query);
+			ResultSet rs = stmt.executeQuery(query);
+			while(rs.next()) {
+				hotel_ids.add(rs.getInt("hotel_id"));
+			}
+			return hotel_ids;
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 	public Hotel getHotel(Integer hotel_id) {
 		try {
@@ -116,9 +131,22 @@ public class HotelsDB {
 		return null;
 	}
 	
-	public List<Integer> getHotelIds(Integer account_id){
-		List<Integer> hotel_ids = new ArrayList<Integer>();
-		return hotel_ids;
+	public List<Integer> getHotelIDs(Integer account_id){
+		try{
+			List<Integer> hotel_ids = new ArrayList<Integer>();
+			Connection con = getConnection();
+			String query = "select hotel_id from Accounts a join Hotels h on a.account_id = h.account_id where h.account_id = '"
+						+ Integer.toString(account_id) +"'";
+			PreparedStatement stmt = con.prepareStatement(query);
+			ResultSet rs = stmt.executeQuery(query);
+			while(rs.next()) {
+				hotel_ids.add(rs.getInt("hotel_id"));
+			}
+			return hotel_ids;
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 
@@ -134,9 +162,6 @@ public class HotelsDB {
 			stmt.setString(5, number);
 			stmt.setInt(6, account_id);
 			stmt.execute();
-//			query = "select max(hotel_id) max_id from Hotels";
-//			ResultSet rs = stmt.executeQuery(query);	
-//			if(rs.next()) return rs.getInt("max_id");
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -202,8 +227,8 @@ public class HotelsDB {
 	}
 
 	
-	public void updateFacilities(Integer hotel_id, String facility, boolean wifi, boolean parking, boolean beachfront,
-			boolean woodfront) {
+	public void updateFacilities(Integer hotel_id, String facility, boolean wifi, boolean parking,
+			boolean beachfront, boolean woodfront) {
 		try {
 			Connection con = getConnection();
 			String query = "update HotelInfo set facility = ?, wifi = ?, parking = ?, beachfront = ?, woodfront = ? where hotel_id = ?";

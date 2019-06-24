@@ -27,7 +27,7 @@ create table Accounts (
 create table Hotels (
 	hotel_id int primary key auto_increment,
 	name char(128),
-    rating char(128),
+    rating int,
     img char(128),
     status char(128),
     phone_number char(20),
@@ -38,7 +38,6 @@ alter table Hotels add constraint fk_account_id foreign key(account_id) referenc
 
 create table HotelInfo (
 	wifi boolean,
-    swimmingpool boolean,
     parking boolean,
     beachfront boolean,
     woodfront boolean,

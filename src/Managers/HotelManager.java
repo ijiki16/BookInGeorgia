@@ -80,7 +80,7 @@ public class HotelManager {
 	 * @returns Users Hotels list.
 	 */
 	public List<Hotel> getHotels(Integer account_id){
-		List<Integer> hotel_ids = db.getHotelIds(account_id);
+		List<Integer> hotel_ids = db.getHotelIDs(account_id);
 		List<Hotel> Hotels = new ArrayList<Hotel>();
 		for(Integer hotel_id : hotel_ids) {
 			Hotels.add(this.getHotel(hotel_id));
