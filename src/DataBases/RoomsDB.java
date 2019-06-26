@@ -22,61 +22,28 @@ public class RoomsDB {
 	static String server = MyDBInfo.MYSQL_DATABASE_SERVER;
 	static String database = MyDBInfo.MYSQL_DATABASE_NAME;
 	
-	
-	private static RoomsDB dataB;
+	private Connection ConnDB;
 	
 	public RoomsDB() {
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://"+ server, account, password);
-			Statement stmt = conn.createStatement();
-			stmt.executeQuery("USE " + database);
-			conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}			
-	}
-	
-	public static RoomsDB getInstance(){
-		if(dataB == null){
-			synchronized (HotelsDB.class){
-                if (dataB == null)dataB = new RoomsDB();
-            }
-		}
-		updateBase();
-		return dataB;
-	}
-	
-	private static void updateBase() {
-		try {
-			Connection con = getConnection();
-			String query = "select * from Rooms";
-			PreparedStatement stmt = con.prepareStatement(query);
-			ResultSet res = stmt.executeQuery(query);
-			while (res.next()) {
-				String id = res.getString("room_id");
-				String startDate = res.getString("reserved_start");
-				String endData = res.getString("reserved_end");
-				String hotelId = res.getString("hotel_id");
-				System.out.print(id+") ["+startDate+":"+endData+"] hotel: "+hotelId);
+			try {
+				Class.forName("com.mysql.cj.jdbc.Driver");
+				ConnDB = DriverManager.getConnection("jdbc:mysql://"+ server, account, password);
+				Statement stmt = ConnDB.createStatement();
+				stmt.executeQuery("USE " + database);
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 	}
 	
-	public static boolean addRoom(java.util.Date startDate, java.util.Date endData, int hottelId, int numberOfBeds, 
+	public int addRoom(java.util.Date startDate, java.util.Date endData, int hottelId, int numberOfBeds, 
 					boolean wifi, boolean tv, boolean hotWater, boolean airConditioning) {
-		Connection con = getConnection();
 		try {
-			Statement stmt = con.createStatement();
-			stmt.executeQuery("USE " + database);
+			Statement stmt = ConnDB.createStatement();
 			//insert room
 			String ins = "insert into rooms(reserved_start, reserved_end, number_of_beds, hotel_id) values (?, ?, ?, ?);";
-			PreparedStatement quer = con.prepareStatement(ins, stmt.RETURN_GENERATED_KEYS);
+			PreparedStatement quer = ConnDB.prepareStatement(ins, stmt.RETURN_GENERATED_KEYS);
 			//
 			java.sql.Date stD = new Date(startDate.getTime());
 			quer.setDate(1,  stD);
@@ -86,13 +53,13 @@ public class RoomsDB {
 			quer.setInt(4, hottelId);
 			quer.executeUpdate();
 			//get last room id
-			PreparedStatement quer2 = con.prepareStatement("SELECT  max(room_id)  from rooms;");
+			PreparedStatement quer2 = ConnDB.prepareStatement("SELECT  max(room_id)  from rooms;");
 			ResultSet res = quer2.executeQuery();
 			res.next();
 			int roomId = res.getInt("max(room_id)");
 			//insert room info
 			String ins3 = "insert into roominfo (wifi, tv, hot_water, air_conditioning, room_id) values (?, ?, ?, ?, ?);";
-			PreparedStatement quer3 = con.prepareStatement(ins3);
+			PreparedStatement quer3 = ConnDB.prepareStatement(ins3);
 			quer3.setBoolean(1, wifi);
 			quer3.setBoolean(2, tv);
 			quer3.setBoolean(3, hotWater);
@@ -100,96 +67,81 @@ public class RoomsDB {
 			quer3.setInt(5, roomId);
 			quer3.executeUpdate();
 			//
-			System.out.println(roomId);
-			con.close();
-			return true;
+			//System.out.println(roomId);
+			return roomId;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return false;
+			return -1;
 		}
 	}
 	
 	public void deleteRoom(int roomId) {
-		Connection con = getConnection();
 		try {
-			Statement stmt = con.createStatement();
+			Statement stmt = ConnDB.createStatement();
 			//delete from roominfo
 			String del1 = "delete from roominfo where room_id = ?";
-			PreparedStatement quer1 = con.prepareStatement(del1);
+			PreparedStatement quer1 = ConnDB.prepareStatement(del1);
 			quer1.setInt(1, roomId);
 			quer1.executeUpdate();
 			//delete from rooms
 			String del2 = "delete from rooms where room_id = ?";
-			PreparedStatement quer2 = con.prepareStatement(del2);
+			PreparedStatement quer2 = ConnDB.prepareStatement(del2);
 			quer2.setInt(1, roomId);
 			quer2.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	public Room getRoom(int id) {
-		Connection con = getConnection();
-		//
 		try {
-			Statement stmt = con.createStatement();
-			stmt.executeQuery("USE " + database);
+			Statement stmt = ConnDB.createStatement();
 			//
-			String ins = "select * from rooms where room_id = ?;";
-			PreparedStatement quer = con.prepareStatement(ins, stmt.RETURN_GENERATED_KEYS);
-			quer.setInt(1, id);
-			ResultSet res = quer.executeQuery();
-			if(!res.next()) {
-				con.close();
+			String ins1 = "select * from rooms where room_id = ?;";
+			PreparedStatement quer1 = ConnDB.prepareStatement(ins1);
+			quer1.setInt(1, id);
+			String ins2 = "select * from roominfo where room_id = ?;";
+			PreparedStatement quer2 = ConnDB.prepareStatement(ins2);
+			quer2.setInt(1, id);
+			ResultSet res1 = quer1.executeQuery();
+			ResultSet res2 = quer2.executeQuery();
+			if(!res1.next() || !res2.next()) {
 				return null;
 			}else {
-				Room rm = new Room(res.getDate("reserved_start"), res.getDate("reserved_end"), res.getInt("hotel_id"),res.getInt("number_of_beds"), 
-						false, false, false ,false);
-				con.close();
+				Room rm = new Room(id, res1.getDate("reserved_start"), res1.getDate("reserved_end"), res1.getInt("hotel_id"),res1.getInt("number_of_beds"), 
+						res2.getBoolean("wifi"), res2.getBoolean("tv"), res2.getBoolean("hot_water"), res2.getBoolean("air_conditioning"));
 				return rm;
 			}
-			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
 	}
 	
-	public static List<Room> getRoomByHottel(int hottelId) {
-		Connection con = getConnection();
-		//
+	public  List<Room> getRoomByHottel(int hottelId) {
 		try {
-			Statement stmt = con.createStatement();
-			stmt.executeQuery("USE " + database);
+			Statement stmt = ConnDB.createStatement();
 			//
-			String ins = "select * from rooms where hotel_id = ?;";
-			PreparedStatement quer = con.prepareStatement(ins, stmt.RETURN_GENERATED_KEYS);
-			quer.setInt(1, hottelId);
-			ResultSet res = quer.executeQuery();
+			String ins1 = "select * from rooms where hotel_id = ?;";
+			PreparedStatement quer1 = ConnDB.prepareStatement(ins1);
+			quer1.setInt(1, hottelId);
+			ResultSet res1 = quer1.executeQuery();
 			List<Room> rooms = new ArrayList<Room>();
-			while(res.next()) {
-				Room rm = new Room(res.getDate("reserved_start"), res.getDate("reserved_end"), res.getInt("hotel_id"),res.getInt("number_of_beds"), 
-						false, false, false ,false);
+			while(res1.next()) {
+				int roomId = res1.getInt("room_id");
+				String ins2 = "select * from roominfo where room_id = ?;";
+				PreparedStatement quer2 = ConnDB.prepareStatement(ins2);
+				quer2.setInt(1, roomId);
+				ResultSet res2 = quer2.executeQuery();
+				if(!res2.next()) break;
+				Room rm = new Room(res1.getInt("room_id"), res1.getDate("reserved_start"), res1.getDate("reserved_end"), res1.getInt("hotel_id"),res1.getInt("number_of_beds"), 
+						res2.getBoolean("wifi"), res2.getBoolean("tv"), res2.getBoolean("hot_water"), res2.getBoolean("air_conditioning"));
 				rooms.add(rm);
 			}
-			con.close();
 			return rooms;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
-	}
-	
-	public static Connection getConnection(){
-		try {
-			return DriverManager.getConnection("jdbc:mysql://"+ server, account, password);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		};
-		return null;
-		
 	}
 
 
