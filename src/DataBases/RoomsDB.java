@@ -37,6 +37,17 @@ public class RoomsDB {
 			}
 	}
 	
+	/**
+	 * Adds a row into the database table with given parameters
+	 * @param startDate
+	 * @param endDate
+	 * @param hottelId
+	 * @param numberOfBeds
+	 * @param isWifi
+	 * @param isTV
+	 * @param isHotWater
+	 * @param isAirConditiong
+	 */
 	public int addRoom(java.util.Date startDate, java.util.Date endData, int hottelId, int numberOfBeds, 
 					boolean wifi, boolean tv, boolean hotWater, boolean airConditioning) {
 		try {
@@ -75,6 +86,87 @@ public class RoomsDB {
 		}
 	}
 	
+	/**
+	 * Adds a row into the database table with given parameters
+	 * @param newRoom
+	 */
+	public int addRoom(Room newRoom) {
+		try {
+			Statement stmt = ConnDB.createStatement();
+			//insert room
+			String ins = "insert into rooms(reserved_start, reserved_end, number_of_beds, hotel_id) values (?, ?, ?, ?);";
+			PreparedStatement quer = ConnDB.prepareStatement(ins);
+			//
+			java.sql.Date stD = new Date(newRoom.getStartDate().getTime());
+			quer.setDate(1,  stD);
+			java.sql.Date edD = new Date(newRoom.getEndDate().getTime());
+			quer.setDate(2, edD);
+			quer.setInt(3, newRoom.getNumberOfBeds());
+			quer.setInt(4, newRoom.getHottelId());
+			quer.executeUpdate();
+			//get last room id
+			PreparedStatement quer2 = ConnDB.prepareStatement("SELECT  max(room_id)  from rooms;");
+			ResultSet res = quer2.executeQuery();
+			res.next();
+			int roomId = res.getInt("max(room_id)");
+			//insert room info
+			String ins3 = "insert into roominfo (wifi, tv, hot_water, air_conditioning, room_id) values (?, ?, ?, ?, ?);";
+			PreparedStatement quer3 = ConnDB.prepareStatement(ins3);
+			quer3.setBoolean(1, newRoom.isWifi());
+			quer3.setBoolean(2, newRoom.isTv());
+			quer3.setBoolean(3, newRoom.isHotWater());
+			quer3.setBoolean(4, newRoom.isAirConditioning());
+			quer3.setInt(5, roomId);
+			quer3.executeUpdate();
+			//
+			//System.out.println(roomId);
+			return roomId;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+	/**
+	 * Adds a row into the database table with given parameters
+	 * @param newRoom
+	 */
+	public int updateRoom (Room newRoom) {
+		try {
+			Statement stmt = ConnDB.createStatement();
+			//insert room
+			String ins = "update rooms set reserved_start = ?, reserved_end = ?, number_of_beds = ?, hotel_id = ? where room_id = ?;";
+			PreparedStatement quer = ConnDB.prepareStatement(ins);
+			//
+			java.sql.Date stD = new Date(newRoom.getStartDate().getTime());
+			quer.setDate(1,  stD);
+			java.sql.Date edD = new Date(newRoom.getEndDate().getTime());
+			quer.setDate(2, edD);
+			quer.setInt(3, newRoom.getNumberOfBeds());
+			quer.setInt(4, newRoom.getHottelId());
+			quer.setInt(5, newRoom.getRoomId());
+			quer.executeUpdate();
+			//get last room id
+			PreparedStatement quer2 = ConnDB.prepareStatement("SELECT  max(room_id)  from rooms;");
+			ResultSet res = quer2.executeQuery();
+			res.next();
+			int roomId = res.getInt("max(room_id)");
+			//insert room info
+			String ins3 = "insert into roominfo (wifi, tv, hot_water, air_conditioning, room_id) values (?, ?, ?, ?, ?);";
+			PreparedStatement quer3 = ConnDB.prepareStatement(ins3);
+			quer3.setBoolean(1, newRoom.isWifi());
+			quer3.setBoolean(2, newRoom.isTv());
+			quer3.setBoolean(3, newRoom.isHotWater());
+			quer3.setBoolean(4, newRoom.isAirConditioning());
+			quer3.setInt(5, roomId);
+			quer3.executeUpdate();
+			//
+			//System.out.println(roomId);
+			return roomId;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
 	public void deleteRoom(int roomId) {
 		try {
 			Statement stmt = ConnDB.createStatement();
@@ -92,6 +184,8 @@ public class RoomsDB {
 			e.printStackTrace();
 		}
 	}
+	
+		
 	public Room getRoom(int id) {
 		try {
 			Statement stmt = ConnDB.createStatement();

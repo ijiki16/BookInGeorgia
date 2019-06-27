@@ -16,6 +16,7 @@ public class Room {
 		hottelId = -1;
 		startDate = null;
 		endDate = null;
+		numberOfBeds = 0;
 		// info
 		wifi = false;
 		tv = false;
@@ -77,10 +78,18 @@ public class Room {
 
 	@Override
 	public String toString() {
-		return "hottelId: " + hottelId + " startDate: " + startDate + " endDate: " + endDate;
+		return "hottelId: " + hottelId + " startDate: " + startDate + " endDate: " + endDate+"\n"
+	+"info: numberOfBeds->"+numberOfBeds+" is Wifi->"+wifi+" is Tv->"+tv+"is HotWater->"+hotWater+" is AirConditioning->"+airConditioning;
 	}
 
 	// getters and setters
+	/**
+	 * @return Room ID of the Room.
+	 */
+	public int getRoomId() {
+		return RoomId;
+	}
+
 	/**
 	 * @return Hottel ID of the Room.
 	 */
@@ -136,9 +145,19 @@ public class Room {
 	public boolean isAirConditioning() {
 		return airConditioning;
 	}
-
+	
+	//
+	
 	/**
 	 * Updates room ID in DataBase.
+	 * 
+	 * @param roomId
+	 */
+	public void setRoomId(int roomId) {
+		this.RoomId = roomId;
+	}
+	/**
+	 * Updates hoottel ID in DataBase.
 	 * 
 	 * @param hottelId
 	 */
