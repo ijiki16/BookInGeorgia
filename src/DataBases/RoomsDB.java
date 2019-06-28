@@ -260,6 +260,44 @@ public class RoomsDB {
 		}
 		return reservations;	
 	}
-
+	
+	public boolean bookRoom(Integer room_id, java.util.Date sDate, java.util.Date eDate) {
+		try {
+			Statement stmt = ConnDB.createStatement();
+			//
+			String ins = "insert into reservation (reserved_from, reserved_to, room_id) values (?, ?, ?);";
+			PreparedStatement quer = ConnDB.prepareStatement(ins);
+			java.sql.Date sDt = new Date(sDate.getDate());
+			quer.setDate(1, sDt);
+			java.sql.Date eDt = new Date(eDate.getDate());
+			quer.setDate(2, eDt);
+			quer.setInt(3, room_id);
+			quer.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public boolean unbookRoom(Integer room_id, java.util.Date sDate, java.util.Date eDate) {
+		try {
+			Statement stmt = ConnDB.createStatement();
+			//
+			//String ins = "insert into reservation (reserved_from, reserved_to, room_id) values (?, ?, ?);";
+			String del = "delete from reservation where room_id = ? and reserved_from = ? and reserved_to = ?";
+			PreparedStatement quer = ConnDB.prepareStatement(del);
+			java.sql.Date sDt = new Date(sDate.getDate());
+			quer.setDate(2, sDt);
+			java.sql.Date eDt = new Date(eDate.getDate());
+			quer.setDate(3, eDt);
+			quer.setInt(1, room_id);
+			quer.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 }
