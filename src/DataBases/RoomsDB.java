@@ -23,8 +23,9 @@ public class RoomsDB {
 	static String database = MyDBInfo.MYSQL_DATABASE_NAME;
 	
 	private Connection ConnDB;
+	private static RoomsDB dataB;
 	
-	public RoomsDB() {
+	private RoomsDB() {
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
 				ConnDB = DriverManager.getConnection("jdbc:mysql://"+ server, account, password);
@@ -37,6 +38,16 @@ public class RoomsDB {
 			}
 	}
 	
+	public static RoomsDB getInstance() {
+		if (dataB == null) {
+			synchronized (HotelsDB.class) {
+				if (dataB == null) {
+					dataB = new RoomsDB();
+				}
+			}
+		}
+		return dataB;
+	}
 	/**
 	 * Adds a row into the database table with given parameters
 	 * @param startDate
@@ -130,20 +141,21 @@ public class RoomsDB {
 	 * Adds a row into the database table with given parameters
 	 * @param newRoom
 	 */
-	public int updateRoom (Room newRoom) {
+	public int updateRoom (Integer room_id, java.util.Date sDate, java.util.Date eData, Integer hotlId, Integer numberOfBeds, boolean wifi, boolean tv,
+			boolean hotWater, boolean airConditioning) {
 		try {
 			Statement stmt = ConnDB.createStatement();
 			//insert room
 			String ins = "update rooms set reserved_start = ?, reserved_end = ?, number_of_beds = ?, hotel_id = ? where room_id = ?;";
 			PreparedStatement quer = ConnDB.prepareStatement(ins);
 			//
-			java.sql.Date stD = new Date(newRoom.getStartDate().getTime());
+			java.sql.Date stD = new Date(sDate.getTime());
 			quer.setDate(1,  stD);
-			java.sql.Date edD = new Date(newRoom.getEndDate().getTime());
+			java.sql.Date edD = new Date(eData.getTime());
 			quer.setDate(2, edD);
-			quer.setInt(3, newRoom.getNumberOfBeds());
-			quer.setInt(4, newRoom.getHottelId());
-			quer.setInt(5, newRoom.getRoomId());
+			quer.setInt(3, numberOfBeds);
+			quer.setInt(4, hotlId);
+			quer.setInt(5, room_id);
 			quer.executeUpdate();
 			//get last room id
 			PreparedStatement quer2 = ConnDB.prepareStatement("SELECT  max(room_id)  from rooms;");
@@ -153,10 +165,10 @@ public class RoomsDB {
 			//insert room info
 			String ins3 = "insert into roominfo (wifi, tv, hot_water, air_conditioning, room_id) values (?, ?, ?, ?, ?);";
 			PreparedStatement quer3 = ConnDB.prepareStatement(ins3);
-			quer3.setBoolean(1, newRoom.isWifi());
-			quer3.setBoolean(2, newRoom.isTv());
-			quer3.setBoolean(3, newRoom.isHotWater());
-			quer3.setBoolean(4, newRoom.isAirConditioning());
+			quer3.setBoolean(1, wifi);
+			quer3.setBoolean(2, tv);
+			quer3.setBoolean(3, hotWater);
+			quer3.setBoolean(4, airConditioning);
 			quer3.setInt(5, roomId);
 			quer3.executeUpdate();
 			//
@@ -237,6 +249,66 @@ public class RoomsDB {
 			return null;
 		}
 	}
-
+	
+	public List<List<java.util.Date> > getRoomReservations(int roomId){
+		List<List<java.util.Date>> reservations = new ArrayList<List<java.util.Date>>();
+		try {
+			Statement stmt = ConnDB.createStatement();
+			//
+			String ins = "select * from reservation where room_id = ?;";
+			PreparedStatement quer = ConnDB.prepareStatement(ins);
+			quer.setInt(1, roomId);
+			ResultSet res = quer.executeQuery();
+			while(res.next()) {
+				List<java.util.Date> datas = new ArrayList<java.util.Date>();
+				datas.add(res.getDate("reserved_from"));
+				datas.add(res.getDate("reserved_to"));
+				reservations.add(datas);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return reservations;	
+	}
+	
+	public boolean bookRoom(Integer room_id, java.util.Date sDate, java.util.Date eDate) {
+		try {
+			Statement stmt = ConnDB.createStatement();
+			//
+			String ins = "insert into reservation (reserved_from, reserved_to, room_id) values (?, ?, ?);";
+			PreparedStatement quer = ConnDB.prepareStatement(ins);
+			java.sql.Date sDt = new Date(sDate.getDate());
+			quer.setDate(1, sDt);
+			java.sql.Date eDt = new Date(eDate.getDate());
+			quer.setDate(2, eDt);
+			quer.setInt(3, room_id);
+			quer.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public boolean unbookRoom(Integer room_id, java.util.Date sDate, java.util.Date eDate) {
+		try {
+			Statement stmt = ConnDB.createStatement();
+			//
+			//String ins = "insert into reservation (reserved_from, reserved_to, room_id) values (?, ?, ?);";
+			String del = "delete from reservation where room_id = ? and reserved_from = ? and reserved_to = ?";
+			PreparedStatement quer = ConnDB.prepareStatement(del);
+			java.sql.Date sDt = new Date(sDate.getDate());
+			quer.setDate(2, sDt);
+			java.sql.Date eDt = new Date(eDate.getDate());
+			quer.setDate(3, eDt);
+			quer.setInt(1, room_id);
+			quer.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 }

@@ -1,24 +1,28 @@
 package Managers;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import DataBases.HotelsDB;
+import DataBases.RoomsDB;
 import Models.Facilities;
 import Models.Hotel;
+import Models.Room;
 
 public class HotelManager {
 	private static HotelManager hm;
 	private HotelsDB db;
+	private RoomsDB rdb;
 	
 	private HotelManager() {
-		hm = new HotelManager();
 		db = HotelsDB.getInstance();
+		rdb = new RoomsDB();
 	}
 	
 	public static HotelManager getInstance() {
 		if (hm == null) {
-			synchronized (AccountManager.class) {
+			synchronized (HotelManager.class) {
 				if (hm == null) {
 					hm = new HotelManager();
 				}
@@ -67,6 +71,43 @@ public class HotelManager {
 	 */
 	public void deleteFacilites(Integer hotel_id) {
 		db.deleteFacilities(hotel_id);
+	}
+	
+	/**
+	 * @inserts Room into Hotel.
+	 */
+	public void addRoom(Date sDate, Date eData, Integer hotlId, Integer numberOfBeds, boolean wifi, boolean tv,
+			boolean hotWater, boolean airConditioning) {
+		rdb.addRoom(sDate, eData, hotlId, numberOfBeds, wifi, tv, hotWater, airConditioning);
+	}
+	
+	/**
+	 * @updates Room in Data Base.
+	 */
+	public void updateRooms(Integer room_id, Date sDate, Date eData, Integer hotlId, Integer numberOfBeds, boolean wifi, boolean tv,
+			boolean hotWater, boolean airConditioning) {
+		rdb.updateRoom(room_id, sDate, eData, hotlId, numberOfBeds, wifi, tv, hotWater, airConditioning);
+	}
+	
+	/**
+	 * @deletes Room from Data Base.
+	 */
+	public void deleteRoom(Integer room_id) {
+		rdb.deleteRoom(room_id);
+	}
+	
+	/**
+	 * @return Room by room_id.
+	 */
+	public Room getRoom(Integer room_id) {
+		return rdb.getRoom(room_id);
+	}
+	
+	/**
+	 * @returns Hotels rooms from data base as a list.
+	 */
+	public List<Room> getRooms(Integer hotel_id) {
+		return rdb.getRoomByHottel(hotel_id);
 	}
 	
 	/**

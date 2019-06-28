@@ -37,7 +37,8 @@ create table Hotels (
 alter table Hotels add constraint fk_account_id foreign key(account_id) references Accounts(account_id);
 
 create table HotelInfo (
-	wifi boolean,
+    facility char(128),
+    wifi boolean,
     parking boolean,
     beachfront boolean,
     woodfront boolean,
