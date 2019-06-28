@@ -1,0 +1,68 @@
+@charset "ISO-8859-1";
+
+h1, h2, h3, h4, h5, h6, p {
+	color: white;
+}
+
+.image-info {
+	width: 100%;
+	height: 300px;
+	background: rgba(26, 70, 104, 0.75);
+	margin-top: 5px;
+	padding-top: 5px;
+	padding-left: 5px;
+}
+
+.hotel-name {
+	width: 75%;
+	float: left;
+	margin-bottom: 0;
+}
+
+.img {
+	position: relative;
+    overflow: hidden;
+    float: left;
+    width: 40%;
+    height: inherit;
+}
+
+.info {
+	float: left;
+	width: 60%;
+	height: inherit;
+	padding-left: 1%;
+	padding-right: 1%;
+}
+
+.status {
+	width: 100%;
+	height: 170px;
+	border-bottom: 2px solid #7b0e0e;
+}
+
+.location {
+	width: 100%;
+	height: 50%;
+    color: white;
+    display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.number{
+	width: 100%;
+	height: 50%;
+    color: white;
+    display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.facil {
+	width: 25%;
+}
+
+.text {
+	width: 75%;
+}
