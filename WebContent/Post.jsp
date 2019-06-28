@@ -11,7 +11,7 @@
 				</div>
 				<div class="facil">
 					<div> <i class="fa fa-check-circle"></i><h6><%=request.getAttribute("wifi") %></h6></div>
-					<div> <i class="fa fa-ban" ></i><h6><%=request.getAttribute("parking") %>/h6></div>
+					<div> <i class="fa fa-ban" ></i><h6><%=request.getAttribute("parking") %></h6></div>
 					<div> <i class="fa fa-check-circle"></i><h6><%=request.getAttribute("beachfront") %></h6></div>
 					<div> <i class="fa fa-ban"></i><h6><%=request.getAttribute("woodfront") %></h6></div>
 				</div>

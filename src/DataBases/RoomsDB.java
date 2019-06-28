@@ -130,20 +130,21 @@ public class RoomsDB {
 	 * Adds a row into the database table with given parameters
 	 * @param newRoom
 	 */
-	public int updateRoom (Room newRoom) {
+	public int updateRoom (Integer room_id, java.util.Date sDate, java.util.Date eData, Integer hotlId, Integer numberOfBeds, boolean wifi, boolean tv,
+			boolean hotWater, boolean airConditioning) {
 		try {
 			Statement stmt = ConnDB.createStatement();
 			//insert room
 			String ins = "update rooms set reserved_start = ?, reserved_end = ?, number_of_beds = ?, hotel_id = ? where room_id = ?;";
 			PreparedStatement quer = ConnDB.prepareStatement(ins);
 			//
-			java.sql.Date stD = new Date(newRoom.getStartDate().getTime());
+			java.sql.Date stD = new Date(sDate.getTime());
 			quer.setDate(1,  stD);
-			java.sql.Date edD = new Date(newRoom.getEndDate().getTime());
+			java.sql.Date edD = new Date(eData.getTime());
 			quer.setDate(2, edD);
-			quer.setInt(3, newRoom.getNumberOfBeds());
-			quer.setInt(4, newRoom.getHottelId());
-			quer.setInt(5, newRoom.getRoomId());
+			quer.setInt(3, numberOfBeds);
+			quer.setInt(4, hotlId);
+			quer.setInt(5, room_id);
 			quer.executeUpdate();
 			//get last room id
 			PreparedStatement quer2 = ConnDB.prepareStatement("SELECT  max(room_id)  from rooms;");
@@ -153,10 +154,10 @@ public class RoomsDB {
 			//insert room info
 			String ins3 = "insert into roominfo (wifi, tv, hot_water, air_conditioning, room_id) values (?, ?, ?, ?, ?);";
 			PreparedStatement quer3 = ConnDB.prepareStatement(ins3);
-			quer3.setBoolean(1, newRoom.isWifi());
-			quer3.setBoolean(2, newRoom.isTv());
-			quer3.setBoolean(3, newRoom.isHotWater());
-			quer3.setBoolean(4, newRoom.isAirConditioning());
+			quer3.setBoolean(1, wifi);
+			quer3.setBoolean(2, tv);
+			quer3.setBoolean(3, hotWater);
+			quer3.setBoolean(4, airConditioning);
 			quer3.setInt(5, roomId);
 			quer3.executeUpdate();
 			//

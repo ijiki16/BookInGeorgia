@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     <%@page import="java.util.*"%>
     <%@page import="DataBases.HotelsDB"%>
+    <%@page import="Managers.HotelManager"%>
     <%@page import="Models.Hotel"%>
 <!DOCTYPE html>
 <html>
@@ -139,6 +140,8 @@
 		
 		<div class="hotels">
 		<% HotelsDB db = HotelsDB.getInstance();
+		HotelManager hm = HotelManager.getInstance();
+		hm.addHotel("hotel", 5, "none", "ratingi 4 5", "599", 1);
 			List<Integer> IDs = db.getAllHotelIDs();
 			for(Integer hotel_id : IDs){
 				Hotel hotel = db.getHotel(hotel_id);
@@ -147,12 +150,14 @@
 				request.setAttribute("status", hotel.getStatus());
 				request.setAttribute("img", hotel.getImage());
 				request.setAttribute("number", hotel.getNumber());
-				request.setAttribute("wifi", hotel.getFacilities().getWiFi());
-				request.setAttribute("parking", hotel.getFacilities().getParking());
-				request.setAttribute("beachfront", hotel.getFacilities().getBeachfront());
-				request.setAttribute("woodfront", hotel.getFacilities().getWoodfront());
+				if(hotel.getFacilities() != null){
+					request.setAttribute("facility", hotel.getFacilities().getFacility());
+					request.setAttribute("wifi", hotel.getFacilities().getWiFi());
+					request.setAttribute("parking", hotel.getFacilities().getParking());
+					request.setAttribute("beachfront", hotel.getFacilities().getBeachfront());
+					request.setAttribute("woodfront", hotel.getFacilities().getWoodfront());	
+				}
 			%>
-			
 				<jsp:include page="Post.jsp"/>
 			<%}%>
 		</div>
@@ -177,7 +182,6 @@
 			</div>
 		</div>
 		
-		<button id="minus">-</button><input type="number" id="count" value="1"  readonly><button id="plus">+</button>
 		
 </body>
 </html>

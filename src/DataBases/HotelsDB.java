@@ -13,6 +13,7 @@ import java.util.Map;
 
 import Models.Facilities;
 import Models.Hotel;
+import Models.Room;
 
 
 public class HotelsDB {
@@ -102,7 +103,8 @@ public class HotelsDB {
 						rs.getString("phone_number"),
 						rs.getInt("account_id"),
 						hotel_id);
-				hotel.setFacilities(getFacilities(hotel));
+				Facilities facility = getFacilities(hotel);
+				if(facility != null) hotel.setFacilities(facility);
 				return hotel;
 			}
 		}catch (SQLException e) {
@@ -113,7 +115,7 @@ public class HotelsDB {
 	
 	public Facilities getFacilities(Hotel hotel) {
 		try {
-			String query = "select * from Hotels where hotel_id = '" + Integer.toString(hotel.getHotelId()) + "'";
+			String query = "select * from HotelInfo where hotel_id = '" + Integer.toString(hotel.getHotelId()) + "'";
 			PreparedStatement stmt = con.prepareStatement(query);
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()) {
@@ -134,7 +136,6 @@ public class HotelsDB {
 	public List<Integer> getHotelIDs(Integer account_id){
 		try{
 			List<Integer> hotel_ids = new ArrayList<Integer>();
-			Connection con = getConnection();
 			String query = "select hotel_id from Accounts a join Hotels h on a.account_id = h.account_id where h.account_id = '"
 						+ Integer.toString(account_id) +"'";
 			PreparedStatement stmt = con.prepareStatement(query);
@@ -152,7 +153,6 @@ public class HotelsDB {
 
 	public void addHotel(String name, Integer rating, String img, String status, String number, Integer account_id) {
 		try {
-			Connection con = getConnection();
 			String query = "insert into Hotels (name, rating, img, status, phone_number, account_id) values (?, ?, ?, ?, ?, ?);";
 			PreparedStatement stmt = con.prepareStatement(query);
 			stmt.setString(1, name);
@@ -161,7 +161,7 @@ public class HotelsDB {
 			stmt.setString(4, status);
 			stmt.setString(5, number);
 			stmt.setInt(6, account_id);
-			stmt.execute();
+			stmt.executeUpdate();
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -169,8 +169,7 @@ public class HotelsDB {
 	
 	public void addFacilities(Integer hotel_id, String facility, boolean wifi, boolean parking, boolean beachfront, boolean woodfront) {
 		try {
-			Connection con = getConnection();
-			String query = "insert into HotelInfo (wifi, parking, beachfront, woodfront, facility, hotel_id) values (?, ?, ?, ?, ?, ?)";
+			String query = "insert into HotelInfo (facility, wifi, parking, beachfront, woodfront, hotel_id) values (?, ?, ?, ?, ?, ?)";
 			PreparedStatement stmt = con.prepareStatement(query);
 			stmt.setBoolean(1, wifi);
 			stmt.setBoolean(2, parking);
@@ -178,7 +177,7 @@ public class HotelsDB {
 			stmt.setBoolean(4, woodfront);
 			stmt.setString(5, facility);
 			stmt.setInt(6, hotel_id);
-			stmt.execute();
+			stmt.executeUpdate();
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -188,10 +187,9 @@ public class HotelsDB {
 		try {
 			this.deleteFacilities(hotel_id);
 			
-			Connection con = getConnection();
 			String query = "delete from Hotels where hotel_id = '" + Integer.toString(hotel_id) + "'";
 			PreparedStatement stmt = con.prepareStatement(query);
-			stmt.execute();
+			stmt.executeUpdate();
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -199,10 +197,9 @@ public class HotelsDB {
 
 	public void deleteFacilities(Integer hotel_id) {
 		try {
-			Connection con = getConnection();
 			String query = "delete from HotelInfo where hotel_id = '" + Integer.toString(hotel_id) + "'";
 			PreparedStatement stmt = con.prepareStatement(query);
-			stmt.execute();
+			stmt.executeUpdate();
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -210,7 +207,6 @@ public class HotelsDB {
 
 	public void updateHotel(Integer hotel_id, String name, Integer rating, String img, String status, String number, Integer account_id) {
 		try {
-			Connection con = getConnection();
 			String query = "update Hotels set name = ?, rating = ?, img = ?, status = ?, number = ?, account_id = ? where hotel_id = ?";
 			PreparedStatement stmt = con.prepareStatement(query);
 			stmt.setString(1, name);
@@ -220,7 +216,7 @@ public class HotelsDB {
 			stmt.setString(5, number);
 			stmt.setInt(6, account_id);
 			stmt.setInt(7, hotel_id);
-			stmt.execute();
+			stmt.executeUpdate();
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -230,7 +226,6 @@ public class HotelsDB {
 	public void updateFacilities(Integer hotel_id, String facility, boolean wifi, boolean parking,
 			boolean beachfront, boolean woodfront) {
 		try {
-			Connection con = getConnection();
 			String query = "update HotelInfo set facility = ?, wifi = ?, parking = ?, beachfront = ?, woodfront = ? where hotel_id = ?";
 			PreparedStatement stmt = con.prepareStatement(query);
 			stmt.setString(1, facility);
