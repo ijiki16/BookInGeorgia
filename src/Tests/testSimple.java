@@ -28,9 +28,14 @@ public class testSimple {
 //		ks = ret2.toString();
 //		System.out.println(ks);
 		//db.deleteRoom(15);
-		List<Room> ht = db.getRoomByHottel(1);
-		for(int i=0; i<ht.size(); i++) System.out.println(ht.get(i).toString());
+//		List<Room> ht = db.getRoomByHottel(1);
+//		for(int i=0; i<ht.size(); i++) System.out.println(ht.get(i).toString());
 		// TODO Auto-generated method stub
+		
+		List<List<java.util.Date> > anw = db.getRoomReservations(12);
+		for(int i=0; i<anw.size(); i++) {
+			System.out.println("start: "+ anw.get(i).get(0) + " end: "+anw.get(i).get(1));
+		}
 
 	}
 

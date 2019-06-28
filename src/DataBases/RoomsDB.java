@@ -237,6 +237,28 @@ public class RoomsDB {
 			return null;
 		}
 	}
+	
+	public List<List<java.util.Date> > getRoomReservations(int roomId){
+		List<List<java.util.Date>> reservations = new ArrayList<List<java.util.Date>>();
+		try {
+			Statement stmt = ConnDB.createStatement();
+			//
+			String ins = "select * from reservation where room_id = ?;";
+			PreparedStatement quer = ConnDB.prepareStatement(ins);
+			quer.setInt(1, roomId);
+			ResultSet res = quer.executeQuery();
+			while(res.next()) {
+				List<java.util.Date> datas = new ArrayList<java.util.Date>();
+				datas.add(res.getDate("reserved_from"));
+				datas.add(res.getDate("reserved_to"));
+				reservations.add(datas);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return reservations;	
+	}
 
 
 }
