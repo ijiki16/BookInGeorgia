@@ -296,7 +296,7 @@ a {
 
 .filter {
 	position: absolute;
-	top: 25%;
+	top: 35%;
     left: 1%;
     width: 15%;
     min-height: 100px;
@@ -380,7 +380,7 @@ a {
 
 .hotels {
 	position: absolute;
-	top: 25%;
+	top: 35%;
     left: 17%;
     width: 82%;
     height: fit-content;

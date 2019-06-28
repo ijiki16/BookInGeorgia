@@ -1,5 +1,8 @@
 package Models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import DataBases.HotelsDB;
 
 public class Hotel {
@@ -16,7 +19,7 @@ public class Hotel {
 	private String name, img, status, number;
 	private Integer rating, account_id, hotel_id;
 	private Facilities facilities;
-	private Room rooms;
+	private List<Room> rooms;
 	
 	public Hotel(String name, Integer rating, String img, String status, String number, Integer account_id, Integer hotel_id) {
 		setName(name);
@@ -26,6 +29,7 @@ public class Hotel {
 		setNumber(number);
 		setAccountId(account_id);
 		setHotelId(hotel_id);
+		rooms = new ArrayList<Room>();
 	}
 	
 	/**
@@ -151,7 +155,7 @@ public class Hotel {
 	/**
 	 * @return Hotel rooms.
 	 */
-	public Room getRooms() {
+	public List<Room> getRooms() {
 		return rooms;
 	}
 	
@@ -159,7 +163,7 @@ public class Hotel {
 	 * Updates Hotel rooms.
 	 * @param
 	 */
-	public void setRooms(Room rooms) {
+	public void setRooms(List<Room> rooms) {
 		this.rooms = rooms;
 	}
 
