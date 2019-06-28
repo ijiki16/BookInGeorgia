@@ -15,7 +15,7 @@ import Models.Room;
 public class testSimple {
 
 	public static void main(String[] args) {
-		RoomsDB db = new RoomsDB();
+		RoomsDB db = RoomsDB.getInstance();
 //		db.addRoom(new Date(), new Date(), 1, 2, true, true, true, false);
 //		Room ret = db.getRoom(12);
 //		String ks= ret.toString();

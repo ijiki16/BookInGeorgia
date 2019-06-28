@@ -23,8 +23,9 @@ public class RoomsDB {
 	static String database = MyDBInfo.MYSQL_DATABASE_NAME;
 	
 	private Connection ConnDB;
+	private static RoomsDB dataB;
 	
-	public RoomsDB() {
+	private RoomsDB() {
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
 				ConnDB = DriverManager.getConnection("jdbc:mysql://"+ server, account, password);
@@ -37,6 +38,16 @@ public class RoomsDB {
 			}
 	}
 	
+	public static RoomsDB getInstance() {
+		if (dataB == null) {
+			synchronized (HotelsDB.class) {
+				if (dataB == null) {
+					dataB = new RoomsDB();
+				}
+			}
+		}
+		return dataB;
+	}
 	/**
 	 * Adds a row into the database table with given parameters
 	 * @param startDate
