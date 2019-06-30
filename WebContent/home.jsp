@@ -29,11 +29,11 @@
 		<header class="header-section">
 			<div class="header">
 				<div class="site-logo">
-					<a href="./home.jsp">BookinGeorgia</a>
+					<a href="./home.html">BookinGeorgia</a>
 				</div>
 				
 				<div class="user-panel">
-					<div id="log-and-reg">
+					<div id="log-and-reg" >
 						<i class="flaticon-profile" style="color: white; margin-right: 15px; "></i>
 					 <a class="reg" href="Register.html" id="lr-btn">Register</a> <a class="log" href="#" id="lr-btn"> Login </a> 			
 					</div>			
@@ -43,11 +43,12 @@
 						String user = (String) request.getSession().getAttribute("user");
 						Account acc = am.getAccount(user);
 						%>
-						<a class="menu-but" href="#" style="display:none"> Hello <% out.print( acc != null ? acc.getUsername(): "");%> <i class="arrow down"></i></a>
+						<a class="menu-but" href="#" style="display:none"> <% out.print( acc != null ? acc.getUsername(): "");%> 
+						<i class="arrow down"></i></a>
 						<div class="menu">
 						  <a href="#">Your page</a>
 						  <a href="#">Settings</a>
-						  <a href="#">Log out</a>
+						  <a href="#" id="log-out">Log out</a>
 						</div>
 					</div>					
 				</div>
@@ -148,7 +149,7 @@
 		<div class="hotels">
 		<% HotelsDB db = HotelsDB.getInstance();
 		HotelManager hm = HotelManager.getInstance();
-		//hm.addHotel("hotel", 5, "none", "ratingi 4 5", "599", 1);
+		hm.addHotel("hotel", 5, "none", "ratingi 4 5", "599", 1);
 			List<Integer> IDs = db.getAllHotelIDs();
 			for(Integer hotel_id : IDs){
 				Hotel hotel = db.getHotel(hotel_id);
