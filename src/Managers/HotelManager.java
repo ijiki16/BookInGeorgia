@@ -17,7 +17,7 @@ public class HotelManager {
 	
 	private HotelManager() {
 		db = HotelsDB.getInstance();
-		rdb = new RoomsDB();
+		rdb = RoomsDB.getInstance();
 	}
 	
 	public static HotelManager getInstance() {

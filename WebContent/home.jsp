@@ -1,9 +1,11 @@
+<%@page import="Managers.AccountManager"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@page import="java.util.*"%>
     <%@page import="DataBases.HotelsDB"%>
     <%@page import="Managers.HotelManager"%>
     <%@page import="Models.Hotel"%>
+    <%@page import="Models.Account"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +29,7 @@
 		<header class="header-section">
 			<div class="header">
 				<div class="site-logo">
-					<a href="./home.html">BookinGeorgia</a>
+					<a href="./home.jsp">BookinGeorgia</a>
 				</div>
 				
 				<div class="user-panel">
@@ -36,7 +38,12 @@
 					 <a class="reg" href="Register.html" id="lr-btn">Register</a> <a class="log" href="#" id="lr-btn"> Login </a> 			
 					</div>			
 					<div class="logged">
-						<a class="menu-but" href="#" style="display: none"> Hello  <i class="arrow down"></i></a>
+						<%
+						AccountManager am = AccountManager.getInstance();
+						String user = (String) request.getSession().getAttribute("user");
+						Account acc = am.getAccount(user);
+						%>
+						<a class="menu-but" href="#" style="display:none"> Hello <% out.print( acc != null ? acc.getUsername(): "");%> <i class="arrow down"></i></a>
 						<div class="menu">
 						  <a href="#">Your page</a>
 						  <a href="#">Settings</a>
@@ -141,7 +148,7 @@
 		<div class="hotels">
 		<% HotelsDB db = HotelsDB.getInstance();
 		HotelManager hm = HotelManager.getInstance();
-		hm.addHotel("hotel", 5, "none", "ratingi 4 5", "599", 1);
+		//hm.addHotel("hotel", 5, "none", "ratingi 4 5", "599", 1);
 			List<Integer> IDs = db.getAllHotelIDs();
 			for(Integer hotel_id : IDs){
 				Hotel hotel = db.getHotel(hotel_id);

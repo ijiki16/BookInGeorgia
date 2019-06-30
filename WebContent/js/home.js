@@ -3,6 +3,15 @@
  */
 
 $(document).ready(function(){
+	$.get('./Home', 
+			{}, 
+			function(response) {
+				if($.trim(response) != 'fail') {
+					$('.log-in').css({"visibility":"hidden"});
+					$('#log-and-reg').css({"visibility":"hidden"});
+					$('.menu-but').css({"display": "block"});
+				}
+	});	
 	
 	$('.log').click(function() {
 		$('.log-in').css({"visibility":"visible"});
@@ -40,8 +49,7 @@ $(document).ready(function(){
 						$('.log-fail').html("Wrong User or Password");
 						$('.log-fail').css({"font-size":"25px"});
 					}
+					
 		});		
 	});
-	
-
 });

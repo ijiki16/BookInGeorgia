@@ -24,23 +24,24 @@ public class Home extends HttpServlet {
      */
     public Home() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
-		RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
-		rd.include(request, response);
-		
+		if(request.getSession().getAttribute("user") != null) {
+			response.getWriter().print("success");
+		} else {
+			response.getWriter().print("fail");
+		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().setAttribute("user", request.getParameter("user"));
+		doGet(request, response);
 	}
 
 }

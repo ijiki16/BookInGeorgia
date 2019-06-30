@@ -40,7 +40,7 @@ public class RoomsDB {
 	
 	public static RoomsDB getInstance() {
 		if (dataB == null) {
-			synchronized (HotelsDB.class) {
+			synchronized (RoomsDB.class) {
 				if (dataB == null) {
 					dataB = new RoomsDB();
 				}
