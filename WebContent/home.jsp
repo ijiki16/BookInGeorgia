@@ -46,7 +46,7 @@
 						<a class="menu-but" href="#" style="display:none"> <% out.print( acc != null ? acc.getUsername(): "");%> 
 						<i class="arrow down"></i></a>
 						<div class="menu">
-						  <a href="Posts.jsp">Posts</a>
+						  <a href="Posts.jsp">Your Posts</a>
 						  <a href="Profile.jsp">Edit Profile</a>
 						  <a href="#" id="log-out">Log out</a>
 						</div>
@@ -59,7 +59,7 @@
 			      <a class="nav-link" href="#">Home</a>
 			    </li>
 			    <li class="nav-item active">
-			      <a class="nav-link" href="#">Your Posts</a>
+			      <a class="nav-link" href="#" id="posts">Your Posts</a>
 			    </li>
 			    <li class="nav-item active">
 			      <a class="nav-link" href="#">About us</a>
@@ -111,35 +111,27 @@
 					<h2>Filter by</h2>
 					<div class="check">
 						<h5>Star rating</h5>
-						<input type="checkbox">
+						<input type="checkbox" id="5st">
 						<span class="checkmark"> 5 stars </span> <br>
-						<input type="checkbox">
+						<input type="checkbox" id="4st">
 						<span class="checkmark"> 4 stars </span> <br>
-						<input type="checkbox">
+						<input type="checkbox" id="3st">
 						<span class="checkmark"> 3 stars </span> <br>
-						<input type="checkbox">
+						<input type="checkbox" id="2st">
 						<span class="checkmark"> 2 stars </span> <br>
-						<input type="checkbox">
+						<input type="checkbox" id="1st">
 						<span class="checkmark"> 1 stars </span> <br>
 					</div>
 					<div class="check">
 						<h5>Facilities</h5>
-						<input type="checkbox">
-						<span class="checkmark"> Beachfront </span> <br>
-						<input type="checkbox">
-						<span class="checkmark"> Near forest </span> <br>
-						<input type="checkbox">
-						<span class="checkmark"> In the center </span> <br>
-						<input type="checkbox">
+						<input type="checkbox" id="wi-fi">
 						<span class="checkmark"> Wi-Fi </span> <br>
-						<input type="checkbox">
-						<span class="checkmark"> Pool </span> <br>
-						<input type="checkbox">
+						<input type="checkbox" id="parking">
 						<span class="checkmark"> Parking </span> <br>
-						<input type="checkbox">
-						<span class="checkmark"> Air Conditioning </span> <br>
-						<input type="checkbox">
-						<span class="checkmark"> Heating </span> <br>
+						<input type="checkbox" id="beach">
+						<span class="checkmark"> Beachfront </span> <br>
+						<input type="checkbox" id="forest">
+						<span class="checkmark"> Near forest </span> <br>
 					</div>
 					<input class="filter-btn" type="button" name="" value="Filter"> 
 				</form>
@@ -149,8 +141,13 @@
 		<div class="hotels">
 		<% HotelsDB db = HotelsDB.getInstance();
 		HotelManager hm = HotelManager.getInstance();
-		hm.addHotel("hotel", 5, "none", "ratingi 4 5", "599", 1);
-			List<Integer> IDs = db.getAllHotelIDs();
+		//hm.addHotel("hotel", 5, "none", "ratingi 4 5", "599", 1);
+			List<Integer> IDs;
+			if(request.getAttribute("filter") != null){
+				IDs = (List<Integer>) request.getSession().getAttribute("filter");
+			} else {
+				IDs = db.getAllHotelIDs();
+			}
 			for(Integer hotel_id : IDs){
 				Hotel hotel = db.getHotel(hotel_id);
 				request.setAttribute("name", hotel.getName());
@@ -189,7 +186,5 @@
 				<a class="go-to-reg" href="Register.html"> Register </a> <br>
 			</div>
 		</div>
-		
-		
 </body>
 </html>

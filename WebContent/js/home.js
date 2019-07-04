@@ -9,10 +9,14 @@ $(document).ready(function(){
 			}, 
 			function(response) {
 				if($.trim(response) != 'fail') {
+					$('#log-and-reg').css({"visibility":"hidden"});
 					$('.log-in').css({"visibility":"hidden"});
 					$('.menu-but').css({"display": "block"});
+					$('#posts').css({"display": "block"});
 				}else{
+					$('#posts').css({"display": "none"});
 					$('#log-and-reg').css({"visibility":"visible"});
+					
 				}
 	});
 	
@@ -24,6 +28,8 @@ $(document).ready(function(){
 				function(response) {
 					$('#log-and-reg').css({"visibility":"visible"});
 					$('.menu-but').css({"display": "none"});
+					$('#posts').css({"display": "none"});
+					$('.menu').css({"visibility": "hidden"});
 				});
 	});
 	
@@ -60,12 +66,33 @@ $(document).ready(function(){
 						$('#log-and-reg').css({"visibility":"hidden"});
 						$('.menu-but').css({"display": "block"});
 						$('.menu-but').html(response + "  <i class=\"arrow down\"></i>");
+						$('#posts').css({"display": "block"});
 						$('.homepage').css({"visibility":"hidden"});
+						$('.menu').css({"visibility":"visible"});
 					}else{	
 						$('.log-fail').html("Wrong User or Password");
 						$('.log-fail').css({"font-size":"25px"});
 					}
 		});		
+	});
+	
+	$('.filter-btn').click(function(){
+		alert($("#1st").is(':checked'));
+		$.post('./js/filter.jsp', 
+				{
+					s1: $("#1st").is(':checked'),
+					s2: $("#2st").is(':checked'),
+					s3: $("#3st").is(':checked'),
+					s4: $("#4st").is(':checked'),
+					s5: $("#5st").is(':checked'),
+					wifi: $("#wi-fi").is(':checked'),
+					parking: $("#parking").is(':checked'),
+					beach: $("#beach").is(':checked'),
+					forest: $("#forest").is(':checked'),
+				}, 
+				function(response) {
+					location.reload(true);
+		});	
 	});
 	
 

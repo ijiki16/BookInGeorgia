@@ -51,7 +51,7 @@ $(document).ready(function(){
 							$('.menu-but').css({"display": "block"});	
 							window.location.href = 'home.jsp'; 
 						}else{
-							$('.reg-fail').html("Account with such email or isername already exists...");
+							$('.reg-fail').html("Account already exists!");
 						}
 			});
 		}else{

@@ -132,7 +132,7 @@ public class HotelManager {
 	/**
 	 * @returns Hotels list according to filtered items.
 	 */
-	public List<Integer> getFilteredHotels(Boolean[] ratings, Boolean beachfront, Boolean woodfront, Boolean wifi, Boolean parking){
+	public List<Integer> getFilteredHotels(boolean[] ratings, boolean beachfront, boolean woodfront, boolean wifi, boolean parking){
 		List<Integer> hotels = new ArrayList<>();
 		for(int i = 0; i < ratings.length; i++) {
 			if(ratings[i]) {

@@ -10,5 +10,6 @@ System.out.println(firstName + "#" + lastName + "#" + email + "#" + username + "
 String res = "success";
 AccountManager manager = AccountManager.getInstance();
 if(!manager.createAccount(firstName, lastName, email, username, password, birthDate)) res = "fail";
+else request.getSession().setAttribute("user", username);
 %>
 <%=res%>
