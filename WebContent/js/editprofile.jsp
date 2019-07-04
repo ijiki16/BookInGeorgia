@@ -18,5 +18,8 @@ if(!username.equals(acc.getUsername())){
 	System.out.print(manager.updateAccount(acc, "username", username));
 	//manager.updateAccount(acc, "username", firstName);
 }
-if(!password.isEmpty() && !password.equals(acc.getPassword())) manager.updateAccount(acc, "password", firstName);
+if(!password.isEmpty() && !password.equals(acc.getPassword())){
+	System.out.print("aeagfadigfhoaisadhf");
+	System.out.print(manager.updateAccount(acc, "password", firstName));
+}
 %><%="Changes Saved"%>
