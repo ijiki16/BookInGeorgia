@@ -5,7 +5,7 @@ AccountManager manager = AccountManager.getInstance();
 boolean log = manager.loginAccount(user, password);
 String res = "fail";
 if(log){
-	request.getSession().setAttribute("user", manager.getAccount(user).getUsername());
+	request.getSession().setAttribute("user", manager.getAccount(user).getEmail());
 	res = manager.getAccount(user).getFirstName();
 }%> 
 <%=res%>

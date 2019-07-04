@@ -17,8 +17,8 @@
 	<div class="edit-box">
 		<h2> Edit Account Info </h2>
 		<%AccountManager manager = AccountManager.getInstance();
-		String account_id = (String) request.getParameter("user_id");
-		Account user = manager.getAccount("test"); %>
+		String mail = (String) request.getSession().getAttribute("user");
+		Account user = manager.getAccount(mail); %>
 		<span> Edit Firstname </span> <input class="edit" type="text" value="<%=user.getFirstName()%>"  id="firstname">
 		<span> Edit Lastname </span> <input class="edit" type="text" value="<%=user.getLastName()%>" id="lastname">
 		<span> Edit Mail </span> <input class="edit" type="text" value="<%=user.getEmail()%>" id="email">
