@@ -1,5 +1,6 @@
 USE booking;
 
+select hotel_id from Hotels;
  -- remove table if it already exists and start from scratch
 DROP TABLE IF EXISTS RoomInfo;
 DROP TABLE IF EXISTS HotelInfo;
@@ -92,3 +93,5 @@ create table Images (
 );
 
 alter table Images add constraint fk_img_id foreign key(room_id) references Rooms(room_id);
+
+

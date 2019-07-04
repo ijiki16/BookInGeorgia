@@ -13,6 +13,7 @@ public class Room {
 	 * Creates new Room Object with default parameters
 	 */
 	public Room() {
+		RoomId = - 1;
 		hottelId = -1;
 		startDate = null;
 		endDate = null;
