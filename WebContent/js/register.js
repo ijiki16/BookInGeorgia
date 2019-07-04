@@ -47,11 +47,11 @@ $(document).ready(function(){
 					}, 
 					function(response) {
 						if($.trim(response) == 'success') {
-							
-						$('#log-and-reg').css({"visibility":"hidden"});
-						$('.menu-but').css({"display": "block"});
-							
+							$('#log-and-reg').css({"visibility":"hidden"});
+							$('.menu-but').css({"display": "block"});	
 							window.location.href = 'home.jsp'; 
+						}else{
+							$('.reg-fail').html("Account with such email or isername already exists...");
 						}
 			});
 		}else{

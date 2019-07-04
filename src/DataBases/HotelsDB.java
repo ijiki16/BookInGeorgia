@@ -241,4 +241,25 @@ public class HotelsDB {
 		
 	}
 
+	public List<Integer> getFilteredHotels(Integer rating, Boolean beachfront, Boolean woodfront, Boolean wifi, Boolean parking) {
+		List<Integer> hotels = new ArrayList<Integer>();
+		try {
+			String query = "select hotel_id from Hotels h join HotelInfo hi on h.hotel_id = hi.hotel_id where h.rating = ?";
+			query += " and hi.beachfront = ? and hi.woodfront = ? and hi.wifi = ? and hi.parking = ?";
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setInt(1, rating);
+			stmt.setBoolean(2, beachfront);
+			stmt.setBoolean(3, woodfront);
+			stmt.setBoolean(4, wifi);
+			stmt.setBoolean(5, parking);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				hotels.add(rs.getInt("hotel_id"));
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return hotels;
+	}
+
 }

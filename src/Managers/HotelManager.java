@@ -84,7 +84,7 @@ public class HotelManager {
 	/**
 	 * @updates Room in Data Base.
 	 */
-	public void updateRooms(Integer room_id, Date sDate, Date eData, Integer hotlId, Integer numberOfBeds, boolean wifi, boolean tv,
+	public void updateRoom(Integer room_id, Date sDate, Date eData, Integer hotlId, Integer numberOfBeds, boolean wifi, boolean tv,
 			boolean hotWater, boolean airConditioning) {
 		rdb.updateRoom(room_id, sDate, eData, hotlId, numberOfBeds, wifi, tv, hotWater, airConditioning);
 	}
@@ -127,6 +127,21 @@ public class HotelManager {
 			Hotels.add(this.getHotel(hotel_id));
 		}
 		return Hotels;
+	}
+	
+	/**
+	 * @returns Hotels list according to filtered items.
+	 */
+	public List<Integer> getFilteredHotels(Boolean[] ratings, Boolean beachfront, Boolean woodfront, Boolean wifi, Boolean parking){
+		List<Integer> hotels = new ArrayList<>();
+		for(int i = 0; i < ratings.length; i++) {
+			if(ratings[i]) {
+				for(Integer h : db.getFilteredHotels(i+1, beachfront, woodfront, wifi, parking)) {
+					hotels.add(h);
+				}
+			}
+		}
+		return hotels;
 	}
 	
 }
