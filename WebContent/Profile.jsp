@@ -9,6 +9,9 @@
 <title>Edit Profile</title>
 <link rel="stylesheet" href="css/Profile.css">
 <script src="https://kit.fontawesome.com/13f325d0c5.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+<script src="js/profile.js" type="text/javascript"></script>
 </head>
 <body>
 	<div class="edit-box">
@@ -16,11 +19,11 @@
 		<%AccountManager manager = AccountManager.getInstance();
 		String account_id = (String) request.getParameter("user_id");
 		Account user = manager.getAccount("test"); %>
-		Edit Firstname <input class="edit" type="text" placeholder="<%=user.getFirstName()%>"  id="firstname" name="" value="">
-		Edit Lastname <input class="edit" type="text" placeholder="<%=user.getLastName()%>" id="lastname" name="" value="">
-		Edit Mail <input class="edit" type="text" placeholder="<%=user.getEmail()%>"  id="email" name="" value="">
-		Edit username <input class="edit" type="text" placeholder="<%=user.getUsername()%>"  id="user" name="" value="">
-		Show password <i class="fas fa-eye" id="show-password"></i> <input class="edit" type="password" placeholder="new password?" id="password">
+		<span> Edit Firstname </span> <input class="edit" type="text" value="<%=user.getFirstName()%>"  id="firstname">
+		<span> Edit Lastname </span> <input class="edit" type="text" value="<%=user.getLastName()%>" id="lastname">
+		<span> Edit Mail </span> <input class="edit" type="text" value="<%=user.getEmail()%>" id="email">
+		<span> Edit username </span> <input class="edit" type="text" value="<%=user.getUsername()%>"  id="user">
+		<span> Show password </span> <i class="fas fa-eye" id="show-password"></i> <input class="edit" type="password" placeholder="new password?" id="password">
 		<button id="save"> Save Changes</button>
 	</div>
 </body>
