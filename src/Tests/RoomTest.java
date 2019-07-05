@@ -42,7 +42,7 @@ public class RoomTest {
 	}
 
 	@Test
-	public void testGetter1() {
+	public void testGetter() {
 		// room1
 		assertEquals(-1, room1.getRoomId());
 		assertEquals(-1, room1.getHottelId());
@@ -113,6 +113,49 @@ public class RoomTest {
 		assertTrue(room7.isTv());
 		assertTrue(room7.isHotWater());
 		assertTrue(room7.isAirConditioning());
+	}
 
+	@Test
+	public void testEquals() {
+		assertTrue(room1.equals(room1));
+		assertTrue(room2.equals(room3));
+		assertTrue(room3.equals(room2));
+		// room1
+		assertFalse(room1.equals(room2));
+		assertFalse(room1.equals(room3));
+		assertFalse(room1.equals(room4));
+		assertFalse(room1.equals(room5));
+		assertFalse(room1.equals(room6));
+		assertFalse(room1.equals(room7));
+		// room2
+		assertFalse(room2.equals(room4));
+		assertFalse(room2.equals(room5));
+		assertFalse(room2.equals(room6));
+		assertFalse(room2.equals(room7));
+		// room3
+		assertFalse(room3.equals(room4));
+		assertFalse(room3.equals(room5));
+		assertFalse(room3.equals(room6));
+		assertFalse(room3.equals(room7));
+		// room4
+		assertFalse(room4.equals(room5));
+		assertFalse(room4.equals(room6));
+		assertFalse(room4.equals(room7));
+		// room5
+		assertFalse(room5.equals(room6));
+		assertFalse(room5.equals(room7));
+		// room6
+		assertFalse(room6.equals(room7));
+		assertFalse(room7.equals(room6));
+		//
+		assertFalse(room6.equals(new Object()));
+		assertFalse(room2.equals(new Room(1, date1, date1, 2, 2, false, false, false, false)));
+		assertFalse(room2.equals(new Room(1, date2, date1, 1, 2, false, false, false, false)));
+		assertFalse(room2.equals(new Room(1, date1, date2, 1, 2, false, false, false, false)));
+		assertFalse(room2.equals(new Room(1, date1, date1, 1, 3, false, false, false, false)));
+		assertFalse(room2.equals(new Room(1, date1, date1, 1, 2, true, false, false, false)));
+		assertFalse(room2.equals(new Room(1, date1, date1, 1, 2, false, true, false, false)));
+		assertFalse(room2.equals(new Room(1, date1, date1, 1, 2, false, false, true, false)));
+		assertFalse(room2.equals(new Room(1, date1, date1, 1, 2, false, false, false, true)));
 	}
 }

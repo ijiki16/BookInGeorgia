@@ -57,6 +57,28 @@ public class Room {
 		return "hottelId: " + hottelId + " startDate: " + startDate + " endDate: " + endDate+"\n"
 	+"info: numberOfBeds->"+numberOfBeds+" is Wifi->"+wifi+" is Tv->"+tv+"is HotWater->"+hotWater+" is AirConditioning->"+airConditioning;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == this) return true;
+		if(!(obj instanceof Room)) return false;
+		Room second = (Room) obj;
+		return same(second);
+	}
+
+	private boolean same(Room second) {
+		// TODO Auto-generated method stub
+		if(this.RoomId != second.RoomId)return false;
+		if(this.hottelId != second.hottelId)return false;
+		if(!this.startDate.equals(second.startDate))return false;
+		if(!this.endDate.equals(second.endDate))return false;
+		if(this.numberOfBeds != second.numberOfBeds)return false;
+		if(this.wifi != second.wifi) return false;
+		if(this.tv != second.tv) return false;
+		if(this.hotWater != second.hotWater) return false;
+		if(this.airConditioning != second.airConditioning) return false;
+		return true;
+	}
 
 	// getters and setters
 	/**
