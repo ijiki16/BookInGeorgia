@@ -19,7 +19,7 @@ $(document).ready(function(){
 					password: _password,
 				}, 
 				function(response) {
-					alert(response);
+					window.location.href = 'home.jsp';
 				});
 	});
 	

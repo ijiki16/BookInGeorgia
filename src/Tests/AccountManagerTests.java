@@ -54,6 +54,8 @@ public class AccountManagerTests {
 	@Test
 	@Order(3)
 	public void test3() {
+		assertTrue(manager.updateAccount(manager.getAccount("nbasi16@gmail.com"), "password", "newparoli"));
+		assertTrue(manager.loginAccount("nbasi16@gmail.com", "newparoli"));
 		assertFalse(manager.deleteAccount(null, null));
 		assertFalse(manager.deleteAccount("nbasi16@gmail.com", null));
 		assertFalse(manager.deleteAccount("nb@gmail.com", null));
