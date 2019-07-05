@@ -158,4 +158,37 @@ public class RoomTest {
 		assertFalse(room2.equals(new Room(1, date1, date1, 1, 2, false, false, true, false)));
 		assertFalse(room2.equals(new Room(1, date1, date1, 1, 2, false, false, false, true)));
 	}
+	
+	@Test
+	public void setValues() {
+		room7.setRoomId(1);
+		assertEquals(1, room7.getRoomId());
+		room7.setStartDate(date1);
+		assertEquals(date1, room7.getStartDate());
+		room7.setEndDate(date4);
+		assertEquals(date4, room7.getEndDate());
+		room7.setEndDate(null);
+		assertEquals(null, room7.getEndDate());
+		room7.setEndDate(date1);
+		assertEquals(date1, room7.getEndDate());
+		room7.setHottelId(1);
+		assertEquals(1, room7.getHottelId());
+		room7.setNumberOfBeds(2);
+		assertEquals(2, room7.getNumberOfBeds());
+		room7.setWifi(false);
+		assertFalse(room7.isWifi());
+		room7.setTv(false);
+		assertFalse(room7.isTv());
+		room7.setHotWater(false);
+		assertFalse(room7.isHotWater());
+		room7.setAirConditioning(false);
+		assertFalse(room7.isAirConditioning());
+		
+		assertEquals(room2, room7);
+		assertTrue(room2.equals(room7));
+		assertTrue(room7.equals(room2));
+		assertEquals(room2.toString(), room3.toString());
+		assertEquals(room3.toString(), room7.toString());
+		assertEquals(room2.toString(), room7.toString());
+	}
 }

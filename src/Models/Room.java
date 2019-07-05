@@ -54,7 +54,7 @@ public class Room {
 
 	@Override
 	public String toString() {
-		return "hottelId: " + hottelId + " startDate: " + startDate + " endDate: " + endDate+"\n"
+		return "RoomID: "+RoomId+" hottelId: " + hottelId + " startDate: " + startDate + " endDate: " + endDate+"\n"
 	+"info: numberOfBeds->"+numberOfBeds+" is Wifi->"+wifi+" is Tv->"+tv+"is HotWater->"+hotWater+" is AirConditioning->"+airConditioning;
 	}
 	
