@@ -23,31 +23,6 @@ public class Room {
 		tv = false;
 		hotWater = false;
 		airConditioning = false;
-	};
-
-	/**
-	 * Creates new Room Object
-	 * 
-	 * @param Room       reservation starting Date
-	 * @param Room       reservation end Date
-	 * @param Hottel     ID in DB
-	 * @param number     of beds in room
-	 * @param has/hasn't wifi
-	 * @param has/hasn't tv
-	 * @param has/hasn't hot water
-	 * @param has/hasn't air conditioning
-	 */
-	public Room(Date sDate, Date eData, int hotlId, int numberOfBeds, boolean wifi, boolean tv, boolean hotWater,
-			boolean airConditioning) {
-		hottelId = hotlId;
-		startDate = sDate;
-		endDate = eData;
-		this.numberOfBeds = numberOfBeds;
-		// info
-		this.wifi = wifi;
-		this.tv = tv;
-		this.hotWater = hotWater;
-		this.airConditioning = airConditioning;
 	}
 
 	/**
@@ -65,8 +40,8 @@ public class Room {
 	 */
 	public Room(int id, Date sDate, Date eData, int hotlId, int numberOfBeds, boolean wifi, boolean tv,
 			boolean hotWater, boolean airConditioning) {
-		RoomId = id;
-		hottelId = hotlId;
+		this.RoomId = id;
+		this.hottelId = hotlId;
 		startDate = sDate;
 		endDate = eData;
 		this.numberOfBeds = numberOfBeds;
