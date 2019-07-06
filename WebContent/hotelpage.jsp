@@ -1,3 +1,10 @@
+ <%@page import="Models.Facilities"%>
+<%@page import="java.util.*"%>
+    <%@page import="DataBases.HotelsDB"%>
+    <%@page import="Managers.HotelManager"%>
+    <%@page import="Models.Hotel"%>
+    <%@page import="Models.Room"%>
+    <%@page import="Models.Account"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -60,38 +67,75 @@
 			</nav>
 		</header>
 		<div class="image-info">
-			<figure class="img"> <img src="<%=request.getAttribute("img") %>"> </figure>
+		    <% int id = Integer.parseInt(request.getParameter("id"));
+		    HotelManager hm = HotelManager.getInstance();
+		    Hotel h = hm.getHotel(id);
+		    %>
+			<figure class="img"> <img src="<%=h.getImage() %>"> </figure>
 			<div class="info">
 				<div class="name">
-					<h2 class="hotel-name">Hoteeel</h2>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star"></span>
+					<h2 class="hotel-name"><%=h.getName() %></h2>
+					<%for(int i = 0; i < h.getRating(); i++) {%>
+						<span class="fa fa-star checked"></span>
+					<%}
+					for(int i = h.getRating(); i < 5; i++){ %>
+						<span class="fa fa-star"></span>
+					<%} %>
 				</div>
 				<div class="status">
-					<p>aeeee</p>
+					<p><%=h.getStatus() %></p>
 				</div>
+				<% Facilities f = h.getFacilities(); %>
 				<div class="facil">
-					<div> <i class="fa fa-check-circle"></i><h6><%=request.getAttribute("wifi") %></h6></div>
-					<div> <i class="fa fa-ban" ></i><h6><%=request.getAttribute("parking") %></h6></div>
-					<div> <i class="fa fa-check-circle"></i><h6><%=request.getAttribute("beachfront") %></h6></div>
-					<div> <i class="fa fa-ban"></i><h6><%=request.getAttribute("woodfront") %></h6></div>
+					<div>	<i class="<% if(f.getWiFi()) {
+							%> fa fa-check-circle <%} else {%>
+							   fa fa-ban
+							<%} %>
+							"></i><h6>Wi-Fi</h6></div>
+					<div>	<i class="<% if(f.getParking()) {
+							%> fa fa-check-circle <%} else {%>
+							   fa fa-ban
+							<%} %>
+							"></i><h6>Parking</h6></div>
+					<div>	<i class="<% if(f.getBeachfront()) {
+							%> fa fa-check-circle <%} else {%>
+							   fa fa-ban
+							<%} %>
+							"></i><h6>Beachfront</h6></div>
+					<div>	<i class="<% if(f.getWoodfront()) {
+							%> fa fa-check-circle <%} else {%>
+							   fa fa-ban
+							<%} %>
+							"></i><h6>Woodfront</h6></div>
 				</div>
 				<div class="text">
 					<div class="location">
 					<h4>Saburtalo</h4>
 					</div>
 					<div class="number">
-					<h4>+995123321</h4>
+					<h4><%=h.getNumber() %></h4>
 					</div>
 				</div>
-				<!-- <div class="hotel-info">
-					
-				</div> -->
 			</div>
 		</div>
-		
+		<table class="room">
+		  <tr>
+		    <th>Number of beds</th>
+		    <th>Room information</th> 
+		    <th>Reserved from - to</th>
+		    <th>Available from - to</th>
+		  </tr>
+		  <% List<Room> l = hm.getRooms(id);
+		  
+		  %>
+		  <tr>
+		    <td>1 bedroom</td>
+		    <td class="facil"><div> <i class="fa fa-check-circle"></i><h6><%=request.getAttribute("wifi") %></h6></div>
+					<div> <i class="fa fa-ban" ></i><h6><%=request.getAttribute("parking") %></h6></div>
+					<div> <i class="fa fa-check-circle"></i><h6><%=request.getAttribute("beachfront") %></h6></div>
+					<div> <i class="fa fa-ban"></i><h6><%=request.getAttribute("woodfront") %></h6></div>
+			</td>
+		  </tr>
+		</table>
 </body>
 </html>
