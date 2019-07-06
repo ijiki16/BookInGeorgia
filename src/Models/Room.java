@@ -3,7 +3,7 @@ package Models;
 import java.util.Date;
 
 public class Room {
-	private int RoomId;
+	private int RoomId, pricePerDay;
 	private int hottelId, numberOfBeds;
 	private Date startDate, endDate;
 	/// roomsInfo
@@ -14,6 +14,7 @@ public class Room {
 	 */
 	public Room() {
 		RoomId = - 1;
+		pricePerDay = 0;
 		hottelId = -1;
 		startDate = null;
 		endDate = null;
@@ -31,6 +32,7 @@ public class Room {
 	 * @param Room       ID in DB
 	 * @param Room       reservation starting Date
 	 * @param Room       reservation end Date
+	 * @param Price per Day
 	 * @param Hottel     ID in DB
 	 * @param number     of beds in room
 	 * @param has/hasn't wifi
@@ -38,12 +40,13 @@ public class Room {
 	 * @param has/hasn't hot water
 	 * @param has/hasn't air conditioning
 	 */
-	public Room(int id, Date sDate, Date eData, int hotlId, int numberOfBeds, boolean wifi, boolean tv,
+	public Room(int id, Date sDate, Date eData, int pricePerDay, int hotlId, int numberOfBeds, boolean wifi, boolean tv,
 			boolean hotWater, boolean airConditioning) {
 		this.RoomId = id;
 		this.hottelId = hotlId;
 		startDate = sDate;
 		endDate = eData;
+		this.pricePerDay = pricePerDay;
 		this.numberOfBeds = numberOfBeds;
 		// info
 		this.wifi = wifi;
@@ -54,8 +57,8 @@ public class Room {
 
 	@Override
 	public String toString() {
-		return "RoomID: "+RoomId+" hottelId: " + hottelId + " startDate: " + startDate + " endDate: " + endDate+"\n"
-	+"info: numberOfBeds->"+numberOfBeds+" is Wifi->"+wifi+" is Tv->"+tv+"is HotWater->"+hotWater+" is AirConditioning->"+airConditioning;
+		return "RoomID: "+RoomId+" $:"+pricePerDay+" hottelId: " + hottelId + " startDate: " + startDate + " endDate: " + endDate+"\n"
+	+"info: numberOfBeds->"+numberOfBeds+" is Wifi->"+wifi+" is Tv->"+tv+" is HotWater->"+hotWater+" is AirConditioning->"+airConditioning;
 	}
 	
 	@Override
@@ -72,6 +75,7 @@ public class Room {
 		if(this.hottelId != second.hottelId)return false;
 		if(!this.startDate.equals(second.startDate))return false;
 		if(!this.endDate.equals(second.endDate))return false;
+		if(this.pricePerDay != second.pricePerDay) return false;
 		if(this.numberOfBeds != second.numberOfBeds)return false;
 		if(this.wifi != second.wifi) return false;
 		if(this.tv != second.tv) return false;
@@ -79,6 +83,8 @@ public class Room {
 		if(this.airConditioning != second.airConditioning) return false;
 		return true;
 	}
+
+	
 
 	// getters and setters
 	/**
@@ -94,7 +100,13 @@ public class Room {
 	public int getHottelId() {
 		return hottelId;
 	}
-
+	
+	/**
+	 * @return Price of Room per Day
+	 */
+	public int getPricePerDay() {
+		return pricePerDay;
+	}
 	/**
 	 * @return number of beds in the Room.
 	 */
@@ -144,8 +156,6 @@ public class Room {
 		return airConditioning;
 	}
 	
-	//
-	
 	/**
 	 * Updates room ID in DataBase.
 	 * 
@@ -153,6 +163,13 @@ public class Room {
 	 */
 	public void setRoomId(int roomId) {
 		this.RoomId = roomId;
+	}
+	/**
+	 * Update price of Room per Day
+	 * @param pricePerDay
+	 */
+	public void setPricePerDay(int pricePerDay) {
+		this.pricePerDay = pricePerDay;
 	}
 	/**
 	 * Updates hoottel ID in DataBase.
