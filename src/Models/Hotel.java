@@ -20,6 +20,7 @@ public class Hotel {
 	private Integer rating, account_id, hotel_id;
 	private Facilities facilities;
 	private List<Room> rooms;
+	private Location location;
 	
 	public Hotel(String name, Integer rating, String img, String status, String number, Integer account_id, Integer hotel_id) {
 		setName(name);
@@ -166,5 +167,22 @@ public class Hotel {
 	public void setRooms(List<Room> rooms) {
 		this.rooms = rooms;
 	}
+	
+	/**
+	 * @return Hotel location.
+	 */
+	public Location getLocation() {
+		return location;
+	}
+	
+	/**
+	 * Updates Hotel location.
+	 * @param
+	 */
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+	
+	
 
 }

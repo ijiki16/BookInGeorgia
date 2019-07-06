@@ -8,6 +8,7 @@ import DataBases.HotelsDB;
 import DataBases.RoomsDB;
 import Models.Facilities;
 import Models.Hotel;
+import Models.Location;
 import Models.Room;
 
 public class HotelManager {
@@ -74,6 +75,27 @@ public class HotelManager {
 	}
 	
 	/**
+	 * @inserts Hotel location into Data Base.
+	 */
+	public void addLocation(Integer hotel_id, String city, String address) {
+		db.addLocation(hotel_id, city, address);
+	}
+	
+	/**
+	 * @updates Hotel location in Data Base.
+	 */
+	public void updateLocation(Integer hotel_id, String city, String address) {
+		db.updateLocation(hotel_id, city, address);
+	}
+	
+	/**
+	 * @deletes Hotel location from Data Base.
+	 */
+	public void deleteLocation(Integer hotel_id) {
+		db.deleteLocation(hotel_id);
+	}
+	
+	/**
 	 * @inserts Room into Hotel.
 	 */
 	public void addRoom(Date sDate, Date eData, Integer hotlId, Integer numberOfBeds, boolean wifi, boolean tv,
@@ -121,13 +143,24 @@ public class HotelManager {
 	 * @returns Users Hotels list.
 	 */
 	public List<Hotel> getHotels(Integer account_id){
-		List<Integer> hotel_ids = db.getHotelIDs(account_id);
 		List<Hotel> Hotels = new ArrayList<Hotel>();
-		for(Integer hotel_id : hotel_ids) {
+		for(Integer hotel_id : db.getHotelIDs(account_id)) {
 			Hotels.add(this.getHotel(hotel_id));
 		}
 		return Hotels;
 	}
+	
+	/**
+	 * @returns All Locations as a list.
+	 */
+	public List<Location> getAllLocations() {
+		List<Location> locations = new ArrayList<>();
+		for(Integer hotel_id : db.getAllHotelIDs()) {
+			locations.add(db.getLocation(hotel_id));
+		}
+		return locations;
+	}
+	
 	
 	/**
 	 * @returns Hotels list according to filtered items.
@@ -142,6 +175,14 @@ public class HotelManager {
 			}
 		}
 		return hotels;
+	}
+	
+	/**
+	 * @returns Hotels list according to search items.
+	 */
+	public List<Integer> getSearchedHotels(String city, String address){
+		if(city.isEmpty() && address.isEmpty()) return db.getAllHotelIDs();
+		return db.getSearchedHotels(city, address);
 	}
 	
 }

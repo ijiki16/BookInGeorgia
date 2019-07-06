@@ -13,6 +13,7 @@ import java.util.Map;
 
 import Models.Facilities;
 import Models.Hotel;
+import Models.Location;
 import Models.Room;
 
 
@@ -103,8 +104,10 @@ public class HotelsDB {
 						rs.getString("phone_number"),
 						rs.getInt("account_id"),
 						hotel_id);
-				Facilities facility = getFacilities(hotel);
+				Facilities facility = getFacilities(hotel_id);
+				Location location = getLocation(hotel_id);
 				if(facility != null) hotel.setFacilities(facility);
+				if(location != null) hotel.setLocation(location);
 				return hotel;
 			}
 		}catch (SQLException e) {
@@ -113,13 +116,13 @@ public class HotelsDB {
 		return null;
 	}
 	
-	public Facilities getFacilities(Hotel hotel) {
+	public Facilities getFacilities(Integer hotel_id) {
 		try {
-			String query = "select * from HotelInfo where hotel_id = '" + Integer.toString(hotel.getHotelId()) + "'";
+			String query = "select * from HotelInfo where hotel_id = '" + Integer.toString(hotel_id) + "'";
 			PreparedStatement stmt = con.prepareStatement(query);
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()) {
-				Facilities facil = new Facilities(hotel.getHotelId(),
+				Facilities facil = new Facilities(hotel_id,
 						rs.getString("facility"),
 						rs.getBoolean("wifi"),
 						rs.getBoolean("parking"),
@@ -127,6 +130,19 @@ public class HotelsDB {
 						rs.getBoolean("woodfront"));
 				return facil;
 			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public Location getLocation(Integer hotel_id) {
+		try {
+			String query = "select * from Hotels h join Locations l on h.hotel_id == l.hotel_id where hotel_id = ?";
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setInt(1, hotel_id);
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()) return new Location(hotel_id, rs.getString("city"), rs.getString("address"));
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -183,9 +199,23 @@ public class HotelsDB {
 		}
 	}
 	
+	public void addLocation(Integer hotel_id, String city, String address) {
+		try {
+			String query = "insert into Locations (city, address, hotel_id) values (?, ?, ?)";
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setString(1, city);
+			stmt.setString(2, address);
+			stmt.setInt(3, hotel_id);
+			stmt.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void deleteHotel(Integer hotel_id) {
 		try {
 			this.deleteFacilities(hotel_id);
+			this.deleteLocation(hotel_id);
 			
 			String query = "delete from Hotels where hotel_id = '" + Integer.toString(hotel_id) + "'";
 			PreparedStatement stmt = con.prepareStatement(query);
@@ -198,6 +228,16 @@ public class HotelsDB {
 	public void deleteFacilities(Integer hotel_id) {
 		try {
 			String query = "delete from HotelInfo where hotel_id = '" + Integer.toString(hotel_id) + "'";
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void deleteLocation(Integer hotel_id) {
+		try {
+			String query = "delete from Locations where hotel_id = '" + Integer.toString(hotel_id) + "'";
 			PreparedStatement stmt = con.prepareStatement(query);
 			stmt.executeUpdate();
 		}catch (SQLException e) {
@@ -238,9 +278,21 @@ public class HotelsDB {
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 	}
 
+	public void updateLocation(Integer hotel_id, String city, String address) {
+		try {
+			String query = "update Locations set city = ?, addrress = ? where hotel_id = ?";
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setString(1, city);
+			stmt.setString(2, address);
+			stmt.setInt(3, hotel_id);
+			stmt.execute();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public List<Integer> getFilteredHotels(Integer rating, Boolean beachfront, Boolean woodfront, Boolean wifi, Boolean parking) {
 		List<Integer> hotels = new ArrayList<Integer>();
 		try {
@@ -252,6 +304,26 @@ public class HotelsDB {
 			stmt.setBoolean(3, woodfront);
 			stmt.setBoolean(4, wifi);
 			stmt.setBoolean(5, parking);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				hotels.add(rs.getInt("hotel_id"));
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return hotels;
+	}
+	
+
+	public List<Integer> getSearchedHotels(String city, String address) {
+		List<Integer> hotels = new ArrayList<Integer>();
+		try {
+			String query = "select hotel_id from Hotels h join Location l on h.hotel_id = l.hotel_id";
+			if(city != null) query += " where l.city = ?";
+			if(address != null) query += " and l.address = ?";
+			PreparedStatement stmt = con.prepareStatement(query);
+			if(city != null) stmt.setString(1, city);
+			if(address != null) stmt.setString(2, address);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
 				hotels.add(rs.getInt("hotel_id"));

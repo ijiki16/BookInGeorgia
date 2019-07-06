@@ -6,6 +6,7 @@
     <%@page import="Managers.HotelManager"%>
     <%@page import="Models.Hotel"%>
     <%@page import="Models.Account"%>
+    <%@page import="Models.Location"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,50 +27,7 @@
 </head>
 <body>
 	<div class="homepage"></div>
-		<header class="header-section">
-			<div class="header">
-				<div class="site-logo">
-					<a href="./home.html">BookinGeorgia</a>
-				</div>
-				
-				<div class="user-panel">
-					<div id="log-and-reg" >
-						<i class="flaticon-profile" style="color: white; margin-right: 15px; "></i>
-					 <a class="reg" href="Register.html" id="lr-btn">Register</a> <a class="log" href="#" id="lr-btn"> Login </a> 			
-					</div>			
-					<div class="logged">
-						<%
-						AccountManager am = AccountManager.getInstance();
-						String user = (String) request.getSession().getAttribute("user");
-						Account acc = am.getAccount(user);
-						%>
-						<a class="menu-but" href="#" style="display:none"> <% out.print( acc != null ? acc.getUsername(): "");%> 
-						<i class="arrow down"></i></a>
-						<div class="menu">
-						  <a href="Posts.jsp">Your Posts</a>
-						  <a href="Profile.jsp">Edit Profile</a>
-						  <a href="#" id="log-out">Log out</a>
-						</div>
-					</div>					
-				</div>
-			</div>
-			<nav class="navbar navbar-expand-sm bg-light navbar-light">
-			  <ul class="navbar-nav">
-			    <li class="nav-item active">
-			      <a class="nav-link" href="#">Home</a>
-			    </li>
-			    <li class="nav-item active">
-			      <a class="nav-link" href="#" id="posts">Your Posts</a>
-			    </li>
-			    <li class="nav-item active">
-			      <a class="nav-link" href="#">About us</a>
-			    </li>
-			    <li class="nav-item active">
-			      <a class="nav-link" href="#">Contact us</a>
-			    </li>
-			  </ul>
-			</nav>
-		</header>
+		<jsp:include page="Header.jsp"/>
 		<section class="main">
 			<section class="search-sec">
 				<div class="container">
@@ -80,13 +38,11 @@
 									<div class="col-lg-3 col-md-3 col-sm-12 p-0">
 										<select class="form-control search-slt"
 											id="exampleFormControlSelect1">
-											<option>Select City</option>
-											<option>Example one</option>
-											<option>Example one</option>
-											<option>Example one</option>
-											<option>Example one</option>
-											<option>Example one</option>
-											<option>Example one</option>
+											<%HotelManager hm = HotelManager.getInstance();
+											List<Location> locations = hm.getAllLocations();
+												for(Location loc : locations){%>
+													<option><%=loc.getCity() %></option>
+												<%}%>
 										</select>
 									</div>
 									
@@ -139,17 +95,11 @@
 		</div>
 		
 		<div class="hotels">
-		<% HotelsDB db = HotelsDB.getInstance();
-		HotelManager hm = HotelManager.getInstance();
-		//hm.addHotel("hotel", 5, "none", "ratingi 4 5", "599", 1);
-			List<Integer> IDs;
-			if(request.getAttribute("filter") != null){
-				IDs = (List<Integer>) request.getSession().getAttribute("filter");
-			} else {
-				IDs = db.getAllHotelIDs();
-			}
+		<% 
+			List<Integer> IDs = hm.getSearchedHotels("","");
 			for(Integer hotel_id : IDs){
-				Hotel hotel = db.getHotel(hotel_id);
+				Hotel hotel = hm.getHotel(hotel_id);
+				request.setAttribute("hotel_id", hotel_id);
 				request.setAttribute("name", hotel.getName());
 				request.setAttribute("rating", hotel.getRating());
 				request.setAttribute("status", hotel.getStatus());
@@ -178,7 +128,7 @@
 				
 				<div class="text-box">
 					<i class="fas fa-lock"></i>
-					<input type="password" placeholder="Password" class="password" >
+					<input type="password" placeholder="Password" class="password" > <i class="fas fa-eye" id="show-password"></i>
 				</div>
 				
 				<input class="log-btn" type="button" name="" value="Sign in"> 
