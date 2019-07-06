@@ -95,12 +95,10 @@
 		</div>
 		
 		<div class="hotels">
-		<% HotelsDB db = HotelsDB.getInstance();
-		//hm.addHotel("hotel", 5, "none", "ratingi 4 5", "599", 1);
-			List<Integer> IDs;			
-			IDs = db.getAllHotelIDs();
+		<% 
+			List<Integer> IDs = hm.getSearchedHotels("","");
 			for(Integer hotel_id : IDs){
-				Hotel hotel = db.getHotel(hotel_id);
+				Hotel hotel = hm.getHotel(hotel_id);
 				request.setAttribute("hotel_id", hotel_id);
 				request.setAttribute("name", hotel.getName());
 				request.setAttribute("rating", hotel.getRating());

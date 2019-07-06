@@ -130,6 +130,18 @@ public class HotelManager {
 	}
 	
 	/**
+	 * @returns All Locations as a list.
+	 */
+	public List<Location> getAllLocations() {
+		List<Location> locations = new ArrayList<>();
+		for(Integer hotel_id : db.getAllHotelIDs()) {
+			locations.add(db.getLocation(hotel_id));
+		}
+		return locations;
+	}
+	
+	
+	/**
 	 * @returns Hotels list according to filtered items.
 	 */
 	public List<Integer> getFilteredHotels(boolean[] ratings, boolean beachfront, boolean woodfront, boolean wifi, boolean parking){
@@ -144,12 +156,12 @@ public class HotelManager {
 		return hotels;
 	}
 	
-	public List<Location> getAllLocations() {
-		List<Location> locations = new ArrayList<Location>();
-		for(Integer hotel_id : db.getAllHotelIDs()) {
-			locations.add(db.getLocation(hotel_id));
-		}
-		return locations;
+	/**
+	 * @returns Hotels list according to search items.
+	 */
+	public List<Integer> getSearchedHotels(String city, String address){
+		if(city.isEmpty() && address.isEmpty()) return db.getAllHotelIDs();
+		return db.getSearchedHotels(city, address);
 	}
 	
 }
