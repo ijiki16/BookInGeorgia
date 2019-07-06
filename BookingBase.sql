@@ -1,6 +1,5 @@
 USE booking;
 
-select hotel_id from Hotels;
  -- remove table if it already exists and start from scratch
 DROP TABLE IF EXISTS RoomInfo;
 DROP TABLE IF EXISTS HotelInfo;
@@ -14,7 +13,15 @@ DROP TABLE IF EXISTS Accounts;
 
 -- selects
 -- select * from Accounts;
+-- select hotel_id from Hotels;
 --
+
+insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel", 5, "none", "new hotel", "551511300", 1);
+insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel1", 4, "none", "new hotel1", "551511300", 1);
+insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel2", 3, "none", "new hotel2", "551511300", 1);
+insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel3", 2, "none", "new hotel3", "551511300", 1);
+insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel4", 1, "none", "new hotel4", "551511300", 1);
+
 create table Accounts (
 	account_id int primary key auto_increment,
     username char(128),
@@ -49,8 +56,8 @@ create table HotelInfo (
 alter table HotelInfo add constraint fk1_hotel_id foreign key(hotel_id) references Hotels(hotel_id);
 
 create table Locations (
-	address1 char(128),
-	address2 char(128),
+	city char(128),
+	address char(128),
 	hotel_id int
 );
 

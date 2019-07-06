@@ -8,6 +8,7 @@ import DataBases.HotelsDB;
 import DataBases.RoomsDB;
 import Models.Facilities;
 import Models.Hotel;
+import Models.Location;
 import Models.Room;
 
 public class HotelManager {
@@ -121,9 +122,8 @@ public class HotelManager {
 	 * @returns Users Hotels list.
 	 */
 	public List<Hotel> getHotels(Integer account_id){
-		List<Integer> hotel_ids = db.getHotelIDs(account_id);
 		List<Hotel> Hotels = new ArrayList<Hotel>();
-		for(Integer hotel_id : hotel_ids) {
+		for(Integer hotel_id : db.getHotelIDs(account_id)) {
 			Hotels.add(this.getHotel(hotel_id));
 		}
 		return Hotels;
@@ -142,6 +142,14 @@ public class HotelManager {
 			}
 		}
 		return hotels;
+	}
+	
+	public List<Location> getAllLocations() {
+		List<Location> locations = new ArrayList<Location>();
+		for(Integer hotel_id : db.getAllHotelIDs()) {
+			locations.add(db.getLocation(hotel_id));
+		}
+		return locations;
 	}
 	
 }

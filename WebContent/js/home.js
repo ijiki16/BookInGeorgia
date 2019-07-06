@@ -50,6 +50,16 @@ $(document).ready(function(){
 		$('.register-box').css({"visibility":"visible"});
 	});
 	
+	$('#show-password').click(function(){
+		if($('.password').attr("type") == 'text'){
+			$('.password')[0].type = 'password';
+			$('#show-password')[0].className = "fas fa-eye";
+		}else{
+			$('.password')[0].type = 'text';
+			$('#show-password')[0].className = "fas fa-eye-slash";
+		}
+	});
+	
 	$('.log-btn').click(function(){
 		let _user = $('.user').val();
 		let _password = $('.password').val();

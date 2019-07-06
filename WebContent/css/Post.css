@@ -75,6 +75,8 @@
 .text p {
 	color: white;
 	padding-left: 4px;
+	text-align: left;
+	float: left;
 }
 
 .price {
@@ -106,5 +108,9 @@
     display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+a:link {
+	float: left;	
 }
 

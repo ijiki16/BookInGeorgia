@@ -1,8 +1,8 @@
 <div class="hotel">
-		<figure class="image"> <img src="<%=request.getAttribute("img") %>"> </figure>
+		<figure class="image"><a href="view.jsp?id=<%=request.getAttribute("hotel_id")%>"> <img src="<%=request.getAttribute("img") %>"> </a> </figure>
 			<div class="hotel-info">
 				<div class="name">
-					<h5><%=request.getAttribute("name") %></h5>
+					<h5><a href="view.jsp?id=<%=request.getAttribute("hotel_id")%>"> <%=request.getAttribute("name")%></a></h5>
 					<span class="fa fa-star checked"></span>
 					<span class="fa fa-star checked"></span>
 					<span class="fa fa-star checked"></span>
@@ -16,7 +16,7 @@
 					<div> <i class="fa fa-ban"></i><h6><%=request.getAttribute("woodfront") %></h6></div>
 				</div>
 				<div class="text">
-					<p><%=request.getAttribute("status") %></p>
+					<p><a href="view.jsp?id=<%=request.getAttribute("hotel_id")%>"> <%=request.getAttribute("status") %></a></p>
 				</div>
 			</div>
 					

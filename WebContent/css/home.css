@@ -64,19 +64,6 @@ a {
 	background-color: transparent;
 }
 
-.header-section {
-	width: 100%;
-	
-}
-
-.header {
-	display: block;
-	position: relative;
-	width:100%;
-	height: 50px;
-	background: #7b0e0e;
-}
-
 .site-logo {
 	display: block;
 	position: absolute;
@@ -92,60 +79,7 @@ a {
 	color: white !important;
 }
 
-#logo {
-	height: 3.5%;
-    position: relative;
-    top: -2px;
-}
 
-.header a:hover {
-	text-decoration: none;
-}
-
-.user-panel {
-	position:absolute;
-	right: 20px;
-	height: inherit;
-	align-content: center;
-}
-
-.user-panel i {
-	position: relative;
-    top: 15%;
-}
-
-.user-panel #lr-btn {
-	margin-right: 15px;
-    background: transparent;
-    border: none;
-    border-radius: 25px;
-    box-sizing: border-box;
-    color: white !important;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 15px;
-    font-family: "pp-sans-small-regular",Helvetica Neue,Arial,sans-serif;
-    font-weight: normal;
-    font-variant: normal;
-    line-height: 12px;
-    min-width: 84px;
-    overflow: hidden;
-    padding: 12px 15px;
-    position: relative;
-    text-align: center;
-    text-decoration: none;
-    -ms-touch-action: none;
-    touch-action: none;
-    vertical-align: middle;
-    font-weight: bold;
-    box-shadow: 0 0 0 1px #fff, 0 0 0 1px #fff;
-    color: black;
-    top: 13%;
-}
-
-#log-and-reg {
-	height: inherit;
-}
 
 .navbar {
 	display: block;
@@ -165,25 +99,6 @@ a {
     right: 5%;
 }
 
-
-.menu-but {
-  	width: max-content;
-	font-size: 120% !important;
-	display: block;
-	vertical-align: middle;
-	top: 23% !important;
-	right: 5%;
-	color: white !important;
-}
-
-.menu-but i {
-  border: solid black;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-  border-color: white;
-  vertical-align: middle;
-}
 
 .down {
   transform: rotate(45deg);
