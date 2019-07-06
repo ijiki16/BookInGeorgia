@@ -88,7 +88,8 @@ create table Reservation (
 	reserved_id int primary key auto_increment,
     reserved_from date,
     reserved_to date,
-    room_id int
+    room_id int,
+    account_id int
 );
 
 alter table Reservation add constraint fk1_room_id foreign key(room_id) references Rooms(room_id);

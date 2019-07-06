@@ -75,6 +75,27 @@ public class HotelManager {
 	}
 	
 	/**
+	 * @inserts Hotel location into Data Base.
+	 */
+	public void addLocation(Integer hotel_id, String city, String address) {
+		db.addLocation(hotel_id, city, address);
+	}
+	
+	/**
+	 * @updates Hotel location in Data Base.
+	 */
+	public void updateLocation(Integer hotel_id, String city, String address) {
+		db.updateLocation(hotel_id, city, address);
+	}
+	
+	/**
+	 * @deletes Hotel location from Data Base.
+	 */
+	public void deleteLocation(Integer hotel_id) {
+		db.deleteLocation(hotel_id);
+	}
+	
+	/**
 	 * @inserts Room into Hotel.
 	 */
 	public void addRoom(Date sDate, Date eData, Integer hotlId, Integer numberOfBeds, boolean wifi, boolean tv,
