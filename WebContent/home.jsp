@@ -39,9 +39,9 @@
 										<select class="form-control search-slt"
 											id="exampleFormControlSelect1">
 											<%HotelManager hm = HotelManager.getInstance();
-											List<Location> locations = hm.getAllLocations();
-												for(Location loc : locations){%>
-													<option><%=loc.getCity() %></option>
+											List<String> locations = hm.getAllLocations();
+												for(String loc : locations){%>
+													<option><%=loc %></option>
 												<%}%>
 										</select>
 									</div>

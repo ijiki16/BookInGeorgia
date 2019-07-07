@@ -381,7 +381,7 @@ public class HotelsDB {
 	public List<Integer> getSearchedHotels(String city, String name) {
 		List<Integer> hotels = new ArrayList<Integer>();
 		try {
-			String query = "select hotel_id from Hotels h join Locations l on h.hotel_id = l.hotel_id";
+			String query = "select h.hotel_id from Hotels h join Locations l on h.hotel_id = l.hotel_id";
 			if(city != null) query += " where l.city = ?";
 			if(name != null) query += " and h.name = ?";
 			PreparedStatement stmt = con.prepareStatement(query);
