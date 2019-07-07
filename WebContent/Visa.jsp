@@ -17,7 +17,7 @@
 				
 				<div class="half">  
 					<input type="text" placeholder="MM/YY" name="mmyy" value="">
-					<input type="text" placeholder="CVC" name="cvc" value=""> <i src="images/visa.png" ></i>
+					<input type="text" placeholder="CVC" name="cvc" value=""> <img src="images/visa.png" ></img>
 				</div>
 				<button type="submit"> Book Now</button>
 		  </form>

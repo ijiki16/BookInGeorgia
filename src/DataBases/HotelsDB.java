@@ -136,6 +136,19 @@ public class HotelsDB {
 		return null;
 	}
 	
+	public Location getLocation(Integer hotel_id) {
+		try {
+			String query = "select * from Hotels h join Locations l on h.hotel_id == l.hotel_id where hotel_id = ?";
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setInt(1, hotel_id);
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()) return new Location(hotel_id, rs.getString("city"), rs.getString("address"));
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public List<Integer> getHotelIDs(Integer account_id){
 		try{
 			List<Integer> hotel_ids = new ArrayList<Integer>();
@@ -301,17 +314,24 @@ public class HotelsDB {
 		return hotels;
 	}
 	
-	public Location getLocation(Integer hotel_id) {
+
+	public List<Integer> getSearchedHotels(String city, String address) {
+		List<Integer> hotels = new ArrayList<Integer>();
 		try {
-			String query = "select * from Hotels h join Locations l on h.hotel_id == l.hotel_id where hotel_id = ?";
+			String query = "select hotel_id from Hotels h join Location l on h.hotel_id = l.hotel_id";
+			if(city != null) query += " where l.city = ?";
+			if(address != null) query += " and l.address = ?";
 			PreparedStatement stmt = con.prepareStatement(query);
-			stmt.setInt(1, hotel_id);
+			if(city != null) stmt.setString(1, city);
+			if(address != null) stmt.setString(2, address);
 			ResultSet rs = stmt.executeQuery();
-			if(rs.next()) return new Location(hotel_id, rs.getString("city"), rs.getString("address"));
+			while(rs.next()) {
+				hotels.add(rs.getInt("hotel_id"));
+			}
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return hotels;
 	}
 
 }

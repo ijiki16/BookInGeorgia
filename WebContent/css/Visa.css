@@ -46,4 +46,16 @@ button{
     background: $white;
     font-weight: bold;
 }
+
+img {
+	width: 22%;
+	height: 20%;
+}
+
+.checkout {
+	width: 300px;
+	height: 200px;
+	top: 50%;
+	left: 50%;
+}
     

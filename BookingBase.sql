@@ -16,11 +16,11 @@ DROP TABLE IF EXISTS Accounts;
 -- select hotel_id from Hotels;
 --
 
-insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel", 5, "none", "new hotel", "551511300", 1);
-insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel1", 4, "none", "new hotel1", "551511300", 1);
-insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel2", 3, "none", "new hotel2", "551511300", 1);
-insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel3", 2, "none", "new hotel3", "551511300", 1);
-insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel4", 1, "none", "new hotel4", "551511300", 1);
+# insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel", 5, "none", "new hotel", "551511300", 1);
+# insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel1", 4, "none", "new hotel1", "551511300", 1);
+# insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel2", 3, "none", "new hotel2", "551511300", 1);
+# insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel3", 2, "none", "new hotel3", "551511300", 1);
+# insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel4", 1, "none", "new hotel4", "551511300", 1);
 
 create table Accounts (
 	account_id int primary key auto_increment,
@@ -65,6 +65,7 @@ alter table Locations add constraint fk2_hotel_id foreign key(hotel_id) referenc
 
 create table Rooms (
 	room_id int primary key auto_increment,
+	price_per_day int,
     reserved_start date,
     reserved_end date,
     number_of_beds int,
@@ -88,10 +89,12 @@ create table Reservation (
 	reserved_id int primary key auto_increment,
     reserved_from date,
     reserved_to date,
-    room_id int
+    room_id int,
+    account_id int
 );
 
 alter table Reservation add constraint fk1_room_id foreign key(room_id) references Rooms(room_id);
+alter table Reservation add constraint fk2_room_id foreign key(account_id) references  Accounts(account_id);
 
 create table Images (
 	id int primary key auto_increment,

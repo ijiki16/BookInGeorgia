@@ -52,6 +52,7 @@ public class RoomsDB {
 	 * Adds a row into the database table with given parameters
 	 * @param startDate
 	 * @param endDate
+	 * @param pricePerDay
 	 * @param hottelId
 	 * @param numberOfBeds
 	 * @param isWifi
@@ -59,20 +60,21 @@ public class RoomsDB {
 	 * @param isHotWater
 	 * @param isAirConditiong
 	 */
-	public int addRoom(java.util.Date startDate, java.util.Date endData, int hottelId, int numberOfBeds, 
+	public int addRoom(java.util.Date startDate, java.util.Date endData, int pricePerDay,int hottelId, int numberOfBeds, 
 					boolean wifi, boolean tv, boolean hotWater, boolean airConditioning) {
 		try {
 			Statement stmt = ConnDB.createStatement();
 			//insert room
-			String ins = "insert into rooms(reserved_start, reserved_end, number_of_beds, hotel_id) values (?, ?, ?, ?);";
+			String ins = "insert into rooms(reserved_start, reserved_end, price_per_day, number_of_beds, hotel_id) values (?, ?, ?, ?, ?);";
 			PreparedStatement quer = ConnDB.prepareStatement(ins, stmt.RETURN_GENERATED_KEYS);
 			//
 			java.sql.Date stD = new Date(startDate.getTime());
 			quer.setDate(1,  stD);
 			java.sql.Date edD = new Date(endData.getTime());
 			quer.setDate(2, edD);
-			quer.setInt(3, numberOfBeds);
-			quer.setInt(4, hottelId);
+			quer.setInt(3, pricePerDay);
+			quer.setInt(4, numberOfBeds);
+			quer.setInt(5, hottelId);
 			quer.executeUpdate();
 			//get last room id
 			PreparedStatement quer2 = ConnDB.prepareStatement("SELECT  max(room_id)  from rooms;");
@@ -102,84 +104,63 @@ public class RoomsDB {
 	 * @param newRoom
 	 */
 	public int addRoom(Room newRoom) {
-		try {
-			Statement stmt = ConnDB.createStatement();
-			//insert room
-			String ins = "insert into rooms(reserved_start, reserved_end, number_of_beds, hotel_id) values (?, ?, ?, ?);";
-			PreparedStatement quer = ConnDB.prepareStatement(ins);
-			//
-			java.sql.Date stD = new Date(newRoom.getStartDate().getTime());
-			quer.setDate(1,  stD);
-			java.sql.Date edD = new Date(newRoom.getEndDate().getTime());
-			quer.setDate(2, edD);
-			quer.setInt(3, newRoom.getNumberOfBeds());
-			quer.setInt(4, newRoom.getHottelId());
-			quer.executeUpdate();
-			//get last room id
-			PreparedStatement quer2 = ConnDB.prepareStatement("SELECT  max(room_id)  from rooms;");
-			ResultSet res = quer2.executeQuery();
-			res.next();
-			int roomId = res.getInt("max(room_id)");
-			//insert room info
-			String ins3 = "insert into roominfo (wifi, tv, hot_water, air_conditioning, room_id) values (?, ?, ?, ?, ?);";
-			PreparedStatement quer3 = ConnDB.prepareStatement(ins3);
-			quer3.setBoolean(1, newRoom.isWifi());
-			quer3.setBoolean(2, newRoom.isTv());
-			quer3.setBoolean(3, newRoom.isHotWater());
-			quer3.setBoolean(4, newRoom.isAirConditioning());
-			quer3.setInt(5, roomId);
-			quer3.executeUpdate();
-			//
-			//System.out.println(roomId);
-			return roomId;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return -1;
-		}
+		return addRoom(newRoom.getStartDate(), newRoom.getEndDate(), newRoom.getPricePerDay(), newRoom.getHottelId(), 
+				newRoom.getNumberOfBeds(), newRoom.isWifi(), newRoom.isTv(), newRoom.isHotWater(), newRoom.isAirConditioning());
 	}
 	/**
 	 * Adds a row into the database table with given parameters
-	 * @param newRoom
+	 * @param room ID
+	 * @param start Date
+	 * @param end Date
+	 * @param price per Day
+	 * @param Hotel Id
+	 * @param number Of Beds
+	 * @param is Wifi
+	 * @param is TV
+	 * @param is hot water
+	 * @param is Air Conditioning
 	 */
-	public int updateRoom (Integer room_id, java.util.Date sDate, java.util.Date eData, Integer hotlId, Integer numberOfBeds, boolean wifi, boolean tv,
+	public boolean updateRoom (Integer room_id, java.util.Date sDate, java.util.Date eData, Integer pricePerDay, Integer hotelId, Integer numberOfBeds, boolean wifi, boolean tv,
 			boolean hotWater, boolean airConditioning) {
 		try {
 			Statement stmt = ConnDB.createStatement();
-			//insert room
-			String ins = "update rooms set reserved_start = ?, reserved_end = ?, number_of_beds = ?, hotel_id = ? where room_id = ?;";
+			//update room
+			String ins = "update rooms set reserved_start = ?, reserved_end = ?, price_per_day=?, number_of_beds = ?, hotel_id = ? where room_id = ?;";
 			PreparedStatement quer = ConnDB.prepareStatement(ins);
 			//
 			java.sql.Date stD = new Date(sDate.getTime());
 			quer.setDate(1,  stD);
 			java.sql.Date edD = new Date(eData.getTime());
 			quer.setDate(2, edD);
-			quer.setInt(3, numberOfBeds);
-			quer.setInt(4, hotlId);
-			quer.setInt(5, room_id);
+			quer.setInt(3, pricePerDay);
+			quer.setInt(4, numberOfBeds);
+			quer.setInt(5, hotelId);
+			quer.setInt(6, room_id);
 			quer.executeUpdate();
-			//get last room id
-			PreparedStatement quer2 = ConnDB.prepareStatement("SELECT  max(room_id)  from rooms;");
-			ResultSet res = quer2.executeQuery();
-			res.next();
-			int roomId = res.getInt("max(room_id)");
 			//insert room info
-			String ins3 = "insert into roominfo (wifi, tv, hot_water, air_conditioning, room_id) values (?, ?, ?, ?, ?);";
+			String ins3 = "update roominfo set wifi = ?, tv = ?, hot_water = ?, air_conditioning = ? where room_id = ?;";
 			PreparedStatement quer3 = ConnDB.prepareStatement(ins3);
 			quer3.setBoolean(1, wifi);
 			quer3.setBoolean(2, tv);
 			quer3.setBoolean(3, hotWater);
 			quer3.setBoolean(4, airConditioning);
-			quer3.setInt(5, roomId);
+			quer3.setInt(5, room_id);
 			quer3.executeUpdate();
-			//
-			//System.out.println(roomId);
-			return roomId;
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return -1;
+			return false;
 		}
 	}
-	public void deleteRoom(int roomId) {
+	/**
+	 * Adds a row into the database table with given parameters
+	 * @param newRoom
+	 */
+	public boolean updateRoom (Room newRoom) {
+		return updateRoom(newRoom.getRoomId(), newRoom.getStartDate(), newRoom.getEndDate(), newRoom.getPricePerDay(), 
+				newRoom.getHottelId(), newRoom.getNumberOfBeds(), newRoom.isWifi(), newRoom.isTv(), newRoom.isHotWater(), newRoom.isAirConditioning());
+	}
+	public boolean deleteRoom(int roomId) {
 		try {
 			Statement stmt = ConnDB.createStatement();
 			//delete from roominfo
@@ -192,8 +173,10 @@ public class RoomsDB {
 			PreparedStatement quer2 = ConnDB.prepareStatement(del2);
 			quer2.setInt(1, roomId);
 			quer2.executeUpdate();
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 	
@@ -213,7 +196,7 @@ public class RoomsDB {
 			if(!res1.next() || !res2.next()) {
 				return null;
 			}else {
-				Room rm = new Room(id, res1.getDate("reserved_start"), res1.getDate("reserved_end"), res1.getInt("hotel_id"),res1.getInt("number_of_beds"), 
+				Room rm = new Room(id, res1.getDate("reserved_start"), res1.getDate("reserved_end"), res1.getInt("price_per_day"), res1.getInt("hotel_id"),res1.getInt("number_of_beds"), 
 						res2.getBoolean("wifi"), res2.getBoolean("tv"), res2.getBoolean("hot_water"), res2.getBoolean("air_conditioning"));
 				return rm;
 			}
@@ -239,7 +222,7 @@ public class RoomsDB {
 				quer2.setInt(1, roomId);
 				ResultSet res2 = quer2.executeQuery();
 				if(!res2.next()) break;
-				Room rm = new Room(res1.getInt("room_id"), res1.getDate("reserved_start"), res1.getDate("reserved_end"), res1.getInt("hotel_id"),res1.getInt("number_of_beds"), 
+				Room rm = new Room(res1.getInt("room_id"), res1.getDate("reserved_start"), res1.getDate("reserved_end"), res1.getInt("price_per_day"), res1.getInt("hotel_id"),res1.getInt("number_of_beds"), 
 						res2.getBoolean("wifi"), res2.getBoolean("tv"), res2.getBoolean("hot_water"), res2.getBoolean("air_conditioning"));
 				rooms.add(rm);
 			}
@@ -261,8 +244,8 @@ public class RoomsDB {
 			ResultSet res = quer.executeQuery();
 			while(res.next()) {
 				List<java.util.Date> datas = new ArrayList<java.util.Date>();
-				datas.add(res.getDate("reserved_from"));
-				datas.add(res.getDate("reserved_to"));
+				datas.add(res.getTimestamp("reserved_from"));
+				datas.add(res.getTimestamp("reserved_to"));
 				reservations.add(datas);
 			}
 		} catch (SQLException e) {
@@ -272,17 +255,18 @@ public class RoomsDB {
 		return reservations;	
 	}
 	
-	public boolean bookRoom(Integer room_id, java.util.Date sDate, java.util.Date eDate) {
+	public boolean bookRoom(Integer room_id, java.util.Date sDate, java.util.Date eDate, Integer accId) {
 		try {
 			Statement stmt = ConnDB.createStatement();
 			//
-			String ins = "insert into reservation (reserved_from, reserved_to, room_id) values (?, ?, ?);";
+			String ins = "insert into reservation (reserved_from, reserved_to, room_id, account_id) values (?, ?, ?, ?);";
 			PreparedStatement quer = ConnDB.prepareStatement(ins);
-			java.sql.Date sDt = new Date(sDate.getDate());
+			java.sql.Date sDt = new Date(sDate.getTime());
 			quer.setDate(1, sDt);
-			java.sql.Date eDt = new Date(eDate.getDate());
+			java.sql.Date eDt = new Date(eDate.getTime());
 			quer.setDate(2, eDt);
 			quer.setInt(3, room_id);
+			quer.setInt(4, accId);
 			quer.executeUpdate();
 			return true;
 		} catch (SQLException e) {
@@ -291,18 +275,19 @@ public class RoomsDB {
 		}
 	}
 	
-	public boolean unbookRoom(Integer room_id, java.util.Date sDate, java.util.Date eDate) {
+	public boolean unbookRoom(Integer room_id, java.util.Date sDate, java.util.Date eDate, Integer accId) {
 		try {
 			Statement stmt = ConnDB.createStatement();
 			//
 			//String ins = "insert into reservation (reserved_from, reserved_to, room_id) values (?, ?, ?);";
-			String del = "delete from reservation where room_id = ? and reserved_from = ? and reserved_to = ?";
+			String del = "delete from reservation where room_id = ? and reserved_from = ? and reserved_to = ? and account_id = ?";
 			PreparedStatement quer = ConnDB.prepareStatement(del);
-			java.sql.Date sDt = new Date(sDate.getDate());
+			java.sql.Date sDt = new Date(sDate.getTime());
 			quer.setDate(2, sDt);
-			java.sql.Date eDt = new Date(eDate.getDate());
+			java.sql.Date eDt = new Date(eDate.getTime());
 			quer.setDate(3, eDt);
 			quer.setInt(1, room_id);
+			quer.setInt(4, accId);
 			quer.executeUpdate();
 			return true;
 		} catch (SQLException e) {
