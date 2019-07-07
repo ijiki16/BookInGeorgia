@@ -66,3 +66,17 @@ h1, h2, h3, h4, h5, h6, p {
 .text {
 	width: 75%;
 }
+
+.room {
+	width: 100%;
+	background-color: #7b0e0e;
+	top: 0%;
+}
+
+th, td {
+	color: white;
+}
+
+.facil {
+	height: 105px;
+}

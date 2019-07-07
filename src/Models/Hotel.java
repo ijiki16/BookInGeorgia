@@ -29,7 +29,7 @@ public class Hotel {
 		setStatus(status);
 		setNumber(number);
 		setAccountId(account_id);
-		setHotelId(hotel_id);
+		setId(hotel_id);
 		rooms = new ArrayList<Room>();
 	}
 	
@@ -141,7 +141,7 @@ public class Hotel {
 	/**
 	 * @return Hotel ID.
 	 */
-	public Integer getHotelId() {
+	public Integer getId() {
 		return hotel_id;
 	}
 	
@@ -149,7 +149,7 @@ public class Hotel {
 	 * Updates Hotel ID.
 	 * @param
 	 */
-	public void setHotelId(Integer hotel_id) {
+	public void setId(Integer hotel_id) {
 		this.hotel_id = hotel_id;
 	}
 	
