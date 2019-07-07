@@ -138,7 +138,7 @@ public class HotelsDB {
 	
 	public Location getLocation(Integer hotel_id) {
 		try {
-			String query = "select * from Hotels h join Locations l on h.hotel_id == l.hotel_id where hotel_id = ?";
+			String query = "select * from Hotels h join Locations l on h.hotel_id = l.hotel_id where l.hotel_id = ?;";
 			PreparedStatement stmt = con.prepareStatement(query);
 			stmt.setInt(1, hotel_id);
 			ResultSet rs = stmt.executeQuery();

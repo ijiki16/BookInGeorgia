@@ -45,15 +45,23 @@ public class RoomDBTests {
 		//
 		htM  = HotelManager.getInstance();
 		int user1Id  = Integer.parseInt(user1.getId());
-		htM.addHotel("Wyaltubo", 3, "", "Holet Wyaltubo 24/7", "599909990", user1Id);
-		htM.addHotel("Tbilisi", 4, "", "Holet Tbilisi 24/7", "597777777", user1Id);
+		//htM.addHotel("Wyaltubo", 3, "", "Holet Wyaltubo 24/7", "599909990", user1Id);
+		//htM.addHotel("Tbilisi", 4, "", "Holet Tbilisi 24/7", "597777777", user1Id);
 		List<Hotel> myHotels = htM.getHotels(user1Id);
 		hotel1 = myHotels.get(0);
 		hotel2 = myHotels.get(1);
+		if(hotel1.getName().equals("Wyaltubo")){
+			htM.addLocation(hotel1.getHotelId(), "Wyaltubo", "safichxia 6");
+			htM.addLocation(hotel2.getHotelId(), "Tbilisi", "agmasheneblis 15");
+		}else {
+			htM.addLocation(hotel1.getHotelId(), "Tbilisi", "agmasheneblis 15");
+			htM.addLocation(hotel2.getHotelId(), "Wyaltubo", "safichxia 6");
+		}
 		
 		//hotl1 =  new Hotel(name, rating, img, status, number, account_id, hotel_id);
 		//
 		date1 = new Date();
+		new java.sql.Date();
 		date2 = new Date(1999, 31, 12);
 		date3 = new Date(2008, 8, 8);
 		date4 = new Date(2018, 82, 8);

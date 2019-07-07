@@ -60,7 +60,7 @@ public class RoomsDB {
 	 * @param isHotWater
 	 * @param isAirConditiong
 	 */
-	public int addRoom(java.util.Date startDate, java.util.Date endData, int pricePerDay,int hottelId, int numberOfBeds, 
+	public int addRoom(java.util.Date startDate, java.util.Date endData, Integer pricePerDay,Integer hottelId, Integer numberOfBeds, 
 					boolean wifi, boolean tv, boolean hotWater, boolean airConditioning) {
 		try {
 			Statement stmt = ConnDB.createStatement();
