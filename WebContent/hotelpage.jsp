@@ -124,18 +124,20 @@
 		    <th>Room information</th> 
 		    <th>Reserved from - to</th>
 		    <th>Available from - to</th>
+		    <th>Book</th>
 		  </tr>
 		  <% List<Room> l = hm.getRooms(id);
-		  
-		  %>
-		  <tr>
-		    <td>1 bedroom</td>
-		    <td class="facil"><div> <i class="fa fa-check-circle"></i><h6><%=request.getAttribute("wifi") %></h6></div>
-					<div> <i class="fa fa-ban" ></i><h6><%=request.getAttribute("parking") %></h6></div>
-					<div> <i class="fa fa-check-circle"></i><h6><%=request.getAttribute("beachfront") %></h6></div>
-					<div> <i class="fa fa-ban"></i><h6><%=request.getAttribute("woodfront") %></h6></div>
-			</td>
-		  </tr>
+		  	 for(int i = 0; i < l.size(); i++){
+		  		Room temp = l.get(i);
+		  		request.setAttribute("bed", temp.getNumberOfBeds());
+		  		request.setAttribute("wifi", temp.isWifi());
+		  		request.setAttribute("tv", temp.isTv());
+		  		request.setAttribute("hot-water", temp.isHotWater());
+		  		request.setAttribute("air-cond", temp.isAirConditioning());
+		  		request.setAttribute("sd", temp.getStartDate());
+		  		request.setAttribute("ed", temp.getEndDate());%>
+		  		<jsp:include page="Room.jsp"/> 
+		  	 <%}%>
 		</table>
 </body>
 </html>
