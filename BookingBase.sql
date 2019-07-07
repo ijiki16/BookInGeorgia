@@ -14,13 +14,14 @@ DROP TABLE IF EXISTS Accounts;
 -- selects
 -- select * from Accounts;
 -- select hotel_id from Hotels;
+-- select * from Locations;
 --
 
-insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel", 5, "none", "new hotel", "551511300", 1);
-insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel1", 4, "none", "new hotel1", "551511300", 1);
-insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel2", 3, "none", "new hotel2", "551511300", 1);
-insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel3", 2, "none", "new hotel3", "551511300", 1);
-insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel4", 1, "none", "new hotel4", "551511300", 1);
+-- insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel", 5, "none", "new hotel", "551511300", 1);
+-- insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel1", 4, "none", "new hotel1", "551511300", 1);
+-- insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel2", 3, "none", "new hotel2", "551511300", 1);
+-- insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel3", 2, "none", "new hotel3", "551511300", 1);
+-- insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel4", 1, "none", "new hotel4", "551511300", 1);
 
 create table Accounts (
 	account_id int primary key auto_increment,

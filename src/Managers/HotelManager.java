@@ -63,7 +63,7 @@ public class HotelManager {
 	/**
 	 * @updates Hotel Facilities in Data Base.
 	 */
-	public void updateFaciliies(Integer hotel_id, String facility, boolean wifi, boolean parking, boolean beachfront, boolean woodfront) {
+	public void updateFacilities(Integer hotel_id, String facility, boolean wifi, boolean parking, boolean beachfront, boolean woodfront) {
 		db.updateFacilities(hotel_id, facility, wifi, parking, beachfront, woodfront);
 	}
 	
@@ -151,16 +151,11 @@ public class HotelManager {
 	}
 	
 	/**
-	 * @returns All Locations as a list.
+	 * @returns All city locations as a list.
 	 */
-	public List<Location> getAllLocations() {
-		List<Location> locations = new ArrayList<>();
-		for(Integer hotel_id : db.getAllHotelIDs()) {
-			locations.add(db.getLocation(hotel_id));
-		}
-		return locations;
+	public List<String> getAllLocations() {
+		return db.getAllLocations();
 	}
-	
 	
 	/**
 	 * @returns Hotels list according to filtered items.
@@ -180,9 +175,9 @@ public class HotelManager {
 	/**
 	 * @returns Hotels list according to search items.
 	 */
-	public List<Integer> getSearchedHotels(String city, String address){
-		if(city.isEmpty() && address.isEmpty()) return db.getAllHotelIDs();
-		return db.getSearchedHotels(city, address);
+	public List<Integer> getSearchedHotels(String city, String name){
+		if(city == null && name == null) return db.getAllHotelIDs();
+		return db.getSearchedHotels(city, name);
 	}
 	
 }
