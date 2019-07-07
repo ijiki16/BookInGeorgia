@@ -34,7 +34,9 @@ public class testSimple {
 		//db.unbookRoom(14, anw.get(1).get(0), anw.get(1).get(1), 1);
 		for(int i=0; i<anw.size(); i++) {
 			System.out.println("start: "+ anw.get(i).get(0) + " end: "+anw.get(i).get(1));
-//			db.unbookRoom(14, anw.get(i).get(0), anw.get(i).get(1), 1);
+			System.out.println(new java.sql.Date(anw.get(i).get(0).getTime()));
+			System.out.println(new java.sql.Date(anw.get(i).get(1).getTime()));
+			db.unbookRoom(4, anw.get(i).get(0), anw.get(i).get(1), 1);
 		}
 
 	}

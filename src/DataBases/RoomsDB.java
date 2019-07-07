@@ -244,8 +244,8 @@ public class RoomsDB {
 			ResultSet res = quer.executeQuery();
 			while(res.next()) {
 				List<java.util.Date> datas = new ArrayList<java.util.Date>();
-				datas.add(res.getDate("reserved_from"));
-				datas.add(res.getDate("reserved_to"));
+				datas.add(res.getTimestamp("reserved_from"));
+				datas.add(res.getTimestamp("reserved_to"));
 				reservations.add(datas);
 			}
 		} catch (SQLException e) {
@@ -261,9 +261,9 @@ public class RoomsDB {
 			//
 			String ins = "insert into reservation (reserved_from, reserved_to, room_id, account_id) values (?, ?, ?, ?);";
 			PreparedStatement quer = ConnDB.prepareStatement(ins);
-			java.sql.Date sDt = new Date(sDate.getDate());
+			java.sql.Date sDt = new Date(sDate.getTime());
 			quer.setDate(1, sDt);
-			java.sql.Date eDt = new Date(eDate.getDate());
+			java.sql.Date eDt = new Date(eDate.getTime());
 			quer.setDate(2, eDt);
 			quer.setInt(3, room_id);
 			quer.setInt(4, accId);
@@ -282,9 +282,9 @@ public class RoomsDB {
 			//String ins = "insert into reservation (reserved_from, reserved_to, room_id) values (?, ?, ?);";
 			String del = "delete from reservation where room_id = ? and reserved_from = ? and reserved_to = ? and account_id = ?";
 			PreparedStatement quer = ConnDB.prepareStatement(del);
-			java.sql.Date sDt = new Date(sDate.getDate());
+			java.sql.Date sDt = new Date(sDate.getTime());
 			quer.setDate(2, sDt);
-			java.sql.Date eDt = new Date(eDate.getDate());
+			java.sql.Date eDt = new Date(eDate.getTime());
 			quer.setDate(3, eDt);
 			quer.setInt(1, room_id);
 			quer.setInt(4, accId);
