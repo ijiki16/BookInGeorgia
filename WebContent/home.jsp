@@ -96,7 +96,7 @@
 		
 		<div class="hotels">
 		<% 
-			List<Integer> IDs = hm.getSearchedHotels("","");
+			List<Integer> IDs = hm.getSearchedHotels("", "");
 			for(Integer hotel_id : IDs){
 				Hotel hotel = hm.getHotel(hotel_id);
 				request.setAttribute("hotel_id", hotel_id);
