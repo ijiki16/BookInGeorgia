@@ -13,23 +13,33 @@
 	
 		<div class="text-box">
 			<i class="fas fa-hotel"></i>
-			<input type="text" placeholder="Hotel Name" name="" value="">
+			<input type="text" placeholder="Hotel Name" name="name" value="">
 		</div>
 		
 		<div class="text-box">
 			<i class="fas fa-star"></i>
-			<input type="text" placeholder="Stars" name="" value="">
+			<input type="text" placeholder="Stars" name="stars" value="">
 		</div>
 		
 		<div class="text-box">
 			<i class="fas fa-comment"></i>
-			<input type="text" placeholder="About Hotel" name="" value="">
+			<input type="text" placeholder="About Hotel" name="status" value="">
 		</div>
 		
 		
 		<div class="text-box">
 			<i class="fas fa-phone"></i>
-			<input type="text" placeholder="Phone Number" name="" value="">
+			<input type="text" placeholder="Phone Number" name="phone" value="">
+		</div>
+		
+		<div class="text-box">
+			<i class="far fa-map"></i>
+			<input type="text" placeholder="City" name="city" value="">
+		</div>
+		
+		<div class="text-box">
+			<i class="fas fa-map-marker-alt"></i>
+			<input type="text" placeholder="Street" name="street" value="">
 		</div>
 	
 		<div class="file-box">
@@ -42,24 +52,24 @@
 	<div class="post-facility">
 		<h1> Add Facilities </h1>
 
-		<input type="checkbox">
+		<input type="checkbox" name="wi-fi">
 		<span class="checkmark"> wi-fi </span> <br>
 		
-		<input type="checkbox">
+		<input type="checkbox" name="parking">
 		<span class="checkmark"> parking </span> <br>
 		
-		<input type="checkbox">
+		<input type="checkbox" name="beach">
 		<span class="checkmark"> near beach? </span> <br>
 		
-		<input type="checkbox">
+		<input type="checkbox" name="forest">
 		<span class="checkmark"> near forest? </span> <br>
 		
 		<div class="text-box">
 			<i class="fas fa-info"></i>
-			<input type="text" placeholder="other facilities?" name="" value="">
+			<input type="text" placeholder="other facilities?" name="facility" value="">
 		</div>	
 	
-		<form action="createPost" method="post" enctype="multipart/form-data"> <button> Submit </button> </form>	
+		<form action="js/addHotel.jsp" method="post" enctype="multipart/form-data"> <button> Submit </button> </form>	
 	</div>
 	
 </body>

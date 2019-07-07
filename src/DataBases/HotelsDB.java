@@ -140,7 +140,7 @@ public class HotelsDB {
 	
 	public Location getLocation(Integer hotel_id) {
 		try {
-			String query = "select * from Hotels h join Locations l on h.hotel_id = l.hotel_id where l.hotel_id = ?";
+			String query = "select * from Hotels h join Locations l on h.hotel_id = l.hotel_id where l.hotel_id = ?;";
 			PreparedStatement stmt = con.prepareStatement(query);
 			stmt.setInt(1, hotel_id);
 			ResultSet rs = stmt.executeQuery();
@@ -169,7 +169,7 @@ public class HotelsDB {
 	}
 	
 
-	public void addHotel(String name, Integer rating, String img, String status, String number, Integer account_id) {
+	public synchronized void addHotel(String name, Integer rating, String img, String status, String number, Integer account_id) {
 		try {
 			String query = "insert into Hotels (name, rating, img, status, phone_number, account_id) values (?, ?, ?, ?, ?, ?);";
 			PreparedStatement stmt = con.prepareStatement(query);
@@ -183,6 +183,20 @@ public class HotelsDB {
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public synchronized int getLastId() {
+		try{
+			String query = "select max(hotel_id) as m from Hotels";
+			PreparedStatement stmt = con.prepareStatement(query);
+			ResultSet rs = stmt.executeQuery(query);
+			while(rs.next()) {
+				return rs.getInt("m");
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 	
 	public void addFacilities(Integer hotel_id, String facility, boolean wifi, boolean parking, boolean beachfront, boolean woodfront) {
@@ -208,6 +222,30 @@ public class HotelsDB {
 			stmt.setString(1, city);
 			stmt.setString(2, address);
 			stmt.setInt(3, hotel_id);
+			stmt.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void addReservation(String from, String to, int room_id, int account_id) {
+		try {
+			String query = "insert into Reservation (reserved_from, reserved_to, room_id, account_id) values (?, ?, ?, ?)";
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setString(1, from);
+			stmt.setString(2, to);
+			stmt.setInt(3, room_id);
+			stmt.setInt(4, account_id);
+			stmt.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void deleteReservation(int id) {
+		try {
+			String query = "delete from Reservation where reserved_id = '" + Integer.toString(id) + "'";
+			PreparedStatement stmt = con.prepareStatement(query);
 			stmt.executeUpdate();
 		}catch (SQLException e) {
 			e.printStackTrace();
@@ -343,7 +381,7 @@ public class HotelsDB {
 	public List<Integer> getSearchedHotels(String city, String name) {
 		List<Integer> hotels = new ArrayList<Integer>();
 		try {
-			String query = "select h.hotel_id from Hotels h join Locations l on h.hotel_id = l.hotel_id";
+			String query = "select hotel_id from Hotels h join Locations l on h.hotel_id = l.hotel_id";
 			if(city != null) query += " where l.city = ?";
 			if(name != null) query += " and h.name = ?";
 			PreparedStatement stmt = con.prepareStatement(query);

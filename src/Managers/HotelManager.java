@@ -95,20 +95,27 @@ public class HotelManager {
 		db.deleteLocation(hotel_id);
 	}
 	
+	/*
+	 * Get last hotel id
+	 */
+	public int getLastHotelId() {
+		return db.getLastId();
+	}
+	
 	/**
 	 * @inserts Room into Hotel.
 	 */
-	public void addRoom(Date sDate, Date eData, Integer hotlId, Integer numberOfBeds, boolean wifi, boolean tv,
+	public void addRoom(Date sDate, Date eData, Integer pricePerDay, Integer hotlId, Integer numberOfBeds, boolean wifi, boolean tv,
 			boolean hotWater, boolean airConditioning) {
-		rdb.addRoom(sDate, eData, hotlId, numberOfBeds, wifi, tv, hotWater, airConditioning);
+		rdb.addRoom(sDate, eData, pricePerDay, hotlId, numberOfBeds, wifi, tv, hotWater, airConditioning);
 	}
 	
 	/**
 	 * @updates Room in Data Base.
 	 */
-	public void updateRoom(Integer room_id, Date sDate, Date eData, Integer hotlId, Integer numberOfBeds, boolean wifi, boolean tv,
+	public void updateRoom(Integer room_id, Date sDate, Date eData, Integer pricePerDay, Integer hotlId, Integer numberOfBeds, boolean wifi, boolean tv,
 			boolean hotWater, boolean airConditioning) {
-		rdb.updateRoom(room_id, sDate, eData, hotlId, numberOfBeds, wifi, tv, hotWater, airConditioning);
+		rdb.updateRoom(room_id, sDate, eData, pricePerDay, hotlId, numberOfBeds, wifi, tv, hotWater, airConditioning);
 	}
 	
 	/**

@@ -15,9 +15,8 @@
 	<header class="header-section">
 			<div class="header">
 				<div class="site-logo">
-					<a href="./home.html">BookinGeorgia</a>
+					<a href="./home.jsp">BookinGeorgia</a>
 				</div>
-				
 				<div class="user-panel">
 					<div id="log-and-reg">
 					<i class="flaticon-profile" style="color: white; margin-right: 15px; "></i>
@@ -46,6 +45,9 @@
 			    </li>
 			    <li class="nav-item active">
 			      <a class="nav-link" href="#" id="posts">Your Posts</a>
+			    </li>
+			    <li class="nav-item active">
+			      <a class="nav-link" href="CreatePost.html" id="add">Add Post</a>
 			    </li>
 			    <li class="nav-item active">
 			      <a class="nav-link" href="#">About us</a>

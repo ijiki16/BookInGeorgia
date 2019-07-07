@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,6 +30,23 @@
 		</div>
 		
 		<div class="text-box">
+			<i class="fas fa-calendar-day"></i>
+			<label>Reservation start date</label>
+			<input type="date" >
+		</div>
+		
+		<div class="text-box">
+			<i class="fas fa-calendar-day"></i>
+			<label>Reservation end date</label>
+			<input type="date" >
+		</div>
+		
+		<div class="text-box">
+			<i class="fas fa-dollar-sign"></i>
+			<input type="number" placeholder="Price per Day" name="" value="">
+		</div>
+		
+		<div class="text-box">
 			<i class="fas fa-info"></i>
 			<input type="text" placeholder="other facilities?" name="" value="">
 		</div>	
@@ -37,7 +56,7 @@
 			<input type="file" placeholder="Upload Image" name="image" value="">
 		</div>
 		
-		<form action="createPost" method="post" enctype="multipart/form-data"> <button> Submit </button> </form>	
+		<form action="createPost" method="post" enctype="multipart/form-data"> <button id="but"> Submit </button> </form>	
 	</div>
 	
 </body>

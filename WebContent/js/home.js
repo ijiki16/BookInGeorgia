@@ -13,8 +13,10 @@ $(document).ready(function(){
 					$('.log-in').css({"visibility":"hidden"});
 					$('.menu-but').css({"display": "block"});
 					$('#posts').css({"display": "block"});
+					$('#add').css({"display": "block"});
 				}else{
 					$('#posts').css({"display": "none"});
+					$('#add').css({"display": "none"});
 					$('#log-and-reg').css({"visibility":"visible"});
 					
 				}
@@ -29,6 +31,7 @@ $(document).ready(function(){
 					$('#log-and-reg').css({"visibility":"visible"});
 					$('.menu-but').css({"display": "none"});
 					$('#posts').css({"display": "none"});
+					$('#add').css({"display": "none"});
 					$('.menu').css({"visibility": "hidden"});
 				});
 	});
@@ -77,6 +80,7 @@ $(document).ready(function(){
 						$('.menu-but').css({"display": "block"});
 						$('.menu-but').html(response + "  <i class=\"arrow down\"></i>");
 						$('#posts').css({"display": "block"});
+						$('#add').css({"display": "block"});
 						$('.homepage').css({"visibility":"hidden"});
 						$('.menu').css({"visibility":"visible"});
 					}else{	
