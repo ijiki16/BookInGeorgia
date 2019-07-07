@@ -54,8 +54,8 @@ public class AccountManagerTests {
 	@Test
 	@Order(3)
 	public void test3() {
-		assertTrue(manager.updateAccount(manager.getAccount("nbasi16@gmail.com"), "password", "newparoli"));
-		assertTrue(manager.loginAccount("nbasi16@gmail.com", "newparoli"));
+		assertTrue(manager.updateAccount(manager.getAccount("nbasi@gmail.com"), "password", "newparoli"));
+		assertTrue(manager.loginAccount("nbasi@gmail.com", "newparoli"));
 		assertFalse(manager.deleteAccount(null, null));
 		assertFalse(manager.deleteAccount("nbasi16@gmail.com", null));
 		assertFalse(manager.deleteAccount("nb@gmail.com", null));
@@ -66,7 +66,7 @@ public class AccountManagerTests {
 		assertFalse(manager.deleteAccount("nbasi16@gmail.com", "paroli77"));
 		
 		assertTrue(manager.deleteAccount("gio's_mail@yahoo.com", "giogio99"));
-		assertTrue(manager.deleteAccount("nbasi@gmail.com", "123456"));
+		assertTrue(manager.deleteAccount("nbasi@gmail.com", "newparoli"));
 		assertFalse(manager.deleteAccount("gio's_mail@yahoo.com", "giogio99"));
 	}
 	
