@@ -33,6 +33,7 @@ $(document).ready(function(){
 					$('#posts').css({"display": "none"});
 					$('#add').css({"display": "none"});
 					$('.menu').css({"visibility": "hidden"});
+					window.location.replace("home.jsp");
 				});
 	});
 	

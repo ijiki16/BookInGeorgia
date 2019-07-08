@@ -22,7 +22,6 @@
 <script src="https://kit.fontawesome.com/13f325d0c5.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-<script src="js/home.js" type="text/javascript"></script>
 <script src="js/register.js" type="text/javascript"></script>
 </head>
 <body>
@@ -95,8 +94,7 @@
 		</div>
 		
 		<div class="hotels">
-		<% 
-			List<Integer> IDs = hm.getSearchedHotels("", "");
+		<%  List<Integer> IDs = hm.getSearchedHotels(null, null);
 			for(Integer hotel_id : IDs){
 				Hotel hotel = hm.getHotel(hotel_id);
 				request.setAttribute("hotel_id", hotel_id);
@@ -116,6 +114,7 @@
 				<jsp:include page="Post.jsp"/>
 			<%}%>
 		</div>
+		
 		<div class="log-in"> 
 			<div class="login-box">
 				<i class="fas fa-times-circle" id="close"></i>

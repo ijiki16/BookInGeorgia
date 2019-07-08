@@ -35,8 +35,8 @@ public class HotelManager {
 	/**
 	 * @inserts Hotel into Data Base.
 	 */
-	public void addHotel(String name, Integer rating, String img, String status, String number, Integer account_id) {
-		db.addHotel(name, rating, img, status, number, account_id);
+	public Integer addHotel(String name, Integer rating, String img, String status, String number, Integer account_id) {
+		return db.addHotel(name, rating, img, status, number, account_id);
 	}
 	
 	/**
@@ -95,49 +95,6 @@ public class HotelManager {
 		db.deleteLocation(hotel_id);
 	}
 	
-	/*
-	 * Get last hotel id
-	 */
-	public int getLastHotelId() {
-		return db.getLastId();
-	}
-	
-	/**
-	 * @inserts Room into Hotel.
-	 */
-	public void addRoom(Date sDate, Date eData, Integer pricePerDay, Integer hotlId, Integer numberOfBeds, boolean wifi, boolean tv,
-			boolean hotWater, boolean airConditioning) {
-		rdb.addRoom(sDate, eData, pricePerDay, hotlId, numberOfBeds, wifi, tv, hotWater, airConditioning);
-	}
-	
-	/**
-	 * @updates Room in Data Base.
-	 */
-	public void updateRoom(Integer room_id, Date sDate, Date eData, Integer pricePerDay, Integer hotlId, Integer numberOfBeds, boolean wifi, boolean tv,
-			boolean hotWater, boolean airConditioning) {
-		rdb.updateRoom(room_id, sDate, eData, pricePerDay, hotlId, numberOfBeds, wifi, tv, hotWater, airConditioning);
-	}
-	
-	/**
-	 * @deletes Room from Data Base.
-	 */
-	public void deleteRoom(Integer room_id) {
-		rdb.deleteRoom(room_id);
-	}
-	
-	/**
-	 * @return Room by room_id.
-	 */
-	public Room getRoom(Integer room_id) {
-		return rdb.getRoom(room_id);
-	}
-	
-	/**
-	 * @returns Hotels rooms from data base as a list.
-	 */
-	public List<Room> getRooms(Integer hotel_id) {
-		return rdb.getRoomByHottel(hotel_id);
-	}
 	
 	/**
 	 * @return Hotel by hotel_id.

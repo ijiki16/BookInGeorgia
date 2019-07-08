@@ -160,6 +160,7 @@ public class RoomsDB {
 		return updateRoom(newRoom.getRoomId(), newRoom.getStartDate(), newRoom.getEndDate(), newRoom.getPricePerDay(), 
 				newRoom.getHottelId(), newRoom.getNumberOfBeds(), newRoom.isWifi(), newRoom.isTv(), newRoom.isHotWater(), newRoom.isAirConditioning());
 	}
+	
 	public boolean deleteRoom(int roomId) {
 		try {
 			Statement stmt = ConnDB.createStatement();
@@ -206,7 +207,7 @@ public class RoomsDB {
 		}
 	}
 	
-	public  List<Room> getRoomByHottel(int hottelId) {
+	public List<Room> getRoomByHottel(int hottelId) {
 		try {
 			Statement stmt = ConnDB.createStatement();
 			//
@@ -293,6 +294,30 @@ public class RoomsDB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
+		}
+	}
+	
+	public void addReservation(String from, String to, int room_id, int account_id) {
+		try {
+			String query = "insert into Reservation (reserved_from, reserved_to, room_id, account_id) values (?, ?, ?, ?)";
+			PreparedStatement stmt = ConnDB.prepareStatement(query);
+			stmt.setString(1, from);
+			stmt.setString(2, to);
+			stmt.setInt(3, room_id);
+			stmt.setInt(4, account_id);
+			stmt.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void deleteReservation(int reserved_id) {
+		try {
+			String query = "delete from Reservation where reserved_id = '" + Integer.toString(reserved_id) + "'";
+			PreparedStatement stmt = ConnDB.prepareStatement(query);
+			stmt.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 

@@ -4,14 +4,14 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: sans-serif;
-	background: #f35b0a;
+	background: #0f324d !important;
 	background-size: cover;	
 }
 
 .post-hotel {
 	width: 280px;
 	position: absolute;
-	top: 10%;
+	top: 30%;
 	left: 10%;
 	color: white;
 }
@@ -58,7 +58,7 @@ file {
 .post-facility {
 	width: 280px;
 	position: absolute;
-	top: 15%;
+	top: 35%;
 	left: 50%;
 	color: white;
 }

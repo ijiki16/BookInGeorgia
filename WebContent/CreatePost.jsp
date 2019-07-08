@@ -1,13 +1,26 @@
+<%@page import="Models.Account"%>
+<%@page import="Managers.AccountManager"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Add Post</title>
-<link rel="stylesheet" href="css/CreatePostCss.css">
+<link rel="stylesheet" href="css/CreatePost.css">
+<link rel="stylesheet" href="css/Header.css">
+<link rel="stylesheet" type="text/css" href="css/flaticon.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/Login.css">
+<link rel="stylesheet" href="css/Post.css">
 <script src="https://kit.fontawesome.com/13f325d0c5.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script src="js/home.js" type="text/javascript"></script>
+<script src="js/register.js" type="text/javascript"></script>
 </head>
 <body>
-
+	<jsp:include page="Header.jsp"/>
 	<div class="post-hotel">
 		<h1> Add Hotel Info </h1>
 	
@@ -33,12 +46,12 @@
 		</div>
 		
 		<div class="text-box">
-			<i class="far fa-map"></i>
+			<i class="fas fa-map-marker-alt"></i>
 			<input type="text" placeholder="City" name="city" value="">
 		</div>
 		
 		<div class="text-box">
-			<i class="fas fa-map-marker-alt"></i>
+			<i class="fas fa-road"></i>
 			<input type="text" placeholder="Street" name="street" value="">
 		</div>
 	
