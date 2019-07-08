@@ -26,7 +26,7 @@
 		
 		<div class="text-box">
 			<i class="fas fa-bed"></i>
-			<input type="number" placeholder="Number of beds" name="" value="">
+			<input type="number" placeholder="Number of beds" name="" value="" min="1">
 		</div>
 		
 		<div class="text-box">
@@ -56,7 +56,9 @@
 			<input type="file" placeholder="Upload Image" name="image" value="">
 		</div>
 		
-		<form action="createPost" method="post" enctype="multipart/form-data"> <button id="but"> Submit </button> </form>	
+		<form action="createPost" method="post" enctype="multipart/form-data"> 
+		<button id="save"> Save changes </button> 
+		<button id="next"> Next </button> </form>	
 	</div>
 	
 </body>

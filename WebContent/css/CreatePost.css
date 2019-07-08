@@ -67,6 +67,9 @@ file {
 .check-box-container input {
 	background: none;
 }
+#next {
+	display: none;
+	}
 
 .check-box-container {
 	display: inline-block;

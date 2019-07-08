@@ -2,7 +2,7 @@
  * 
  */
 $(document).ready(function(){
-	$('#sub').click(function() {
+	$('#save').click(function() {
 		let name = $('#name').val();
 		let stars = $('#stars').val();
 		let status = $('#status').val();
@@ -15,8 +15,6 @@ $(document).ready(function(){
 		let beach = $('#beach').val();
 		let forest = $('#forest').val();
 		let facility = $('#facility').val();
-		
-		
 		$.post('./js/addHotel.jsp', 
 				{
 			name : name,
@@ -33,13 +31,7 @@ $(document).ready(function(){
 			facility : facility
 				}, 
 				function(response) {
-					if($.trim(response) == 'success') {
-						$('#log-and-reg').css({"visibility":"hidden"});
-						$('.menu-but').css({"display": "block"});	
-						window.location.href = 'home.jsp'; 
-					}else{
-						$('.reg-fail').html("Account already exists!");
-					}
+					$('#next').css({"display":"block"});
 		});
 	});
 

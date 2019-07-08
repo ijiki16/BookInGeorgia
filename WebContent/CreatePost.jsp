@@ -17,7 +17,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script src="js/home.js" type="text/javascript"></script>
-<script src="js/register.js" type="text/javascript"></script>
+<script src="js/CreatePost.js" type="text/javascript"></script>
 </head>
 <body>
 	<jsp:include page="Header.jsp"/>
@@ -26,63 +26,62 @@
 	
 		<div class="text-box">
 			<i class="fas fa-hotel"></i>
-			<input type="text" placeholder="Hotel Name" name="name" value="">
+			<input type="text" placeholder="Hotel Name" id="name" value="">
 		</div>
 		
 		<div class="text-box">
 			<i class="fas fa-star"></i>
-			<input type="text" placeholder="Stars" name="stars" value="">
+			<input id="stars" type="number" value="1" min="1" max="5">
 		</div>
 		
 		<div class="text-box">
 			<i class="fas fa-comment"></i>
-			<input type="text" placeholder="About Hotel" name="status" value="">
+			<input type="text" placeholder="About Hotel" id="status" value="">
 		</div>
 		
 		
 		<div class="text-box">
 			<i class="fas fa-phone"></i>
-			<input type="text" placeholder="Phone Number" name="phone" value="">
+			<input type="text" placeholder="Phone Number" id="phone" value="">
 		</div>
 		
 		<div class="text-box">
 			<i class="fas fa-map-marker-alt"></i>
-			<input type="text" placeholder="City" name="city" value="">
+			<input type="text" placeholder="City" id="city" value="">
 		</div>
 		
 		<div class="text-box">
 			<i class="fas fa-road"></i>
-			<input type="text" placeholder="Street" name="street" value="">
+			<input type="text" placeholder="Street" id="street" value="">
 		</div>
-	
-		<div class="file-box">
-			<i class="fas fa-camera"></i>
-			<input type="file" placeholder="Upload Image" name="image" value="">
-		</div>
-	
 	</div>
 	
 	<div class="post-facility">
 		<h1> Add Facilities </h1>
 
-		<input type="checkbox" name="wi-fi">
+		<input type="checkbox" id="wi-fi">
 		<span class="checkmark"> wi-fi </span> <br>
 		
-		<input type="checkbox" name="parking">
+		<input type="checkbox" id="parking">
 		<span class="checkmark"> parking </span> <br>
 		
-		<input type="checkbox" name="beach">
+		<input type="checkbox" id="beach">
 		<span class="checkmark"> near beach? </span> <br>
 		
-		<input type="checkbox" name="forest">
+		<input type="checkbox" id="forest">
 		<span class="checkmark"> near forest? </span> <br>
 		
 		<div class="text-box">
 			<i class="fas fa-info"></i>
-			<input type="text" placeholder="other facilities?" name="facility" value="">
+			<input type="text" placeholder="other facilities?" id="facility" value="">
 		</div>	
-	
-		<form action="js/addHotel.jsp" method="post" enctype="multipart/form-data"> <button> Submit </button> </form>	
+		<button id="save"> Save changes </button> 
+		<form action="Uploader" method="post" enctype="multipart/form-data"> 
+			<div class="file-box">
+				<i class="fas fa-camera"></i>
+				<input type="file" placeholder="Upload Image" name="image" value="">
+			</div>
+		<button id="next"> Next </button> </form>	
 	</div>
 	
 </body>
