@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Describe Rooms Below</title>
-<link rel="stylesheet" href="css/CreatePostCss.css">
+<link rel="stylesheet" href="css/CreatePost.css">
 <script src="https://kit.fontawesome.com/13f325d0c5.js"></script>
 </head>
 <body>

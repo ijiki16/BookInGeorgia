@@ -2,6 +2,8 @@ package Tests;
 
 import static org.junit.Assert.*;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.junit.Before;
@@ -35,9 +37,8 @@ public class HotelManagerTests {
 	public void testHotel() {
 		List<Hotel> hotels = HM.getHotels(id1);
 		assertEquals(hotels.size(), 0);
-		HM.addHotel("Tiflisi", 5, "none", "old tbilisi", "+995 ...", id1);
-		hotels = HM.getHotels(id1);
-		Hotel h = hotels.get(0);
+		Integer hotel_id = HM.addHotel("Tiflisi", 5, "none", "old tbilisi", "+995 ...", id1);
+		Hotel h = HM.getHotel(hotel_id);
 		
 		assertEquals(h.getName(), "Tiflisi");
 		assertEquals((int)h.getRating(), 5);
@@ -103,9 +104,8 @@ public class HotelManagerTests {
 	@Test
 	@Order(2)
 	public void testFacility() {
-		HM.addHotel("Radison", 5, "iveria", "reworked", "+995 ...", id1);
-		List<Hotel> hotels = HM.getHotels(id1);
-		Hotel h = hotels.get(0);
+		Integer hotel_id = HM.addHotel("Radison", 5, "iveria", "reworked", "+995 ...", id1);
+		Hotel h = HM.getHotel(hotel_id);
 		HM.addFacilities(h.getId(), "swimmingpool on top", true, true, false, false);
 		h = HM.getHotel(h.getId());
 		Facilities facil = h.getFacilities();
@@ -134,9 +134,8 @@ public class HotelManagerTests {
 	@Test
 	@Order(3)
 	public void testLocation() {
-		HM.addHotel("Radison blue", 5, "blue iveria", "reworked", "+995 ...", id1);
-		List<Hotel> hotels = HM.getHotels(id1);
-		Hotel h = hotels.get(0);
+		Integer hotel_id = HM.addHotel("Radison blue", 5, "blue iveria", "reworked", "+995 ...", id1);
+		Hotel h = HM.getHotel(hotel_id);
 		HM.addLocation(h.getId(), "tbilisi", "rustaveli str.");
 		h = HM.getHotel(h.getId());
 		Location l = h.getLocation();
@@ -157,23 +156,21 @@ public class HotelManagerTests {
 	
 	@Test
 	@Order(4)
-	public void testRoom() {
-		
-	}
-	
-	@Test
-	@Order(4)
 	public void testSelectMethods() {
-		HM.addHotel("Radison", 5, "iveria", "reworked", "+995 ...", id1);
-		HM.addHotel("Tiflisi", 4, "none", "old tbilisi", "+995 ...", id2);
-		HM.addHotel("Tiflisi TM", 3, "none", "tbilisi", "+995 ...", id2);
+		Integer hotel_id1 = HM.addHotel("Radison", 5, "iveria", "reworked", "+995 ...", id1);
+		Integer hotel_id2 = HM.addHotel("Tiflisi", 4, "none", "old tbilisi", "+995 ...", id2);
+		Integer hotel_id3 = HM.addHotel("Tiflisi TM", 3, "none", "tbilisi", "+995 ...", id2);
 		
 		List<Hotel> hotels = HM.getHotels(id1);
-		HM.addLocation(hotels.get(0).getId(), "batumi", "d.agmashenebeli 76");
-		HM.addFacilities(hotels.get(0).getId(), "swimmingpool on top", false, false, false, false);
+		assertEquals(hotel_id1, hotels.get(0).getId());
+		HM.addLocation(hotel_id1, "batumi", "d.agmashenebeli 76");
+		HM.addFacilities(hotel_id1, "swimmingpool on top", false, false, false, false);
 		hotels = HM.getHotels(id2);
 		HM.addLocation(hotels.get(0).getId(), "tbilisi", "sanapiro 77");
 		HM.addLocation(hotels.get(1).getId(), "tbilisi", "sanapiro 74");
+		assertEquals(HM.getHotel(hotel_id1).getLocation().getHotelId(), hotel_id1);
+		assertEquals(hotel_id2, hotels.get(0).getId());
+		assertEquals(hotel_id3, hotels.get(1).getId());
 		HM.addFacilities(hotels.get(0).getId(), "swimmingpool on top", true, true, true, true);
 		HM.addFacilities(hotels.get(1).getId(), "swimmingpool on top", true, true, true, true);
 		
@@ -185,9 +182,13 @@ public class HotelManagerTests {
 		boolean ratings[] = {false, false, true, true, true};
 		List<Integer> filter = HM.getFilteredHotels(ratings, false, false, false, false);
 		assertEquals(filter.size(), 3);
+		filter = HM.getFilteredHotels(ratings, true, true, true, true);
+		assertEquals(filter.size(), 2);
 		ratings[2] = false;
 		filter = HM.getFilteredHotels(ratings, false, true, false, false);
-		assertEquals(filter.size(), 1);
+		assertEquals(filter.size(), 1); 
+		filter = HM.getFilteredHotels(ratings, false, false, false, false);
+		assertEquals(filter.size(), 2);
 		
 		List<Integer> search = HM.getSearchedHotels(null, null);
 		assertEquals(search.size(), 3);
@@ -197,6 +198,7 @@ public class HotelManagerTests {
 		assertEquals(search.size(), 1);
 		search = HM.getSearchedHotels(null, "Tiflisi TM");
 		assertEquals(search.size(), 1);
+		
 
 		HM.deleteHotel(HM.getHotels(id1).get(0).getId());
 		HM.deleteHotel(HM.getHotels(id2).get(0).getId());

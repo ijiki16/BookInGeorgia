@@ -31,7 +31,6 @@
 						<a class="menu-but" href="#" style="display:none"> <% out.print( acc != null ? acc.getUsername(): "");%> 
 						<i class="arrow down"></i></a>
 						<div class="menu">
-						  <a href="Posts.jsp">Your Posts</a>
 						  <a href="Profile.jsp">Edit Profile</a>
 						  <a href="#" id="log-out">Log out</a>
 						</div>
@@ -47,7 +46,7 @@
 			      <a class="nav-link" href="#" id="posts">Your Posts</a>
 			    </li>
 			    <li class="nav-item active">
-			      <a class="nav-link" href="CreatePost.html" id="add">Add Post</a>
+			      <a class="nav-link" href="CreatePost.jsp" id="add">Add Post</a>
 			    </li>
 			    <li class="nav-item active">
 			      <a class="nav-link" href="#">About us</a>
