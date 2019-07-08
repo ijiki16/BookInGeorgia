@@ -90,6 +90,18 @@ $(document).ready(function(){
 		});		
 	});
 	
+	$("#search").click(function(){
+		$.post('./js/search.jsp',
+				{
+					option: $("exampleFormControlSelect1").val(),
+					hotel_name : $("exampleFormControlSelect1").val()
+				},
+				function(response){
+					location.reload(true);
+				}	
+		);
+	});
+	
 	$('.filter-btn').click(function(){
 		alert($("#1st").is(':checked'));
 		$.post('./js/filter.jsp', 

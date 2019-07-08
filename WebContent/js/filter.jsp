@@ -11,5 +11,5 @@
 	boolean forest = request.getParameter("forest").equals("true") ? true : false;
 	HotelManager hm = HotelManager.getInstance();
 	List<Integer> l = hm.getFilteredHotels(mass, beach, forest, wifi, parking);
-	request.getSession().setAttribute("filter", l);
+	request.getSession().setAttribute("searched", l);
  %>

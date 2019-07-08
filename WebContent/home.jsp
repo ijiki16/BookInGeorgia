@@ -38,6 +38,7 @@
 									<div class="col-lg-3 col-md-3 col-sm-12 p-0">
 										<select class="form-control search-slt"
 											id="exampleFormControlSelect1">
+											<option>Select</option>
 											<%HotelManager hm = HotelManager.getInstance();
 											List<String> locations = hm.getAllLocations();
 												for(String loc : locations){%>
@@ -48,11 +49,11 @@
 									
 									<div class="col-lg-5 col-md-5 col-sm-12 p-0">
 										<input type="text" class="form-control search-slt"
-											placeholder="Enter Hotel Name">
+											placeholder="Enter Hotel Name" id="hotel-name">
 									</div>
 									
 									<div class="col-lg-4 col-md-4 col-sm-12 p-0">
-										<button type="button" class="btn btn-danger wrn-btn">Search</button>
+										<button type="button" class="btn btn-danger wrn-btn" id="search">Search</button>
 									</div>
 								</div>
 							</div>
@@ -96,7 +97,8 @@
 		
 		<div class="hotels">
 		<% 
-			List<Integer> IDs = hm.getSearchedHotels("", "");
+			List<Integer> IDs = (List<Integer>) request.getSession().getAttribute("searched");
+			if(IDs == null)	IDs = hm.getSearchedHotels(null, null);
 			for(Integer hotel_id : IDs){
 				Hotel hotel = hm.getHotel(hotel_id);
 				request.setAttribute("hotel_id", hotel_id);
