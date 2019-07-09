@@ -64,12 +64,12 @@ public class Uploader extends HttpServlet {
 	    			
 	    			continue;
 	    		}
-	    		File uploadDir = new File("C:\\Users\\alexp\\Desktop\\BookInGeorgia\\WebContent\\images");
-	    		if(!uploadDir.exists()) uploadDir.mkdir();
+	    		//File uploadDir = new File("C:\\Users\\alexp\\Desktop\\BookInGeorgia\\WebContent\\images");
+	    		//if(!uploadDir.exists()) uploadDir.mkdir();
 	    		
 	    		//File fl = File.createTempFile("img", ".png", uploadDir);
-	    		File fl = new File(uploadDir.getAbsolutePath()+File.separator+"debilo"+".png");
-	    		item.write(fl);
+	    		//File fl = new File(uploadDir.getAbsolutePath()+File.separator+"debilo"+".png");
+	    		//item.write(fl);
 	    		
 	    	}
 	    }catch (Exception e) {

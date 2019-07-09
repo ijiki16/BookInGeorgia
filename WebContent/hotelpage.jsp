@@ -1,4 +1,5 @@
- <%@page import="Models.Facilities"%>
+ <%@page import="Managers.RoomManager"%>
+<%@page import="Models.Facilities"%>
 <%@page import="java.util.*"%>
     <%@page import="DataBases.HotelsDB"%>
     <%@page import="Managers.HotelManager"%>
@@ -126,7 +127,9 @@
 		    <th>Available from - to</th>
 		    <th>Book</th>
 		  </tr>
-		  <% List<Room> l = hm.getRooms(id);
+		  <% 
+		  	RoomManager rm = RoomManager.getInstance();
+		  	List<Room> l = rm.getRooms(id);
 		  	 for(int i = 0; i < l.size(); i++){
 		  		Room temp = l.get(i);
 		  		request.setAttribute("bed", temp.getNumberOfBeds());

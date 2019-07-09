@@ -43,22 +43,17 @@ public class RoomDBTests {
 		acM.createAccount("iuri", "jikidze", "ijiki16@freeuni.edu.ge", "ijiki16", "1234iuri", "1998-12-30");
 		user1 = acM.getAccount("ijiki16@freeuni.edu.ge");
 		//
-		htM  = HotelManager.getInstance();
-		int user1Id  = Integer.parseInt(user1.getId());
-		//htM.addHotel("Wyaltubo", 3, "", "Holet Wyaltubo 24/7", "599909990", user1Id);
-		//htM.addHotel("Tbilisi", 4, "", "Holet Tbilisi 24/7", "597777777", user1Id);
-		List<Hotel> myHotels = htM.getHotels(user1Id);
-		hotel1 = myHotels.get(0);
-		hotel2 = myHotels.get(1);
-		if(hotel1.getName().equals("Wyaltubo")){
-			htM.addLocation(hotel1.getId(), "Wyaltubo", "safichxia 6");
-			htM.addLocation(hotel2.getId(), "Tbilisi", "agmasheneblis 15");
-		}else {
-			htM.addLocation(hotel1.getId(), "Tbilisi", "agmasheneblis 15");
-			htM.addLocation(hotel2.getId(), "Wyaltubo", "safichxia 6");
-		}
-		
-		//hotl1 =  new Hotel(name, rating, img, status, number, account_id, hotel_id);
+		htM = HotelManager.getInstance();
+		int user1Id = Integer.parseInt(user1.getId());
+		int htId1 = htM.addHotel("Wyaltubo", 3, "", "Holet Wyaltubo 24/7", "599909990", user1Id);
+		int htId2 = htM.addHotel("Tbilisi", 4, "", "Holet Tbilisi 24/7", "597777777", user1Id);
+
+		hotel1 = htM.getHotel(htId1);
+		hotel2 = htM.getHotel(htId2);
+		htM.addLocation(hotel1.getId(), "Wyaltubo", "safichxia 6");
+		htM.addLocation(hotel2.getId(), "Tbilisi", "agmasheneblis 15");
+
+		// hotl1 = new Hotel(name, rating, img, status, number, account_id, hotel_id);
 		//
 		date1 = new Date();
 		date2 = new Date(1999, 31, 12);

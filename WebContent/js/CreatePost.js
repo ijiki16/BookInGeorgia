@@ -1,7 +1,7 @@
 /**
  * 
  */
-$(document).ready(function(){
+$(document).ready(function() {
 	$('#save').click(function() {
 		let name = $('#name').val();
 		let stars = $('#stars').val();
@@ -15,8 +15,7 @@ $(document).ready(function(){
 		let beach = $('#beach').val();
 		let forest = $('#forest').val();
 		let facility = $('#facility').val();
-		$.post('./js/addHotel.jsp', 
-				{
+		$.post('./js/addHotel.jsp', {
 			name : name,
 			stars : stars,
 			status : status,
@@ -29,10 +28,22 @@ $(document).ready(function(){
 			beach : beach,
 			forest : forest,
 			facility : facility
-				}, 
-				function(response) {
-					$('#next').css({"display":"block"});
+		}, function(response) {
+			$('#next').css({
+				"display" : "block"
+			});
 		});
+	});
+	
+	$('#chooseFile').bind('change', function() {
+		var filename = $("#chooseFile").val();
+		if (/^\s*$/.test(filename)) {
+			$(".image-upload").removeClass('active');
+			$("#noFile").text("No file chosen...");
+		} else {
+			$(".image-upload").addClass('active');
+			$("#noFile").text(filename.replace("C:\\fakepath\\", ""));
+		}
 	});
 
 });
