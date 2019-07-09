@@ -32,7 +32,7 @@ $(document).ready(function(){
 		let _user = $('#user').val();
 		let _password = $('#password').val();
 		alert("edit");
-		$.post('http://localhost:8080/BookInGeorgia/EditProfile', 
+		$.post('EditProfile', 
 				{
 					firstname: _firstname,
 					lastname: _lastname,

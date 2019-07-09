@@ -3,7 +3,7 @@
  */
 
 $(document).ready(function(){
-	$.post('http://localhost:8080/BookInGeorgia/Session', 
+	$.post('Session', 
 			{
 				todo: "login",
 			}, 
@@ -23,7 +23,7 @@ $(document).ready(function(){
 	});
 	
 	$('#log-out').click(function(){
-		$.post('http://localhost:8080/BookInGeorgia/Session', 
+		$.post('Session', 
 				{
 					todo: "logout",
 				}, 
@@ -69,7 +69,7 @@ $(document).ready(function(){
 		let _password = $('.password').val();
 		$('.user').val("");
 		$('.password').val("");
-		$.post('http://localhost:8080/BookInGeorgia/Login', 
+		$.post('Login', 
 				{
 					user: _user,
 					password: _password
@@ -105,7 +105,7 @@ $(document).ready(function(){
 	
 	$('.filter-btn').click(function(){
 		alert($("#1st").is(':checked'));
-		$.post('http://localhost:8080/BookInGeorgia/Filter', 
+		$.post('Filter', 
 				{
 					s1: $("#1st").is(':checked'),
 					s2: $("#2st").is(':checked'),
