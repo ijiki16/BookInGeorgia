@@ -18,6 +18,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script src="js/home.js" type="text/javascript"></script>
 <script src="js/register.js" type="text/javascript"></script>
+<script src="js/addHotel.js" type="text/javascript"></script>
 </head>
 <body>
 	<jsp:include page="Header.jsp"/>
@@ -82,7 +83,7 @@
 			<input type="text" placeholder="other facilities?" name="facility" value="">
 		</div>	
 	
-		<form action="js/addHotel.jsp" method="post" enctype="multipart/form-data"> <button> Submit </button> </form>	
+		<form action="addH otel.jsp" method="post" enctype="multipart/form-data"> <button> Next </button> </form>	
 	</div>
 	
 </body>

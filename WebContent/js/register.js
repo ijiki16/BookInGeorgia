@@ -36,7 +36,7 @@ $(document).ready(function(){
         }
 		
 		if(_password == _rpassword){
-			$.post('./js/registering.jsp', 
+			$.post('http://localhost:8080/BookInGeorgia/Register', 
 					{
 						firstname: _firstname,
 						lastname: _lastname,

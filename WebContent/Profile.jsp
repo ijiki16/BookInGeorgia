@@ -1,7 +1,10 @@
+<%@page import="Managers.HotelManager"%>
+<%@page import="java.util.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@page import="Managers.AccountManager"%>
     <%@page import="Models.Account"%>
+    <%@page import="Models.Hotel"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,18 +20,50 @@
 </head>
 <body>
 	<jsp:include page="Header.jsp"/>
-	<div class="edit-box">
-		<h2> Edit Account Info </h2>
-		<%AccountManager manager = AccountManager.getInstance();
+	<%AccountManager manager = AccountManager.getInstance();
 		String mail = (String) request.getSession().getAttribute("user");
 		Account user = manager.getAccount(mail); %>
-		<span> Edit Firstname </span> <input class="edit" type="text" value="<%=user.getFirstName()%>"  id="firstname" required="required">
-		<span> Edit Lastname </span> <input class="edit" type="text" value="<%=user.getLastName()%>" id="lastname" required="required">
-		<span> Edit Mail </span> <input class="edit" type="text" value="<%=user.getEmail()%>" id="email" required="required">
-		<span> Edit username </span> <input class="edit" type="text" value="<%=user.getUsername()%>"  id="user" required="required">
-		<span> Show password </span> <i class="fas fa-eye" id="show-password"></i> 
-			<input class="edit" type="password" placeholder="new password?" required="required" id="password">
-		<button id="save"> Save Changes</button>
+		
+	<div class="prof"> 
+		<img class="prof-img" src="images/profile.jpg">
+		<h3> <%=user.getFirstName()%> </h3>
+	</div>
+	
+	<div class="edit">
+		<input id="edit-prof" type="button" name="" value="Edit Profile">
+		<input id="edit-post" type="button" name="" value="Edit Posts">
+		<input id="edit-resrv" type="button" name="" value="Edit Reservation">
+	</div>	
+	
+	<div class="prof-box">
+		<h2> Edit Account Info </h2>
+		<span> Edit Firstname </span> <br> <input type="text" value="<%=user.getFirstName()%>"  id="firstname" required="required">
+		<br><span> Edit Lastname </span> <br> <input type="text" value="<%=user.getLastName()%>" id="lastname" required="required">
+		<br><span> Edit Mail </span> <br> <input type="text" value="<%=user.getEmail()%>" id="email" required="required">
+		<br><span> Edit username </span> <br> <input type="text" value="<%=user.getUsername()%>"  id="user" required="required">
+		<br><span> Show password </span> <br>  
+			<input class="edit-pass" type="password" placeholder="new password?" required="required" id="password"> <i class="fas fa-eye" id="show-password"></i>
+		<button id="save-prof"> Save Changes</button>
+	</div>
+	
+	<% HotelManager hm = HotelManager.getInstance();
+	List<Hotel> hotels = hm.getHotels(Integer.parseInt(user.getId()));%>
+	
+	<%for(Hotel hotel : hotels){ %>
+	
+	<%}%>	
+	<div class="post-edit">
+		<%if(request.getParameter("hotel_id") != null){ %>
+			<%Hotel hotel = hm.getHotel(Integer.parseInt(request.getParameter("hotel_id")));%>
+			
+			<h2> Edit Hotel Info </h2>
+			<span> Edit Firstname </span> <br> <input type="text" value="<%=hotel.getName()%>"  id="hotelname" required="required">
+			<span> Edit Rating </span> <br> <input type="text" value="<%=hotel.getRating()%>"  id="hotelrating" required="required">
+			<span> Edit Status </span> <br> <input type="text" value="<%=hotel.getStatus()%>"  id="hotelstatus" required="required">
+			<span> Edit Phone Number </span> <br> <input type="text" value="<%=hotel.getNumber()%>"  id="hotelnumber" required="required">
+			<span> Edit City </span> <br> <input type="text" value="<%=hotel.getLocation().getCity()%>"  id="city" required="required">
+			<span> Edit Address </span> <br> <input type="text" value="<%=hotel.getLocation().getAddress()%>"  id="address" required="required">
+		<%}%>
 	</div>
 </body>
 </html>
