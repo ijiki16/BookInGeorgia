@@ -6,6 +6,7 @@ public class Room {
 	private int RoomId, pricePerDay;
 	private int hottelId, numberOfBeds;
 	private Date startDate, endDate;
+	private String img;
 	/// roomsInfo
 	private boolean wifi, tv, hotWater, airConditioning;
 
@@ -40,12 +41,13 @@ public class Room {
 	 * @param has/hasn't hot water
 	 * @param has/hasn't air conditioning
 	 */
-	public Room(int id, Date sDate, Date eData, int pricePerDay, int hotlId, int numberOfBeds, boolean wifi, boolean tv,
+	public Room(int id, Date sDate, Date eData, int pricePerDay, String img, int hotlId, int numberOfBeds, boolean wifi, boolean tv,
 			boolean hotWater, boolean airConditioning) {
 		this.RoomId = id;
 		this.hottelId = hotlId;
 		startDate = sDate;
 		endDate = eData;
+		this.img = img;
 		this.pricePerDay = pricePerDay;
 		this.numberOfBeds = numberOfBeds;
 		// info
@@ -99,6 +101,10 @@ public class Room {
 	 */
 	public int getHottelId() {
 		return hottelId;
+	}
+	
+	public String getImage() {
+		return img;
 	}
 	
 	/**
@@ -214,6 +220,10 @@ public class Room {
 	 */
 	public void setWifi(boolean hasWifi) {
 		this.wifi = hasWifi;
+	}
+	
+	public void setImage(String img) {
+		this.img = img;
 	}
 
 	/**

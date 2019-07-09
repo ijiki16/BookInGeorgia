@@ -10,11 +10,11 @@ $(document).ready(function() {
 		let city = $('#city').val();
 		let street = $('#street').val();
 		let image = $('#image').val();
-		let wifi = $('#wi-fi').is(':checked');
-		let parking = $('#parking').is(':checked');
-		let beach = $('#beach').is(':checked');
-		let forest = $('#forest').is(':checked');
-		let facility = $('#facility').is(':checked');
+		let wifi = $('#wi-fi').val();
+		let parking = $('#parking').val();
+		let beach = $('#beach').val();
+		let forest = $('#forest').val();
+		let facility = $('#facility').val();
 		$.post('./js/addHotel.jsp', {
 			name : name,
 			stars : stars,

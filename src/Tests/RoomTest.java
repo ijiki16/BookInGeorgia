@@ -32,12 +32,12 @@ public class RoomTest {
 		date4 = new Date(2018, 12, 8);
 		// without ID
 		room1 = new Room();
-		room2 = new Room(1, date1, date1, 200, 1, 2, false, false, false, false);
-		room3 = new Room(1, date1, date1, 200, 1, 2, false, false, false, false);
-		room4 = new Room(2, date1, date1, 100, 1, 6, true, false, false, false);
-		room5 = new Room(3, date1, date2, 250, 1, 3, true, false, true, false);
-		room6 = new Room(4, date2, date3, 600, 2, 5, true, true, false, true);
-		room7 = new Room(5, date1, date3, 525, 1, 4, true, true, true, true);
+		room2 = new Room(1, date1, date1, 200, "", 1, 2, false, false, false, false);
+		room3 = new Room(1, date1, date1, 200, "", 1, 2, false, false, false, false);
+		room4 = new Room(2, date1, date1, 100, "", 1, 6, true, false, false, false);
+		room5 = new Room(3, date1, date2, 250, "", 1, 3, true, false, true, false);
+		room6 = new Room(4, date2, date3, 600, "", 2, 5, true, true, false, true);
+		room7 = new Room(5, date1, date3, 525, "", 1, 4, true, true, true, true);
 
 	}
 
@@ -150,15 +150,15 @@ public class RoomTest {
 		assertFalse(room7.equals(room6));
 		//
 		assertFalse(room6.equals(new Object()));
-		assertFalse(room2.equals(new Room(1, date1, date1, 200, 2, 2, false, false, false, false)));
-		assertFalse(room2.equals(new Room(1, date1, date1, 300, 1, 2, false, false, false, false)));
-		assertFalse(room2.equals(new Room(1, date2, date1, 200, 1, 2, false, false, false, false)));
-		assertFalse(room2.equals(new Room(1, date1, date2, 200, 1, 2, false, false, false, false)));
-		assertFalse(room2.equals(new Room(1, date1, date1, 200, 1, 3, false, false, false, false)));
-		assertFalse(room2.equals(new Room(1, date1, date1, 200, 1, 2, true, false, false, false)));
-		assertFalse(room2.equals(new Room(1, date1, date1, 200, 1, 2, false, true, false, false)));
-		assertFalse(room2.equals(new Room(1, date1, date1, 200, 1, 2, false, false, true, false)));
-		assertFalse(room2.equals(new Room(1, date1, date1, 200, 1, 2, false, false, false, true)));
+		assertFalse(room2.equals(new Room(1, date1, date1, 200, "", 2, 2, false, false, false, false)));
+		assertFalse(room2.equals(new Room(1, date1, date1, 300, "", 1, 2, false, false, false, false)));
+		assertFalse(room2.equals(new Room(1, date2, date1, 200, "", 1, 2, false, false, false, false)));
+		assertFalse(room2.equals(new Room(1, date1, date2, 200, "", 1, 2, false, false, false, false)));
+		assertFalse(room2.equals(new Room(1, date1, date1, 200, "", 1, 3, false, false, false, false)));
+		assertFalse(room2.equals(new Room(1, date1, date1, 200, "", 1, 2, true, false, false, false)));
+		assertFalse(room2.equals(new Room(1, date1, date1, 200, "", 1, 2, false, true, false, false)));
+		assertFalse(room2.equals(new Room(1, date1, date1, 200, "", 1, 2, false, false, true, false)));
+		assertFalse(room2.equals(new Room(1, date1, date1, 200, "", 1, 2, false, false, false, true)));
 	}
 	
 	@Test

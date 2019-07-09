@@ -89,6 +89,7 @@
 					<input type="file" name="chooseFile" id="chooseFile">
 				</div>
 			</div>
+			<input type="hidden" name="hotel" value="1">
 			<button id="next" class="myButton">Next</button>
 		</form>
 	</div>

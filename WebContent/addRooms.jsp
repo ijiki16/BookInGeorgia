@@ -12,7 +12,7 @@
 	<div class="post-facility">
 		<h1> Add Room Facilities </h1>
 
-		<input type="checkbox">
+		<input type="checkbox" id="tv">
 		<span class="checkmark"> tv </span> <br>
 		
 		<input type="checkbox">
@@ -56,9 +56,16 @@
 			<input type="file" placeholder="Upload Image" name="image" value="">
 		</div>
 		
-		<form action="createPost" method="post" enctype="multipart/form-data"> 
-		<button id="save"> Save changes </button> 
-		<button id="next"> Next </button> </form>	
+		<form action="Uploader" method="post" enctype="multipart/form-data">
+			<div class="image-upload">
+				<div class="file-select">
+					<div class="file-select-button" id="fileName">Choose File</div>
+					<div class="file-select-name" id="noFile">No file chosen...</div>
+					<input type="file" name="chooseFile" id="chooseFile">
+				</div>
+			</div>
+			<button id="next" class="myButton">Next</button>
+		</form>
 	</div>
 	
 </body>

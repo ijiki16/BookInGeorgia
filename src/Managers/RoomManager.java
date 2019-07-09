@@ -32,17 +32,17 @@ public class RoomManager {
 	/**
 	 * @inserts Room into Hotel.
 	 */
-	public void addRoom(Date sDate, Date eData, Integer pricePerDay, Integer hotlId, Integer numberOfBeds, boolean wifi, boolean tv,
+	public void addRoom(Date sDate, Date eData, Integer pricePerDay,  String img,  Integer hotlId, Integer numberOfBeds, boolean wifi, boolean tv,
 			boolean hotWater, boolean airConditioning) {
-		rdb.addRoom(sDate, eData, pricePerDay, hotlId, numberOfBeds, wifi, tv, hotWater, airConditioning);
+		rdb.addRoom(sDate, eData, pricePerDay, img, hotlId, numberOfBeds, wifi, tv, hotWater, airConditioning);
 	}
 	
 	/**
 	 * @updates Room in Data Base.
 	 */
-	public void updateRoom(Integer room_id, Date sDate, Date eData, Integer pricePerDay, Integer hotlId, Integer numberOfBeds, boolean wifi, boolean tv,
+	public void updateRoom(Integer room_id, Date sDate, Date eData,  String img, Integer pricePerDay, Integer hotlId, Integer numberOfBeds, boolean wifi, boolean tv,
 			boolean hotWater, boolean airConditioning) {
-		rdb.updateRoom(room_id, sDate, eData, pricePerDay, hotlId, numberOfBeds, wifi, tv, hotWater, airConditioning);
+		rdb.updateRoom(room_id, sDate, eData, pricePerDay, img, hotlId, numberOfBeds, wifi, tv, hotWater, airConditioning);
 	}
 	
 	/**
@@ -80,19 +80,4 @@ public class RoomManager {
 	public boolean unbookRoom(Integer hotel_id, Integer room_id, Integer account_id, Date sDate, Date eDate) {
 		return rdb.unbookRoom(room_id, sDate, eDate, account_id);
 	}
-	
-	/**
-	 * @adds reservation
-	 */
-	public void addReservation(String from, String to, Integer room_id, Integer account_id) {
-		rdb.addReservation(from, to, room_id, account_id);
-	}
-	
-	/**
-	 * @deletes reservation
-	 */
-	public void deleteReservation(Integer reserved_id) {
-		rdb.deleteReservation(reserved_id);
-	}
-	
 }
