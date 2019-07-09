@@ -1,5 +1,5 @@
 <div class="hotel">
-		<figure class="image"><a href="hotelpage.jsp?id=<%=request.getAttribute("hotel_id")%>"> <img src="<%=request.getAttribute("img") %>"> </a> </figure>
+		<figure class="image"><a href="hotelpage.jsp?id=<%=request.getAttribute("hotel_id")%>"> <img id="img" src="<%=request.getAttribute("img") %>"> </a> </figure>
 			<div class="hotel-info">
 				<div class="name">
 					<h5><a href="hotelpage.jsp?id=<%=request.getAttribute("hotel_id")%>"> <%=request.getAttribute("name")%></a></h5>

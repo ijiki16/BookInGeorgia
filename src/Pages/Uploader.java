@@ -53,7 +53,7 @@ public class Uploader extends HttpServlet {
 	    try {
 	    	List<FileItem> items = upload.parseRequest(request);
 
-    		File uploadDir = new File("C:\\Users\\alexp\\Desktop\\BookInGeorgia\\WebContent\\images");
+    		File uploadDir = new File("C:\\Users\\alexp\\Desktop\\Project\\BookInGeorgia\\WebContent\\images");
     		if(!uploadDir.exists()) uploadDir.mkdir();
     		//File fl = File.createTempFile("img", ".png", uploadDir);
     		String file = uploadDir.getAbsolutePath() + File.separator;

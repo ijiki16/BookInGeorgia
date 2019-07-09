@@ -29,6 +29,9 @@ $(document).ready(function() {
 			forest : forest,
 			facility : facility
 		}, function(response) {
+			$('#save').css({
+				"display" : "none"
+			});
 			$('#next').css({
 				"display" : "block"
 			});
