@@ -9,6 +9,7 @@
 <script src="https://kit.fontawesome.com/13f325d0c5.js"></script>
 </head>
 <body>
+	<jsp:include page="Header.jsp"/>
 	<div class="post-facility">
 		<h1> Add Room Facilities </h1>
 

@@ -5,7 +5,6 @@ String lastName = (String)request.getParameter("lastname");
 String email = (String)request.getParameter("email");
 String username = (String)request.getParameter("user");
 String password = (String)request.getParameter("password");
-System.out.println(firstName + "#" + lastName + "#" + email + "#" + username + "#" + password + "#");
 
 AccountManager manager = AccountManager.getInstance();
 String user = (String) request.getSession().getAttribute("user");

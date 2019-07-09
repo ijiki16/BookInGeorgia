@@ -18,7 +18,7 @@
 					<div> <i class="fa fa-<%= (boolean)request.getAttribute("woodfront") == true ? "check-circle" : "ban"%>"></i><h6>Near Forest</h6></div>
 				</div>
 				<div class="text">
-					<p><a href="view.jsp?id=<%=request.getAttribute("hotel_id")%>"> <%=request.getAttribute("status") %></a></p>
+					<p><a href="hotelpage.jsp?id=<%=request.getAttribute("hotel_id")%>"> <%=request.getAttribute("status") %></a></p>
 				</div>
 			</div>
 					

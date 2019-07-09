@@ -1,31 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Login Form</title>
-<link rel="stylesheet" href="LoginDesign.css">
-<script src="https://kit.fontawesome.com/13f325d0c5.js"></script>
-</head>
-<body>
-	<div class="login-box">
-		<h1> Login </h1>
-		<h3 id="log-fail"> Wrong User or Password </h3>
-		<div class="text-box">
-			<i class="fas fa-user"></i>
-			<input type="text" placeholder="Username" name="" value="">
+<div class="log-in"> 
+		<div class="login-box">
+			<i class="fas fa-times-circle" id="close"></i>
+			
+			<h1 class="log-fail"> Login </h1>
+			<div class="text-box">
+				<i class="fas fa-user"></i>
+				<input type="text" placeholder="Username" class="user">
+			</div>
+			
+			<div class="text-box">
+				<i class="fas fa-lock"></i>
+				<input type="password" placeholder="Password" class="password" > <i class="fas fa-eye" id="show-password"></i>
+			</div>
+			
+			<input class="log-btn" type="button" name="" value="Sign in"> 
+				
+			<a class="go-to-reg" href="Register.html"> Register </a> <br>
 		</div>
-		
-		<div class="text-box">
-			<i class="fas fa-lock"></i>
-			<input type="password" placeholder="Password" name="" value="">
-		</div>
-		
-		<input class="butt" type="button" name="" value="Sign in"> 
-		
-		<a href = "CreateAccount"> Register </a> <br>
 	</div>
 	
-
-	
-</body>
-</html>

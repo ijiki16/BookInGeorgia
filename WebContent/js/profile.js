@@ -3,14 +3,36 @@
  */
 
 $(document).ready(function(){
-	$('#save').click(function(){
+
+	$('#edit-prof').click(function(){
+		$('.prof-box').css({"display": "block"});
+		$('.resrv-box').css({"display": "none"});
+		$('.post-box').css({"display": "none"});
+	});
+
+	$('#edit-post').click(function(){
+		$('.prof-box').css({"display": "none"});
+		$('.resrv-box').css({"display": "none"});
+		$('.post-box').css({"display": "block"});
+		
+		
+	});
+
+	$('#edit-resrv').click(function(){
+		$('.prof-box').css({"display": "none"});
+		$('.resrv-box').css({"display": "none"});
+		$('.post-box').css({"display": "block"});
+	});
+	
+	
+	$('#save-prof').click(function(){
 		let _firstname = $('#firstname').val();
 		let _lastname = $('#lastname').val();
 		let _email = $('#email').val();
 		let _user = $('#user').val();
 		let _password = $('#password').val();
 		alert("edit");
-		$.post('./js/editprofile.jsp', 
+		$.post('http://localhost:8080/BookInGeorgia/EditProfile', 
 				{
 					firstname: _firstname,
 					lastname: _lastname,
@@ -19,7 +41,8 @@ $(document).ready(function(){
 					password: _password,
 				}, 
 				function(response) {
-					window.location.href = 'home.jsp';
+					alert(response);
+					$('.prof-box').css({"display": "none"});
 				});
 	});
 	
