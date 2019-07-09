@@ -12,5 +12,5 @@
 	boolean forest = request.getParameter("forest").equals("true") ? true : false;
 	hm.addLocation(hotel_id, request.getParameter("city"), request.getParameter("street"));
 	hm.addFacilities(hotel_id, request.getParameter("facility"), wifi, parking, beach, forest);
-	request.setAttribute("hotel_id", hotel_id);
+	request.getSession().setAttribute("id", hotel_id);
 %>

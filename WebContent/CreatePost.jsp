@@ -81,7 +81,7 @@
 		</div>
 		<button id="save" class="myButton">Save changes</button>
 
-		<form action="Uploader" method="post" enctype="multipart/form-data">
+		<form action="Uploader?hotel=1" method="post" enctype="multipart/form-data">
 			<div class="image-upload">
 				<div class="file-select">
 					<div class="file-select-button" id="fileName">Choose File</div>
@@ -89,7 +89,6 @@
 					<input type="file" name="chooseFile" id="chooseFile">
 				</div>
 			</div>
-			<input type="hidden" name="hotel" value="1">
 			<button id="next" class="myButton">Next</button>
 		</form>
 	</div>
