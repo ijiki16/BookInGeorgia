@@ -16,6 +16,9 @@ import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import Managers.AccountManager;
+import Managers.HotelManager;
+
 /**
  * Servlet implementation class Uploader
  */
@@ -44,36 +47,35 @@ public class Uploader extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		
 		if(!ServletFileUpload.isMultipartContent(request)) {
-			out.println("No File To Upload");
+			
 			return;
 		}
 		
 		FileItemFactory itemFactory = new DiskFileItemFactory();
 	    ServletFileUpload upload = new ServletFileUpload(itemFactory);
-	    
 	    try {
 	    	List<FileItem> items = upload.parseRequest(request);
+	    	System.out.println(items.size());
 	    	for(FileItem item: items) {
 	    		String fileType = item.getContentType();
 	    		
 	    		if(!fileType.equals("image/png")) {
-	    			out.println("only png files!!!");
+	    			
 	    			continue;
 	    		}
-	    		
-	    		File uploadDir = new File("C:\\Users\\iurik\\Downloads");
-	    		if(!uploadDir.exists()) uploadDir.mkdir();
+	    		//File uploadDir = new File("C:\\Users\\alexp\\Desktop\\BookInGeorgia\\WebContent\\images");
+	    		//if(!uploadDir.exists()) uploadDir.mkdir();
 	    		
 	    		//File fl = File.createTempFile("img", ".png", uploadDir);
-	    		File fl = new File(uploadDir.getAbsolutePath()+File.separator+"debilo"+".png");
-	    		item.write(fl);
-	    		out.println("File has Uploaded");
+	    		//File fl = new File(uploadDir.getAbsolutePath()+File.separator+"debilo"+".png");
+	    		//item.write(fl);
+	    		
 	    	}
 	    }catch (Exception e) {
 	    	e.printStackTrace();
 		}
+	    request.getRequestDispatcher("addRooms.jsp").forward(request, response);
 	}
 
 }
