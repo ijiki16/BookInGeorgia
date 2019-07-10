@@ -18,6 +18,22 @@
     height: 140px;
 }
 
+.img {
+	overflow: hidden;
+	width: 13%;
+    height: 140px;
+}
+
+.posts {
+	color: white;
+	position: absolute;
+	left: 40%;
+	top: 30%;
+	width: 50%;
+	height: fit-content;
+	float: left;
+}
+
 .hotel-info {
 	float: left;
     width: 75%;
