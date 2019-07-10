@@ -8,16 +8,14 @@ import DataBases.RoomsDB;
 import Models.Room;
 
 public class RoomManager {
-	
+
 	private static RoomManager rm;
-	private HotelsDB hdb;
 	private RoomsDB rdb;
-	
+
 	private RoomManager() {
-		hdb = HotelsDB.getInstance();
 		rdb = RoomsDB.getInstance();
 	}
-	
+
 	public static RoomManager getInstance() {
 		if (rm == null) {
 			synchronized (RoomManager.class) {
@@ -28,56 +26,62 @@ public class RoomManager {
 		}
 		return rm;
 	}
-	
+
 	/**
 	 * @inserts Room into Hotel.
 	 */
-	public void addRoom(Date sDate, Date eData, Integer pricePerDay,  String img,  Integer hotlId, Integer numberOfBeds, boolean wifi, boolean tv,
-			boolean hotWater, boolean airConditioning) {
-		rdb.addRoom(sDate, eData, pricePerDay, img, hotlId, numberOfBeds, wifi, tv, hotWater, airConditioning);
+	public Integer addRoom(Date sDate, Date eData, Integer pricePerDay, String img, Integer hotlId,
+			Integer numberOfBeds, boolean wifi, boolean tv, boolean hotWater, boolean airConditioning) {
+		if (!sDate.before(eData) || pricePerDay < 0 || hotlId < 1 || numberOfBeds < 0)
+			return -1;
+		return rdb.addRoom(sDate, eData, pricePerDay, img, hotlId, numberOfBeds, wifi, tv, hotWater, airConditioning);
 	}
-	
+
 	/**
 	 * @updates Room in Data Base.
 	 */
-	public void updateRoom(Integer room_id, Date sDate, Date eData,  String img, Integer pricePerDay, Integer hotlId, Integer numberOfBeds, boolean wifi, boolean tv,
-			boolean hotWater, boolean airConditioning) {
-		rdb.updateRoom(room_id, sDate, eData, pricePerDay, img, hotlId, numberOfBeds, wifi, tv, hotWater, airConditioning);
+	public boolean updateRoom(Integer room_id, Date sDate, Date eData,  Integer pricePerDay, String img, Integer hotlId,
+			Integer numberOfBeds, boolean wifi, boolean tv, boolean hotWater, boolean airConditioning) {
+		if (room_id < 1 || !sDate.before(eData) || pricePerDay < 0 || hotlId < 1 || numberOfBeds < 0) return false;
+		return rdb.updateRoom(room_id, sDate, eData, pricePerDay, img, hotlId, numberOfBeds, wifi, tv, hotWater,
+				airConditioning);
 	}
-	
+
 	/**
 	 * @deletes Room from Data Base.
 	 */
-	public void deleteRoom(Integer room_id) {
-		rdb.deleteRoom(room_id);
+	public boolean deleteRoom(Integer room_id) {
+		if(room_id<0) return false;
+		return rdb.deleteRoom(room_id);
 	}
-	
+
 	/**
 	 * @return Room by room_id.
 	 */
 	public Room getRoom(Integer room_id) {
 		return rdb.getRoom(room_id);
 	}
-	
+
 	/**
 	 * @returns Hotels rooms from data base as a list.
 	 */
 	public List<Room> getRooms(Integer hotel_id) {
 		return rdb.getRoomByHottel(hotel_id);
 	}
-	
+
 	/**
 	 * @returns if room booked.
 	 */
-	public boolean bookRoom(Integer hotel_id, Integer room_id, Integer account_id, Date sDate, Date eDate) {
+	public boolean bookRoom(Integer room_id, Integer account_id, Date sDate, Date eDate) {
+		if(room_id < 1 || !sDate.before(eDate) || account_id<0) return false;
 		return rdb.bookRoom(room_id, sDate, eDate, account_id);
 	}
-	
 
 	/**
 	 * @returns if room unbooked.
 	 */
-	public boolean unbookRoom(Integer hotel_id, Integer room_id, Integer account_id, Date sDate, Date eDate) {
+	public boolean unbookRoom(Integer room_id, Integer account_id, Date sDate, Date eDate) {
+		if(room_id < 1 || !sDate.before(eDate) || account_id<0) return false;
 		return rdb.unbookRoom(room_id, sDate, eDate, account_id);
 	}
 }

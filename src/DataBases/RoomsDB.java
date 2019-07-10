@@ -60,7 +60,7 @@ public class RoomsDB {
 	 * @param isHotWater
 	 * @param isAirConditiong
 	 */
-	public int addRoom(java.util.Date startDate, java.util.Date endData, Integer pricePerDay,  String img,Integer hottelId, Integer numberOfBeds, 
+	public Integer addRoom(java.util.Date startDate, java.util.Date endData, Integer pricePerDay,  String img,Integer hottelId, Integer numberOfBeds, 
 					boolean wifi, boolean tv, boolean hotWater, boolean airConditioning) {
 		try {
 			Statement stmt = ConnDB.createStatement();
@@ -99,15 +99,6 @@ public class RoomsDB {
 			return -1;
 		}
 	}
-	
-	/**
-	 * Adds a row into the database table with given parameters
-	 * @param newRoom
-	 */
-	public int addRoom(Room newRoom) {
-		return addRoom(newRoom.getStartDate(), newRoom.getEndDate(), newRoom.getPricePerDay(), newRoom.getImage(), newRoom.getHottelId(), 
-				newRoom.getNumberOfBeds(), newRoom.isWifi(), newRoom.isTv(), newRoom.isHotWater(), newRoom.isAirConditioning());
-	}
 	/**
 	 * Adds a row into the database table with given parameters
 	 * @param room ID
@@ -136,8 +127,8 @@ public class RoomsDB {
 			quer.setInt(3, pricePerDay);
 			quer.setInt(4, numberOfBeds);
 			quer.setInt(5, hotelId);
-			quer.setInt(6, room_id);
-			quer.setString(7, img);
+			quer.setString(6, img);
+			quer.setInt(7, room_id);
 			quer.executeUpdate();
 			//insert room info
 			String ins3 = "update roominfo set wifi = ?, tv = ?, hot_water = ?, air_conditioning = ? where room_id = ?;";
