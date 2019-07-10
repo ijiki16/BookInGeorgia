@@ -79,11 +79,11 @@ public class RoomManagerTests {
 		}
 		//Room
 		roomM = RoomManager.getInstance();
-		room1 = roomM.getRoom(roomM.addRoom(date4, date3, 150, "nelazviadi.png", htId2, 2, false, false, false, false));
+		int rm1Id = roomM.addRoom(date4, date3, 150, "nelazviadi.png", htId2, 2, false, false, false, false);
+		room1 = roomM.getRoom(rm1Id);
 	}
 
 	@Test
-	@Order(1)
 	public void test1() {
 		List<Room> ht1Rms = roomM.getRooms(hotel1.getId());
 		List<Room> ht2Rms = roomM.getRooms(hotel2.getId());
@@ -131,6 +131,9 @@ public class RoomManagerTests {
 		//delete
 		assertFalse(roomM.deleteRoom(-1));
 		assertTrue(roomM.deleteRoom(room1.getRoomId()));
-		//room2 =  roomM.getRoom(roomM.addRoom(date4, date3, 150, "nelazviadi.png", hotel1.getId(), 2, false, true, false, true));
+		htM.deleteHotel(hotel1.getId());
+		htM.deleteHotel(hotel2.getId());
 	}
+	
+
 }

@@ -66,7 +66,7 @@ public class RoomsDB {
 			Statement stmt = ConnDB.createStatement();
 			//insert room
 			String ins = "insert into rooms(reserved_start, reserved_end, price_per_day, number_of_beds, hotel_id, img) values (?, ?, ?, ?, ?, ?);";
-			PreparedStatement quer = ConnDB.prepareStatement(ins, stmt.RETURN_GENERATED_KEYS);
+			PreparedStatement quer = ConnDB.prepareStatement(ins);
 			//
 			java.sql.Date stD = new Date(startDate.getTime());
 			quer.setDate(1,  stD);
@@ -157,14 +157,14 @@ public class RoomsDB {
 			quer1.executeUpdate();
 			//delete from roominfo
 			String del2 = "delete from roominfo where room_id = ?";
-			PreparedStatement quer2 = ConnDB.prepareStatement(del1);
-			quer1.setInt(1, roomId);
-			quer1.executeUpdate();
-			//delete from rooms
-			String del3 = "delete from rooms where room_id = ?";
-			PreparedStatement quer3 = ConnDB.prepareStatement(del2);
+			PreparedStatement quer2 = ConnDB.prepareStatement(del2);
 			quer2.setInt(1, roomId);
 			quer2.executeUpdate();
+			//delete from rooms
+			String del3 = "delete from rooms where room_id = ?";
+			PreparedStatement quer3 = ConnDB.prepareStatement(del3);
+			quer3.setInt(1, roomId);
+			quer3.executeUpdate();
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
