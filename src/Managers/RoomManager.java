@@ -74,6 +74,15 @@ public class RoomManager {
 	 */
 	public boolean bookRoom(Integer room_id, Integer account_id, Date sDate, Date eDate) {
 		if(room_id < 1 || !sDate.before(eDate) || account_id<0) return false;
+		Room curRoom = getRoom(room_id);
+		if(!(eDate.before(curRoom.getEndDate()) && curRoom.getStartDate().before(sDate))) return false;
+		List<List<java.util.Date> > ress = rdb.getRoomReservations(room_id);
+		for(int i=0; i<ress.size(); i++) {
+			Date dt1 = ress.get(i).get(0);
+			Date dt2 = ress.get(i).get(1);
+			if(sDate.before(dt2) && !sDate.before(dt1)) return false;
+			if(eDate.before(dt2) && !eDate.before(dt1)) return false;
+		}
 		return rdb.bookRoom(room_id, sDate, eDate, account_id);
 	}
 

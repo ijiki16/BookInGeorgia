@@ -37,6 +37,7 @@ public class RoomManagerTests {
 	private Date date5;
 	private Date date6;
 	private Date date7;
+	private Date date8;
 	//
 	private Room room1;
 	private Room room2;
@@ -72,6 +73,7 @@ public class RoomManagerTests {
 			date5 = dateFormat.parse("2009-01-08");	
 			date6 = dateFormat.parse("2011-10-01");	
 			date7 = dateFormat.parse("2011-10-10");	
+			date8 = dateFormat.parse("2019-06-10");	
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -92,6 +94,8 @@ public class RoomManagerTests {
 		assertEquals(-1, roomM.addRoom(date4, date3, -10, "nelazviadi.png", hotel1.getId(), 2, false, false, false, false));
 		assertEquals(-1, roomM.addRoom(date4, date3, 150, "nelazviadi.png", -1, 2, false, false, false, false));
 		assertEquals(-1, roomM.addRoom(date4, date3, 150, "nelazviadi.png", 0, 2, false, false, false, false));
+		//get
+		assertNull(roomM.getRoom(222222222)); //big int
 		//upadate
 		assertEquals(-1, roomM.addRoom(date4, date3, 150, "nelazviadi.png", hotel1.getId(), -1, false, false, false, false));
 		assertFalse(roomM.updateRoom(-1, date4, date3, 150, "nelazviadi.png", hotel1.getId(), 2, false, false, false, false));
@@ -101,16 +105,29 @@ public class RoomManagerTests {
 		assertFalse(roomM.updateRoom(room1.getRoomId(), date4, date3, 150, "nelazviadi.png", 0, 2, false, false, false, false));
 		assertFalse(roomM.updateRoom(room1.getRoomId(), date4, date3, 150, "nelazviadi.png", hotel1.getId(), -1, false, false, false, false));
 		assertTrue(roomM.updateRoom(room1.getRoomId(), date4, date3, 150, "nelazviadi.png", hotel1.getId(), 10, true, true, false, false));
-		//book
+		//book1
 		assertFalse(roomM.bookRoom(-1, Integer.parseInt(user1.getId()), date6, date7));
 		assertFalse(roomM.bookRoom(room1.getRoomId(), -1, date6, date7));
 		assertFalse(roomM.bookRoom(room1.getRoomId(), Integer.parseInt(user1.getId()), date7, date6));
+
 		assertTrue(roomM.bookRoom(room1.getRoomId(), Integer.parseInt(user1.getId()), date6, date7));
-		//unbook
+		assertTrue(roomM.bookRoom(room1.getRoomId(), Integer.parseInt(user1.getId()), date4, date5));
+		assertFalse(roomM.bookRoom(room1.getRoomId(), Integer.parseInt(user1.getId()), date5, date6));
+		assertFalse(roomM.bookRoom(room1.getRoomId(), Integer.parseInt(user1.getId()), date5, date6));
+		//unbook1
 		assertFalse(roomM.unbookRoom(-1, Integer.parseInt(user1.getId()), date6, date7));
 		assertFalse(roomM.unbookRoom(room1.getRoomId(), -1, date6, date7));
 		assertFalse(roomM.unbookRoom(room1.getRoomId(), Integer.parseInt(user1.getId()), date7, date6));
+		
 		assertTrue(roomM.unbookRoom(room1.getRoomId(), Integer.parseInt(user1.getId()), date6, date7));
+		assertTrue(roomM.unbookRoom(room1.getRoomId(), Integer.parseInt(user1.getId()), date4, date5));
+		//book2
+		assertFalse(roomM.bookRoom(room1.getRoomId(), Integer.parseInt(user1.getId()), date5, date8));
+		assertFalse(roomM.bookRoom(room1.getRoomId(), Integer.parseInt(user1.getId()), date2, date5));
+		assertTrue(roomM.bookRoom(room1.getRoomId(), Integer.parseInt(user1.getId()), date5, date7));
+		assertFalse(roomM.bookRoom(room1.getRoomId(), Integer.parseInt(user1.getId()), date6, date4));
+		//unbook2
+		assertTrue(roomM.unbookRoom(room1.getRoomId(), Integer.parseInt(user1.getId()), date5, date7));
 		//delete
 		assertFalse(roomM.deleteRoom(-1));
 		assertTrue(roomM.deleteRoom(room1.getRoomId()));

@@ -145,26 +145,24 @@ public class RoomsDB {
 			return false;
 		}
 	}
-	/**
-	 * Adds a row into the database table with given parameters
-	 * @param newRoom
-	 */
-	public boolean updateRoom (Room newRoom) {
-		return updateRoom(newRoom.getRoomId(), newRoom.getStartDate(), newRoom.getEndDate(), newRoom.getPricePerDay(), newRoom.getImage(), 
-				newRoom.getHottelId(), newRoom.getNumberOfBeds(), newRoom.isWifi(), newRoom.isTv(), newRoom.isHotWater(), newRoom.isAirConditioning());
-	}
+
 	
 	public boolean deleteRoom(int roomId) {
 		try {
 			Statement stmt = ConnDB.createStatement();
-			//delete from roominfo
-			String del1 = "delete from roominfo where room_id = ?";
+			//delete from resrvatons
+			String del1 = "delete from reservation where room_id = ?";
 			PreparedStatement quer1 = ConnDB.prepareStatement(del1);
 			quer1.setInt(1, roomId);
 			quer1.executeUpdate();
+			//delete from roominfo
+			String del2 = "delete from roominfo where room_id = ?";
+			PreparedStatement quer2 = ConnDB.prepareStatement(del1);
+			quer1.setInt(1, roomId);
+			quer1.executeUpdate();
 			//delete from rooms
-			String del2 = "delete from rooms where room_id = ?";
-			PreparedStatement quer2 = ConnDB.prepareStatement(del2);
+			String del3 = "delete from rooms where room_id = ?";
+			PreparedStatement quer3 = ConnDB.prepareStatement(del2);
 			quer2.setInt(1, roomId);
 			quer2.executeUpdate();
 			return true;
