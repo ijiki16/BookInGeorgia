@@ -134,6 +134,4 @@ public class RoomManagerTests {
 		htM.deleteHotel(hotel1.getId());
 		htM.deleteHotel(hotel2.getId());
 	}
-	
-
 }
