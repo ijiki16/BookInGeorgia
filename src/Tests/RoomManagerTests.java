@@ -63,6 +63,8 @@ public class RoomManagerTests {
 		hotel2 = htM.getHotel(htId2);
 		htM.addLocation(hotel1.getId(), "Wyaltubo", "safichxia 6");
 		htM.addLocation(hotel2.getId(), "Tbilisi", "agmasheneblis 15");
+		htM.addFacilities(hotel1.getId(), "", true, true, false, true);
+		htM.addFacilities(hotel2.getId(), "", true, true, false, false);
 		//Date
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		date1 = new Date();
