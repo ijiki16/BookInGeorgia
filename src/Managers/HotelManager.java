@@ -3,6 +3,8 @@ package Managers;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import DataBases.HotelsDB;
 import DataBases.RoomsDB;
@@ -144,4 +146,14 @@ public class HotelManager {
 		return db.getSearchedHotels(city, name);
 	}
 	
+	public List<Integer> sortByRating(boolean desc){
+		return db.sortByRating(desc);
+	}
+	
+	/**
+	 * @returns Hotels list according to search and filter items.
+	 */
+	public List<Integer> intersectLists(List<Integer> list1, List<Integer> list2) {
+		return list1.stream().distinct().filter(list2::contains).collect(Collectors.toList());
+	}
 }

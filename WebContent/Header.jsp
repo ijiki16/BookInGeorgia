@@ -1,6 +1,6 @@
 <%@page import="Models.Account"%>
 <%@page import="Managers.AccountManager"%>
-<link rel="stylesheet" href="css/Header.css">
+<link rel="stylesheet" href="css/Header.css">	
 <link rel="stylesheet" type="text/css" href="css/flaticon.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -21,7 +21,7 @@
 				<div class="user-panel">
 					<div id="log-and-reg">
 					<i class="flaticon-profile" style="color: white; margin-right: 15px; "></i>
-					 <a class="reg" href="Register.html" id="lr-btn">Register</a>  <a class="log" href="#" id="lr-btn"> Login </a>
+					<a class="log" href="#" id="lr-btn"> Login </a> <a class="reg" href="Register.html" id="lr-btn">Register</a>
 					</div>			
 					<div class="logged">
 						<%
@@ -41,7 +41,7 @@
 			<nav class="navbar navbar-expand-sm bg-light navbar-light">
 			  <ul class="navbar-nav">
 			    <li class="nav-item active">
-			      <a class="nav-link" href="#">Home</a>
+			      <a class="nav-link" href="home.jsp">Home</a>
 			    </li>
 			    <li class="nav-item active">
 			      <a class="nav-link" href="#" id="posts">Your Posts</a>
@@ -50,10 +50,10 @@
 			      <a class="nav-link" href="CreatePost.jsp" id="add">Add Post</a>
 			    </li>
 			    <li class="nav-item active">
-			      <a class="nav-link" href="#">About us</a>
+			      <a class="nav-link" href="AboutUs.jsp">About us</a>
 			    </li>
 			    <li class="nav-item active">
-			      <a class="nav-link" href="#">Contact us</a>
+			      <a class="nav-link" href="ContactUs.jsp">Contact us</a>
 			    </li>
 			  </ul>
 			</nav>
