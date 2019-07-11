@@ -68,6 +68,7 @@
 			<span> Edit Phone Number: </span> <br> <input type="text" value="<%=hotel.getNumber()%>"  id="hotelnumber" required="required"> <br>
 			<span> Edit City: </span> <br> <input type="text" value="<%=hotel.getLocation().getCity()%>"  id="city" required="required"> <br>
 			<span> Edit Address: </span> <br> <input type="text" value="<%=hotel.getLocation().getAddress()%>"  id="address" required="required"> <br>
+			<input type="hidden" id="hotel_id" value=<%=request.getParameter("hotel_id") %>>
 			<button class="save" id="save-post"> Save Changes </button>
 		<%}%>
 	</div>

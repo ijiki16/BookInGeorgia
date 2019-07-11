@@ -311,6 +311,7 @@ a {
 	background-color: rgba(0,0,0,0.5);
 	font-size: 18px;
 	font-style: oblique;
+	z-index: 777;
 }
 
 .moto a:link{

@@ -23,7 +23,7 @@
 		
 		<div>
 			<h3>If you are interested to post ADS</h3> 
-			<h3><i class="fas fa-at"></i> <span>contact here: BookInGeorgiaManager@gmail.com </span> <br>
+			<i class="fas fa-at"></i> <span>contact here: BookInGeorgiaManager@gmail.com </span> <br>
 			<i class="fas fa-phone-volume"></i> <span>contact here: +995 903 131 238 </span> <br>
 		</div>
 		

@@ -52,7 +52,7 @@ $(document).ready(function(){
 		let _number = $('#hotelnumber').val();
 		let _city = $('#city').val();
 		let _address = $('#address').val();
-		alert("edit");
+		let _hotel_id = $('#hotel_id').val();
 		$.post('EditPost', 
 				{
 					name:_name,
@@ -61,9 +61,9 @@ $(document).ready(function(){
 					number:_number,
 					city:_city,
 					address:_address,
+					hotel_id: _hotel_id
 				}, 
 				function(response) {
-					alert(response);
 					$('.post-box').css({"display": "none"});
 				});
 	});
