@@ -63,10 +63,12 @@ public class Uploader extends HttpServlet {
 				uploadDir.mkdir();
 			// File fl = File.createTempFile("img", ".png", uploadDir);
 			String file = uploadDir.getAbsolutePath() + File.separator;
-			Integer id = (Integer) request.getSession().getAttribute("id");
+			Integer id;
 			if (request.getParameter("hotel") != null) {
+				id = (Integer) request.getSession().getAttribute("hotelId");
 				file += "hotel" + id + ".jpg";
 			} else {
+				id = (Integer) request.getSession().getAttribute("roomId");
 				file += "room" + id + ".jpg";
 			}
 			File fl = new File(file);

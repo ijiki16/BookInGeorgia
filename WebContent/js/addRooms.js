@@ -1,42 +1,40 @@
-/**
- * 
- */
+
 $(document).ready(function() {
-	$('#save').click(function() {
-		let name = $('#name').val();
-		let stars = $('#stars').val();
-		let status = $('#status').val();
-		let phone = $('#phone').val();
-		let city = $('#city').val();
-		let street = $('#street').val();
+
+	$('#save2').click(function() {
 		let image = $('#image').val();
-		let wifi = $('#wi-fi').val();
-		let parking = $('#parking').val();
-		let beach = $('#beach').val();
-		let forest = $('#forest').val();
-		let facility = $('#facility').val();
-		$.post('./js/addHotel.jsp', {
-			name : name,
-			stars : stars,
-			status : status,
-			phone : phone,
-			city : city,
-			street : street,
-			image : image,
-			wifi : wifi,
-			parking : parking,
-			beach : beach,
-			forest : forest,
-			facility : facility
+		let tv = $("#tv").is(':checked');
+		let wifi = $('#wifi').is(':checked');
+		let hotWater = $('#hotWater').is(':checked');
+		let airCo = $('#airCo').is(':checked');
+
+		let numBeds = $('#numBeds').val();
+		alert(numBeds);
+		let sDate = $('#sDate').val();
+		let eDate = $('#eDate').val();
+		let rPrice = $('#rPrice').val();
+		$.post('addRoom', {
+			tv2 : tv,
+			hotWater2 : hotWater,
+			airCo2 : airCo,
+			numBeds2 : numBeds,
+			sDate2 : sDate,
+			eDate2 : eDate,
+			image2 : image,
+			wifi2 : wifi,
+			rPrice2 : rPrice
 		}, function(response) {
-			$('#next').css({
+			$('#save2').css({
+				"display" : "none"
+			});
+			$('#next2').css({
 				"display" : "block"
 			});
 		});
 	});
 	
-	$('#chooseFile').bind('change', function() {
-		var filename = $("#chooseFile").val();
+	$('#chooseFile2').bind('change', function() {
+		var filename = $("#chooseFile2").val();
 		if (/^\s*$/.test(filename)) {
 			$(".image-upload").removeClass('active');
 			$("#noFile").text("No file chosen...");

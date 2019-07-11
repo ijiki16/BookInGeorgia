@@ -70,6 +70,9 @@ file {
 #next {
 	display: none;
 }
+#next2 {
+	display: none;
+}
 
 .check-box-container {
 	display: inline-block;
