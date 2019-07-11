@@ -1,9 +1,11 @@
 <tr>
+   <td><img src="<%=request.getAttribute("img") %>"></td>
    <td><%=request.getAttribute("bed") %></td>
-   <td class="facil"><div> <i class="fa fa-check-circle"></i><h6><%=request.getAttribute("wifi") %></h6></div>
-		<div> <i class="fa fa-ban" ></i><h6><%=request.getAttribute("tv") %></h6></div>
-		<div> <i class="fa fa-check-circle"></i><h6><%=request.getAttribute("hot-water") %></h6></div>
-		<div> <i class="fa fa-ban"></i><h6><%=request.getAttribute("air-cond") %></h6></div>
+   <td class="facil">
+   		<div> <i class="fa fa-<%= (boolean)request.getAttribute("wifi") == true ? "check-circle" : "ban"%>"></i><h6>Wi-Fi</h6></div>
+		<div> <i class="fa fa-<%= (boolean)request.getAttribute("tv") == true ? "check-circle" : "ban"%>" ></i><h6>TV</h6></div>
+		<div> <i class="fa fa-<%= (boolean)request.getAttribute("hot-water") == true ? "check-circle" : "ban"%>"></i><h6>Hot water</h6></div>
+		<div> <i class="fa fa-<%= (boolean)request.getAttribute("air-cond") == true ? "check-circle" : "ban"%>"></i><h6>Air condition</h6></div>
    </td>
    <td>
    		reserveeed

@@ -225,7 +225,7 @@ public class RoomsDB {
 		}
 	}
 	
-	public List<List<java.util.Date> > getRoomReservations(int roomId){
+	public List<List<java.util.Date>> getRoomReservations(int roomId){
 		List<List<java.util.Date>> reservations = new ArrayList<List<java.util.Date>>();
 		try {
 			Statement stmt = ConnDB.createStatement();

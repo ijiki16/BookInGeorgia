@@ -28,6 +28,13 @@ body {
 	color: white;
 }
 
+
+ a:link { 
+	float: right !important;	 
+    text-decoration: none; 
+    font-weight: bold;
+ } 
+
 .text-box{
 	width: 100%;
 	font-size: 18;
@@ -73,16 +80,16 @@ body {
     color: black;
 }
 
-a:visited {
+.login-box a:visited {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
-a:hover {
+.login-box a:hover {
     text-decoration: underline;
     color: black;
 }
 
-a:active {
+.login-box a:active {
     text-decoration: underline;
 }
