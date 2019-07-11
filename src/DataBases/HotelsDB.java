@@ -356,11 +356,11 @@ public class HotelsDB {
 	public Integer getMinPrice(Integer hotel_id) {
 		Integer min_price = 0;
 		try {
-			String query = "select min(price_per_day) from Hotels h join Rooms r on h.hotel_id = r.hotel_id where r.hotel_id = ?";
+			String query = "select min(price_per_day) as price from Hotels h join Rooms r on h.hotel_id = r.hotel_id where r.hotel_id = ?";
 			PreparedStatement stmt = con.prepareStatement(query);
 			stmt.setInt(1, hotel_id);
 			ResultSet rs = stmt.executeQuery();
-			if(rs.next()) min_price = rs.getInt("price_per_day");
+			if(rs.next()) min_price = rs.getInt("price");
 		}catch (SQLException e) { 
 			e.printStackTrace();
 		}
@@ -370,11 +370,11 @@ public class HotelsDB {
 	public Integer getMaxPrice(Integer hotel_id) {
 		Integer max_price = 0;
 		try {
-			String query = "select max(price_per_day) from Hotels h join Rooms r on h.hotel_id = r.hotel_id where r.hotel_id = ?";
+			String query = "select max(price_per_day) as price from Hotels h join Rooms r on h.hotel_id = r.hotel_id where r.hotel_id = ?";
 			PreparedStatement stmt = con.prepareStatement(query);
 			stmt.setInt(1, hotel_id);
 			ResultSet rs = stmt.executeQuery();
-			if(rs.next()) max_price = rs.getInt("price_per_day");
+			if(rs.next()) max_price = rs.getInt("price");
 		}catch (SQLException e) { 
 			e.printStackTrace();
 		}

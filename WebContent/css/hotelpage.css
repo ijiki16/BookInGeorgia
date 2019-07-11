@@ -6,7 +6,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 .image-info {
 	width: 100%;
-	height: 300px;
+	height: 500px;
 	background: rgba(26, 70, 104, 0.75);
 	margin-top: 5px;
 	padding-top: 5px;
@@ -37,7 +37,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 .status {
 	width: 100%;
-	height: 170px;
+	height: 370px;
 	border-bottom: 2px solid #7b0e0e;
 }
 
@@ -59,8 +59,19 @@ h1, h2, h3, h4, h5, h6, p {
 	align-items: center;
 }
 
-.facil {
-	width: 25%;
+.facile {
+	float: left;
+    width: 100%;
+    height: fit-content;
+    border-right: 1px solid #7b0e0e;
+    padding-top: 5px;
+}
+
+.facile h6 {
+	display: inline-block;
+	color: white;
+	margin-left: 5px;
+	margin-bottom: 0px;
 }
 
 .text {
@@ -77,6 +88,3 @@ th, td {
 	color: white;
 }
 
-.facil {
-	height: 105px;
-}

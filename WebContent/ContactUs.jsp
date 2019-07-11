@@ -16,7 +16,6 @@
 			<h3><i class="fas fa-at"></i> Here is Mail: BookInGeorgia@gmail.com </h3>
 		</div>
 		<div>
-		
 			<h3> Numbers of Administration heads: </h3> 
 			<i class="fas fa-phone-volume"></i> <span>Devi: +995 </span> <br>
 			<i class="fas fa-phone-volume"></i> <span>Sandro: +995 </span>	<br>
@@ -24,7 +23,7 @@
 		
 		<div>
 			<h3>If you are interested to post ADS</h3> 
-			<h3><i class="fas fa-at"></i> <span>contact here: BookInGeorgiaManager@gmail.com </span> <br>
+			<i class="fas fa-at"></i> <span>contact here: BookInGeorgiaManager@gmail.com </span> <br>
 			<i class="fas fa-phone-volume"></i> <span>contact here: +995 903 131 238 </span> <br>
 		</div>
 		
