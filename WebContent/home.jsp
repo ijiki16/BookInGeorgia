@@ -113,7 +113,7 @@
 				<jsp:include page="Post.jsp"/>
 			<%}%>
 		</div>
-		
+		<jsp:include page="AboutUs.jsp"/>
 		<div class="log-in"> 
 			<div class="login-box">
 				<i class="fas fa-times-circle" id="close"></i>

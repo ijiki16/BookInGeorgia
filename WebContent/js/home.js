@@ -37,6 +37,15 @@ $(document).ready(function(){
 				});
 	});
 	
+	$('#about').click(function(){
+			$('.hotels').css({
+				"display" : "none"
+			});
+			$('.about').css({
+				"display" : "block"
+			});
+	});
+	
 	$('.log').click(function() {
 		$('.moto').css({"visibility":"hidden"});
 		$('.log-in').css({"visibility":"visible"});

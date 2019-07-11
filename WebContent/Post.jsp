@@ -2,7 +2,7 @@
 <%@page import="Models.Hotel"%>
 <%@page import="Models.Facilities"%>
 <div class="hotel">
-		<%Integer hotel_id = Integer.parseInt((String)request.getAttribute("hotel_id"));
+		<%Integer hotel_id = (Integer)request.getAttribute("hotel_id");
 		Hotel hotel = HotelManager.getInstance().getHotel(hotel_id);
 		Facilities facil = hotel.getFacilities();
 		if(facil == null) facil = new Facilities(-1,"",false,false,false,false);

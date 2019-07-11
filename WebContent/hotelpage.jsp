@@ -34,6 +34,8 @@
 		    <% int id = Integer.parseInt(request.getParameter("id"));
 		    HotelManager hm = HotelManager.getInstance();
 		    Hotel h = hm.getHotel(id);
+		    RoomManager rm = RoomManager.getInstance();
+		    rm.addRoom(new Date(2000, 12,12), new Date(2001, 12,12), 50, "", 1, 2, true, true, true, true);
 		    %>
 			<figure class="img"> <img src="<%=h.getImage() %>"> </figure>
 			<div class="info">
@@ -92,7 +94,6 @@
 		    <th>Book</th>
 		  </tr>
 		  <% 
-		  	RoomManager rm = RoomManager.getInstance();
 		  	List<Room> l = rm.getRooms(id);
 		  	 for(int i = 0; i < l.size(); i++){
 		  		Room temp = l.get(i);
