@@ -1,1 +1,14 @@
 @charset "ISO-8859-1";
+input {
+	width: 200px;
+}
+
+button {
+	width: 50%;
+	color: white;
+	background-color: #7b0e0e;
+	border: 2px solid white;
+	margin-left: 20%;
+	
+	margin-top: 5px;
+}
