@@ -50,6 +50,8 @@ $(document).ready(function(){
 	$('#close').click(function() {
 		$('.log-in').css({"visibility":"hidden"});
 		$('.homepage').css({"visibility":"hidden"});
+		$('.user').val("");
+		$('.password').val("");
 	});
 	
 	$('.go-to-reg').click(function() {
@@ -61,10 +63,10 @@ $(document).ready(function(){
 	$('#show-password').click(function(){
 		if($('.password').attr("type") == 'text'){
 			$('.password')[0].type = 'password';
-			$('#show-password')[0].className = "fas fa-eye";
+			$('#show-password')[0].className = "fas fa-eye-slash";
 		}else{
 			$('.password')[0].type = 'text';
-			$('#show-password')[0].className = "fas fa-eye-slash";
+			$('#show-password')[0].className = "fas fa-eye";
 		}
 	});
 	

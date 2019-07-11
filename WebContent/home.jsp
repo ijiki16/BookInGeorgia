@@ -109,18 +109,6 @@
 			for(Integer hotel_id : IDs){
 				Hotel hotel = hm.getHotel(hotel_id);
 				request.setAttribute("hotel_id", hotel_id);
-				request.setAttribute("name", hotel.getName());
-				request.setAttribute("rating", hotel.getRating());
-				request.setAttribute("status", hotel.getStatus());
-				request.setAttribute("img", hotel.getImage());
-				request.setAttribute("number", hotel.getNumber());
-				if(hotel.getFacilities() != null){
-					request.setAttribute("facility", hotel.getFacilities().getFacility());
-					request.setAttribute("wifi", hotel.getFacilities().getWiFi());
-					request.setAttribute("parking", hotel.getFacilities().getParking());
-					request.setAttribute("beachfront", hotel.getFacilities().getBeachfront());
-					request.setAttribute("woodfront", hotel.getFacilities().getWoodfront());	
-				}
 			%>
 				<jsp:include page="Post.jsp"/>
 			<%}%>
@@ -138,7 +126,7 @@
 				
 				<div class="text-box">
 					<i class="fas fa-lock"></i>
-					<input type="password" placeholder="Password" class="password" > <i class="fas fa-eye" id="show-password"></i>
+					<input type="password" placeholder="Password" class="password" > <i class="fas fa-eye-slash" id="show-password"></i>
 				</div>
 				
 				<input class="log-btn" type="button" name="" value="Sign in"> 

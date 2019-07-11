@@ -139,6 +139,20 @@ public class HotelManager {
 	}
 	
 	/**
+	 * @returns Hotel's cheapest room.
+	 */
+	public Integer getMinPrice(Integer hotel_id) {
+		return db.getMinPrice(hotel_id);
+	}
+	
+	/**
+	 * @returns Hotel's most expensive room.
+	 */
+	public Integer getMaxPrice(Integer hotel_id) {
+		return db.getMaxPrice(hotel_id);
+	}
+	
+	/**
 	 * @returns Hotels list according to search items.
 	 */
 	public List<Integer> getSearchedHotels(String city, String name){

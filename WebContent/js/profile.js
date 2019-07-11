@@ -49,10 +49,10 @@ $(document).ready(function(){
 	$('#show-password').click(function(){
 		if($('#password').attr("type") == 'text'){
 			$('#password')[0].type = 'password';
-			$('#show-password')[0].className = "fas fa-eye";
+			$('#show-password')[0].className = "fas fa-eye-slash";
 		}else{
 			$('#password')[0].type = 'text';
-			$('#show-password')[0].className = "fas fa-eye-slash";
+			$('#show-password')[0].className = "fas fa-eye";
 		}
 	});
 });

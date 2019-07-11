@@ -51,8 +51,8 @@ public class HotelsDB {
 	}
 
 	public List<Integer> getAllHotelIDs(){
+		List<Integer> hotel_ids = new ArrayList<Integer>();
 		try {
-			List<Integer> hotel_ids = new ArrayList<Integer>();
 			String query = "select hotel_id from Hotels;";
 			PreparedStatement stmt = con.prepareStatement(query);
 			ResultSet rs = stmt.executeQuery(query);
@@ -63,7 +63,7 @@ public class HotelsDB {
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return hotel_ids;
 	}
 	
 	public Hotel getHotel(Integer hotel_id) {
@@ -351,6 +351,34 @@ public class HotelsDB {
 			e.printStackTrace();
 		}
 		return sorted;
+	}
+
+	public Integer getMinPrice(Integer hotel_id) {
+		Integer min_price = 0;
+		try {
+			String query = "select min(price_per_day) from Hotels h join Rooms r on h.hotel_id = r.hotel_id where r.hotel_id = ?";
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setInt(1, hotel_id);
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()) min_price = rs.getInt("price_per_day");
+		}catch (SQLException e) { 
+			e.printStackTrace();
+		}
+		return min_price;
+	}
+
+	public Integer getMaxPrice(Integer hotel_id) {
+		Integer max_price = 0;
+		try {
+			String query = "select max(price_per_day) from Hotels h join Rooms r on h.hotel_id = r.hotel_id where r.hotel_id = ?";
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setInt(1, hotel_id);
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()) max_price = rs.getInt("price_per_day");
+		}catch (SQLException e) { 
+			e.printStackTrace();
+		}
+		return max_price;
 	}
 
 }
