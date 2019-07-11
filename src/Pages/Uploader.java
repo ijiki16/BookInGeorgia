@@ -47,13 +47,13 @@ public class Uploader extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(!ServletFileUpload.isMultipartContent(request)) return;
-		
+
 		FileItemFactory itemFactory = new DiskFileItemFactory();
 	    ServletFileUpload upload = new ServletFileUpload(itemFactory);
 	    try {
 	    	List<FileItem> items = upload.parseRequest(request);
 
-    		File uploadDir = new File("C:\\Users\\alexp\\Desktop\\BookInGeorgia\\WebContent\\images");
+    		File uploadDir = new File(this.getServletContext().getRealPath(File.separator)+"\\images");
     		if(!uploadDir.exists()) uploadDir.mkdir();
     		//File fl = File.createTempFile("img", ".png", uploadDir);
     		String file = uploadDir.getAbsolutePath() + File.separator;
@@ -64,6 +64,7 @@ public class Uploader extends HttpServlet {
     			file += "room" + id + ".jpg";
     		}
     		File fl = new File(file);
+    		System.out.println(fl.getName());
     		items.get(0).write(fl);
     		if(request.getParameter("hotel") != null) {
     			HotelManager hm = HotelManager.getInstance();

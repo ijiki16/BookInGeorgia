@@ -45,14 +45,16 @@
 			<input class="edit-pass" type="password" placeholder="new password?" required="required" id="password"> <i class="fas fa-eye" id="show-password"></i>
 		<button id="save-prof"> Save Changes</button>
 	</div>
-	
-	<% HotelManager hm = HotelManager.getInstance();
-	List<Hotel> hotels = hm.getHotels(Integer.parseInt(user.getId()));%>
-	
-	<%for(Hotel hotel : hotels){ %>
-	
-	<%}%>	
-	<div class="post-edit">
+	<div class="posts">
+		<% HotelManager hm = HotelManager.getInstance();
+		List<Hotel> hotels = hm.getHotels(Integer.parseInt(user.getId()));%>
+		
+		<%for(Hotel hotel : hotels){ %>
+			<a href="Profile.jsp?hotel_id=<%=hotel.getId()%>"><%=hotel.getName() %></a><br>
+		<%}%>
+	</div>
+		
+	<div class="post-box">
 		<%if(request.getParameter("hotel_id") != null){ %>
 			<%Hotel hotel = hm.getHotel(Integer.parseInt(request.getParameter("hotel_id")));%>
 			

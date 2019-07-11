@@ -17,6 +17,7 @@ public class Room {
 		RoomId = - 1;
 		pricePerDay = 0;
 		hottelId = -1;
+		img = "";
 		startDate = null;
 		endDate = null;
 		numberOfBeds = 0;
@@ -79,6 +80,7 @@ public class Room {
 		if(!this.endDate.equals(second.endDate))return false;
 		if(this.pricePerDay != second.pricePerDay) return false;
 		if(this.numberOfBeds != second.numberOfBeds)return false;
+		if(!this.img.equals(second.img)) return false;
 		if(this.wifi != second.wifi) return false;
 		if(this.tv != second.tv) return false;
 		if(this.hotWater != second.hotWater) return false;

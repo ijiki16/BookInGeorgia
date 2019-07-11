@@ -4,6 +4,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,17 +28,22 @@ public class RoomTest {
 
 	@Before
 	public void Create() {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		date1 = new Date();
-		date2 = new Date(1998, 12, 30);
-		date3 = new Date(2008, 8, 8);
-		date4 = new Date(2018, 12, 8);
+		try {
+			date2 = dateFormat.parse("1998-12-30");
+			date3 = dateFormat.parse("2008-08-08");
+			date4 = dateFormat.parse("2018-04-12");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		// without ID
 		room1 = new Room();
-		room2 = new Room(1, date1, date1, 200, "", 1, 2, false, false, false, false);
-		room3 = new Room(1, date1, date1, 200, "", 1, 2, false, false, false, false);
-		room4 = new Room(2, date1, date1, 100, "", 1, 6, true, false, false, false);
-		room5 = new Room(3, date1, date2, 250, "", 1, 3, true, false, true, false);
-		room6 = new Room(4, date2, date3, 600, "", 2, 5, true, true, false, true);
+		room2 = new Room(1, date1, date1, 200, "aba.jpg", 1, 2, false, false, false, false);
+		room3 = new Room(1, date1, date1, 200, "aba.jpg", 1, 2, false, false, false, false);
+		room4 = new Room(2, date1, date1, 100, "room4.png", 1, 6, true, false, false, false);
+		room5 = new Room(3, date1, date2, 250, "room5.jpg", 1, 3, true, false, true, false);
+		room6 = new Room(4, date2, date3, 600, "room6.img", 2, 5, true, true, false, true);
 		room7 = new Room(5, date1, date3, 525, "", 1, 4, true, true, true, true);
 
 	}
@@ -50,6 +57,7 @@ public class RoomTest {
 		assertEquals(null, room1.getStartDate());
 		assertEquals(null, room1.getEndDate());
 		assertEquals(0, room1.getPricePerDay());
+		assertEquals("", room1.getImage());
 		assertFalse(room1.isWifi());
 		assertFalse(room1.isTv());
 		assertFalse(room1.isHotWater());
@@ -60,6 +68,7 @@ public class RoomTest {
 		assertEquals(2, room2.getNumberOfBeds());
 		assertEquals(date1, room2.getStartDate());
 		assertEquals(date1, room2.getEndDate());
+		assertEquals("aba.jpg", room2.getImage());
 		assertFalse(room2.isWifi());
 		assertFalse(room2.isTv());
 		assertFalse(room2.isHotWater());
@@ -70,6 +79,7 @@ public class RoomTest {
 		assertEquals(2, room3.getNumberOfBeds());
 		assertEquals(date1, room3.getStartDate());
 		assertEquals(date1, room3.getEndDate());
+		assertEquals("aba.jpg", room3.getImage());
 		assertFalse(room3.isWifi());
 		assertFalse(room3.isTv());
 		assertFalse(room3.isHotWater());
@@ -80,6 +90,7 @@ public class RoomTest {
 		assertEquals(6, room4.getNumberOfBeds());
 		assertEquals(date1, room4.getStartDate());
 		assertEquals(date1, room4.getEndDate());
+		assertEquals("room4.png", room4.getImage());
 		assertTrue(room4.isWifi());
 		assertFalse(room4.isTv());
 		assertFalse(room4.isHotWater());
@@ -90,6 +101,7 @@ public class RoomTest {
 		assertEquals(3, room5.getNumberOfBeds());
 		assertEquals(date1, room5.getStartDate());
 		assertEquals(date2, room5.getEndDate());
+		assertEquals("room5.jpg", room5.getImage());
 		assertTrue(room5.isWifi());
 		assertFalse(room5.isTv());
 		assertTrue(room5.isHotWater());
@@ -100,6 +112,7 @@ public class RoomTest {
 		assertEquals(5, room6.getNumberOfBeds());
 		assertEquals(date2, room6.getStartDate());
 		assertEquals(date3, room6.getEndDate());
+		assertEquals("room6.img", room6.getImage());
 		assertTrue(room6.isWifi());
 		assertTrue(room6.isTv());
 		assertFalse(room6.isHotWater());
@@ -110,6 +123,7 @@ public class RoomTest {
 		assertEquals(4, room7.getNumberOfBeds());
 		assertEquals(date1, room7.getStartDate());
 		assertEquals(date3, room7.getEndDate());
+		assertEquals("", room7.getImage());
 		assertTrue(room7.isWifi());
 		assertTrue(room7.isTv());
 		assertTrue(room7.isHotWater());
@@ -150,17 +164,19 @@ public class RoomTest {
 		assertFalse(room7.equals(room6));
 		//
 		assertFalse(room6.equals(new Object()));
-		assertFalse(room2.equals(new Room(1, date1, date1, 200, "", 2, 2, false, false, false, false)));
-		assertFalse(room2.equals(new Room(1, date1, date1, 300, "", 1, 2, false, false, false, false)));
-		assertFalse(room2.equals(new Room(1, date2, date1, 200, "", 1, 2, false, false, false, false)));
-		assertFalse(room2.equals(new Room(1, date1, date2, 200, "", 1, 2, false, false, false, false)));
-		assertFalse(room2.equals(new Room(1, date1, date1, 200, "", 1, 3, false, false, false, false)));
-		assertFalse(room2.equals(new Room(1, date1, date1, 200, "", 1, 2, true, false, false, false)));
-		assertFalse(room2.equals(new Room(1, date1, date1, 200, "", 1, 2, false, true, false, false)));
-		assertFalse(room2.equals(new Room(1, date1, date1, 200, "", 1, 2, false, false, true, false)));
-		assertFalse(room2.equals(new Room(1, date1, date1, 200, "", 1, 2, false, false, false, true)));
+		assertFalse(room2.equals(new Room(1, date1, date1, 200, "aba.jpg", 2, 2, false, false, false, false)));
+		assertFalse(room2.equals(new Room(1, date1, date1, 300, "aba.jpg", 1, 2, false, false, false, false)));
+		assertFalse(room2.equals(new Room(1, date2, date1, 200, "aba.jpg", 1, 2, false, false, false, false)));
+		assertFalse(room2.equals(new Room(1, date1, date2, 200, "aba.jpg", 1, 2, false, false, false, false)));
+		assertFalse(room2.equals(new Room(1, date1, date1, 200, "aba.jpg", 1, 3, false, false, false, false)));
+		assertFalse(room2.equals(new Room(1, date1, date1, 200, "aba2.jpg", 1, 2, false, false, false, false)));
+		assertFalse(room2.equals(new Room(1, date1, date1, 200, "aba.jpg", 1, 2, true, false, false, false)));
+		assertFalse(room2.equals(new Room(1, date1, date1, 200, "aba.jpg", 1, 2, false, true, false, false)));
+		assertFalse(room2.equals(new Room(1, date1, date1, 200, "aba.jpg", 1, 2, false, false, true, false)));
+		assertFalse(room2.equals(new Room(1, date1, date1, 200, "aba.jpg", 1, 2, false, false, false, true)));
+		assertTrue(room2.equals(new Room(1, date1, date1, 200, "aba.jpg", 1, 2, false, false, false, false)));
 	}
-	
+
 	@Test
 	public void setValues() {
 		room7.setRoomId(1);
@@ -179,6 +195,8 @@ public class RoomTest {
 		assertEquals(1, room7.getHottelId());
 		room7.setNumberOfBeds(2);
 		assertEquals(2, room7.getNumberOfBeds());
+		room7.setImage("aba.jpg");
+		assertEquals("aba.jpg", room7.getImage());
 		room7.setWifi(false);
 		assertFalse(room7.isWifi());
 		room7.setTv(false);
@@ -187,7 +205,7 @@ public class RoomTest {
 		assertFalse(room7.isHotWater());
 		room7.setAirConditioning(false);
 		assertFalse(room7.isAirConditioning());
-		
+
 		assertEquals(room2, room7);
 		assertTrue(room2.equals(room7));
 		assertTrue(room7.equals(room2));

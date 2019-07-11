@@ -78,7 +78,7 @@
 			<i class="fas fa-info"></i> <input type="text"
 				placeholder="other facilities?" id="facility" value="">
 		</div>
-		<button id="save" class="myButton">Save changes</button>
+		
 
 		<form action="Uploader?hotel=1" method="post" enctype="multipart/form-data">
 			<div class="image-upload">
@@ -90,6 +90,7 @@
 			</div>
 			<button id="next" class="myButton">Next</button>
 		</form>
+		<button id="save" class="myButton">Save changes</button>
 	</div>
 
 </body>
