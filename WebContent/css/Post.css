@@ -26,7 +26,7 @@
 }
 
 .image a:link{
-	float: none;
+	float: none !important;
 }
 
 #img {
@@ -136,7 +136,12 @@
 	align-items: center;
 }
 
-a:link {
-	float: left;	
+.hotel-info a:link {
+	float: left !important;	
+	color: white;
 }
 
+.hotel-info a:visited {
+	float: left !important;	
+	color: white;
+}

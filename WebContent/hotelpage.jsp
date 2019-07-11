@@ -18,13 +18,14 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="css/font-awesome.min.css">
 <link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/Header.css">
 <link rel="stylesheet" href="css/Login.css">
 <link rel="stylesheet" href="css/Post.css">
 <link rel="stylesheet" href="css/hotelpage.css">
 <script src="https://kit.fontawesome.com/13f325d0c5.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script src="js/home.js" type="text/javascript"></script>
 </head>
 <body>
 	<div class="homepage"></div>
@@ -83,6 +84,7 @@
 		</div>
 		<table class="room">
 		  <tr>
+		  	<th>Image</th>
 		    <th>Number of beds</th>
 		    <th>Room information</th> 
 		    <th>Reserved from - to</th>
@@ -94,6 +96,7 @@
 		  	List<Room> l = rm.getRooms(id);
 		  	 for(int i = 0; i < l.size(); i++){
 		  		Room temp = l.get(i);
+		  		request.setAttribute("img", temp.getImage());
 		  		request.setAttribute("bed", temp.getNumberOfBeds());
 		  		request.setAttribute("wifi", temp.isWifi());
 		  		request.setAttribute("tv", temp.isTv());

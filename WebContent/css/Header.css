@@ -176,6 +176,11 @@ html, body {
 	color: white;
 }
 
+.user-panel a:link {
+	float: right !important;	
+    
+}
+
 .main h1 {
 	font-size: 70px;
 	position: absolute;
