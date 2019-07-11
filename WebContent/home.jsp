@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Booking</title>
+<title>BookInGeorgia</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="css/flaticon.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -28,6 +28,13 @@
 <body>
 	<div class="homepage"></div>
 		<jsp:include page="Header.jsp"/>
+		<%if(request.getSession().getAttribute("1st") == null) {
+			request.getSession().setAttribute("1st", "visited");%>
+			<div class="moto"> 
+				<i class="fas fa-times-circle" id="close-moto"></i> <br>
+				<a href="https://www.facebook.com/SpendYourSummerInGeo/"> #Spend Your Summer in Georgia </a>
+			</div>
+		<%}%>
 		<section class="main">
 			<section class="search-sec">
 				<div class="container">

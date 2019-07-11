@@ -336,4 +336,21 @@ public class HotelsDB {
 		return hotels;
 	}
 
+	public List<Integer> sortByRating(boolean desc) {
+		List<Integer> sorted = new ArrayList<Integer>();
+		try {
+			String query = "select hotel_id from Hotels order by hotel_id ";
+			if(desc) query += "desc";
+			else query += "asc";
+			PreparedStatement stmt = con.prepareStatement(query);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				sorted.add(rs.getInt("hotel_id"));
+			}
+		}catch (SQLException e) { 
+			e.printStackTrace();
+		}
+		return sorted;
+	}
+
 }

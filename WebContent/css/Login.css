@@ -64,7 +64,7 @@ body {
 }
 
 
-a:link {
+.login-box a:link {
 	float: right !important;	
     text-decoration: none;
     font-weight: bold;

@@ -38,18 +38,22 @@ $(document).ready(function(){
 	});
 	
 	$('.log').click(function() {
+		$('.moto').css({"visibility":"hidden"});
 		$('.log-in').css({"visibility":"visible"});
 		$('.homepage').css({"visibility":"visible"});
 	});
 	
+	$('#close-moto').click(function() {
+		$('.moto').css({"visibility":"hidden"});
+	});
 	
 	$('#close').click(function() {
 		$('.log-in').css({"visibility":"hidden"});
 		$('.homepage').css({"visibility":"hidden"});
 	});
 	
-	
 	$('.go-to-reg').click(function() {
+		$('.moto').css({"visibility":"hidden"});
 		$('.log-in').css({"visibility":"hidden"});
 		$('.register-box').css({"visibility":"visible"});
 	});
@@ -65,6 +69,7 @@ $(document).ready(function(){
 	});
 	
 	$('.log-btn').click(function(){
+		$('.moto').css({"visibility":"hidden"});
 		let _user = $('.user').val();
 		let _password = $('.password').val();
 		$('.user').val("");
@@ -92,6 +97,7 @@ $(document).ready(function(){
 	});
 	
 	$("#search").click(function(){
+		$('.moto').css({"visibility":"hidden"});
 		$.post('./js/search.jsp',
 				{
 					option: $("exampleFormControlSelect1").val(),
@@ -104,6 +110,7 @@ $(document).ready(function(){
 	});
 	
 	$('.filter-btn').click(function(){
+		$('.moto').css({"visibility":"hidden"});
 		alert($("#1st").is(':checked'));
 		$.post('Filter', 
 				{
@@ -121,6 +128,4 @@ $(document).ready(function(){
 					location.reload(true);
 		});	
 	});
-	
-
 });

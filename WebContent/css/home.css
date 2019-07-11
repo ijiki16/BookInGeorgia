@@ -301,3 +301,31 @@ a {
     height: fit-content;
 }
 
+.moto {
+	width: 25%;
+	position: absolute;
+	padding:30px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: rgba(0,0,0,0.5);
+	font-size: 18px;
+	font-style: oblique;
+}
+
+.moto a:link{
+	left: 65px;
+	font-color: white !important;
+	font-size: 18px;
+	font-style: oblique;
+}
+
+.moto a:visited{
+	color: white !important;
+	font-size: 18px;
+	font-style: oblique;
+}
+
+#close-moto {
+	float: right;
+}
