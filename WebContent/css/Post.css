@@ -18,10 +18,20 @@
     height: 140px;
 }
 
-.img {
-	overflow: hidden;
-	width: 13%;
-    height: 140px;
+
+.image a{
+	height: inherit;
+	width: inherit;
+	float: none !important;
+}
+
+.image a:link{
+	float: none;
+}
+
+#img {
+	width: 100%;
+	height: 100%;
 }
 
 .posts {
