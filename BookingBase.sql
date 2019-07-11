@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS Accounts;
 
 -- selects
 -- select * from Accounts;
--- select hotel_id from Hotels;
+-- select * from Hotels;
 -- select * from Locations;
 -- select * from HotelInfo;
 --
