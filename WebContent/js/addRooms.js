@@ -9,10 +9,10 @@ $(document).ready(function() {
 		let airCo = $('#airCo').is(':checked');
 
 		let numBeds = $('#numBeds').val();
-		alert(numBeds);
 		let sDate = $('#sDate').val();
 		let eDate = $('#eDate').val();
 		let rPrice = $('#rPrice').val();
+
 		$.post('addRoom', {
 			tv2 : tv,
 			hotWater2 : hotWater,

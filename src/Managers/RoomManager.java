@@ -30,11 +30,11 @@ public class RoomManager {
 	/**
 	 * @inserts Room into Hotel.
 	 */
-	public Integer addRoom(Date sDate, Date eData, Integer pricePerDay, String img, Integer hotlId,
+	public Integer addRoom(Date sDate, Date eDate, Integer pricePerDay, String img, Integer hotlId,
 			Integer numberOfBeds, boolean wifi, boolean tv, boolean hotWater, boolean airConditioning) {
-		if (!sDate.before(eData) || pricePerDay < 0 || hotlId < 1 || numberOfBeds < 0)
+		if (!sDate.before(eDate) || pricePerDay < 0 || hotlId < 1 || numberOfBeds < 0)
 			return -1;
-		return rdb.addRoom(sDate, eData, pricePerDay, img, hotlId, numberOfBeds, wifi, tv, hotWater, airConditioning);
+		return rdb.addRoom(sDate, eDate, pricePerDay, img, hotlId, numberOfBeds, wifi, tv, hotWater, airConditioning);
 	}
 
 	/**

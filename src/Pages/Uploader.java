@@ -3,6 +3,9 @@ package Pages;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -18,7 +21,9 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import Managers.AccountManager;
 import Managers.HotelManager;
+import Managers.RoomManager;
 import Models.Hotel;
+import Models.Room;
 
 /**
  * Servlet implementation class Uploader
@@ -61,7 +66,6 @@ public class Uploader extends HttpServlet {
 			File uploadDir = new File(this.getServletContext().getRealPath(File.separator) + "\\images");
 			if (!uploadDir.exists())
 				uploadDir.mkdir();
-			// File fl = File.createTempFile("img", ".png", uploadDir);
 			String file = uploadDir.getAbsolutePath() + File.separator;
 			Integer id;
 			if (request.getParameter("hotel") != null) {
@@ -72,23 +76,41 @@ public class Uploader extends HttpServlet {
 				file += "room" + id + ".jpg";
 			}
 			File fl = new File(file);
-			System.out.println(fl.getName());
 			items.get(0).write(fl);
 			if (request.getParameter("hotel") != null) {
 				HotelManager hm = HotelManager.getInstance();
 				Hotel h = hm.getHotel(id);
-				// System.out.println("unda gaeketebina");
 				hm.updateHotel(id, h.getName(), h.getRating(), "images/hotel" + id + ".jpg", h.getStatus(),
 						h.getNumber(), Integer.parseInt(AccountManager.getInstance()
 								.getAccount((String) request.getSession().getAttribute("user")).getId()));
 				request.getSession().removeAttribute("id");
+				request.getSession().removeAttribute("hotel");
+				request.removeAttribute("hotel");
+				request.getRequestDispatcher("addRooms.jsp").forward(request, response);
 			} else {
-
+				RoomManager rmM = RoomManager.getInstance();		
+				Room rm = rmM.getRoom(id);
+				//System.out.println(rm.toString());
+				Integer rmId = rm.getRoomId();
+				Integer htId = rm.getHottelId();
+				boolean wifi = rm.isWifi();
+				boolean tv = rm.isTv();
+				boolean hotWater = rm.isHotWater();
+				boolean airCo = rm.isAirConditioning();
+				Integer numBeds = rm.getNumberOfBeds();
+				Integer rPrice =  rm.getPricePerDay();
+				
+				Date sDate = rm.getStartDate();
+				Date eDate = rm.getEndDate();
+				
+				rmM.updateRoom(rmId, sDate, eDate, rPrice, "images/room" + id + ".jpg", htId, numBeds, wifi, tv,
+						hotWater, airCo);
+				request.getRequestDispatcher("home.jsp").forward(request, response);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		request.getRequestDispatcher("addRooms.jsp").forward(request, response);
+		
 	}
 
 }

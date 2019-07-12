@@ -60,7 +60,7 @@
 					<input type="file" name="chooseFile2" id="image">
 				</div>
 			</div>
-			<button id="next2" class="myButton" disabled="disabled">Next</button>
+			<button id="next2" class="myButton" >Next</button>
 		</form>
 		<button id="save2" class="myButton">Save changes</button>
 	</div>
