@@ -23,6 +23,9 @@ public class HotelManagerTests {
 	private AccountManager AM;
 	private Integer id1, id2;
 	
+	/**
+	 * Sets the up.
+	 */
 	@Before
 	public void setUp() {
 		AM = AccountManager.getInstance();

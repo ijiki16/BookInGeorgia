@@ -12,14 +12,16 @@ $(document).ready(function(){
 		  eday = edate.getDate();
 		  emonth = edate.getMonth() + 1;
 		  eyear = edate.getFullYear();
-		  $.post('........................', 
+		  roomid = $('#roomid').val();
+		  $.post('Book', 
 					{
 			  			sday: sday,
 			  			smonth: smonth,
 			  			syear: syear,
 			  			eday: eday,
 			  			emonth: emonth,
-			  			eyear: eyear
+			  			eyear: eyear,
+			  			roomid: roomid
 					}, 
 					function(response) {
 						if($.trim(response) == 'success') {
@@ -28,7 +30,6 @@ $(document).ready(function(){
 							$("#button").addClass("onclic", 250, reject);
 						}
 			});
-	    $("#button").addClass("onclic", 250, validate);
 	  });
 	  
 	  function validate() {

@@ -7,7 +7,7 @@ $(document).ready(function() {
 		let wifi = $('#wifi').is(':checked');
 		let hotWater = $('#hotWater').is(':checked');
 		let airCo = $('#airCo').is(':checked');
-
+		let id = $('#hotel_id').val();
 		let numBeds = $('#numBeds').val();
 		let sDate = $('#sDate').val();
 		let eDate = $('#eDate').val();
@@ -22,7 +22,8 @@ $(document).ready(function() {
 			eDate2 : eDate,
 			image2 : image,
 			wifi2 : wifi,
-			rPrice2 : rPrice
+			rPrice2 : rPrice,
+			hotel_id : id
 		}, function(response) {
 			$('#save2').css({
 				"display" : "none"
