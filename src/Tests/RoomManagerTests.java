@@ -48,7 +48,7 @@ public class RoomManagerTests {
 	private RoomManager roomM;
 
 	@Before
-	public void Create() {
+	public void Create() throws ParseException {
 		//Account
 		acM = AccountManager.getInstance();
 		acM.createAccount("iuri", "jikidze", "ijiki16@freeuni.edu.ge", "ijiki16", "1234iuri", "1998-12-30");
@@ -68,17 +68,15 @@ public class RoomManagerTests {
 		//Date
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		date1 = new Date();
-		try {
-			date2 = dateFormat.parse("1999-12-10");
-			date3 = dateFormat.parse("2015-03-14");
-			date4 = dateFormat.parse("2007-07-24");	
-			date5 = dateFormat.parse("2009-01-08");	
-			date6 = dateFormat.parse("2011-10-01");	
-			date7 = dateFormat.parse("2011-10-10");	
-			date8 = dateFormat.parse("2019-06-10");	
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		
+		date2 = dateFormat.parse("1999-12-10");
+		date3 = dateFormat.parse("2015-03-14");
+		date4 = dateFormat.parse("2007-07-24");	
+		date5 = dateFormat.parse("2009-01-08");	
+		date6 = dateFormat.parse("2011-10-01");	
+		date7 = dateFormat.parse("2011-10-10");	
+		date8 = dateFormat.parse("2019-06-10");	
+		
 		//Room
 		roomM = RoomManager.getInstance();
 		int rm1Id = roomM.addRoom(date4, date3, 150, "nelazviadi.png", htId2, 2, false, false, false, false);
