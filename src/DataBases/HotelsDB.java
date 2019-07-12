@@ -17,15 +17,33 @@ import Models.Location;
 import Models.Room;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class HotelsDB.
+ */
 public class HotelsDB {
+	
+	/** The db. */
 	private static HotelsDB db;
 
+	/** The account. */
 	private static String account = MyDBInfo.MYSQL_USERNAME;
+	
+	/** The password. */
 	private static String password = MyDBInfo.MYSQL_PASSWORD;
+	
+	/** The server. */
 	private static String server = MyDBInfo.MYSQL_DATABASE_SERVER;
+	
+	/** The database. */
 	private static String database = MyDBInfo.MYSQL_DATABASE_NAME;
+	
+	/** The con. */
 	private static Connection con;
 
+	/**
+	 * Instantiates a new hotels DB.
+	 */
 	private HotelsDB() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -39,6 +57,11 @@ public class HotelsDB {
 		}
 	}
 
+	/**
+	 * Gets the single instance of HotelsDB.
+	 *
+	 * @return single instance of HotelsDB
+	 */
 	public static HotelsDB getInstance() {
 		if (db == null) {
 			synchronized (HotelsDB.class) {
@@ -50,6 +73,11 @@ public class HotelsDB {
 		return db;
 	}
 
+	/**
+	 * Gets the all hotel I ds.
+	 *
+	 * @return the all hotel I ds
+	 */
 	public List<Integer> getAllHotelIDs(){
 		List<Integer> hotel_ids = new ArrayList<Integer>();
 		try {
@@ -66,6 +94,12 @@ public class HotelsDB {
 		return hotel_ids;
 	}
 	
+	/**
+	 * Gets the hotel.
+	 *
+	 * @param hotel_id the hotel id
+	 * @return the hotel
+	 */
 	public Hotel getHotel(Integer hotel_id) {
 		try {
 			String query = "select * from Hotels where hotel_id = ?";
@@ -92,6 +126,12 @@ public class HotelsDB {
 		return null;
 	}
 	
+	/**
+	 * Gets the facilities.
+	 *
+	 * @param hotel_id the hotel id
+	 * @return the facilities
+	 */
 	public Facilities getFacilities(Integer hotel_id) {
 		try {
 			String query = "select * from HotelInfo where hotel_id = ?";
@@ -113,6 +153,12 @@ public class HotelsDB {
 		return null;
 	}
 	
+	/**
+	 * Gets the location.
+	 *
+	 * @param hotel_id the hotel id
+	 * @return the location
+	 */
 	public Location getLocation(Integer hotel_id) {
 		try {
 			String query = "select * from Hotels h join Locations l on h.hotel_id = l.hotel_id where l.hotel_id = ?;";
@@ -126,6 +172,12 @@ public class HotelsDB {
 		return null;
 	}
 	
+	/**
+	 * Gets the hotel I ds.
+	 *
+	 * @param account_id the account id
+	 * @return the hotel I ds
+	 */
 	public List<Integer> getHotelIDs(Integer account_id){
 		List<Integer> hotel_ids = new ArrayList<Integer>();
 		try{
@@ -142,6 +194,17 @@ public class HotelsDB {
 		return hotel_ids;
 	}
 
+	/**
+	 * Adds the hotel.
+	 *
+	 * @param name the name
+	 * @param rating the rating
+	 * @param img the img
+	 * @param status the status
+	 * @param number the number
+	 * @param account_id the account id
+	 * @return the integer
+	 */
 	public Integer addHotel(String name, Integer rating, String img, String status, String number, Integer account_id) {
 		Integer hotel_id = -1;
 		try {
@@ -162,6 +225,16 @@ public class HotelsDB {
 		return hotel_id;
 	}
 	
+	/**
+	 * Adds the facilities.
+	 *
+	 * @param hotel_id the hotel id
+	 * @param facility the facility
+	 * @param wifi the wifi
+	 * @param parking the parking
+	 * @param beachfront the beachfront
+	 * @param woodfront the woodfront
+	 */
 	public void addFacilities(Integer hotel_id, String facility, boolean wifi, boolean parking, boolean beachfront, boolean woodfront) {
 		try {
 			String query = "insert into HotelInfo (facility, wifi, parking, beachfront, woodfront, hotel_id) values (?, ?, ?, ?, ?, ?)";
@@ -178,6 +251,13 @@ public class HotelsDB {
 		}
 	}
 	
+	/**
+	 * Adds the location.
+	 *
+	 * @param hotel_id the hotel id
+	 * @param city the city
+	 * @param address the address
+	 */
 	public void addLocation(Integer hotel_id, String city, String address) {
 		try {
 			String query = "insert into Locations (city, address, hotel_id) values (?, ?, ?)";
@@ -191,6 +271,11 @@ public class HotelsDB {
 		}
 	}
 	
+	/**
+	 * Delete hotel.
+	 *
+	 * @param hotel_id the hotel id
+	 */
 	public void deleteHotel(Integer hotel_id) {
 		try {
 			this.deleteFacilities(hotel_id);
@@ -205,6 +290,11 @@ public class HotelsDB {
 		}
 	}
 
+	/**
+	 * Delete facilities.
+	 *
+	 * @param hotel_id the hotel id
+	 */
 	public void deleteFacilities(Integer hotel_id) {
 		try {
 			String query = "delete from HotelInfo where hotel_id = ?";
@@ -216,6 +306,11 @@ public class HotelsDB {
 		}
 	}
 	
+	/**
+	 * Delete location.
+	 *
+	 * @param hotel_id the hotel id
+	 */
 	public void deleteLocation(Integer hotel_id) {
 		try {
 			String query = "delete from Locations where hotel_id = ?";
@@ -227,6 +322,17 @@ public class HotelsDB {
 		}
 	}
 
+	/**
+	 * Update hotel.
+	 *
+	 * @param hotel_id the hotel id
+	 * @param name the name
+	 * @param rating the rating
+	 * @param img the img
+	 * @param status the status
+	 * @param number the number
+	 * @param account_id the account id
+	 */
 	public void updateHotel(Integer hotel_id, String name, Integer rating, String img, String status, String number, Integer account_id) {
 		try {
 			String query = "update Hotels set name = ?, rating = ?, img = ?, status = ?, phone_number = ?, account_id = ? where hotel_id = ?";
@@ -245,6 +351,16 @@ public class HotelsDB {
 	}
 
 	
+	/**
+	 * Update facilities.
+	 *
+	 * @param hotel_id the hotel id
+	 * @param facility the facility
+	 * @param wifi the wifi
+	 * @param parking the parking
+	 * @param beachfront the beachfront
+	 * @param woodfront the woodfront
+	 */
 	public void updateFacilities(Integer hotel_id, String facility, boolean wifi, boolean parking,
 			boolean beachfront, boolean woodfront) {
 		try {
@@ -262,6 +378,13 @@ public class HotelsDB {
 		}
 	}
 
+	/**
+	 * Update location.
+	 *
+	 * @param hotel_id the hotel id
+	 * @param city the city
+	 * @param address the address
+	 */
 	public void updateLocation(Integer hotel_id, String city, String address) {
 		try {
 			String query = "update Locations set city = ?, address = ? where hotel_id = ?";
@@ -275,6 +398,11 @@ public class HotelsDB {
 		}
 	}
 	
+	/**
+	 * Gets the all locations.
+	 *
+	 * @return the all locations
+	 */
 	public List<String> getAllLocations(){
 		List<String> locations = new ArrayList<>();
 		try {
@@ -290,6 +418,16 @@ public class HotelsDB {
 		return locations;
 	}
 	
+	/**
+	 * Gets the filtered hotels.
+	 *
+	 * @param rating the rating
+	 * @param beachfront the beachfront
+	 * @param woodfront the woodfront
+	 * @param wifi the wifi
+	 * @param parking the parking
+	 * @return the filtered hotels
+	 */
 	public List<Integer> getFilteredHotels(Integer rating, Boolean beachfront, Boolean woodfront, Boolean wifi, Boolean parking) {
 		List<Integer> hotels = new ArrayList<Integer>();
 		try {
@@ -316,6 +454,13 @@ public class HotelsDB {
 	}
 	
 
+	/**
+	 * Gets the searched hotels.
+	 *
+	 * @param city the city
+	 * @param name the name
+	 * @return the searched hotels
+	 */
 	public List<Integer> getSearchedHotels(String city, String name) {
 		List<Integer> hotels = new ArrayList<Integer>();
 		try {
@@ -336,6 +481,12 @@ public class HotelsDB {
 		return hotels;
 	}
 
+	/**
+	 * Sort by rating.
+	 *
+	 * @param desc the desc
+	 * @return the list
+	 */
 	public List<Integer> sortByRating(boolean desc) {
 		List<Integer> sorted = new ArrayList<Integer>();
 		try {
@@ -353,6 +504,12 @@ public class HotelsDB {
 		return sorted;
 	}
 
+	/**
+	 * Gets the min price.
+	 *
+	 * @param hotel_id the hotel id
+	 * @return the min price
+	 */
 	public Integer getMinPrice(Integer hotel_id) {
 		Integer min_price = 0;
 		try {
@@ -367,6 +524,12 @@ public class HotelsDB {
 		return min_price;
 	}
 
+	/**
+	 * Gets the max price.
+	 *
+	 * @param hotel_id the hotel id
+	 * @return the max price
+	 */
 	public Integer getMaxPrice(Integer hotel_id) {
 		Integer max_price = 0;
 		try {

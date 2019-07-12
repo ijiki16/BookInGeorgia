@@ -82,6 +82,7 @@ public class RegistrationAndLoginTests extends Mockito{
         verify(request, atLeast(1)).getParameter("user");
         writer.flush(); 
         assertTrue(stringWriter.toString().equals("fail"));
+        new Register().doGet(request, response);
 	}
 	
 	@Test
@@ -106,7 +107,7 @@ public class RegistrationAndLoginTests extends Mockito{
         verify(request, atLeast(1)).getParameter("user");
         writer.flush(); 
         assertTrue(stringWriter.toString().equals("nika"));
-        
+        new Login().doGet(request, response);
 	}
 	
 	@Test
