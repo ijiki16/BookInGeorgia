@@ -1,5 +1,8 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,15 +37,17 @@
 			<i class="fas fa-bed"></i> <input type="number" id=numBeds value="0"
 				min="0">
 		</div>
-
+		<%! SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");%>
+		<%!Date dt = new Date();%>
+		<%! String nw = ft.format(dt); %>
 		<div class="text-box">
 			<i class="fas fa-calendar-day"></i> <label>Reservation start
-				date</label> <input type="date" id="sDate" required value="2019-05-23">
+				date</label> <input type="date" id="sDate" value=<%=nw%> min=<%=nw%>>
 		</div>
 
 		<div class="text-box">
 			<i class="fas fa-calendar-day"></i> <label>Reservation end
-				date</label> <input type="date" id="eDate" required value="2019-05-23">
+				date</label> <input type="date" id="eDate" value=<%=nw%> min=<%=nw%>>
 		</div>
 
 		<div class="text-box">
