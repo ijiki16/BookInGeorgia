@@ -54,7 +54,7 @@
 
 		<div class="text-box">
 			<i class="fas fa-map-marker-alt"></i> <input type="text"
-				placeholder="City" id="city" value="" required="required">
+				placeholder="City" id="city" value="Tbilisi" required="required">
 		</div>
 
 		<div class="text-box">
