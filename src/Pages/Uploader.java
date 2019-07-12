@@ -108,6 +108,7 @@ public class Uploader extends HttpServlet {
 				request.getRequestDispatcher("home.jsp").forward(request, response);
 			}
 		} catch (Exception e) {
+			request.getRequestDispatcher("home.jsp").forward(request, response);
 			e.printStackTrace();
 		}
 		
