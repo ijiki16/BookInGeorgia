@@ -45,8 +45,13 @@ public class addRoom extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RoomManager rmM = RoomManager.getInstance();
-
-		Integer htId = (Integer) request.getSession().getAttribute("hotelId");
+		Integer htId;
+//		Integer htId = (Integer) request.getSession().getAttribute("hotelId");
+		if(!request.getParameter("hotel_id").equals("null")) { 
+			htId = Integer.parseInt(request.getParameter("hotel_id"));
+		} else {
+			htId = (Integer) request.getSession().getAttribute("hotelId");
+		}
 
 		boolean wifi = request.getParameter("wifi2").equals("true");
 		boolean tv = request.getParameter("tv2").equals("true");
@@ -75,8 +80,8 @@ public class addRoom extends HttpServlet {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-
 		Integer rmId = rmM.addRoom(sDate, eDate, rPrice, "", htId, numBeds, wifi, tv, hotWater, airCo);
+		
 		request.getSession().setAttribute("roomId", rmId);
 	}
 

@@ -5,7 +5,7 @@
 	HotelManager hm = HotelManager.getInstance();
 	Integer hotel_id = hm.addHotel(request.getParameter("name"), 
 			Integer.parseInt(request.getParameter("stars")), 
-			request.getParameter("image"), request.getParameter("status"), request.getParameter("number"), id);
+			request.getParameter("image"), request.getParameter("status"), request.getParameter("phone"), id);
 	boolean wifi = request.getParameter("wifi").equals("true") ? true : false;
 	boolean parking = request.getParameter("parking").equals("true") ? true : false;
 	boolean beach = request.getParameter("beach").equals("true") ? true : false;

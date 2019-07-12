@@ -30,7 +30,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
 <script src="js/home.js" type="text/javascript"></script>
-<script src="js/room.js" type="text/javascript"></script>
+
 </head>
 <body>
 	<div class="homepage"></div>
@@ -40,7 +40,6 @@
 		    HotelManager hm = HotelManager.getInstance();
 		    Hotel h = hm.getHotel(id);
 		    RoomManager rm = RoomManager.getInstance();
-		    //rm.addRoom(new Date(2000, 12,12), new Date(2001, 12,12), 50, "", 1, 2, true, true, true, true);
 		    %>
 			<figure class="img"> <img src="<%=h.getImage() %>"> </figure>
 			<div class="info">
@@ -94,8 +93,8 @@
 		    <col style="width:15%; height: fit-content">
 		    <col style="width:5%; height: fit-content">
 		    <col style="width:8%; height: fit-content">
-		    <col style="width:15%; height: fit-content">
-		    <col style="width:15%; height: fit-content">
+		    <col style="width:10%; height: fit-content">
+		    <col style="width:10%; height: fit-content">
 		    <col style="width:25%; height: fit-content">
 		  </colgroup>
 		  <tr>
@@ -114,12 +113,43 @@
 		  		request.setAttribute("bed", temp.getNumberOfBeds());
 		  		request.setAttribute("wifi", temp.isWifi());
 		  		request.setAttribute("tv", temp.isTv());
+		  		request.setAttribute("price", temp.getPricePerDay());
 		  		request.setAttribute("hot-water", temp.isHotWater());
 		  		request.setAttribute("air-cond", temp.isAirConditioning());
 		  		request.setAttribute("sd", temp.getStartDate());
-		  		request.setAttribute("ed", temp.getEndDate());%>
+		  		request.setAttribute("ed", temp.getEndDate());
+		  		request.setAttribute("id", temp.getRoomId());
+		  		%>
 		  		<jsp:include page="Room.jsp"/> 
 		  	 <%}%>
 		</table>
+		<jsp:include page="AboutUs.jsp"/>
+		<div class="log-in"> 
+			<div class="login-box">
+				<i class="fas fa-times-circle" id="close"></i>
+				
+				<h1 class="log-fail"> Login </h1>
+				<div class="text-box">
+					<i class="fas fa-user"></i>
+					<input type="text" placeholder="Username" class="user">
+				</div>
+				
+				<div class="text-box">
+					<i class="fas fa-lock"></i>
+					<input type="password" placeholder="Password" class="password" > <i class="fas fa-eye-slash" id="show-password"></i>
+				</div>
+				
+				<input class="log-btn" type="button" name="" value="Sign in"> 
+				
+				<a class="go-to-reg" href="Register.html"> Register </a> <br>
+			</div>
+		</div>
+		<%if(request.getSession().getAttribute("1st") == null) {
+			request.getSession().setAttribute("1st", "visited");%>
+			<div class="moto"> 
+				<i class="fas fa-times-circle" id="close-moto"></i> <br>
+				<a href="https://www.facebook.com/SpendYourSummerInGeo/"> #Spend Your Summer in Georgia </a>
+			</div>
+		<%}%>
 </body>
 </html>

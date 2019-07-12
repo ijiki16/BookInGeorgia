@@ -68,6 +68,13 @@ public class RoomManager {
 	public List<Room> getRooms(Integer hotel_id) {
 		return rdb.getRoomByHottel(hotel_id);
 	}
+	
+	/**
+	 * @returns Reservations of the room
+	 */
+	public List<List<java.util.Date>> getRoomReservations(Integer roomId) {
+		return rdb.getRoomReservations(roomId);
+	}
 
 	/**
 	 * @returns if room booked.
