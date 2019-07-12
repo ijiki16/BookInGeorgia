@@ -35,7 +35,7 @@ public class Session extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String user = (String) request.getSession().getAttribute("user");
 		if(user == null) user = fail;	
 		if(request.getParameter("todo").equals("logout")) request.getSession().removeAttribute("user");
