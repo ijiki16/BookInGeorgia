@@ -1,0 +1,20 @@
+@charset "ISO-8859-1";
+.about {
+	position: absolute;
+    top: 35%;
+    left: 17%;
+    width: 82%;
+    height: fit-content;
+    display: none;
+}
+
+p, h1, h2, h3 {
+	color: white;
+}
+
+.card {
+	background-color: #7b0e0e !important; 
+}
+
+
+

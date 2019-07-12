@@ -14,17 +14,23 @@
 <meta charset="ISO-8859-1">
 <title>Hotel</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="css/flaticon.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
 <link rel="stylesheet" href="css/font-awesome.min.css">
 <link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/Header.css">
 <link rel="stylesheet" href="css/Login.css">
 <link rel="stylesheet" href="css/Post.css">
 <link rel="stylesheet" href="css/hotelpage.css">
+<link rel="stylesheet" href="css/RoomsCss.css">
 <script src="https://kit.fontawesome.com/13f325d0c5.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
+<script src="js/home.js" type="text/javascript"></script>
+<script src="js/room.js" type="text/javascript"></script>
 </head>
 <body>
 	<div class="homepage"></div>
@@ -33,6 +39,8 @@
 		    <% int id = Integer.parseInt(request.getParameter("id"));
 		    HotelManager hm = HotelManager.getInstance();
 		    Hotel h = hm.getHotel(id);
+		    RoomManager rm = RoomManager.getInstance();
+		    //rm.addRoom(new Date(2000, 12,12), new Date(2001, 12,12), 50, "", 1, 2, true, true, true, true);
 		    %>
 			<figure class="img"> <img src="<%=h.getImage() %>"> </figure>
 			<div class="info">
@@ -82,18 +90,27 @@
 			</div>
 		</div>
 		<table class="room">
+		  <colgroup>
+		    <col style="width:15%; height: fit-content">
+		    <col style="width:5%; height: fit-content">
+		    <col style="width:8%; height: fit-content">
+		    <col style="width:15%; height: fit-content">
+		    <col style="width:15%; height: fit-content">
+		    <col style="width:25%; height: fit-content">
+		  </colgroup>
 		  <tr>
-		    <th>Number of beds</th>
+		  	<th>Image</th>
+		    <th>Beds</th>
 		    <th>Room information</th> 
 		    <th>Reserved from - to</th>
 		    <th>Available from - to</th>
 		    <th>Book</th>
 		  </tr>
 		  <% 
-		  	RoomManager rm = RoomManager.getInstance();
 		  	List<Room> l = rm.getRooms(id);
 		  	 for(int i = 0; i < l.size(); i++){
 		  		Room temp = l.get(i);
+		  		request.setAttribute("img", temp.getImage());
 		  		request.setAttribute("bed", temp.getNumberOfBeds());
 		  		request.setAttribute("wifi", temp.isWifi());
 		  		request.setAttribute("tv", temp.isTv());

@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
@@ -114,6 +115,7 @@ public class HotelManagerTests {
 		assertTrue(facil.getParking());
 		assertFalse(facil.getBeachfront());
 		assertFalse(facil.getWoodfront());
+		assertEquals(hotel_id, facil.getHotelId());
 		
 		HM.updateFacilities(h.getId(), "new status", true, false, true, true);
 		h = HM.getHotel(h.getId());
@@ -160,7 +162,7 @@ public class HotelManagerTests {
 		Integer hotel_id1 = HM.addHotel("Radison", 5, "iveria", "reworked", "+995 ...", id1);
 		Integer hotel_id2 = HM.addHotel("Tiflisi", 4, "none", "old tbilisi", "+995 ...", id2);
 		Integer hotel_id3 = HM.addHotel("Tiflisi TM", 3, "none", "tbilisi", "+995 ...", id2);
-		
+		 
 		List<Hotel> hotels = HM.getHotels(id1);
 		assertEquals(hotel_id1, hotels.get(0).getId());
 		HM.addLocation(hotel_id1, "batumi", "d.agmashenebeli 76");
@@ -199,7 +201,27 @@ public class HotelManagerTests {
 		search = HM.getSearchedHotels(null, "Tiflisi TM");
 		assertEquals(search.size(), 1);
 		
+		
+		List<Integer> sorted = HM.sortByRating(true);
+		assertEquals(Arrays.asList(hotel_id3,hotel_id2,hotel_id1), sorted);
+		sorted = HM.sortByRating(false);
+		assertEquals(Arrays.asList(hotel_id1,hotel_id2,hotel_id3), sorted);
 
+		List<Integer> list1 = Arrays.asList(8,5,6,7,1,2,3,4,5,6,7);
+		List<Integer> list2 = Arrays.asList(9,4,5,6,8,1,2);
+		List<Integer> marge = HM.intersectLists(list1, list2);
+		assertEquals(marge, Arrays.asList(8,5,6,1,2,4));
+		
+		list1 = Arrays.asList(9,8,7,6,5,4,3);
+		list2 = Arrays.asList(1,2,3,4,5,6);
+		marge = HM.intersectLists(list1, list2);
+		assertEquals(marge, Arrays.asList(6,5,4,3));
+		
+		list1 = Arrays.asList();
+		list2 = Arrays.asList(1,2,3,4,5,6);
+		marge = HM.intersectLists(list1, list2);
+		assertEquals(marge, Arrays.asList());
+		
 		HM.deleteHotel(HM.getHotels(id1).get(0).getId());
 		HM.deleteHotel(HM.getHotels(id2).get(0).getId());
 		HM.deleteHotel(HM.getHotels(id2).get(0).getId());

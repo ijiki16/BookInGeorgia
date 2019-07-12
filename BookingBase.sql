@@ -3,7 +3,6 @@ USE booking;
  -- remove table if it already exists and start from scratch
 DROP TABLE IF EXISTS RoomInfo;
 DROP TABLE IF EXISTS HotelInfo;
-DROP TABLE IF EXISTS Images;
 DROP TABLE IF EXISTS Reservation;
 DROP TABLE IF EXISTS Locations;
 DROP TABLE IF EXISTS Rooms;
@@ -13,12 +12,13 @@ DROP TABLE IF EXISTS Accounts;
 
 -- selects
 -- select * from Accounts;
--- select hotel_id from Hotels;
+-- select * from Hotels;
 -- select * from Locations;
 -- select * from HotelInfo;
 --
 
 -- insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel", 5, "none", "new hotel", "551511300", 1);
+-- insert into Locations (city, address, hotel_id) values ("Tbilisi", "Vaja", 1);
 -- insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel1", 4, "none", "new hotel1", "551511300", 1);
 -- insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel2", 3, "none", "new hotel2", "551511300", 1);
 -- insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel3", 2, "none", "new hotel3", "551511300", 1);

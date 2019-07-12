@@ -37,19 +37,34 @@ $(document).ready(function(){
 				});
 	});
 	
+	$('#about').click(function(){
+			$('.hotels').css({
+				"display" : "none"
+			});
+			$('.about').css({
+				"display" : "block"
+			});
+	});
+	
 	$('.log').click(function() {
+		$('.moto').css({"visibility":"hidden"});
 		$('.log-in').css({"visibility":"visible"});
 		$('.homepage').css({"visibility":"visible"});
 	});
 	
+	$('#close-moto').click(function() {
+		$('.moto').css({"visibility":"hidden"});
+	});
 	
 	$('#close').click(function() {
 		$('.log-in').css({"visibility":"hidden"});
 		$('.homepage').css({"visibility":"hidden"});
+		$('.user').val("");
+		$('.password').val("");
 	});
 	
-	
 	$('.go-to-reg').click(function() {
+		$('.moto').css({"visibility":"hidden"});
 		$('.log-in').css({"visibility":"hidden"});
 		$('.register-box').css({"visibility":"visible"});
 	});
@@ -57,14 +72,15 @@ $(document).ready(function(){
 	$('#show-password').click(function(){
 		if($('.password').attr("type") == 'text'){
 			$('.password')[0].type = 'password';
-			$('#show-password')[0].className = "fas fa-eye";
+			$('#show-password')[0].className = "fas fa-eye-slash";
 		}else{
 			$('.password')[0].type = 'text';
-			$('#show-password')[0].className = "fas fa-eye-slash";
+			$('#show-password')[0].className = "fas fa-eye";
 		}
 	});
 	
 	$('.log-btn').click(function(){
+		$('.moto').css({"visibility":"hidden"});
 		let _user = $('.user').val();
 		let _password = $('.password').val();
 		$('.user').val("");
@@ -92,6 +108,7 @@ $(document).ready(function(){
 	});
 	
 	$("#search").click(function(){
+		$('.moto').css({"visibility":"hidden"});
 		$.post('./js/search.jsp',
 				{
 					option: $("exampleFormControlSelect1").val(),
@@ -104,6 +121,7 @@ $(document).ready(function(){
 	});
 	
 	$('.filter-btn').click(function(){
+		$('.moto').css({"visibility":"hidden"});
 		alert($("#1st").is(':checked'));
 		$.post('Filter', 
 				{
@@ -121,6 +139,4 @@ $(document).ready(function(){
 					location.reload(true);
 		});	
 	});
-	
-
 });
