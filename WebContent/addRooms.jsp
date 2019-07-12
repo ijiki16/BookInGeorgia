@@ -62,6 +62,7 @@
 			</div>
 			<button id="next2" class="myButton" >Next</button>
 		</form>
+		<input type="hidden" id="hotel_id" value="<%=request.getParameter("hotel_id")%>">
 		<button id="save2" class="myButton">Save changes</button>
 	</div>
 

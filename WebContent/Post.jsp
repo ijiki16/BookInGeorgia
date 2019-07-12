@@ -33,6 +33,6 @@
 					
 			<div class="price">
 				<div class="per">Price per day</div>
-				<div class="from-to"> <span><i class="fas fa-dollar-sign">50</i> - <i class="fas fa-dollar-sign">100</i></span></div>
+				<div class="from-to"> <span><i class="fas fa-dollar-sign"><%=min_price %></i> - <i class="fas fa-dollar-sign"><%=max_price %></i></span></div>
 			</div> 
 </div>			

@@ -78,7 +78,6 @@
 			<i class="fas fa-info"></i> <input type="text"
 				placeholder="other facilities?" id="facility" value="">
 		</div>
-		
 
 		<form action="Uploader?hotel=1" method="post" enctype="multipart/form-data">
 			<div class="image-upload">

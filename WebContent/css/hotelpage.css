@@ -27,12 +27,21 @@ h1, h2, h3, h4, h5, h6, p {
     height: inherit;
 }
 
+.img img {
+	height: 490px;
+	width: 100%;
+}
+
 .info {
 	float: left;
 	width: 60%;
 	height: inherit;
 	padding-left: 1%;
 	padding-right: 1%;
+}
+
+tr{
+	padding: 5px;
 }
 
 .status {
@@ -60,8 +69,8 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .facile {
-	float: left;
-    width: 100%;
+	
+    width: 8%;
     height: fit-content;
     border-right: 1px solid #7b0e0e;
     padding-top: 5px;
