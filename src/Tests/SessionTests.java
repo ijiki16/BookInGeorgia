@@ -13,20 +13,13 @@ import org.mockito.Mockito;
 import Pages.Session;
 
 public class SessionTests extends Mockito {
-	private HttpServletRequest request;
-	private HttpServletResponse response;
-	private HttpSession session;
-	
-	@Before
-	public void setUp() {
-		request = mock(HttpServletRequest.class);
-	    response  = mock(HttpServletResponse.class);
-	    session = mock(HttpSession.class);
-	}
 	
 	@Test
     public void correctInput() throws Exception {
-        
+		HttpServletRequest request = mock(HttpServletRequest.class);
+		HttpServletResponse  response  = mock(HttpServletResponse.class);
+		HttpSession session = mock(HttpSession.class);
+		
         when(session.getAttribute("user")).thenReturn("dkhos17");
         when(session.getAttribute("todo")).thenReturn("not-logout");
         
@@ -48,7 +41,10 @@ public class SessionTests extends Mockito {
 	
 	@Test
     public void incorrectInput() throws Exception {
-
+		HttpServletRequest request = mock(HttpServletRequest.class);
+		HttpServletResponse  response  = mock(HttpServletResponse.class);
+		HttpSession session = mock(HttpSession.class);
+		
         when(session.getAttribute("user")).thenReturn(null);
         when(session.getAttribute("todo")).thenReturn("not-log-out");
         
