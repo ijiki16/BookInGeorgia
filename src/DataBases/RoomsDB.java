@@ -149,8 +149,13 @@ public class RoomsDB {
 	public void deleteRooms(Integer hotel_id) {
 		try {
 			for(Room r : this.getRoomByHottel(hotel_id)) {
-				String query = "delete from Reservations where room_id = ?";
+				String query = "delete from Reservation where room_id = ?";
 				PreparedStatement stmt = ConnDB.prepareStatement(query);
+				stmt.setInt(1, r.getRoomId());
+				stmt.executeUpdate();
+
+				query = "delete from RoomInfo where room_id = ?";
+				stmt = ConnDB.prepareStatement(query);
 				stmt.setInt(1, r.getRoomId());
 				stmt.executeUpdate();
 			}

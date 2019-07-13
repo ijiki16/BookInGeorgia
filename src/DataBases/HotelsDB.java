@@ -88,7 +88,6 @@ public class HotelsDB {
 			while(rs.next()) {
 				hotel_ids.add(rs.getInt("hotel_id"));
 			}
-			return hotel_ids;
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -284,7 +283,7 @@ public class HotelsDB {
 		try {
 			this.deleteFacilities(hotel_id);
 			this.deleteLocation(hotel_id);
-			RoomManager.getInstance().deleteRoom(hotel_id);
+			RoomManager.getInstance().deleteRooms(hotel_id);
 			
 			String query = "delete from Hotels where hotel_id = ?";
 			PreparedStatement stmt = con.prepareStatement(query);

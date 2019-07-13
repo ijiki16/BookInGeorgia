@@ -26,7 +26,7 @@ $(document).ready(function() {
 			hotel_id : id
 		}, function(response) {
 			if($.trim(response) == 'fail'){
-				
+				$('#addInfo').text("Fill information correctly!")
 			} else {
 				$('#save2').css({
 					"display" : "none"

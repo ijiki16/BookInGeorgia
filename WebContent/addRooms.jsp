@@ -16,7 +16,7 @@
 <body>
 	<jsp:include page="Header.jsp" />
 	<div class="post-facility">
-		<h1>Add Room Info</h1>
+		<h1 id="addInfo">Add Room Info</h1>
 
 		<input type="checkbox" id="tv" name="tv"> 
 		<label for="tv">TV</label><br>
@@ -57,7 +57,7 @@
 				<div class="file-select">
 					<div class="file-select-button" id="fileName">Choose File</div>
 					<div class="file-select-name" id="noFile">No file chosen...</div>
-					<input type="file" name="chooseFile2" id="image" required="required">
+					<input type="file" name="chooseFile2" id="image">
 				</div>
 			</div>
 			<button id="next2" class="myButton" >Next</button>

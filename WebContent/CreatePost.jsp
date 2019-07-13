@@ -84,7 +84,7 @@
 				<div class="file-select">
 					<div class="file-select-button" id="fileName">Choose File</div>
 					<div class="file-select-name" id="noFile">No file chosen...</div>
-					<input type="file" name="chooseFile" id="chooseFile" required="required">
+					<input type="file" name="chooseFile" id="chooseFile">
 				</div>
 			</div>
 			<button id="next" class="myButton">Next</button>

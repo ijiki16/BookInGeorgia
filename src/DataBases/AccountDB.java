@@ -139,7 +139,6 @@ public class AccountDB{
 			p.executeUpdate();
 			return true;
 		} catch (SQLException e) {
-			System.out.println("oeee");
 			return false;
 		}
 	}
