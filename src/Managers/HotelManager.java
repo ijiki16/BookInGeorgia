@@ -42,10 +42,10 @@ public class HotelManager {
 	}
 	
 	/**
-	 * @deletes Hotel from Data Base.
+	 * @deletes Hotel from Data Base if it's possible.
 	 */
-	public void deleteHotel(Integer hotel_id) {
-		db.deleteHotel(hotel_id);
+	public boolean deleteHotel(Integer hotel_id) {
+		return db.deleteHotel(hotel_id);
 	}
 	
 	/**
@@ -140,6 +140,7 @@ public class HotelManager {
 			}
 		}
 		if(!rate && !facil) return this.getSearchedHotels(null, null);
+		if(rate) return hotels;
 		for(int i = 0; i < ratings.length; i++) {
 			List<Integer> filtr = db.getFilteredHotels(i+1, beachfront, woodfront, wifi, parking);
 			for(Integer h : filtr) {
