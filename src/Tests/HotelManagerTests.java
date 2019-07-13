@@ -247,6 +247,9 @@ public class HotelManagerTests {
 		HM.deleteHotel(HM.getHotels(id1).get(0).getId());
 		HM.deleteHotel(HM.getHotels(id2).get(0).getId());
 		HM.deleteHotel(HM.getHotels(id2).get(0).getId());
+
+		AM.deleteAccount("devidevuka@mail.ru", "0406");
+		AM.deleteAccount("dkhos17@freeuni.edu.ge", "0406");
 	}
 	
 }
