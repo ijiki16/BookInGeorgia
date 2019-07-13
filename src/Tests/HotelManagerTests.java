@@ -192,7 +192,7 @@ public class HotelManagerTests {
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		java.util.Date date1 = dateFormat.parse("1998-12-30");
-		java.util.Date date2 = dateFormat.parse("1998-12-30");
+		java.util.Date date2 = dateFormat.parse("1998-12-31");
 		
 		RM.addRoom(date1, date2, 50, "none", hotel_id1, 2, false, false, false, false);
 		RM.addRoom(date1, date2, 100, "none", hotel_id1, 3, true, false, true, false);
@@ -244,9 +244,9 @@ public class HotelManagerTests {
 		marge = HM.intersectLists(list1, list2);
 		assertEquals(marge, Arrays.asList());
 		
-//		HM.deleteHotel(HM.getHotels(id1).get(0).getId());
-//		HM.deleteHotel(HM.getHotels(id2).get(0).getId());
-//		HM.deleteHotel(HM.getHotels(id2).get(0).getId());
+		HM.deleteHotel(HM.getHotels(id1).get(0).getId());
+		HM.deleteHotel(HM.getHotels(id2).get(0).getId());
+		HM.deleteHotel(HM.getHotels(id2).get(0).getId());
 	}
 	
 }

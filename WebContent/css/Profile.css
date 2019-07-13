@@ -90,6 +90,7 @@ body {
 }
 
 .posts {
+	position: absolute;
 	width: 40% !important;
 	top: 25% !important;
 	left: 30% !important;
@@ -126,6 +127,7 @@ body {
 	border-bottom: 6px solid white;
 	margin-bottom: 50px;
 	padding: 10px 0;
+	color: white;
 }
 
 .post-box{

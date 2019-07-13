@@ -17,13 +17,10 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="css/font-awesome.min.css">
 <link rel="stylesheet" href="css/home.css">
-<link rel="stylesheet" href="css/Login.css">
-<link rel="stylesheet" href="css/Header.css">
 <link rel="stylesheet" href="css/Post.css">
 <script src="https://kit.fontawesome.com/13f325d0c5.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-<script src="js/home.js" type="text/javascript"></script>
 </head>
 <body>
 	<div class="homepage"></div>
@@ -107,26 +104,7 @@
 			<%}%>
 		</div>
 		<jsp:include page="AboutUs.jsp"/>
-		<div class="log-in"> 
-			<div class="login-box">
-				<i class="fas fa-times-circle" id="close"></i>
-				
-				<h1 class="log-fail"> Login </h1>
-				<div class="text-box">
-					<i class="fas fa-user"></i>
-					<input type="text" placeholder="Username" class="user">
-				</div>
-				
-				<div class="text-box">
-					<i class="fas fa-lock"></i>
-					<input type="password" placeholder="Password" class="password" > <i class="fas fa-eye-slash" id="show-password"></i>
-				</div>
-				
-				<input class="log-btn" type="button" name="" value="Sign in"> 
-				
-				<a class="go-to-reg" href="Register.html"> Register </a> <br>
-			</div>
-		</div>
+		
 		<%if(request.getSession().getAttribute("1st") == null) {
 			request.getSession().setAttribute("1st", "visited");%>
 			<div class="moto"> 

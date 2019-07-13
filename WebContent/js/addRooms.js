@@ -25,12 +25,16 @@ $(document).ready(function() {
 			rPrice2 : rPrice,
 			hotel_id : id
 		}, function(response) {
-			$('#save2').css({
-				"display" : "none"
-			});
-			$('#next2').css({
-				"display" : "block"
-			});
+			if($.trim(response) == 'fail'){
+				$('#addInfo').text("Fill information correctly!")
+			} else {
+				$('#save2').css({
+					"display" : "none"
+				});
+				$('#next2').css({
+					"display" : "block"
+				});
+			}
 		});
 	});
 	

@@ -10,13 +10,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Edit Profile</title>
-<link rel="stylesheet" href="css/home.css">
-<link rel="stylesheet" href="css/Header.css">
 <link rel="stylesheet" href="css/Profile.css">
 <script src="https://kit.fontawesome.com/13f325d0c5.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="js/home.js" type="text/javascript"></script>
 <script src="js/profile.js" type="text/javascript"></script>
 </head>
 <body>
@@ -43,7 +40,7 @@
 		<br><span> Edit Mail: </span> <br> <input type="text" value="<%=user.getEmail()%>" id="email" required="required">
 		<br><span> Edit username: </span> <br> <input type="text" value="<%=user.getUsername()%>"  id="user" required="required">
 		<br><span> Show password: </span> <br>  
-			<input class="edit-pass" type="password" placeholder="new password?" required="required" id="password"> <i class="fas fa-eye" id="show-password"></i>
+			<input class="edit-pass" type="password" placeholder="new password?" required="required" id="pass"> <i class="fas fa-eye-slash" id="show"></i>
 		<button class="save" id="save-prof"> Save Changes</button>
 	</div>
 	<div class="posts">
@@ -53,7 +50,7 @@
 		<h2> Your Posts </h2>
 		 
 		<%for(Hotel hotel : hotels){ %>
-			 <a href="Profile.jsp?hotel_id=<%=hotel.getId()%>"><%=hotel.getName() %></a> <i class="fas fa-pencil-alt"></i> 
+			 <a href="Profile.jsp?hotel_id=<%=hotel.getId()%>"><%=hotel.getName() %><i class="fas fa-pencil-alt" style="float:right"></i></a>  
 		<%}%>
 	</div>
 		
@@ -71,6 +68,7 @@
 			<form action="addRooms.jsp?hotel_id=<%=request.getParameter("hotel_id")%>" method="post">
 				<button type="submit" class="save" id="addRoom"> Add More Rooms </button>
 			</form>
+			<input type="hidden" id="hotel_id" value="<%=request.getParameter("hotel_id")%>">
 			<button class="save" id="save-post"> Save Changes </button>
 		<%}%>
 	</div>

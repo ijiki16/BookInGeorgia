@@ -100,4 +100,10 @@ public class RoomManager {
 		if(room_id < 1 || !sDate.before(eDate) || account_id<0) return false;
 		return rdb.unbookRoom(room_id, sDate, eDate, account_id);
 	}
+
+	public void deleteRooms(Integer hotel_id) {
+		rdb.deleteRooms(hotel_id);
+	}
+	
+	
 }

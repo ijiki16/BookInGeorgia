@@ -70,6 +70,7 @@ $(document).ready(function(){
 	});
 	
 	$('#show-password').click(function(){
+		alert("aee");
 		if($('.password').attr("type") == 'text'){
 			$('.password')[0].type = 'password';
 			$('#show-password')[0].className = "fas fa-eye-slash";
