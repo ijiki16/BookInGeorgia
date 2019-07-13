@@ -3,6 +3,8 @@ package Tests;
 import static org.junit.Assert.*;
 
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -13,13 +15,16 @@ import org.junit.jupiter.api.Order;
 
 import Managers.AccountManager;
 import Managers.HotelManager;
+import Managers.RoomManager;
 import Models.Facilities;
 import Models.Hotel;
 import Models.Location;
+import Models.Room;
 
 public class HotelManagerTests {
 	
 	private HotelManager HM;
+	private RoomManager RM;
 	private AccountManager AM;
 	private Integer id1, id2;
 	
@@ -29,6 +34,7 @@ public class HotelManagerTests {
 	@Before
 	public void setUp() {
 		AM = AccountManager.getInstance();
+		RM = RoomManager.getInstance();
 		HM = HotelManager.getInstance();
 		AM.createAccount("devi", "khos", "devidevuka@mail.ru", "dkhos", "0406", "1999-06-04");
 		id1 = Integer.parseInt(AM.getAccount("devidevuka@mail.ru").getId());
@@ -161,7 +167,7 @@ public class HotelManagerTests {
 	
 	@Test
 	@Order(4)
-	public void testSelectMethods() {
+	public void testSelectMethods() throws ParseException {
 		Integer hotel_id1 = HM.addHotel("Radison", 5, "iveria", "reworked", "+995 ...", id1);
 		Integer hotel_id2 = HM.addHotel("Tiflisi", 4, "none", "old tbilisi", "+995 ...", id2);
 		Integer hotel_id3 = HM.addHotel("Tiflisi TM", 3, "none", "tbilisi", "+995 ...", id2);
@@ -183,6 +189,19 @@ public class HotelManagerTests {
 		assertEquals(locations.size(), 2);
 		assertTrue(locations.contains("tbilisi"));
 		assertTrue(locations.contains("batumi"));
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		java.util.Date date1 = dateFormat.parse("1998-12-30");
+		java.util.Date date2 = dateFormat.parse("1998-12-30");
+		
+		RM.addRoom(date1, date2, 50, "none", hotel_id1, 2, false, false, false, false);
+		RM.addRoom(date1, date2, 100, "none", hotel_id1, 3, true, false, true, false);
+
+		Integer min_price = HM.getMinPrice(hotel_id1);
+		Integer max_price = HM.getMaxPrice(hotel_id1);
+
+		assertTrue(min_price == 50);
+		assertTrue(max_price == 100);
 		
 		boolean ratings[] = {false, false, true, true, true};
 		List<Integer> filter = HM.getFilteredHotels(ratings, false, false, false, false);
@@ -225,9 +244,9 @@ public class HotelManagerTests {
 		marge = HM.intersectLists(list1, list2);
 		assertEquals(marge, Arrays.asList());
 		
-		HM.deleteHotel(HM.getHotels(id1).get(0).getId());
-		HM.deleteHotel(HM.getHotels(id2).get(0).getId());
-		HM.deleteHotel(HM.getHotels(id2).get(0).getId());
+//		HM.deleteHotel(HM.getHotels(id1).get(0).getId());
+//		HM.deleteHotel(HM.getHotels(id2).get(0).getId());
+//		HM.deleteHotel(HM.getHotels(id2).get(0).getId());
 	}
 	
 }

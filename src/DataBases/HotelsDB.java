@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import Managers.RoomManager;
 import Models.Facilities;
 import Models.Hotel;
 import Models.Location;
@@ -25,7 +26,7 @@ public class HotelsDB {
 	
 	/** The db. */
 	private static HotelsDB db;
-
+	
 	/** The account. */
 	private static String account = MyDBInfo.MYSQL_USERNAME;
 	
@@ -116,8 +117,11 @@ public class HotelsDB {
 						hotel_id);
 				Facilities facility = getFacilities(hotel_id);
 				Location location = getLocation(hotel_id);
-				if(facility != null) hotel.setFacilities(facility);
-				if(location != null) hotel.setLocation(location);
+				List<Room> rooms = RoomManager.getInstance().getRooms(hotel_id);
+				
+				hotel.setFacilities(facility);
+				hotel.setLocation(location);
+				hotel.setRooms(rooms); 
 				return hotel;
 			}
 		}catch (SQLException e) {
@@ -280,6 +284,7 @@ public class HotelsDB {
 		try {
 			this.deleteFacilities(hotel_id);
 			this.deleteLocation(hotel_id);
+			RoomManager.getInstance().deleteRoom(hotel_id);
 			
 			String query = "delete from Hotels where hotel_id = ?";
 			PreparedStatement stmt = con.prepareStatement(query);

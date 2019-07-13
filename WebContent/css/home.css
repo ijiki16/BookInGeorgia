@@ -315,7 +315,8 @@ a {
 }
 
 .moto a:link{
-	left: 65px;
+	float: left !important;
+	left: 30px !important;
 	font-color: white !important;
 	font-size: 18px;
 	font-style: oblique;

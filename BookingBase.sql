@@ -15,6 +15,7 @@ DROP TABLE IF EXISTS Accounts;
 -- select * from Hotels;
 -- select * from Locations;
 -- select * from HotelInfo;
+-- select * from Rooms;
 --
 
 -- insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel", 5, "none", "new hotel", "551511300", 1);
