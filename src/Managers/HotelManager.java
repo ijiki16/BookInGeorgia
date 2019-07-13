@@ -129,7 +129,7 @@ public class HotelManager {
 	public List<Integer> getFilteredHotels(boolean[] ratings, boolean beachfront, boolean woodfront, boolean wifi, boolean parking){
 		List<Integer> hotels = new ArrayList<>();
 		boolean rate = false;
-		boolean facil = beachfront || wifi || parking;
+		boolean facil = beachfront || wifi || parking || woodfront;
 		for(int i = 0; i < ratings.length; i++) {
 			rate |= ratings[i];
 			if(ratings[i]) {

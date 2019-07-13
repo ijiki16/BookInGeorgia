@@ -38,6 +38,7 @@
 		    <% int id = Integer.parseInt(request.getParameter("id"));
 		    HotelManager hm = HotelManager.getInstance();
 		    Hotel h = hm.getHotel(id);
+		    if(h == null) return;
 		    RoomManager rm = RoomManager.getInstance();
 		    %>
 			<figure class="img"> <img src="<%=h.getImage() %>"> </figure>

@@ -71,7 +71,7 @@
 		<%if(request.getParameter("hotel_id") != null){ %>
 			<%Hotel hotel = hm.getHotel(Integer.parseInt(request.getParameter("hotel_id")));%>
 			
-			<h2> Edit Hotel Info </h2>
+			<h2 id="editInfo"> Edit Hotel Info </h2>
 			<span> Edit Name: </span> <br> <input type="text" value="<%=hotel.getName()%>"  id="hotelname" required="required"> <br>
 			<span> Edit Rating: </span> <br> <input type="text" value="<%=hotel.getRating()%>"  id="hotelrating" required="required"> <br>
 			<span> Edit Status: </span> <br> <input type="text" value="<%=hotel.getStatus()%>"  id="hotelstatus" required="required"> <br>

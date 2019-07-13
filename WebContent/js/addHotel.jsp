@@ -1,3 +1,4 @@
+<%@page import="java.util.*"%>
 <%@page import="Managers.AccountManager"%>
 <%@page import="Managers.HotelManager"%>
 <%@page import="Models.Account"%>
@@ -12,5 +13,7 @@
 	boolean forest = request.getParameter("forest").equals("true") ? true : false;
 	hm.addLocation(hotel_id, request.getParameter("city"), request.getParameter("street"));
 	hm.addFacilities(hotel_id, request.getParameter("facility"), wifi, parking, beach, forest);
+	
+	//request.getSession().setAttribute("searched"//, ((List<Integer>)(request.getSession().getAttribute("searched"))).add(hotel_id));
 	request.getSession().setAttribute("hotelId", hotel_id);
 %>

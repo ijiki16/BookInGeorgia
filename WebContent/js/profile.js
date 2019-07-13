@@ -70,13 +70,17 @@ $(document).ready(function(){
 	});
 	
 	$('#delete-post').click(function(){
-		alert("ha?");
-		$.post('DeletePost', 
+		let _hotel_id = $('#hotel_id').val();
+		$.post('js/deletePost.jsp', 
 				{
 					hotel_id: _hotel_id
 				}, 
 				function(response) {
-					$('.post-box').css({"display": "none"});
+					if($.trim(response) == 'true'){
+						$('.post-box').css({"display": "none"});
+					} else {
+						$('#editInfo').text("Your hotel is booked!");
+					}
 				});
 	});
 	

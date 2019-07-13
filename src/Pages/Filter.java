@@ -38,9 +38,11 @@ public class Filter extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		boolean[] mass = new boolean[5];
+		String st = "";
 		for(int i = 1; i <= 5; i++){
 			String s = request.getParameter("s" + i);
 			mass[i - 1] = s.equals("true") ? true : false;
+			if(mass[i - 1]) st += "1"; else st += "0";
 		}
 		boolean wifi = request.getParameter("wifi").equals("true") ? true : false;
 		boolean parking = request.getParameter("parking").equals("true") ? true : false;
@@ -48,6 +50,6 @@ public class Filter extends HttpServlet {
 		boolean forest = request.getParameter("forest").equals("true") ? true : false;
 		HotelManager hm = HotelManager.getInstance();
 		List<Integer> l = hm.getFilteredHotels(mass, beach, forest, wifi, parking);
-		request.getSession().setAttribute("searched", hm.intersectLists((List<Integer>) request.getSession().getAttribute("searched"), l));
+//		request.getSession().setAttribute("searched", hm.intersectLists((List<Integer>) request.getSession().getAttribute("searched"), l));	
 	}
 }
