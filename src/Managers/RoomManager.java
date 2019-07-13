@@ -101,8 +101,14 @@ public class RoomManager {
 		return rdb.unbookRoom(room_id, sDate, eDate, account_id);
 	}
 
-	public void deleteRooms(Integer hotel_id) {
+	public boolean deleteRooms(Integer hotel_id) {
+		List<Room> rooms = this.getRooms(hotel_id);
+		for(Room r : rooms) {
+			if(this.getRoomReservations(r.getRoomId()).isEmpty()) continue;
+			return false;
+		}
 		rdb.deleteRooms(hotel_id);
+		return true;
 	}
 	
 	

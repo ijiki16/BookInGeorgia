@@ -105,8 +105,8 @@ public class HotelManagerTests {
 		assertEquals(h1.getFacilities(), null);
 		assertEquals(h1.getLocation(), null);
 
-		HM.deleteHotel(h1.getId());
-		HM.deleteHotel(h2.getId());
+		assertTrue(HM.deleteHotel(h1.getId()));
+		assertTrue(HM.deleteHotel(h2.getId()));
 		assertEquals(HM.getHotel(h1.getId()), null);
 		assertEquals(HM.getHotel(h2.getId()), null);
 	}
@@ -139,7 +139,7 @@ public class HotelManagerTests {
 		HM.deleteFacilites(h.getId());
 		h = HM.getHotel(h.getId());
 		assertEquals(h.getFacilities(), null);
-		HM.deleteHotel(h.getId());
+		assertTrue(HM.deleteHotel(h.getId()));
 	}
 	
 	@Test
@@ -162,7 +162,7 @@ public class HotelManagerTests {
 		HM.deleteLocation(h.getId());
 		h = HM.getHotel(h.getId());
 		assertEquals(h.getLocation(), null);
-		HM.deleteHotel(h.getId());
+		assertTrue(HM.deleteHotel(h.getId()));
 	}
 	
 	@Test
@@ -194,6 +194,9 @@ public class HotelManagerTests {
 		java.util.Date date1 = dateFormat.parse("1998-12-30");
 		java.util.Date date2 = dateFormat.parse("1998-12-31");
 		
+		assertTrue(HM.getMinPrice(hotel_id1) == 0);
+		assertTrue(HM.getMaxPrice(hotel_id1) == 0);
+		
 		RM.addRoom(date1, date2, 50, "none", hotel_id1, 2, false, false, false, false);
 		RM.addRoom(date1, date2, 100, "none", hotel_id1, 3, true, false, true, false);
 
@@ -213,6 +216,9 @@ public class HotelManagerTests {
 		assertEquals(filter.size(), 1); 
 		filter = HM.getFilteredHotels(ratings, false, false, false, false);
 		assertEquals(filter.size(), 2);
+		ratings[3] = false; ratings[4] = false;
+		filter = HM.getFilteredHotels(ratings, false, false, false, false);
+		assertEquals(filter.size(), 3);
 		
 		List<Integer> search = HM.getSearchedHotels(null, null);
 		assertEquals(search.size(), 3);
@@ -244,9 +250,9 @@ public class HotelManagerTests {
 		marge = HM.intersectLists(list1, list2);
 		assertEquals(marge, Arrays.asList());
 		
-		HM.deleteHotel(HM.getHotels(id1).get(0).getId());
-		HM.deleteHotel(HM.getHotels(id2).get(0).getId());
-		HM.deleteHotel(HM.getHotels(id2).get(0).getId());
+		assertTrue(HM.deleteHotel(HM.getHotels(id1).get(0).getId()));
+		assertTrue(HM.deleteHotel(HM.getHotels(id2).get(0).getId()));
+		assertTrue(HM.deleteHotel(HM.getHotels(id2).get(0).getId()));
 
 		AM.deleteAccount("devidevuka@mail.ru", "0406");
 		AM.deleteAccount("dkhos17@freeuni.edu.ge", "0406");

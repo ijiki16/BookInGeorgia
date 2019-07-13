@@ -279,11 +279,11 @@ public class HotelsDB {
 	 *
 	 * @param hotel_id the hotel id
 	 */
-	public void deleteHotel(Integer hotel_id) {
+	public boolean deleteHotel(Integer hotel_id) {
 		try {
+			if(!RoomManager.getInstance().deleteRooms(hotel_id)) return false;
 			this.deleteFacilities(hotel_id);
 			this.deleteLocation(hotel_id);
-			RoomManager.getInstance().deleteRooms(hotel_id);
 			
 			String query = "delete from Hotels where hotel_id = ?";
 			PreparedStatement stmt = con.prepareStatement(query);
@@ -292,6 +292,7 @@ public class HotelsDB {
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return true;
 	}
 
 	/**
