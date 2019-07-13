@@ -13,6 +13,8 @@ import java.util.List;
 
 import javax.xml.namespace.QName;
 
+import Models.Facilities;
+import Models.Reservation;
 import Models.Room;
 
 public class RoomsDB {
@@ -308,5 +310,25 @@ public class RoomsDB {
 			e.printStackTrace();
 			return false;
 		}
+	}
+	
+	public Reservation getReservation(Integer reserved_id) {
+		try {
+			String query = "select * from Reservation where reserved_id = ?";
+			PreparedStatement stmt = ConnDB.prepareStatement(query);
+			stmt.setInt(1, reserved_id);
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()) {
+				Reservation rsr = new Reservation(reserved_id,
+						rs.getDate("reserved_from"),
+						rs.getDate("reserved_to"),
+						rs.getInt("roomd_id"),
+						rs.getInt("account_id"));
+				return rsr;
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

@@ -5,6 +5,7 @@
     <%@page import="Managers.AccountManager"%>
      <%@page import="Managers.RoomManager"%>
     <%@page import="Models.Account"%>
+    <%@page import="Models.Reservation"%>
     <%@page import="Models.Hotel"%>
     <%@page import="Models.Reservation"%>
 <!DOCTYPE html>
@@ -85,6 +86,17 @@
 			<button class="save" id="save-post"> Save Changes </button>
 			<button class="save" id="delete-post"> Delete Post </button>
 		<%}%>
+	</div>
+		
+		
+	<div class="reserv-box">
+		<%Reservation resv = RoomManager.getInstance().getReservation(reserved_id); %>
+		<h2 id="editInfo"> Your Reservation Details </h2>
+			
+		<span> Booking ID: </span> <br> <input type="text" value="<%=resv.getId()%>"  id="res_id" readonly="readonly"> <br>
+		<span> Edit Rating: </span> <br> <input type="text" value="<%=resv.getFrom()%>"  id="from" readonly="readonly"> <br>
+		<span> Edit Status: </span> <br> <input type="text" value="<%=resv.getTo()%>"  id="to" readonly="readonly"> <br>
+		<button class="save" id="unbook"> Unbook Room </button>
 	</div>
 </body>
 </html>
