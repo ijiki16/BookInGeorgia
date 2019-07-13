@@ -19,7 +19,7 @@
 	<form action="home.jsp" class="inline">
 	<button onclick="home.jsp" class="myButton">Home</button>
 	</form>
-	<form action="addRoom.jsp" class="inline">
+	<form action="addRooms.jsp" class="inline">
 	<button type="submit"class="myButton">Add Room</button>
 	</form>
 </body>
