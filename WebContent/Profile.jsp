@@ -70,6 +70,7 @@
 			</form>
 			<input type="hidden" id="hotel_id" value="<%=request.getParameter("hotel_id")%>">
 			<button class="save" id="save-post"> Save Changes </button>
+			<button class="save" id="delete-post"> Delete Post </button>
 		<%}%>
 	</div>
 </body>

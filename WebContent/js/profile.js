@@ -69,6 +69,17 @@ $(document).ready(function(){
 				});
 	});
 	
+	$('#delete-post').click(function(){
+		alert("ha?");
+		$.post('DeletePost', 
+				{
+					hotel_id: _hotel_id
+				}, 
+				function(response) {
+					$('.post-box').css({"display": "none"});
+				});
+	});
+	
 	$('#show').click(function(){
 		if($('#pass').attr("type") == 'text'){
 			$('#pass')[0].type = 'password';

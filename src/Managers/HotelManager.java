@@ -128,18 +128,23 @@ public class HotelManager {
 	 */
 	public List<Integer> getFilteredHotels(boolean[] ratings, boolean beachfront, boolean woodfront, boolean wifi, boolean parking){
 		List<Integer> hotels = new ArrayList<>();
-		boolean flag = true;
+		boolean rate = false;
+		boolean facil = beachfront || wifi || parking;
 		for(int i = 0; i < ratings.length; i++) {
+			rate |= ratings[i];
 			if(ratings[i]) {
-				for(Integer h : db.getFilteredHotels(i+1, beachfront, woodfront, wifi, parking)) {
+				List<Integer> filtr = db.getFilteredHotels(i+1, beachfront, woodfront, wifi, parking);
+				for(Integer h : filtr) {
 					hotels.add(h);
-					flag = false;
 				}
 			}
 		}
-		if(flag) {
-			for(int i = 0; i < ratings.length; i++) 
-				for(Integer h : db.getFilteredHotels(i+1, beachfront, woodfront, wifi, parking)) hotels.add(h);
+		if(!rate && !facil) return this.getSearchedHotels(null, null);
+		for(int i = 0; i < ratings.length; i++) {
+			List<Integer> filtr = db.getFilteredHotels(i+1, beachfront, woodfront, wifi, parking);
+			for(Integer h : filtr) {
+				hotels.add(h);
+			}
 		}
 		return hotels;
 	}
