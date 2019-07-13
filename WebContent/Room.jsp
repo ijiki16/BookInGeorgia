@@ -43,11 +43,11 @@
    		From: <%=request.getAttribute("sd") %> to: <%= request.getAttribute("ed") %>
    </td>
    <td>
-   		<input id="roomid" type="hidden" value="<%=request.getAttribute("id") %>">
+   		<input id="roomid" type="hidden" value="<%=request.getAttribute("id")%>">
    		<h5>Price: <i class="fas fa-dollar-sign"></i> <%=request.getAttribute("price") %></h5>
-   		From: <input type="date" placeholder="yyyy/mm/dd" required="required" id="sd">
-   		To: <input type="date" placeholder="yyyy/mm/dd" required="required" id="ed">
-   		<button type="submit" id="button"></button>
+   		From: <input type="date" placeholder="yyyy/mm/dd" required="required" id="sd<%=request.getAttribute("id")%>">
+   		To: <input type="date" placeholder="yyyy/mm/dd" required="required" id="ed<%=request.getAttribute("id")%>">
+   		<button class="button" type="submit" id="<%=request.getAttribute("id")%>" value="<%=request.getAttribute("id")%>" <% if(request.getSession().getAttribute("user") == null) out.print("style=\"display: none\""); else out.print(""); %>></button>
    </td>
 </tr>
 </body>

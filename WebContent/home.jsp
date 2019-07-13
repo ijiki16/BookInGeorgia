@@ -95,7 +95,10 @@
 		<div class="hotels">
 		<% 
 			List<Integer> IDs = (List<Integer>) request.getSession().getAttribute("searched");
-			if(IDs == null)	IDs = hm.getSearchedHotels(null, null);
+			if(IDs == null)	{
+				IDs = hm.getSearchedHotels(null, null);
+				request.getSession().setAttribute("searched", IDs);
+			}
 			for(Integer hotel_id : IDs){
 				Hotel hotel = hm.getHotel(hotel_id);
 				request.setAttribute("hotel_id", hotel_id);

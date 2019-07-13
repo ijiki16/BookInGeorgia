@@ -30,8 +30,7 @@ public class Filter extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	}
 
 	/**
@@ -49,7 +48,6 @@ public class Filter extends HttpServlet {
 		boolean forest = request.getParameter("forest").equals("true") ? true : false;
 		HotelManager hm = HotelManager.getInstance();
 		List<Integer> l = hm.getFilteredHotels(mass, beach, forest, wifi, parking);
-		request.getSession().setAttribute("filter", l);
+		request.getSession().setAttribute("searched", hm.intersectLists((List<Integer>) request.getSession().getAttribute("searched"), l));
 	}
-
 }
