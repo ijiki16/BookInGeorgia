@@ -6,21 +6,21 @@ $(document).ready(function(){
 
 	$('#edit-prof').click(function(){
 		$('.prof-box').css({"display": "block"});
-		$('.resrv-box').css({"display": "none"});
+		$('.reserv').css({"visibility": "hidden"});
 		$('.post-box').css({"display": "none"});
 		$('.posts').css({"visibility": "hidden"});
 	});
 
 	$('#edit-post').click(function(){
 		$('.prof-box').css({"display": "none"});
-		$('.resrv-box').css({"display": "none"});
+		$('.reserv').css({"visibility": "hidden"});
 		$('.post-box').css({"display": "none"});
 		$('.posts').css({"visibility": "visible"});
 	});
 
 	$('#edit-resrv').click(function(){
 		$('.prof-box').css({"display": "none"});
-		$('.resrv-box').css({"display": "block"});
+		$('.reserv').css({"visibility": "visible"});
 		$('.post-box').css({"display": "none"});
 		$('.posts').css({"visibility": "hidden"});
 	});

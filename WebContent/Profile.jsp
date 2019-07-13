@@ -3,8 +3,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@page import="Managers.AccountManager"%>
+     <%@page import="Managers.RoomManager"%>
     <%@page import="Models.Account"%>
     <%@page import="Models.Hotel"%>
+    <%@page import="Models.Reservation"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,6 +54,17 @@
 		<%for(Hotel hotel : hotels){ %>
 			 <a href="Profile.jsp?hotel_id=<%=hotel.getId()%>"><%=hotel.getName() %><i class="fas fa-pencil-alt" style="float:right"></i></a>  
 		<%}%>
+	</div>
+	
+	<div class="reserv">
+		<% AccountManager am = AccountManager.getInstance();
+		List<Reservation> reservations = am.getReservations(Integer.parseInt(user.getId()));%>
+	
+		<h2> Your Reservations </h2>
+		 
+		<%for(Reservation reserv: reservations){ %>
+			 <a href="#">Reservation Id:<%=reserv.getId()%>,  Room Id: <%=reserv.getRoomId()%><i class="fa fa-remove" aria-hidden="true" style="float:right"></i></a>  
+		<%} System.out.println(reservations.size());%>
 	</div>
 		
 	<div class="post-box">
