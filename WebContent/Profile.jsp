@@ -90,7 +90,7 @@
 		
 		
 	<div class="reserv-box">
-		<%Reservation resv = RoomManager.getInstance().getReservation(reserved_id); %>
+		<%Reservation resv = RoomManager.getInstance().getReservation(Integer.parseInt(request.getParameter("reserved_id"))); %>
 		<h2 id="editInfo"> Your Reservation Details </h2>
 			
 		<span> Booking ID: </span> <br> <input type="text" value="<%=resv.getId()%>"  id="res_id" readonly="readonly"> <br>
