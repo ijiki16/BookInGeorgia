@@ -6,8 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 import Models.Account;
+import Models.Reservation;
 
 public class AccountDB{
 	
@@ -166,6 +168,11 @@ public class AccountDB{
 			e.printStackTrace();
 			return false;
 		}
+	}
+
+	public List<Reservation> getAccountReservations(int account_id) {
+		
+		return null;
 	}
 	
 }
