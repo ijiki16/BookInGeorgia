@@ -124,32 +124,6 @@
 		  	 <%}%>
 		</table>
 		<jsp:include page="AboutUs.jsp"/>
-		<div class="log-in"> 
-			<div class="login-box">
-				<i class="fas fa-times-circle" id="close"></i>
-				
-				<h1 class="log-fail"> Login </h1>
-				<div class="text-box">
-					<i class="fas fa-user"></i>
-					<input type="text" placeholder="Username" class="user">
-				</div>
-				
-				<div class="text-box">
-					<i class="fas fa-lock"></i>
-					<input type="password" placeholder="Password" class="password" > <i class="fas fa-eye-slash" id="show-password"></i>
-				</div>
-				
-				<input class="log-btn" type="button" name="" value="Sign in"> 
-				
-				<a class="go-to-reg" href="Register.html"> Register </a> <br>
-			</div>
-		</div>
-		<%if(request.getSession().getAttribute("1st") == null) {
-			request.getSession().setAttribute("1st", "visited");%>
-			<div class="moto"> 
-				<i class="fas fa-times-circle" id="close-moto"></i> <br>
-				<a href="https://www.facebook.com/SpendYourSummerInGeo/"> #Spend Your Summer in Georgia </a>
-			</div>
-		<%}%>
+		
 </body>
 </html>

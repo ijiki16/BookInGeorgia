@@ -81,8 +81,11 @@ public class addRoom extends HttpServlet {
 			e.printStackTrace();
 		}
 		Integer rmId = rmM.addRoom(sDate, eDate, rPrice, "", htId, numBeds, wifi, tv, hotWater, airCo);
-		
-		request.getSession().setAttribute("roomId", rmId);
+		if(rmId == -1) {
+			response.getWriter().print("fail");
+		} else {
+			request.getSession().setAttribute("roomId", rmId);
+		}
 	}
 
 }

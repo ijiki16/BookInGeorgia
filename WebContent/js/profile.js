@@ -27,11 +27,12 @@ $(document).ready(function(){
 	
 	
 	$('#save-prof').click(function(){
+		alert("aeee");
 		let _firstname = $('#firstname').val();
 		let _lastname = $('#lastname').val();
 		let _email = $('#email').val();
 		let _user = $('#user').val();
-		let _password = $('#password').val();
+		let _password = $('#pass').val();
 		$.post('EditProfile', 
 				{
 					firstname: _firstname,
@@ -68,13 +69,14 @@ $(document).ready(function(){
 				});
 	});
 	
-	$('#show-password').click(function(){
-		if($('#password').attr("type") == 'text'){
-			$('#password')[0].type = 'password';
-			$('#show-password')[0].className = "fas fa-eye-slash";
+	$('#show').click(function(){
+		if($('#pass').attr("type") == 'text'){
+			$('#pass')[0].type = 'password';
+			$('#show')[0].className = "fas fa-eye-slash";
 		}else{
-			$('#password')[0].type = 'text';
-			$('#show-password')[0].className = "fas fa-eye";
+			$('#pass')[0].type = 'text';
+			$('#show')[0].className = "fas fa-eye";
 		}
 	});
+	
 });
