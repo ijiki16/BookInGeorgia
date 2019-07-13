@@ -146,6 +146,16 @@ public class RoomsDB {
 		}
 	}
 
+	public void deleteRooms(Integer hotel_id) {
+		try {
+			String query = "delete from Rooms where hotel_id = ?";
+			PreparedStatement stmt = ConnDB.prepareStatement(query);
+			stmt.setInt(1, hotel_id);
+			stmt.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public boolean deleteRoom(int roomId) {
 		try {
