@@ -5,6 +5,7 @@ import java.util.List;
 
 import DataBases.HotelsDB;
 import DataBases.RoomsDB;
+import Models.Reservation;
 import Models.Room;
 
 public class RoomManager {
@@ -116,4 +117,7 @@ public class RoomManager {
 	}
 	
 	
+	public Reservation getReservation(Integer reserved_id) {
+		return rdb.getReservation(reserved_id);
+	}
 }
