@@ -80,7 +80,7 @@
 				</div>
 				<div class="text">
 					<div class="location">
-					<h4>Saburtalo</h4>
+					<h4><%=h.getLocation().getCity() %>, <%=h.getLocation().getAddress() %></h4>
 					</div>
 					<div class="number">
 					<h4><%=h.getNumber() %></h4>

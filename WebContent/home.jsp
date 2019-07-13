@@ -93,16 +93,24 @@
 		</div>
 		
 		<div class="hotels">
-		<%  boolean wifi = (boolean)request.getSession().getAttribute("wifi");
-			boolean beach = (boolean)request.getSession().getAttribute("beach");
-			boolean wood = (boolean)request.getSession().getAttribute("wood");
-			boolean parking = (boolean)request.getSession().getAttribute("parking");
+		<%  boolean wifi = request.getSession().getAttribute("wifi") == null ? false : request.getSession().getAttribute("wifi").equals("true");
+			boolean beach = request.getSession().getAttribute("beach") == null ? false : request.getSession().getAttribute("beach").equals("true");
+			boolean wood = request.getSession().getAttribute("wood") == null ? false : request.getSession().getAttribute("wood").equals("true");
+			boolean parking = request.getSession().getAttribute("parking") == null ? false : request.getSession().getAttribute("parking").equals("true");
 			String ar = (String)request.getSession().getAttribute("arr");
+			request.getSession().removeAttribute("wifi");
+			request.getSession().removeAttribute("beach");
+			request.getSession().removeAttribute("wood");
+			request.getSession().removeAttribute("parking");
+			request.getSession().removeAttribute("arr");
 			boolean[] arr = new boolean[5];
 			for(int i = 0; i < 5; i++){
-				arr[i] = (ar.charAt(i) == '1') ? true : false;
+				if(ar == null) 
+					arr[i] = false; 
+				else
+					arr[i] = (ar.charAt(i) == '1') ? true : false;
 			}
-			
+
 			String city = (String)request.getSession().getAttribute("city");
 			String hotel_name = (String)request.getSession().getAttribute("hotel_name");
 			

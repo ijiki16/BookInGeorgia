@@ -63,8 +63,10 @@
 		<h2> Your Reservations </h2>
 		 
 		<%for(Reservation reserv: reservations){ %>
-			 <a href="#">Reservation Id:<%=reserv.getId()%>,  Room Id: <%=reserv.getRoomId()%><i class="fa fa-remove" aria-hidden="true" style="float:right"></i></a>  
-		<%} System.out.println(reservations.size());%>
+			 <a href="#">Reservation Id:<%=reserv.getId()%>,  Room Id: <%=reserv.getRoomId()%>
+			 	<i class="fa fa-remove del" aria-hidden="true" style="float:right" id="<%=reserv.getId()%>"></i>
+			 </a>  
+		<%}%>
 	</div>
 		
 	<div class="post-box">

@@ -291,9 +291,6 @@ public class RoomsDB {
 	
 	public boolean unbookRoom(Integer room_id, java.util.Date sDate, java.util.Date eDate, Integer accId) {
 		try {
-			Statement stmt = ConnDB.createStatement();
-			//
-			//String ins = "insert into reservation (reserved_from, reserved_to, room_id) values (?, ?, ?);";
 			String del = "delete from reservation where room_id = ? and reserved_from = ? and reserved_to = ? and account_id = ?";
 			PreparedStatement quer = ConnDB.prepareStatement(del);
 			java.sql.Date sDt = new Date(sDate.getTime());
@@ -302,6 +299,19 @@ public class RoomsDB {
 			quer.setDate(3, eDt);
 			quer.setInt(1, room_id);
 			quer.setInt(4, accId);
+			quer.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public boolean unbookRoom(int reserved_id) {
+		try {
+			String del = "delete from reservation where reserved_id = ?";
+			PreparedStatement quer = ConnDB.prepareStatement(del);
+			quer.setInt(1, reserved_id);
 			quer.executeUpdate();
 			return true;
 		} catch (SQLException e) {

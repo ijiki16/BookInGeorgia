@@ -3,7 +3,7 @@
  */
 
 $(document).ready(function(){
-	var val;
+	  var val;
 	  $(".button").click(function (event) {
 		  event.stopPropagation();
 		  event.stopImmediatePropagation();

@@ -96,6 +96,10 @@ public class RoomManager {
 	/**
 	 * @returns if room unbooked.
 	 */
+	public boolean unbookRoom(int reserved_id) {
+		return rdb.unbookRoom(reserved_id);
+	}
+	
 	public boolean unbookRoom(Integer room_id, Integer account_id, Date sDate, Date eDate) {
 		if(room_id < 1 || !sDate.before(eDate) || account_id<0) return false;
 		return rdb.unbookRoom(room_id, sDate, eDate, account_id);

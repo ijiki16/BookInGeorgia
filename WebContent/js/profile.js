@@ -94,4 +94,17 @@ $(document).ready(function(){
 		}
 	});
 	
+	$(".del").click(function (event) {
+		  event.stopPropagation();
+		  event.stopImmediatePropagation();
+		  val = $(this).attr("id");
+		  $.post('js/deleteReservation.jsp', 
+					{
+			  			resId: val
+					}, 
+					function(response) {
+						location.reload(true);
+			});
+	  });
+	
 });
