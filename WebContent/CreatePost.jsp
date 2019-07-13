@@ -33,33 +33,33 @@
 
 		<div class="text-box">
 			<i class="fas fa-hotel"></i> <input type="text"
-				placeholder="Hotel Name" id="name" value="">
+				placeholder="Hotel Name" id="name" value="" required="required">
 		</div>
 
 		<div class="text-box">
 			<i class="fas fa-star"></i> <input id="stars" type="number" value="1"
-				min="1" max="5">
+				min="1" max="5" required="required">
 		</div>
 
 		<div class="text-box">
 			<i class="fas fa-comment"></i> <input type="text"
-				placeholder="About Hotel" id="status" value="">
+				placeholder="About Hotel" id="status" value="" required="required">
 		</div>
 
 
 		<div class="text-box">
 			<i class="fas fa-phone"></i> <input type="text"
-				placeholder="Phone Number" id="phone" value="">
+				placeholder="Phone Number" id="phone" value="" required="required">
 		</div>
 
 		<div class="text-box">
 			<i class="fas fa-map-marker-alt"></i> <input type="text"
-				placeholder="City" id="city" value="">
+				placeholder="City" id="city" value="Tbilisi" required="required">
 		</div>
 
 		<div class="text-box">
 			<i class="fas fa-road"></i> <input type="text" placeholder="Street"
-				id="street" value="">
+				id="street" value="" required="required">
 		</div>
 	</div>
 
@@ -84,7 +84,7 @@
 				<div class="file-select">
 					<div class="file-select-button" id="fileName">Choose File</div>
 					<div class="file-select-name" id="noFile">No file chosen...</div>
-					<input type="file" name="chooseFile" id="chooseFile">
+					<input type="file" name="chooseFile" id="chooseFile" required="required">
 				</div>
 			</div>
 			<button id="next" class="myButton">Next</button>

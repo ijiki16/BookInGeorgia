@@ -52,7 +52,7 @@
 
 		<div class="text-box">
 			<i class="fas fa-dollar-sign"></i> <input type="number" id="rPrice"
-				value="0" min="0">
+				value="0" min="0" required="required">
 		</div>
 
 
@@ -62,7 +62,7 @@
 				<div class="file-select">
 					<div class="file-select-button" id="fileName">Choose File</div>
 					<div class="file-select-name" id="noFile">No file chosen...</div>
-					<input type="file" name="chooseFile2" id="image">
+					<input type="file" name="chooseFile2" id="image" required="required">
 				</div>
 			</div>
 			<button id="next2" class="myButton" >Next</button>

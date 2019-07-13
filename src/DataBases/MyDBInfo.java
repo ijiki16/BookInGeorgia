@@ -11,3 +11,4 @@ public class MyDBInfo {
 	public static final String MYSQL_DATABASE_NAME = "booking";
 }
 
+

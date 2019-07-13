@@ -41,16 +41,16 @@
 			      <a class="nav-link" href="home.jsp">Home</a>
 			    </li>
 			    <li class="nav-item active">
-			      <a class="nav-link" href="#" id="posts">Your Posts</a>
+			      <a class="nav-link" href="Profile.jsp" id="posts">Your Posts</a>
 			    </li>
 			    <li class="nav-item active">
 			      <a class="nav-link" href="CreatePost.jsp" id="add">Add Post</a>
 			    </li>
 			    <li class="nav-item active">
-			      <a class="nav-link" href="#" id="about">About us</a>
+			      <a class="nav-link" href="AboutUs.jsp" id="about">About us</a>
 			    </li>
 			    <li class="nav-item active">
-			      <a class="nav-link" href="#" id="contact">Contact us</a>
+			      <a class="nav-link" href="ContactUs.jsp" id="contact">Contact us</a>
 			    </li>
 			  </ul>
 			</nav>
