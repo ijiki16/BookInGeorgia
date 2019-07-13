@@ -38,7 +38,6 @@ public class createPost extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(request.getParameter("image"));
 		BufferedImage originalImage = ImageIO.read(new File(request.getParameter("image")));
 		ImageIO.write(originalImage, "jpg", new File("chemiFile")); 
 	}

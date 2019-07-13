@@ -93,8 +93,22 @@
 		</div>
 		
 		<div class="hotels">
-		<% 
-			List<Integer> IDs = hm.getSearchedHotels(null, null);
+		<%  boolean wifi = (boolean)request.getSession().getAttribute("wifi");
+			boolean beach = (boolean)request.getSession().getAttribute("beach");
+			boolean wood = (boolean)request.getSession().getAttribute("wood");
+			boolean parking = (boolean)request.getSession().getAttribute("parking");
+			String ar = (String)request.getSession().getAttribute("arr");
+			boolean[] arr = new boolean[5];
+			for(int i = 0; i < 5; i++){
+				arr[i] = (ar.charAt(i) == '1') ? true : false;
+			}
+			
+			String city = (String)request.getSession().getAttribute("city");
+			String hotel_name = (String)request.getSession().getAttribute("hotel_name");
+			
+			List<Integer> IDs = hm.getSearchedHotels(city, hotel_name);
+			IDs = hm.intersectLists(IDs, hm.getFilteredHotels(arr, beach, wood, wifi, parking));
+			
 			for(Integer hotel_id : IDs){
 				if(hm.getHotel(hotel_id) == null) continue;
 				Hotel hotel = hm.getHotel(hotel_id);

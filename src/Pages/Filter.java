@@ -38,19 +38,17 @@ public class Filter extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		boolean[] mass = new boolean[5];
-		String st = "";
+		String arr = "";
 		for(int i = 1; i <= 5; i++){
 			String s = request.getParameter("s" + i);
-			System.out.println("s" + i);
 			mass[i - 1] = s.equals("true") ? true : false;
-			if(mass[i - 1]) st += "1"; else st += "0";
+			arr += (mass[i-1]) ? "1" : "0";
 		}
-		boolean wifi = request.getParameter("wifi").equals("true") ? true : false;
-		boolean parking = request.getParameter("parking").equals("true") ? true : false;
-		boolean beach = request.getParameter("beach").equals("true") ? true : false;
-		boolean forest = request.getParameter("forest").equals("true") ? true : false;
-		HotelManager hm = HotelManager.getInstance();
-		List<Integer> l = hm.getFilteredHotels(mass, beach, forest, wifi, parking);
-//		request.getSession().setAttribute("searched", hm.intersectLists((List<Integer>) request.getSession().getAttribute("searched"), l));	
+		
+		request.getSession().setAttribute("wifi", request.getParameter("wifi"));
+		request.getSession().setAttribute("parking", request.getParameter("parking"));
+		request.getSession().setAttribute("beach", request.getParameter("beach"));
+		request.getSession().setAttribute("wood", request.getParameter("forest"));
+		request.getSession().setAttribute("arr", arr);
 	}
 }
