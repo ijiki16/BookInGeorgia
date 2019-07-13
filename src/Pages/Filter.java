@@ -36,11 +36,12 @@ public class Filter extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		boolean[] mass = new boolean[5];
 		String st = "";
 		for(int i = 1; i <= 5; i++){
 			String s = request.getParameter("s" + i);
+			System.out.println("s" + i);
 			mass[i - 1] = s.equals("true") ? true : false;
 			if(mass[i - 1]) st += "1"; else st += "0";
 		}
