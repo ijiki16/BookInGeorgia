@@ -332,7 +332,7 @@ public class RoomsDB {
 				Reservation rsr = new Reservation(reserved_id,
 						rs.getDate("reserved_from"),
 						rs.getDate("reserved_to"),
-						rs.getInt("roomd_id"),
+						rs.getInt("room_id"),
 						rs.getInt("account_id"));
 				return rsr;
 			}

@@ -190,3 +190,27 @@ body {
 	color: white;	
 }
 
+.reserv-box{
+	top: 150px;
+	left: 800px;
+	width: 23%;
+	position: absolute;
+	color: white;
+}
+
+.reserv-box h2{
+	float: top;
+	font-size: 40px;
+	border-bottom: 6px solid white;
+	margin-bottom: 50px;
+	padding: 10px 0;
+}
+
+.reserv-box input {
+	width: 140px;
+	background: none;
+	border: none;
+	outline: none;
+	color: white;	
+}
+

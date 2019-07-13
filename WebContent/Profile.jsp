@@ -64,8 +64,8 @@
 		<h2> Your Reservations </h2>
 		 
 		<%for(Reservation reserv: reservations){ %>
-			 <a href="#">Reservation Id:<%=reserv.getId()%>,  Room Id: <%=reserv.getRoomId()%>
-			 	<i class="fa fa-remove del" aria-hidden="true" style="float:right" id="<%=reserv.getId()%>"></i>
+			 <a href="Profile.jsp?reserved_id=<%=reserv.getId()%>">Reservation Id:<%=reserv.getId()%>,  Room Id: <%=reserv.getRoomId()%>
+			 	<i class="fa fa-remove" aria-hidden="true" style="float:right" id="<%=reserv.getId()%>"></i>
 			 </a>  
 		<%}%>
 	</div>
@@ -92,13 +92,15 @@
 		
 		
 	<div class="reserv-box">
-		<%Reservation resv = RoomManager.getInstance().getReservation(Integer.parseInt(request.getParameter("reserved_id"))); %>
+		<%if(request.getParameter("reserved_id") != null) {
+			Reservation resv = RoomManager.getInstance().getReservation(Integer.parseInt(request.getParameter("reserved_id"))); %>
 		<h2 id="editInfo"> Your Reservation Details </h2>
-			
+		
 		<span> Booking ID: </span> <br> <input type="text" value="<%=resv.getId()%>"  id="res_id" readonly="readonly"> <br>
-		<span> Edit Rating: </span> <br> <input type="text" value="<%=resv.getFrom()%>"  id="from" readonly="readonly"> <br>
-		<span> Edit Status: </span> <br> <input type="text" value="<%=resv.getTo()%>"  id="to" readonly="readonly"> <br>
-		<button class="save" id="unbook"> Unbook Room </button>
+		<span> From: </span> <br> <input type="text" value="<%=resv.getFrom()%>"  id="from" readonly="readonly"> <br>
+		<span> To: </span> <br> <input type="text" value="<%=resv.getTo()%>"  id="to" readonly="readonly"> <br>
+		<button class="save" id="del"> Unbook Room </button>
+		<%} %>
 	</div>
 </body>
 </html>

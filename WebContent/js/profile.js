@@ -8,6 +8,7 @@ $(document).ready(function(){
 		$('.prof-box').css({"display": "block"});
 		$('.reserv').css({"visibility": "hidden"});
 		$('.post-box').css({"display": "none"});
+		$('.reserv-box').css({"display": "none"});
 		$('.posts').css({"visibility": "hidden"});
 	});
 
@@ -15,6 +16,7 @@ $(document).ready(function(){
 		$('.prof-box').css({"display": "none"});
 		$('.reserv').css({"visibility": "hidden"});
 		$('.post-box').css({"display": "none"});
+		$('.reserv-box').css({"display": "none"});
 		$('.posts').css({"visibility": "visible"});
 	});
 
@@ -22,6 +24,7 @@ $(document).ready(function(){
 		$('.prof-box').css({"display": "none"});
 		$('.reserv').css({"visibility": "visible"});
 		$('.post-box').css({"display": "none"});
+		$('.reserv-box').css({"display": "none"});
 		$('.posts').css({"visibility": "hidden"});
 	});
 	
@@ -77,7 +80,7 @@ $(document).ready(function(){
 				}, 
 				function(response) {
 					if($.trim(response) == 'true'){
-						$('.post-box').css({"display": "none"});
+						window.location.replace("Profile.jsp");
 					} else {
 						$('#editInfo').text("Your hotel is booked!");
 					}
@@ -94,16 +97,14 @@ $(document).ready(function(){
 		}
 	});
 	
-	$(".del").click(function (event) {
-		  event.stopPropagation();
-		  event.stopImmediatePropagation();
-		  val = $(this).attr("id");
+	$("#del").click(function () {
+		  val = $("#res_id").val();
 		  $.post('js/deleteReservation.jsp', 
 					{
-			  			resId: val
+			  			reserved_id: val
 					}, 
 					function(response) {
-						location.reload(true);
+						window.location.replace("Profile.jsp");
 			});
 	  });
 	
