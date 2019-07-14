@@ -10,6 +10,8 @@ $(document).ready(function(){
 		$('.post-box').css({"display": "none"});
 		$('.reserv-box').css({"display": "none"});
 		$('.posts').css({"visibility": "hidden"});
+		$('.room-box').css({"display": "none"});
+		$('.rooms').css({"visibility": "hidden"});
 	});
 
 	$('#edit-post').click(function(){
@@ -18,6 +20,8 @@ $(document).ready(function(){
 		$('.post-box').css({"display": "none"});
 		$('.reserv-box').css({"display": "none"});
 		$('.posts').css({"visibility": "visible"});
+		$('.room-box').css({"display": "none"});
+		$('.rooms').css({"visibility": "hidden"});
 	});
 
 	$('#edit-resrv').click(function(){
@@ -26,6 +30,8 @@ $(document).ready(function(){
 		$('.post-box').css({"display": "none"});
 		$('.reserv-box').css({"display": "none"});
 		$('.posts').css({"visibility": "hidden"});
+		$('.room-box').css({"display": "none"});
+		$('.rooms').css({"visibility": "hidden"});
 	});
 	
 	
@@ -72,6 +78,32 @@ $(document).ready(function(){
 				});
 	});
 	
+	$('#save-room').click(function(){
+		let tv = $("#tv").is(':checked');
+		let wifi = $('#wifi').is(':checked');
+		let hotWater = $('#hotWater').is(':checked');
+		let airCo = $('#airCo').is(':checked');
+		let hotel_id = $('#hotel_id').val();
+		let numBeds = $('#numBeds').val();
+		let sDate = $('#sDate').val();
+		let eDate = $('#eDate').val();
+		let rPrice = $('#rPrice').val();
+		$.post('js/EditRoom.jsp', 
+				{
+					tv: tv,
+					wifi: wifi,
+					hotWater: hotWater,
+					airCo:airCo,
+					numBeds:numBeds,
+					sDate:sDate,
+					eDate:eDate,
+					hotel_id: hotel_id
+				}, 
+				function(response) {
+					$('.room-box').css({"display": "none"});
+				});
+	});
+	
 	$('#delete-post').click(function(){
 		let _hotel_id = $('#hotel_id').val();
 		$.post('js/deletePost.jsp', 
@@ -106,6 +138,26 @@ $(document).ready(function(){
 					function(response) {
 						window.location.replace("Profile.jsp");
 			});
+	  });
+	
+	$("#del-room").click(function () {
+		  val = $("#room_id").val();
+		  $.post('js/deleteRoom.jsp', 
+					{
+			  			room_id: val
+					}, 
+					function(response) {
+						if($.trim(response) == 'true'){
+							window.location.replace("Profile.jsp");
+						} else {
+							$('#room-info').text("Your room is booked!");
+						}
+					});
+	  });
+	
+	$("#edit-rooms").click(function () {
+		$('.rooms').css({"visibility": "visible"});
+		$('.post-box').css({"display": "none"});
 	  });
 	
 });
