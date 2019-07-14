@@ -16,6 +16,7 @@ import Models.Facilities;
 import Models.Hotel;
 import Models.Location;
 import Models.Room;
+import javafx.util.Pair;
 
 
 // TODO: Auto-generated Javadoc
@@ -578,8 +579,8 @@ public class HotelsDB {
 	 * @param hotel_id the hotel id
 	 * @return the comments key = user /value = comments of user
 	 */
-	public Map<String,List<String>> getComments(Integer hotel_id) {
-		Map<String,List<String>> comments = new HashMap<String, List<String>>();
+	public List<Pair<String,String>> getComments(Integer hotel_id) {
+		List<Pair<String,String>> comments = new ArrayList<>();
 		try {
 			String query = "select * from comments";
 			PreparedStatement stmt = con.prepareStatement(query);
@@ -587,13 +588,7 @@ public class HotelsDB {
 			while(rs.next()) {
 				String user = rs.getString("username");
 				String comment = rs.getString("comm");
-				if(comments.get(user) == null) {
-					List<String> comms = new ArrayList<String>();
-					comms.add(comment);
-					comments.put(user, comms);
-					continue;
-				}
-				comments.get(user).add(rs.getString("comm"));
+				comments.add(new Pair<String, String>(user, comment));
 			}
 		}catch (SQLException e) { 
 			e.printStackTrace();

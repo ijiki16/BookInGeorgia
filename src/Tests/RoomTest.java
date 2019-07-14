@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
+
+import DataBases.MyDBInfo;
 import Models.Room;
 
 public class RoomTest {
@@ -29,6 +31,7 @@ public class RoomTest {
 	@Before
 	public void Create() throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		MyDBInfo mdb = new MyDBInfo();
 		date1 = new Date();
 
 		date2 = dateFormat.parse("1998-12-30");
