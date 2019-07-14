@@ -278,9 +278,9 @@ public class EditPostTests extends Mockito{
 	@After
 	public void clearDB() {
 		
-	//	hm.deleteLocation(hotelId);
-	//	hm.deleteHotel(hotelId);
-	//	am.deleteAccount("nbasi16", "123456");
+		hm.deleteLocation(hotelId);
+		hm.deleteHotel(hotelId);
+		am.deleteAccount("nbasi16", "123456");
 		
 	}
 
