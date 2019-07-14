@@ -110,6 +110,9 @@ public class HotelManagerTests {
 		assertTrue(HM.deleteHotel(h2.getId()));
 		assertEquals(HM.getHotel(h1.getId()), null);
 		assertEquals(HM.getHotel(h2.getId()), null);
+		
+		AM.deleteAccount("devidevuka@mail.ru", "0406");
+		AM.deleteAccount("dkhos17@freeuni.edu.ge", "0406");
 	}
 	
 	@Test
@@ -141,6 +144,9 @@ public class HotelManagerTests {
 		h = HM.getHotel(h.getId());
 		assertEquals(h.getFacilities(), null);
 		assertTrue(HM.deleteHotel(h.getId()));
+		
+		AM.deleteAccount("devidevuka@mail.ru", "0406");
+		AM.deleteAccount("dkhos17@freeuni.edu.ge", "0406");
 	}
 	
 	@Test
@@ -164,6 +170,9 @@ public class HotelManagerTests {
 		h = HM.getHotel(h.getId());
 		assertEquals(h.getLocation(), null);
 		assertTrue(HM.deleteHotel(h.getId()));
+		
+		AM.deleteAccount("devidevuka@mail.ru", "0406");
+		AM.deleteAccount("dkhos17@freeuni.edu.ge", "0406");
 	}
 	
 	@Test
@@ -260,6 +269,9 @@ public class HotelManagerTests {
 		assertTrue(HM.deleteHotel(HM.getHotels(id1).get(0).getId()));
 		assertTrue(HM.deleteHotel(HM.getHotels(id2).get(0).getId()));
 		assertTrue(HM.deleteHotel(HM.getHotels(id2).get(0).getId()));
+		
+		AM.deleteAccount("devidevuka@mail.ru", "0406");
+		AM.deleteAccount("dkhos17@freeuni.edu.ge", "0406");
 
 	}
 	

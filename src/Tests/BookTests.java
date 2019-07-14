@@ -88,7 +88,7 @@ public class BookTests extends Mockito {
 
 		assertTrue(rmM.unbookRoom(res1.getId()));
 		htM.deleteHotel(htlID1);
-		acM.deleteAccount("ijiki@gmail.com", "1234iuri");
+		assertTrue(acM.deleteAccount("ijiki@gmail.com", "1234iuri"));
 
 	}
 
@@ -125,7 +125,8 @@ public class BookTests extends Mockito {
 		server.doPost(request, response);
 
 		assertTrue(stringWriter.toString().equals("fail"));
-
+		
+		assertTrue(acM.deleteAccount("ijiki@gmail.com", "1234iuri"));
 	}
 
 }
