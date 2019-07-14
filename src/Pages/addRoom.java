@@ -30,15 +30,6 @@ public class addRoom extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
@@ -47,7 +38,10 @@ public class addRoom extends HttpServlet {
 		RoomManager rmM = RoomManager.getInstance();
 		Integer htId;
 //		Integer htId = (Integer) request.getSession().getAttribute("hotelId");
-		if(!request.getParameter("hotel_id").equals("null")) { 
+		String str1 = request.getParameter("hotel_id");
+		//String str2 = (Integer) request.getSession().getAttribute("hotelId");
+		
+		if(!str1.equals("null")) { 
 			htId = Integer.parseInt(request.getParameter("hotel_id"));
 		} else {
 			htId = (Integer) request.getSession().getAttribute("hotelId");
@@ -60,17 +54,6 @@ public class addRoom extends HttpServlet {
 		Integer numBeds = Integer.parseInt(request.getParameter("numBeds2"));
 		Integer rPrice = Integer.parseInt(request.getParameter("rPrice2"));
 
-//		System.out.println(htId);
-//
-//		System.out.println(request.getParameter("sDate2"));
-//		System.out.println(request.getParameter("eDate2"));
-//		System.out.println(wifi);
-//		System.out.println(tv);
-//		System.out.println(hotWater);
-//		System.out.println(airCo);
-//		System.out.println(numBeds);
-//		System.out.println(rPrice);
-
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date sDate = new Date();
 		Date eDate = new Date();
@@ -81,11 +64,8 @@ public class addRoom extends HttpServlet {
 			e.printStackTrace();
 		}
 		Integer rmId = rmM.addRoom(sDate, eDate, rPrice, "", htId, numBeds, wifi, tv, hotWater, airCo);
-		if(rmId == -1) {
-			response.getWriter().print("fail");
-		} else {
-			request.getSession().setAttribute("roomId", rmId);
-		}
+		request.getSession().setAttribute("roomId", rmId);
+		if(rmId == -1) response.getWriter().print("fail");
 	}
 
 }

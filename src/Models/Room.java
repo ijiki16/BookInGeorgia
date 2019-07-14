@@ -94,14 +94,14 @@ public class Room {
 	/**
 	 * @return Room ID of the Room.
 	 */
-	public int getRoomId() {
+	public Integer getRoomId() {
 		return RoomId;
 	}
 
 	/**
 	 * @return Hottel ID of the Room.
 	 */
-	public int getHottelId() {
+	public Integer getHottelId() {
 		return hottelId;
 	}
 	
