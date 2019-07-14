@@ -6,6 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>About us</title>
 <link rel="stylesheet" href="css/about.css">
+
 </head>
 <body>
 		<jsp:include page="Header.jsp"/>
@@ -28,6 +29,7 @@
 			Iuri Jikidze		<br>
 			Nika Basiashvili	<br>
 		</h3>
-	
+		
+		<jsp:include page="ContactUs.jsp"/>
 </body>
 </html>
