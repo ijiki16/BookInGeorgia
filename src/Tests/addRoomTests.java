@@ -1,4 +1,4 @@
-package Pages;
+package Tests;
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,6 +17,7 @@ import Managers.AccountManager;
 import Managers.HotelManager;
 import Managers.RoomManager;
 import Models.Room;
+import Pages.addRoom;
 
 public class addRoomTests extends Mockito {
 	@Test
