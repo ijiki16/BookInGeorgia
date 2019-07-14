@@ -27,16 +27,14 @@ public class RoomTest {
 	private Room room7;
 
 	@Before
-	public void Create() {
+	public void Create() throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		date1 = new Date();
-		try {
-			date2 = dateFormat.parse("1998-12-30");
-			date3 = dateFormat.parse("2008-08-08");
-			date4 = dateFormat.parse("2018-04-12");
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+
+		date2 = dateFormat.parse("1998-12-30");
+		date3 = dateFormat.parse("2008-08-08");
+		date4 = dateFormat.parse("2018-04-12");
+
 		// without ID
 		room1 = new Room();
 		room2 = new Room(1, date1, date1, 200, "aba.jpg", 1, 2, false, false, false, false);

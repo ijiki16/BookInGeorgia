@@ -194,8 +194,12 @@ public class HotelManagerTests {
 		java.util.Date date1 = dateFormat.parse("1998-12-30");
 		java.util.Date date2 = dateFormat.parse("1998-12-31");
 		
-		assertTrue(HM.getMinPrice(hotel_id1) == 0);
-		assertTrue(HM.getMaxPrice(hotel_id1) == 0);
+		Integer zr = 0;
+		Integer f = 50;
+		Integer oneH = 100;
+		
+		assertEquals(zr, HM.getMinPrice(hotel_id1));
+		assertEquals(zr, HM.getMaxPrice(hotel_id1));
 		
 		RM.addRoom(date1, date2, 50, "none", hotel_id1, 2, false, false, false, false);
 		RM.addRoom(date1, date2, 100, "none", hotel_id1, 3, true, false, true, false);
@@ -203,9 +207,9 @@ public class HotelManagerTests {
 		Integer min_price = HM.getMinPrice(hotel_id1);
 		Integer max_price = HM.getMaxPrice(hotel_id1);
 
-		assertTrue(min_price == 50);
-		assertTrue(max_price == 100);
-		
+		assertEquals(f, min_price);
+		assertEquals(oneH, max_price);
+
 		boolean ratings[] = {false, false, true, true, true};
 		List<Integer> filter = HM.getFilteredHotels(ratings, false, false, false, false);
 		assertEquals(filter.size(), 3);

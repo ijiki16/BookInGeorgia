@@ -69,6 +69,10 @@ public class addRoomTests extends Mockito {
 		
 		//assertEquals(, crR.getStartDate());
 		//assertEquals(, crR.getStartDate());
+		
+		rmM.deleteRoom(crR.getRoomId());
+		htM.deleteHotel(htlID1);
+		acM.deleteAccount("ijiki@gmail.com", "1234iuri");
 
 	}
 
@@ -119,6 +123,11 @@ public class addRoomTests extends Mockito {
 		
 		assertEquals(4, crR.getNumberOfBeds());
 		assertEquals(120, crR.getPricePerDay());
+		
+		
+		rmM.deleteRoom(crR.getRoomId());
+		htM.deleteHotel(htlID1);
+		acM.deleteAccount("ijiki@gmail.com", "1234iuri");
 	}
 
 	@Test
@@ -163,6 +172,9 @@ public class addRoomTests extends Mockito {
 
 		//verify(mock)
 		//assertEquals("-1", rmId);
+
+		htM.deleteHotel(htlID1);
+		acM.deleteAccount("ijiki@gmail.com", "1234iuri");
 	}
 	
 	@Test
@@ -203,6 +215,9 @@ public class addRoomTests extends Mockito {
 		List<Room> rms = rmM.getRooms(htlID1);
 		assertEquals(0, rms.size());
 		
+		
+		htM.deleteHotel(htlID1);
+		acM.deleteAccount("ijiki@gmail.com", "1234iuri");
 		//String rmId = (String) request.getSession().getAttribute("roomId");
 
 		//verify(mock)

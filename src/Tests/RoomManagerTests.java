@@ -10,15 +10,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.Order;
 
 import Managers.AccountManager;
 import Managers.HotelManager;
 import Managers.RoomManager;
 import Models.Account;
 import Models.Hotel;
+import Models.Reservation;
 import Models.Room;
 
 public class RoomManagerTests {
@@ -133,5 +134,36 @@ public class RoomManagerTests {
 		assertTrue(roomM.deleteRoom(room1.getRoomId()));
 		htM.deleteHotel(hotel1.getId());
 		htM.deleteHotel(hotel2.getId());
+	}
+	
+	@Test
+	public void test2() {
+		System.out.println(room1.toString());
+		
+		assertTrue(roomM.bookRoom(room1.getRoomId(), Integer.parseInt(user1.getId()), date6, date7));
+		assertTrue(roomM.bookRoom(room1.getRoomId(), Integer.parseInt(user1.getId()), date4, date5));
+		
+		List<Reservation> resS = acM.getReservations(Integer.parseInt(user1.getId()));
+		
+		Integer accId = Integer.parseInt(user1.getId());
+		Reservation res1 = resS.get(0);
+		
+		assertEquals(accId, res1.getAccountId());
+		assertEquals(room1.getRoomId(), res1.getRoomId());
+		//
+		System.out.println(res1.getFrom().toString());
+		System.out.println(res1.getTo().toString());
+		
+		Reservation res2 = roomM.getReservation(resS.get(1).getId());
+		assertEquals(accId, res2.getAccountId());
+		assertEquals(room1.getRoomId(), res1.getRoomId());
+		
+		assertTrue(roomM.unbookRoom(res1.getId()));
+		assertFalse(htM.deleteHotel(hotel2.getId()));
+		assertTrue(roomM.unbookRoom(res2.getId()));
+		
+		
+		assertTrue(htM.deleteHotel(hotel1.getId()));
+		assertTrue(htM.deleteHotel(hotel2.getId()));
 	}
 }
