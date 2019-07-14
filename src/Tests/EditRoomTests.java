@@ -18,6 +18,8 @@ import Managers.HotelManager;
 import Managers.RoomManager;
 import Models.Account;
 import Models.Room;
+import Pages.EditRoom;
+import Pages.addRoom;
 
 class EditRoomTests extends Mockito {
 
@@ -27,6 +29,7 @@ class EditRoomTests extends Mockito {
 		HttpServletRequest request = mock(HttpServletRequest.class);
 		HttpServletResponse response  = mock(HttpServletResponse.class);
 		HttpSession session = mock(HttpSession.class);
+		
 		assertTrue(AccountManager.getInstance().createAccount("devi", "khos", "dkhos17", "dkhos","0406", "1999-04-06"));
 		Account acc = AccountManager.getInstance().getAccount("dkhos17");
 		Integer account_id = Integer.parseInt(acc.getId()); 
@@ -49,6 +52,9 @@ class EditRoomTests extends Mockito {
 		when(request.getParameter("rPrice")).thenReturn("50");
 		when(request.getParameter("sDate")).thenReturn("1998-12-30");
 		when(request.getParameter("eDate")).thenReturn("1998-12-31");
+		
+		EditRoom server = new EditRoom();
+		server.doPost(request, response);
 		
 		verify(request).removeAttribute("room_id");
 		
@@ -89,6 +95,10 @@ class EditRoomTests extends Mockito {
 		when(request.getParameter("rPrice")).thenReturn("50");
 		when(request.getParameter("sDate")).thenReturn("1998-12-30");
 		when(request.getParameter("eDate")).thenReturn("1998-12-31");
+		
+
+		EditRoom server = new EditRoom();
+		server.doPost(request, response);
 		
 		verify(request).removeAttribute("room_id");
 		
