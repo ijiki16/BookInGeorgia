@@ -49,7 +49,8 @@ public class EditProfile extends HttpServlet {
 
 		if(!firstName.isEmpty() && !firstName.equals(acc.getFirstName())) manager.updateAccount(acc, "first_name", firstName);
 		if(!lastName.isEmpty() && !lastName.equals(acc.getLastName())) manager.updateAccount(acc, "last_name", lastName);
-		if(!email.isEmpty() && !email.equals(acc.getEmail())) manager.updateAccount(acc, "email", email);
+		if(!email.isEmpty() && !email.equals(acc.getEmail()) && manager.updateAccount(acc, "email", email))
+			request.getSession().setAttribute("user", email);
 		if(!username.isEmpty() && !username.equals(acc.getUsername())) manager.updateAccount(acc, "username", username);
 		if(!password.isEmpty() && !password.equals(acc.getPassword())) manager.updateAccount(acc, "password", password);
 		response.getWriter().print("Changes Saved");

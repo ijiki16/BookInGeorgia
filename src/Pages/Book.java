@@ -57,8 +57,7 @@ public class Book extends HttpServlet {
 		
 		boolean res = rm.bookRoom(room_id, Integer.parseInt(AccountManager.getInstance().getAccount((String)request.getSession().getAttribute("user")).getId()), sDate, eDate);
 		PrintWriter out = response.getWriter();
-		if(res == true) 
-			  out.print("success"); 
+		if(res == true) out.print("success"); 
 		else  out.print("fail");
 	}
 
