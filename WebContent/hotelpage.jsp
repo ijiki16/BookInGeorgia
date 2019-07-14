@@ -123,7 +123,6 @@
 		  		<jsp:include page="Room.jsp"/> 
 		  	 <%}%>
 		</table>
-		<jsp:include page="AboutUs.jsp"/>
 		
 </body>
 </html>

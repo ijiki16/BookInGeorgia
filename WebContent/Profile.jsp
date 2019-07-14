@@ -7,6 +7,7 @@
     <%@page import="Models.Account"%>
     <%@page import="Models.Reservation"%>
     <%@page import="Models.Hotel"%>
+    <%@page import="Models.Room"%>
     <%@page import="Models.Reservation"%>
 <!DOCTYPE html>
 <html>
@@ -71,7 +72,7 @@
 	</div>
 		
 	<div class="post-box">
-		<%if(request.getParameter("hotel_id") != null){ %>
+		<%if(request.getParameter("hotel_id") != null && request.getParameter("room_id") == null){ %>
 			<%Hotel hotel = hm.getHotel(Integer.parseInt(request.getParameter("hotel_id")));%>
 			
 			<h2 id="editInfo"> Edit Hotel Info </h2>
@@ -81,15 +82,65 @@
 			<span> Edit Phone Number: </span> <br> <input type="text" value="<%=hotel.getNumber()%>"  id="hotelnumber" required="required"> <br>
 			<span> Edit City: </span> <br> <input type="text" value="<%=hotel.getLocation().getCity()%>"  id="city" required="required"> <br>
 			<span> Edit Address: </span> <br> <input type="text" value="<%=hotel.getLocation().getAddress()%>"  id="address" required="required"> <br>
-			<form action="addRooms.jsp?hotel_id=<%=request.getParameter("hotel_id")%>" method="post">
-				<button type="submit" class="save" id="addRoom"> Add More Rooms </button>
-			</form>
 			<input type="hidden" id="hotel_id" value="<%=request.getParameter("hotel_id")%>">
+			<button class="save" id="edit-rooms"> Edit Rooms</button>
 			<button class="save" id="save-post"> Save Changes </button>
 			<button class="save" id="delete-post"> Delete Post </button>
 		<%}%>
 	</div>
 		
+	<div class="rooms">
+			<% if(request.getParameter("hotel_id") != null) {
+			Hotel hotel = HotelManager.getInstance().getHotel(Integer.parseInt(request.getParameter("hotel_id")));
+			List<Room> rooms = hotel.getRooms();%>
+		
+			<h2> Your Rooms </h2>
+			 
+			<%for(Room r: rooms){ %>
+				 <a href="Profile.jsp?hotel_id=<%=request.getParameter("hotel_id")%>&room_id=<%=r.getRoomId()%>"> Room ID:<%=r.getRoomId()%>
+				 	<i class="fa fa-remove" aria-hidden="true" style="float:right" id="<%=r.getRoomId()%>"></i>
+				 </a>  
+			<%}%>
+			
+		<form action="addRooms.jsp?hotel_id=<%=request.getParameter("hotel_id")%>" method="post">
+				<button type="submit" class="save" id="addRoom"> Add More Rooms </button>
+			</form>
+		<%}%>
+	</div>	
+		
+	<div class="room-box">	
+		<%if(request.getParameter("hotel_id") != null && request.getParameter("room_id") != null) {%>
+		<%Room room = RoomManager.getInstance().getRoom(Integer.parseInt(request.getParameter("room_id"))); %>
+		<h1 id="room-info">Edit Room Info</h1>
+		<div>
+			<input type="checkbox" id="tv" name="tv" <%if(room.isTv()){%> checked <%}%>> TV	 <br>
+		</div>
+		<div>
+			<input type="checkbox" id="wifi" name="wifi" <%if(room.isWifi()){%> checked <%}%>> 
+			<label for="wifi">WI-Fi</label><br>
+		</div>
+			<input type="checkbox" id="hotWater" name="hotWater" <%if(room.isHotWater()){%> checked <%}%>> 
+			<label for="hotWater">Hot Water</label><br>
+		<div>
+			<input type="checkbox" id="airCo" name="airCo" <%if(room.isAirConditioning()){%> checked <%}%>>
+			<label for="airCo">Air Conditioning</label><br>
+		</div>
+		<i class="fas fa-bed"></i> <input type="number" id=numBeds value=<%=room.getNumberOfBeds()%> min="0"> <br>
+
+		<i class="fas fa-calendar-day"></i> <label> Available From:
+			</label> <input type="date" id="sDate" required value="<%=room.getStartDate()%>">  <br>
+
+		<i class="fas fa-calendar-day"></i> <label> Available To:
+			</label> <input type="date" id="eDate" required value="<%=room.getEndDate()%>"> <br>
+
+			<i class="fas fa-dollar-sign"></i> <input type="number" id="rPrice"
+				value=<%=room.getPricePerDay()%> min="0" required="required"> <br>
+		<input type="hidden" id="hotel_id" value="<%=request.getParameter("hotel_id")%>">
+		<button class="save" id="del-room"> Delete room </button>
+		<button class="save" id="save-room"> Save Changes </button>
+		<%} %>
+		
+	</div>
 		
 	<div class="reserv-box">
 		<%if(request.getParameter("reserved_id") != null) {

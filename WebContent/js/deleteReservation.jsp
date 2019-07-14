@@ -1,3 +1,4 @@
 <%@page import="Managers.RoomManager"%>
-<%RoomManager.getInstance().unbookRoom(Integer.parseInt(request.getParameter("reserved_id")));
-request.removeAttribute("reserved_id");%>
+<%Integer hotel_id = Integer.parseInt((String)request.getParameter("room_id"));
+boolean res = RoomManager.getInstance().deleteRoom(hotel_id);%>
+<%=res %>
