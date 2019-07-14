@@ -48,7 +48,8 @@ $(document).ready(function(){
 					function(response) {
 						if($.trim(response) == 'success') {
 							$('#log-and-reg').css({"visibility":"hidden"});
-							$('.menu-but').css({"display": "block"});	
+							$('.menu-but').css({"display": "block"});
+							sleep(1000);
 							window.location.href = 'home.jsp'; 
 						}else{
 							$('.reg-fail').html("Account already exists!");

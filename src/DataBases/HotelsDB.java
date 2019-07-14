@@ -282,6 +282,7 @@ public class HotelsDB {
 	public boolean deleteHotel(Integer hotel_id) {
 		try {
 			if(!RoomManager.getInstance().deleteRooms(hotel_id)) return false;
+			this.deleteComments(hotel_id);
 			this.deleteFacilities(hotel_id);
 			this.deleteLocation(hotel_id);
 			
@@ -548,5 +549,73 @@ public class HotelsDB {
 		}
 		return max_price;
 	}
+
+	
+	
+	/**
+	 * Adds the comment.
+	 *
+	 * @param hotel_id the hotel id
+	 * @param user the user
+	 * @param comment the comment
+	 */
+	public void addComment(Integer hotel_id, String user, String comment) {
+		try {
+			String query = "insert into comments (hotel_id, username, comm) values (?, ?, ?)";
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setInt(1, hotel_id);
+			stmt.setString(2, user);
+			stmt.setString(3, comment);
+			stmt.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+		
+	/**
+	 * Gets the comments.
+	 *
+	 * @param hotel_id the hotel id
+	 * @return the comments key = user /value = comments of user
+	 */
+	public Map<String,List<String>> getComments(Integer hotel_id) {
+		Map<String,List<String>> comments = new HashMap<String, List<String>>();
+		try {
+			String query = "select * from comments";
+			PreparedStatement stmt = con.prepareStatement(query);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				String user = rs.getString("username");
+				String comment = rs.getString("comm");
+				if(comments.get(user) == null) {
+					List<String> comms = new ArrayList<String>();
+					comms.add(comment);
+					comments.put(user, comms);
+					continue;
+				}
+				comments.get(user).add(rs.getString("comm"));
+			}
+		}catch (SQLException e) { 
+			e.printStackTrace();
+		}
+		return comments;
+	}
+	
+	/**
+	 * Delete comment.
+	 *
+	 * @param hotel_id the hotel id
+	 */
+	public void deleteComments(Integer hotel_id) {
+		try {
+			String query = "delete from comments where hotel_id = ?";
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setInt(1, hotel_id);
+			stmt.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 
 }

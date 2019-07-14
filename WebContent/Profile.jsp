@@ -28,7 +28,7 @@
 		
 	<div class="prof"> 
 		<img class="prof-img" src="images/profile.jpg">
-		<h3> <%=user.getFirstName()%> </h3>
+		<h3> <%=user.getFirstName()%> <%=user.getLastName()%></h3>
 	</div>
 	
 	<div class="edit">
@@ -113,29 +113,30 @@
 		<%Room room = RoomManager.getInstance().getRoom(Integer.parseInt(request.getParameter("room_id"))); %>
 		<h1 id="room-info">Edit Room Info</h1>
 		<div>
-			<input type="checkbox" id="tv" name="tv" <%if(room.isTv()){%> checked <%}%>> TV	 <br>
+			<input type="checkbox" id="edit-tv" name="tv" <%if(room.isTv()){%> checked <%}%>> TV	 <br>
 		</div>
 		<div>
-			<input type="checkbox" id="wifi" name="wifi" <%if(room.isWifi()){%> checked <%}%>> 
+			<input type="checkbox" id="edit-wifi" name="wifi" <%if(room.isWifi()){%> checked <%}%>> 
 			<label for="wifi">WI-Fi</label><br>
 		</div>
-			<input type="checkbox" id="hotWater" name="hotWater" <%if(room.isHotWater()){%> checked <%}%>> 
+			<input type="checkbox" id="edit-hotWater" name="hotWater" <%if(room.isHotWater()){%> checked <%}%>> 
 			<label for="hotWater">Hot Water</label><br>
 		<div>
-			<input type="checkbox" id="airCo" name="airCo" <%if(room.isAirConditioning()){%> checked <%}%>>
+			<input type="checkbox" id="edit-airCo" name="airCo" <%if(room.isAirConditioning()){%> checked <%}%>>
 			<label for="airCo">Air Conditioning</label><br>
 		</div>
-		<i class="fas fa-bed"></i> <input type="number" id=numBeds value=<%=room.getNumberOfBeds()%> min="0"> <br>
+		<i class="fas fa-bed"></i> <input type="number" id="edit-numBeds" value=<%=room.getNumberOfBeds()%> min="0"> <br>
 
 		<i class="fas fa-calendar-day"></i> <label> Available From:
-			</label> <input type="date" id="sDate" required value="<%=room.getStartDate()%>">  <br>
+			</label> <input type="date" id="edit-sDate" required value="<%=room.getStartDate()%>">  <br>
 
 		<i class="fas fa-calendar-day"></i> <label> Available To:
-			</label> <input type="date" id="eDate" required value="<%=room.getEndDate()%>"> <br>
+			</label> <input type="date" id="edit-eDate" required value="<%=room.getEndDate()%>"> <br>
 
-			<i class="fas fa-dollar-sign"></i> <input type="number" id="rPrice"
+			<i class="fas fa-dollar-sign"></i> <input type="number" id="edit-rPrice"
 				value=<%=room.getPricePerDay()%> min="0" required="required"> <br>
-		<input type="hidden" id="hotel_id" value="<%=request.getParameter("hotel_id")%>">
+		<input type="hidden" id="edit-hotel-id" value="<%=request.getParameter("hotel_id")%>">
+		<input type="hidden" id="edit-room-id" value="<%=request.getParameter("room_id")%>">
 		<button class="save" id="del-room"> Delete room </button>
 		<button class="save" id="save-room"> Save Changes </button>
 		<%} %>

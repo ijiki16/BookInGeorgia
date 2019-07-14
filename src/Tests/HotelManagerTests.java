@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -260,8 +261,29 @@ public class HotelManagerTests {
 		assertTrue(HM.deleteHotel(HM.getHotels(id2).get(0).getId()));
 		assertTrue(HM.deleteHotel(HM.getHotels(id2).get(0).getId()));
 
+	}
+	
+	@Test
+	@Order(5)
+	public void testComments() {
+		Integer hotel_id = HM.addHotel("Radison", 5, "iveria", "reworked", "+995 ...", id1);
+		HM.addComment(hotel_id, "devi", "great hotel! really nice! thnx");
+		HM.addComment(hotel_id, "devi", "thnx again");
+		HM.addComment(hotel_id, "sandro", "magadiaa");
+		
+		Map<String, List<String>> comments = HM.getComments(hotel_id);
+		assertEquals(comments.size(), 2);
+		assertEquals(comments.get("devi").size(), 2);
+		assertEquals(comments.get("devi").get(0), "great hotel! really nice! thnx");
+		assertEquals(comments.get("devi").get(1), "thnx again");
+		assertEquals(comments.get("sandro").size(), 1);
+		assertEquals(comments.get("sandro").get(0), "magadiaa");
+		
+		HM.deleteComments(hotel_id);
+		comments = HM.getComments(hotel_id);
+		assertEquals(comments.size(), 0);
+		
 		AM.deleteAccount("devidevuka@mail.ru", "0406");
 		AM.deleteAccount("dkhos17@freeuni.edu.ge", "0406");
 	}
-	
 }

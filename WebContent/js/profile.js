@@ -36,7 +36,6 @@ $(document).ready(function(){
 	
 	
 	$('#save-prof').click(function(){
-		alert("aeee");
 		let _firstname = $('#firstname').val();
 		let _lastname = $('#lastname').val();
 		let _email = $('#email').val();
@@ -79,27 +78,31 @@ $(document).ready(function(){
 	});
 	
 	$('#save-room').click(function(){
-		let tv = $("#tv").is(':checked');
-		let wifi = $('#wifi').is(':checked');
-		let hotWater = $('#hotWater').is(':checked');
-		let airCo = $('#airCo').is(':checked');
-		let hotel_id = $('#hotel_id').val();
-		let numBeds = $('#numBeds').val();
-		let sDate = $('#sDate').val();
-		let eDate = $('#eDate').val();
-		let rPrice = $('#rPrice').val();
-		$.post('js/EditRoom.jsp', 
+		let _tv = $("#edit-tv").is(':checked');
+		let _wifi = $('#edit-wifi').is(':checked');
+		let _hotWater = $('#edit-hotWater').is(':checked');
+		let _airCo = $('#edit-airCo').is(':checked');
+		let _numBeds = $('#edit-numBeds').val();
+		let _sDate = $('#edit-sDate').val();
+		let _eDate = $('#edit-eDate').val();
+		let _rPrice = $('#edit-rPrice').val();
+		let _hotel_id = $('#edit-hotel-id').val();
+		let _room_id = $('#edit-room-id').val();
+		$.post('EditRoom',
 				{
-					tv: tv,
-					wifi: wifi,
-					hotWater: hotWater,
-					airCo:airCo,
-					numBeds:numBeds,
-					sDate:sDate,
-					eDate:eDate,
-					hotel_id: hotel_id
+					tv: _tv,
+					wifi: _wifi,
+					hotWater: _hotWater,
+					airCo: _airCo,
+					numBeds: _numBeds,
+					rPrice: _rPrice,
+					sDate: _sDate,
+					eDate: _eDate,
+					hotel_id: _hotel_id,
+					room_id: _room_id,
 				}, 
 				function(response) {
+					alert("uraa");
 					$('.room-box').css({"display": "none"});
 				});
 	});
@@ -141,10 +144,10 @@ $(document).ready(function(){
 	  });
 	
 	$("#del-room").click(function () {
-		  val = $("#room_id").val();
+		  let room_id = $("#edit-room-id").val();
 		  $.post('js/deleteRoom.jsp', 
 					{
-			  			room_id: val
+			  			room_id: room_id,
 					}, 
 					function(response) {
 						if($.trim(response) == 'true'){

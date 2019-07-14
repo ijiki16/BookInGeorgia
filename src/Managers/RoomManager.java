@@ -101,11 +101,26 @@ public class RoomManager {
 		return rdb.unbookRoom(reserved_id);
 	}
 	
+	/**
+	 * Unbook room.
+	 *
+	 * @param room_id the room id
+	 * @param account_id the account id
+	 * @param sDate the s date
+	 * @param eDate the e date
+	 * @return true, if successful
+	 */
 	public boolean unbookRoom(Integer room_id, Integer account_id, Date sDate, Date eDate) {
 		if(room_id < 1 || !sDate.before(eDate) || account_id<0) return false;
 		return rdb.unbookRoom(room_id, sDate, eDate, account_id);
 	}
 
+	/**
+	 * Delete rooms.
+	 *
+	 * @param hotel_id the hotel id
+	 * @return true, if successful
+	 */
 	public boolean deleteRooms(Integer hotel_id) {
 		List<Room> rooms = this.getRooms(hotel_id);
 		for(Room r : rooms) {
@@ -117,6 +132,12 @@ public class RoomManager {
 	}
 	
 	
+	/**
+	 * Gets the reservation.
+	 *
+	 * @param reserved_id the reserved id
+	 * @return the reservation
+	 */
 	public Reservation getReservation(Integer reserved_id) {
 		return rdb.getReservation(reserved_id);
 	}
