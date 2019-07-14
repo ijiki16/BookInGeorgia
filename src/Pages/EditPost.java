@@ -38,7 +38,7 @@ public class EditPost extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HotelManager hm = HotelManager.getInstance();
 		AccountManager am = AccountManager.getInstance();
 		String user = (String) request.getSession().getAttribute("user");
@@ -46,18 +46,18 @@ public class EditPost extends HttpServlet {
 		Hotel hotel = hm.getHotel(Integer.parseInt(request.getParameter("hotel_id")));
 		
 		String name = (String)request.getParameter("name");
-		Integer rating = Integer.parseInt((String)request.getParameter("rating"));
+		String rating = (String)request.getParameter("rating");
 		String status = (String)request.getParameter("status");
 		String number = (String)request.getParameter("number");
 		String city = (String)request.getParameter("city");
 		String address = (String)request.getParameter("address");
 		
-		hm.updateHotel(hotel.getId(), name == null ? hotel.getName() : name, rating == null ? hotel.getRating() : rating,
-			hotel.getImage(), status == null ? hotel.getStatus() : status, 
-			number == null ? hotel.getNumber() : number, Integer.parseInt(acc.getId()));
+		hm.updateHotel(hotel.getId(), name.equals("") ? hotel.getName() : name, rating.equals("") ? hotel.getRating() : Integer.parseInt(rating),
+			hotel.getImage(), status.equals("") ? hotel.getStatus() : status, 
+			number.equals("") ? hotel.getNumber() : number, Integer.parseInt(acc.getId()));
 		
-		hm.updateLocation(hotel.getId(), city == null ? hotel.getLocation().getCity() : city,
-				address == null ? hotel.getLocation().getAddress() : address);
+		hm.updateLocation(hotel.getId(), city.equals("") ? hotel.getLocation().getCity() : city,
+				address.equals("") ? hotel.getLocation().getAddress() : address);
 		
 		request.removeAttribute("hotel_id");
 		response.getWriter().print("Changes Saved");
