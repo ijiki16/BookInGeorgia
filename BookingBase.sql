@@ -108,3 +108,7 @@ create table comments (
 );
 
 alter table comments add constraint frk_hotel_id foreign key(hotel_id) references Hotels(hotel_id);
+
+# add data in DB
+
+
