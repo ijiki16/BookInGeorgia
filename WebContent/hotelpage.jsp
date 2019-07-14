@@ -6,6 +6,8 @@
     <%@page import="Models.Hotel"%>
     <%@page import="Models.Room"%>
     <%@page import="Models.Account"%>
+    <%@page import="javafx.util.Pair"%>
+    
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -123,39 +125,25 @@
 		  		<jsp:include page="Room.jsp"/> 
 		  	 <%}%>
 		</table>
-		
+		<input id="hotId" type="hidden" value="<%=id %>">
 		<div class="cont">
 			<div class="chat-container">
+				<%List<Pair<String, String>> messages = hm.getComments(id); 
+					for(int i = 0; i < messages.size(); i++){%>
 			    <div class="message">
-			      <img class="avatar" src="https://placeimg.com/50/50/people?2">
-			      <p>A message text</p>
+			      <h5>:<%=messages.get(i).getKey() %> </h5>
+			      <p><%=messages.get(i).getValue() %></p>
 			 	</div>
-			 	<div class="message">
-			      <img class="avatar" src="https://placeimg.com/50/50/people?2">
-			      
-			      <p>A message text</p>
-			 	</div>
-			 	<div class="message">
-			      <img class="avatar" src="https://placeimg.com/50/50/people?2">
-			     
-			      <p>A message text</p>
-			 	</div>
-			 	<div class="message">
-			      <img class="avatar" src="https://placeimg.com/50/50/people?2">
-			    
-			      <p>A message text</p>
-			 	</div>
-			 	<div class="message">
-			      <img class="avatar" src="https://placeimg.com/50/50/people?2">
-			     	
-			      <p>A message text</p>
-			 	</div>
+			 	<%} %>
+			 	<%if(messages.size() == 0){%>
+			 		<h3 style="position: relative; left: 45%; top: 50%; transition: translate(-50%, -50%)">No comments yet</h3>
+			 	<%} %>
 		  	</div>
 		 </div>
 		 <div class="wrap">
 			<textarea id="mess" class="addComment" placeholder="Type message.." name="msg" required ></textarea>
 			<div class="addCom">
-				<button class="add" type="submit" style=""> Add Comment </button>
+				<button class="add" type="submit" <%if(request.getSession().getAttribute("user") == null) out.print("style=\"display: none\""); else out.print(""); %>> Comment </button>
 			</div>
 		</div>
 		<jsp:include page="ContactUs.jsp"/>

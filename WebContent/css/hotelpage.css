@@ -46,8 +46,9 @@ tr{
 
 .status {
 	width: 100%;
-	height: 310px;
+	height: 350px;
     margin-top: 25px;
+    border-bottom: 2px solid #7b0e0e;
 }
 
 .location {
@@ -180,7 +181,10 @@ th, td {
   
 .message{
    border-bottom: solid 1px #ccc;
-   padding: 20px;
+   padding-top: 20px;
+   padding-right: 20px;
+   padding-left: 20px;
+   
 }
   
 .message p{

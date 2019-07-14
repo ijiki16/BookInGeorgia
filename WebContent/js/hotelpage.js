@@ -4,10 +4,11 @@
 
 $(document).ready(function(){
 	  $(".add").click(function (event) {
-		  alert("aeeee");
 		  text = $('#mess').val();
-		  $.post('Book', 
+		  id = $('#hotId').val();
+		  $.post('js/addComment.jsp', 
 					{
+			  			id: id,
 			  			text: text
 					}, 
 					function(response) {
@@ -26,6 +27,7 @@ $(document).ready(function(){
 	  function callback() {
 	    setTimeout(function () {
 	      $(".add").removeClass("validate");
+	      location.reload(true);
 	    }, 1250);
 	  }
 });

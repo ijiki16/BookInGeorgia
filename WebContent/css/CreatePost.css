@@ -24,6 +24,14 @@ h1 {
 	padding: 10px 0;
 }
 
+.bulb{
+	font-weight: 900;
+    position: absolute;
+    top: 43.8%;
+    left: 41.9%;
+    font-size: 27px;
+}
+
 file {
 	background: none;
 }

@@ -18,6 +18,8 @@
 </head>
 <body>
 	<jsp:include page="Header.jsp" />
+	<img src="images/addroom.png" style="position: absolute; top: 30%; left: 10%;">
+	<i class="fas fa-lightbulb bulb"></i>
 	<div class="post-facility">
 		<h1 id="addInfo">Add Room Info</h1>
 
@@ -65,10 +67,10 @@
 					<input type="file" name="chooseFile2" id="image">
 				</div>
 			</div>
-			<button id="next2" class="myButton" >Next</button>
+			<button id="next2" class="myButton" style="margin-top: 5px">Next</button>
 		</form>
 		<input type="hidden" id="hotel_id" value="<%=request.getParameter("hotel_id")%>">
-		<button id="save2" class="myButton">Save changes</button>
+		<button id="save2" class="myButton" style="margin-top: 5px">Upload</button>
 	</div>
 
 </body>
