@@ -3,6 +3,7 @@ package Managers;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -172,6 +173,11 @@ public class HotelManager {
 		return db.getSearchedHotels(city, name);
 	}
 	
+	/**
+	 * Sort by rating.
+	 * @param desc the desc
+	 * @return the list
+	 */
 	public List<Integer> sortByRating(boolean desc){
 		return db.sortByRating(desc);
 	}
@@ -181,5 +187,32 @@ public class HotelManager {
 	 */
 	public List<Integer> intersectLists(List<Integer> list1, List<Integer> list2) {
 		return list1.stream().distinct().filter(list2::contains).collect(Collectors.toList());
+	}
+	
+	/**
+	 * Adds the comment.
+	 * @param hotel_id the hotel id
+	 * @param user the user
+	 * @param comment the comment
+	 */
+	public void addComment(Integer hotel_id, String user, String comment) {
+		db.addComment(hotel_id, user, comment);
+	}
+	
+	/**
+	 * Delete comments.
+	 * @param hotel_id the hotel id
+	 */
+	public void deleteComments(Integer hotel_id) {
+		db.deleteComments(hotel_id);
+	}
+	
+	/**
+	 * Gets the comments.
+	 * @param hotel_id the hotel id
+	 * @return the comments
+	 */
+	public Map<String,List<String>> getComments(Integer hotel_id) {
+		return db.getComments(hotel_id);
 	}
 }

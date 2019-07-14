@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS HotelInfo;
 DROP TABLE IF EXISTS Reservation;
 DROP TABLE IF EXISTS Locations;
 DROP TABLE IF EXISTS Rooms;
+DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS Hotels;
 DROP TABLE IF EXISTS Accounts;
  -- remove table if it already exists and start from scratch
@@ -99,3 +100,11 @@ create table Reservation (
 
 alter table Reservation add constraint fk1_room_id foreign key(room_id) references Rooms(room_id);
 alter table Reservation add constraint fk2_room_id foreign key(account_id) references  Accounts(account_id);
+
+create table comments (
+    hotel_id int,
+    username char(128),
+    comm char(255)
+);
+
+alter table comments add constraint frk_hotel_id foreign key(hotel_id) references Hotels(hotel_id);
