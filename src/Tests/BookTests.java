@@ -66,7 +66,7 @@ public class BookTests extends Mockito {
 		when(response.getWriter()).thenReturn(writer);
 
 		Book server = new Book();
-		server.doPost(request, response);
+		server.doGet(request, response);
 
 		assertTrue(stringWriter.toString().equals("success"));
 

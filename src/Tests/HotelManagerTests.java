@@ -21,6 +21,7 @@ import Models.Facilities;
 import Models.Hotel;
 import Models.Location;
 import Models.Room;
+import javafx.util.Pair;
 
 public class HotelManagerTests {
 	
@@ -267,17 +268,18 @@ public class HotelManagerTests {
 	@Order(5)
 	public void testComments() {
 		Integer hotel_id = HM.addHotel("Radison", 5, "iveria", "reworked", "+995 ...", id1);
-		HM.addComment(hotel_id, "devi", "great hotel! really nice! thnx");
+		HM.addComment(hotel_id, "devi", "great hotel! really nice! thnx^^");
 		HM.addComment(hotel_id, "devi", "thnx again");
 		HM.addComment(hotel_id, "sandro", "magadiaa");
 		
-		Map<String, List<String>> comments = HM.getComments(hotel_id);
-		assertEquals(comments.size(), 2);
-		assertEquals(comments.get("devi").size(), 2);
-		assertEquals(comments.get("devi").get(0), "great hotel! really nice! thnx");
-		assertEquals(comments.get("devi").get(1), "thnx again");
-		assertEquals(comments.get("sandro").size(), 1);
-		assertEquals(comments.get("sandro").get(0), "magadiaa");
+		List<Pair<String,String>> comments = HM.getComments(hotel_id);
+		assertEquals(comments.size(), 3);
+		assertEquals(comments.get(0).getKey(), "devi");
+		assertEquals(comments.get(0).getValue(), "great hotel! really nice! thnx^^");
+		assertEquals(comments.get(1).getKey(), "devi");
+		assertEquals(comments.get(1).getValue(), "thnx again");
+		assertEquals(comments.get(2).getKey(), "sandro");
+		assertEquals(comments.get(2).getValue(), "magadiaa");
 		
 		HM.deleteComments(hotel_id);
 		comments = HM.getComments(hotel_id);

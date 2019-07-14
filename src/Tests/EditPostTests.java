@@ -65,7 +65,7 @@ public class EditPostTests extends Mockito{
         PrintWriter writer = new PrintWriter(stringWriter);
         when(response.getWriter()).thenReturn(writer);
 		
-        new EditPost().doPost(request, response);
+        new EditPost().doGet(request, response);
         
         Hotel hotel = hm.getHotel(hotelId);
         assertTrue(hotel.getName().equals("myhotel"));

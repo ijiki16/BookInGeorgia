@@ -13,6 +13,7 @@ import Models.Facilities;
 import Models.Hotel;
 import Models.Location;
 import Models.Room;
+import javafx.util.Pair;
 
 public class HotelManager {
 	private static HotelManager hm;
@@ -212,7 +213,7 @@ public class HotelManager {
 	 * @param hotel_id the hotel id
 	 * @return the comments
 	 */
-	public Map<String,List<String>> getComments(Integer hotel_id) {
+	public List<Pair<String,String>> getComments(Integer hotel_id) {
 		return db.getComments(hotel_id);
 	}
 }
