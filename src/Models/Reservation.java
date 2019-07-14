@@ -21,7 +21,7 @@ public class Reservation {
 	/*
 	 * Return id of the reservation
 	 */
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	
@@ -42,14 +42,14 @@ public class Reservation {
 	/*
 	 * Return room id
 	 */
-	public int getRoomId() {
+	public Integer getRoomId() {
 		return room_id;
 	}
 	
 	/*
 	 * Return account_id
 	 */
-	public int getAccountId() {
+	public Integer getAccountId() {
 		return account_id;
 	}
 
