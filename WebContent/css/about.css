@@ -17,5 +17,10 @@ p, h1, h2, h3 {
 	background-color: #7b0e0e !important; 
 }
 
+h1 {
+	margin-top: 70px !important;
+	margin-bottom: 100px !important;
+}
+
 
 

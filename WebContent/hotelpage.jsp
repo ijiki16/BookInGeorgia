@@ -55,6 +55,16 @@
 				<div class="status">
 					<p><%=h.getStatus() %></p>
 				</div>
+				<div style="height: 40px">
+					<span class="showComment">
+						
+					</span>
+					<span class="addComment">
+						<input type="text" placeholder="write a comment">
+					</span>
+					<button class="button" type="submit"> Show Comments </button>
+					<button class="button" type="submit"> Write Comment </button>
+				</div>
 				<% Facilities f = h.getFacilities(); %>
 				<div class="facil">
 					<div>	<i class="<% if(f.getWiFi()) {
@@ -88,6 +98,7 @@
 				</div>
 			</div>
 		</div>
+		
 		<table class="room">
 		  <colgroup>
 		    <col style="width:15%; height: fit-content">
@@ -123,6 +134,6 @@
 		  		<jsp:include page="Room.jsp"/> 
 		  	 <%}%>
 		</table>
-		
+		<jsp:include page="ContactUs.jsp"/>
 </body>
 </html>

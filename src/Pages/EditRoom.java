@@ -9,9 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.google.protobuf.TextFormat.ParseException;
-
 import Managers.RoomManager;
 import Models.Room;
 
@@ -56,13 +53,13 @@ public class EditRoom extends HttpServlet {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date sDate = new Date();
 		Date eDate = new Date();
+		
 		try {
 			sDate = format.parse(request.getParameter("sDate"));
 			eDate = format.parse(request.getParameter("eDate"));	
 		} catch (java.text.ParseException e) {
 			e.printStackTrace();
 		}
-			
 		RoomManager.getInstance().updateRoom(room_id, sDate, eDate, rPrice, r.getImage(), hotel_id, numBeds, wifi, tv, hotWater, airCo);
 		request.removeAttribute("room_id");
 	}

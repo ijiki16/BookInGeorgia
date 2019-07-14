@@ -98,7 +98,7 @@
 			 
 			<%for(Room r: rooms){ %>
 				 <a href="Profile.jsp?hotel_id=<%=request.getParameter("hotel_id")%>&room_id=<%=r.getRoomId()%>"> Room ID:<%=r.getRoomId()%>
-				 	<i class="fa fa-remove" aria-hidden="true" style="float:right" id="<%=r.getRoomId()%>"></i>
+				 	<i class="fas fa-pencil-alt" style="float:right" id="<%=r.getRoomId()%>"></i>
 				 </a>  
 			<%}%>
 			

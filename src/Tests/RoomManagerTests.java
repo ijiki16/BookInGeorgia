@@ -132,8 +132,9 @@ public class RoomManagerTests {
 		//delete
 		assertFalse(roomM.deleteRoom(-1));
 		assertTrue(roomM.deleteRoom(room1.getRoomId()));
-		htM.deleteHotel(hotel1.getId());
-		htM.deleteHotel(hotel2.getId());
+		assertTrue(htM.deleteHotel(hotel1.getId()));
+		assertTrue(htM.deleteHotel(hotel2.getId()));
+		acM.deleteAccount("ijiki16@freeuni.edu.ge", "1234iuri");
 	}
 	
 	@Test
@@ -165,5 +166,6 @@ public class RoomManagerTests {
 		
 		assertTrue(htM.deleteHotel(hotel1.getId()));
 		assertTrue(htM.deleteHotel(hotel2.getId()));
+		acM.deleteAccount("ijiki16@freeuni.edu.ge", "1234iuri");
 	}
 }

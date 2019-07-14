@@ -59,7 +59,6 @@ public class Uploader extends HttpServlet {
 		ServletFileUpload upload = new ServletFileUpload(itemFactory);
 		try {
 			List<FileItem> items = upload.parseRequest(request);
-			System.out.println(items.get(0).getName() + "asdfasdf");
 			File uploadDir = new File(this.getServletContext().getRealPath(File.separator) + "\\images");
 			if (!uploadDir.exists())
 				uploadDir.mkdir();
