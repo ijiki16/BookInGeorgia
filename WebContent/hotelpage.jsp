@@ -19,7 +19,6 @@
 <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
 <link rel="stylesheet" href="css/font-awesome.min.css">
 <link rel="stylesheet" href="css/home.css">
-<link rel="stylesheet" href="css/Header.css">
 <link rel="stylesheet" href="css/Login.css">
 <link rel="stylesheet" href="css/Post.css">
 <link rel="stylesheet" href="css/hotelpage.css">
@@ -29,7 +28,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
-
+<script src="js/hotelpage.js" type="text/javascript"></script>
 </head>
 <body>
 	<div class="homepage"></div>
@@ -54,16 +53,6 @@
 				</div>
 				<div class="status">
 					<p><%=h.getStatus() %></p>
-				</div>
-				<div style="height: 40px">
-					<span class="showComment">
-						
-					</span>
-					<span class="addComment">
-						<input type="text" placeholder="write a comment">
-					</span>
-					<button class="button" type="submit"> Show Comments </button>
-					<button class="button" type="submit"> Write Comment </button>
 				</div>
 				<% Facilities f = h.getFacilities(); %>
 				<div class="facil">
@@ -134,6 +123,41 @@
 		  		<jsp:include page="Room.jsp"/> 
 		  	 <%}%>
 		</table>
+		
+		<div class="cont">
+			<div class="chat-container">
+			    <div class="message">
+			      <img class="avatar" src="https://placeimg.com/50/50/people?2">
+			      <p>A message text</p>
+			 	</div>
+			 	<div class="message">
+			      <img class="avatar" src="https://placeimg.com/50/50/people?2">
+			      
+			      <p>A message text</p>
+			 	</div>
+			 	<div class="message">
+			      <img class="avatar" src="https://placeimg.com/50/50/people?2">
+			     
+			      <p>A message text</p>
+			 	</div>
+			 	<div class="message">
+			      <img class="avatar" src="https://placeimg.com/50/50/people?2">
+			    
+			      <p>A message text</p>
+			 	</div>
+			 	<div class="message">
+			      <img class="avatar" src="https://placeimg.com/50/50/people?2">
+			     	
+			      <p>A message text</p>
+			 	</div>
+		  	</div>
+		 </div>
+		 <div class="wrap">
+			<textarea id="mess" class="addComment" placeholder="Type message.." name="msg" required ></textarea>
+			<div class="addCom">
+				<button class="add" type="submit" style=""> Add Comment </button>
+			</div>
+		</div>
 		<jsp:include page="ContactUs.jsp"/>
 </body>
 </html>
