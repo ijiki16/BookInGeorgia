@@ -50,7 +50,7 @@ public class Uploader extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		if (!ServletFileUpload.isMultipartContent(request))
 			return;
@@ -102,7 +102,7 @@ public class Uploader extends HttpServlet {
 				
 				rmM.updateRoom(rmId, sDate, eDate, rPrice, items.get(0).getName().length() == 0 ? "images/defroom.jpg" : ("images/room" + id + ".jpg"), htId, numBeds, wifi, tv,
 						hotWater, airCo);
-				request.getRequestDispatcher("home.jsp").forward(request, response);
+				request.getRequestDispatcher("RoomAddChoose.jsp").forward(request, response);
 			}
 		} catch (Exception e) {
 			request.getRequestDispatcher("home.jsp").forward(request, response);
