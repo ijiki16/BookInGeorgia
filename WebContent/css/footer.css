@@ -1,8 +1,8 @@
 @charset "ISO-8859-1";
 
 footer {
-	
-	
+	position: absolute;
+	top: 700px;
 }
 
 .footer-distributed{

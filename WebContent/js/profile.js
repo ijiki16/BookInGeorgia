@@ -50,7 +50,7 @@ $(document).ready(function(){
 					password: _password,
 				}, 
 				function(response) {
-					$('.prof-box').css({"display": "none"});
+					location.reload(true);
 				});
 	});
 	
@@ -73,7 +73,7 @@ $(document).ready(function(){
 					hotel_id: _hotel_id
 				}, 
 				function(response) {
-					$('.post-box').css({"display": "none"});
+					location.reload(true);
 				});
 	});
 	
@@ -113,8 +113,7 @@ $(document).ready(function(){
 					room_id: _room_id,
 				}, 
 				function(response) {
-					alert("uraa");
-					$('.room-box').css({"display": "none"});
+					location.reload(true);
 				});
 	});
 	

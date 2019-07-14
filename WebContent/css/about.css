@@ -1,12 +1,12 @@
 @charset "ISO-8859-1";
 body {
 	position: absolute;
-    background-image: url(../images/about.jpg) !important;
+    background-image: url(../images/about4.jpg) !important;
     height: fit-content;
 }
 
 p, h1, h2, h3 {
-	color: white;
+	color: black;
 	font-family: sans-serif;
 	font-style: italic;
 	font-weight: bold;
@@ -18,7 +18,7 @@ p, h1, h2, h3 {
 }
 
 h1 {
-	margin-top: 70px !important;
+	margin-top: 40px !important;
 	margin-bottom: 100px !important;
 }
 

@@ -19,7 +19,7 @@
 <body>
 	<jsp:include page="Header.jsp" />
 	<img src="images/addroom.png" style="position: absolute; top: 30%; left: 10%;">
-	<i class="fas fa-lightbulb bulb"></i>
+	<i class="fas fa-lightbulb bulb" style="color:black"></i>
 	<div class="post-facility">
 		<h1 id="addInfo">Add Room Info</h1>
 

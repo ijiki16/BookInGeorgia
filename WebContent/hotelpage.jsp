@@ -146,6 +146,5 @@
 				<button class="add" type="submit" <%if(request.getSession().getAttribute("user") == null) out.print("style=\"display: none\""); else out.print(""); %>> Comment </button>
 			</div>
 		</div>
-		<jsp:include page="ContactUs.jsp"/>
 </body>
 </html>
