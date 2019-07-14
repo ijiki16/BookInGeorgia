@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -30,10 +32,14 @@ public class UploderTests extends Mockito {
 		HttpServletRequest request = mock(HttpServletRequest.class);
 		HttpServletResponse response  = mock(HttpServletResponse.class);
 		HttpSession session = mock(HttpSession.class);
+		//ServletFileUpload upld = mock(ServletFileUpload.class);
+		//FileItemFactory flIF = mock(FileItemFactory.class);
 		
+		//when(upld.isMultipartContent(request)).thenReturn(true);
 		when(request.getSession()).thenReturn(session);
         when(session.getAttribute("hotel")).thenReturn("true");
         when(request.getParameter("hotelID")).thenReturn(htlID1+"");
+        
         when(request.getContentType()).thenReturn("multipart/form-data; boundary=someBoundary");
         
         StringWriter stringWriter = new StringWriter();

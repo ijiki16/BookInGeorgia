@@ -42,7 +42,7 @@ public class Book extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Integer room_id = Integer.parseInt(request.getParameter("roomid"));
 		Date sDate = new Date();
