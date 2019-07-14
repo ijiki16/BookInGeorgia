@@ -101,6 +101,7 @@ $(document).ready(function(){
 						$('#add').css({"display": "block"});
 						$('.homepage').css({"visibility":"hidden"});
 						$('.menu').css({"visibility":"visible"});
+						location.reload(true);
 					}else{	
 						$('.log-fail').html("Wrong User or Password");
 						$('.log-fail').css({"font-size":"25px"});
@@ -112,8 +113,8 @@ $(document).ready(function(){
 		$('.moto').css({"visibility":"hidden"});
 		$.post('./js/search.jsp',
 				{
-					option: $("exampleFormControlSelect1").val(),
-					hotel_name : $("exampleFormControlSelect1").val()
+					city: $("#exampleFormControlSelect1").val(),
+					hotel_name : $("#hotel-name").val()
 				},
 				function(response){
 					location.reload(true);
@@ -123,8 +124,7 @@ $(document).ready(function(){
 	
 	$('.filter-btn').click(function(){
 		$('.moto').css({"visibility":"hidden"});
-		alert($("#1st").is(':checked'));
-		$.post('Filter', 
+		$.post('js/Filter.jsp', 
 				{
 					s1: $("#1st").is(':checked'),
 					s2: $("#2st").is(':checked'),
@@ -138,6 +138,13 @@ $(document).ready(function(){
 				}, 
 				function(response) {
 					location.reload(true);
+		});	
+	});
+	
+	$('.booking').click(function(){
+		$.post('js/clearAttrs.jsp', {}, 
+				function(response) {
+					window.location.replace("home.jsp");
 		});	
 	});
 });

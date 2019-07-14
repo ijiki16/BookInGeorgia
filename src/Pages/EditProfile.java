@@ -42,7 +42,7 @@ public class EditProfile extends HttpServlet {
 		String email = (String)request.getParameter("email");
 		String username = (String)request.getParameter("user");
 		String password = (String)request.getParameter("password");
-
+		
 		AccountManager manager = AccountManager.getInstance();
 		String user = (String) request.getSession().getAttribute("user");
 		Account acc = manager.getAccount(user);

@@ -3,10 +3,11 @@ package Managers;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import DataBases.AccountDB;
-import DataBases.HotelsDB;
 import Models.Account;
+import Models.Reservation;
 
 public class AccountManager {
 	
@@ -85,5 +86,9 @@ public class AccountManager {
 		if(password != null)
 			password = getHash(password);
 		return database.deleteAccount(email, password);
+	}
+	
+	public List<Reservation> getReservations(int account_id){
+		return database.getAccountReservations(account_id);
 	}
 }

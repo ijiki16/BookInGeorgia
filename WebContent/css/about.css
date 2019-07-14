@@ -1,15 +1,16 @@
 @charset "ISO-8859-1";
-.about {
+body {
 	position: absolute;
-    top: 35%;
-    left: 17%;
-    width: 82%;
+    background-image: url(../images/about.jpg) !important;
     height: fit-content;
-    display: none;
 }
 
 p, h1, h2, h3 {
 	color: white;
+	font-family: sans-serif;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 21px;
 }
 
 .card {

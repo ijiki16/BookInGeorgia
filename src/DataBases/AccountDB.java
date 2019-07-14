@@ -6,8 +6,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import Models.Account;
+import Models.Reservation;
 
 public class AccountDB{
 	
@@ -167,7 +170,28 @@ public class AccountDB{
 			return false;
 		}
 	}
-	
+
+	/**
+	 * Gets the searched reservations.
+	 *
+	 * @param account id
+	 * @return the searched reservations
+	 */
+	public List<Reservation> getAccountReservations(int account_id) {
+		List<Reservation> reservations = new ArrayList<>();
+		try {
+			String query = "select * from Reservation where account_id = ?";
+			PreparedStatement stmt = connection.prepareStatement(query);
+			stmt.setInt(1, account_id);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				reservations.add(new Reservation(rs.getInt("reserved_id"), rs.getDate("reserved_from"), rs.getDate("reserved_to"), rs.getInt("room_id"), rs.getInt("account_id")));
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return reservations;
+	}
 }
 
 

@@ -29,7 +29,6 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
-<script src="js/home.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -39,6 +38,7 @@
 		    <% int id = Integer.parseInt(request.getParameter("id"));
 		    HotelManager hm = HotelManager.getInstance();
 		    Hotel h = hm.getHotel(id);
+		    if(h == null) return;
 		    RoomManager rm = RoomManager.getInstance();
 		    %>
 			<figure class="img"> <img src="<%=h.getImage() %>"> </figure>
@@ -80,7 +80,7 @@
 				</div>
 				<div class="text">
 					<div class="location">
-					<h4>Saburtalo</h4>
+					<h4><%=h.getLocation().getCity() %>, <%=h.getLocation().getAddress() %></h4>
 					</div>
 					<div class="number">
 					<h4><%=h.getNumber() %></h4>

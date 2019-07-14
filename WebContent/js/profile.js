@@ -6,22 +6,25 @@ $(document).ready(function(){
 
 	$('#edit-prof').click(function(){
 		$('.prof-box').css({"display": "block"});
-		$('.resrv-box').css({"display": "none"});
+		$('.reserv').css({"visibility": "hidden"});
 		$('.post-box').css({"display": "none"});
+		$('.reserv-box').css({"display": "none"});
 		$('.posts').css({"visibility": "hidden"});
 	});
 
 	$('#edit-post').click(function(){
 		$('.prof-box').css({"display": "none"});
-		$('.resrv-box').css({"display": "none"});
+		$('.reserv').css({"visibility": "hidden"});
 		$('.post-box').css({"display": "none"});
+		$('.reserv-box').css({"display": "none"});
 		$('.posts').css({"visibility": "visible"});
 	});
 
 	$('#edit-resrv').click(function(){
 		$('.prof-box').css({"display": "none"});
-		$('.resrv-box').css({"display": "block"});
+		$('.reserv').css({"visibility": "visible"});
 		$('.post-box').css({"display": "none"});
+		$('.reserv-box').css({"display": "none"});
 		$('.posts').css({"visibility": "hidden"});
 	});
 	
@@ -69,6 +72,21 @@ $(document).ready(function(){
 				});
 	});
 	
+	$('#delete-post').click(function(){
+		let _hotel_id = $('#hotel_id').val();
+		$.post('js/deletePost.jsp', 
+				{
+					hotel_id: _hotel_id
+				}, 
+				function(response) {
+					if($.trim(response) == 'true'){
+						window.location.replace("Profile.jsp");
+					} else {
+						$('#editInfo').text("Your hotel is booked!");
+					}
+				});
+	});
+	
 	$('#show').click(function(){
 		if($('#pass').attr("type") == 'text'){
 			$('#pass')[0].type = 'password';
@@ -78,5 +96,16 @@ $(document).ready(function(){
 			$('#show')[0].className = "fas fa-eye";
 		}
 	});
+	
+	$("#del").click(function () {
+		  val = $("#res_id").val();
+		  $.post('js/deleteReservation.jsp', 
+					{
+			  			reserved_id: val
+					}, 
+					function(response) {
+						window.location.replace("Profile.jsp");
+			});
+	  });
 	
 });

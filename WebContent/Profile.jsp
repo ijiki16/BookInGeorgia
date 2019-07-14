@@ -3,8 +3,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@page import="Managers.AccountManager"%>
+     <%@page import="Managers.RoomManager"%>
     <%@page import="Models.Account"%>
+    <%@page import="Models.Reservation"%>
     <%@page import="Models.Hotel"%>
+    <%@page import="Models.Reservation"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,12 +56,25 @@
 			 <a href="Profile.jsp?hotel_id=<%=hotel.getId()%>"><%=hotel.getName() %><i class="fas fa-pencil-alt" style="float:right"></i></a>  
 		<%}%>
 	</div>
+	
+	<div class="reserv">
+		<% AccountManager am = AccountManager.getInstance();
+		List<Reservation> reservations = am.getReservations(Integer.parseInt(user.getId()));%>
+	
+		<h2> Your Reservations </h2>
+		 
+		<%for(Reservation reserv: reservations){ %>
+			 <a href="Profile.jsp?reserved_id=<%=reserv.getId()%>">Reservation Id:<%=reserv.getId()%>,  Room Id: <%=reserv.getRoomId()%>
+			 	<i class="fa fa-remove" aria-hidden="true" style="float:right" id="<%=reserv.getId()%>"></i>
+			 </a>  
+		<%}%>
+	</div>
 		
 	<div class="post-box">
 		<%if(request.getParameter("hotel_id") != null){ %>
 			<%Hotel hotel = hm.getHotel(Integer.parseInt(request.getParameter("hotel_id")));%>
 			
-			<h2> Edit Hotel Info </h2>
+			<h2 id="editInfo"> Edit Hotel Info </h2>
 			<span> Edit Name: </span> <br> <input type="text" value="<%=hotel.getName()%>"  id="hotelname" required="required"> <br>
 			<span> Edit Rating: </span> <br> <input type="text" value="<%=hotel.getRating()%>"  id="hotelrating" required="required"> <br>
 			<span> Edit Status: </span> <br> <input type="text" value="<%=hotel.getStatus()%>"  id="hotelstatus" required="required"> <br>
@@ -70,7 +86,21 @@
 			</form>
 			<input type="hidden" id="hotel_id" value="<%=request.getParameter("hotel_id")%>">
 			<button class="save" id="save-post"> Save Changes </button>
+			<button class="save" id="delete-post"> Delete Post </button>
 		<%}%>
+	</div>
+		
+		
+	<div class="reserv-box">
+		<%if(request.getParameter("reserved_id") != null) {
+			Reservation resv = RoomManager.getInstance().getReservation(Integer.parseInt(request.getParameter("reserved_id"))); %>
+		<h2 id="editInfo"> Your Reservation Details </h2>
+		
+		<span> Booking ID: </span> <br> <input type="text" value="<%=resv.getId()%>"  id="res_id" readonly="readonly"> <br>
+		<span> From: </span> <br> <input type="text" value="<%=resv.getFrom()%>"  id="from" readonly="readonly"> <br>
+		<span> To: </span> <br> <input type="text" value="<%=resv.getTo()%>"  id="to" readonly="readonly"> <br>
+		<button class="save" id="del"> Unbook Room </button>
+		<%} %>
 	</div>
 </body>
 </html>

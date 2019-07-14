@@ -42,10 +42,10 @@ public class HotelManager {
 	}
 	
 	/**
-	 * @deletes Hotel from Data Base.
+	 * @deletes Hotel from Data Base if it's possible.
 	 */
-	public void deleteHotel(Integer hotel_id) {
-		db.deleteHotel(hotel_id);
+	public boolean deleteHotel(Integer hotel_id) {
+		return db.deleteHotel(hotel_id);
 	}
 	
 	/**
@@ -128,11 +128,23 @@ public class HotelManager {
 	 */
 	public List<Integer> getFilteredHotels(boolean[] ratings, boolean beachfront, boolean woodfront, boolean wifi, boolean parking){
 		List<Integer> hotels = new ArrayList<>();
+		boolean rate = false;
+		boolean facil = beachfront || wifi || parking || woodfront;
 		for(int i = 0; i < ratings.length; i++) {
+			rate |= ratings[i];
 			if(ratings[i]) {
-				for(Integer h : db.getFilteredHotels(i+1, beachfront, woodfront, wifi, parking)) {
+				List<Integer> filtr = db.getFilteredHotels(i+1, beachfront, woodfront, wifi, parking);
+				for(Integer h : filtr) {
 					hotels.add(h);
 				}
+			}
+		}
+		if(!rate && !facil) return this.getSearchedHotels(null, null);
+		if(rate) return hotels;
+		for(int i = 0; i < ratings.length; i++) {
+			List<Integer> filtr = db.getFilteredHotels(i+1, beachfront, woodfront, wifi, parking);
+			for(Integer h : filtr) {
+				hotels.add(h);
 			}
 		}
 		return hotels;

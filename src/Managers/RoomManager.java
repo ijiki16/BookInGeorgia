@@ -5,6 +5,7 @@ import java.util.List;
 
 import DataBases.HotelsDB;
 import DataBases.RoomsDB;
+import Models.Reservation;
 import Models.Room;
 
 public class RoomManager {
@@ -96,14 +97,27 @@ public class RoomManager {
 	/**
 	 * @returns if room unbooked.
 	 */
+	public boolean unbookRoom(int reserved_id) {
+		return rdb.unbookRoom(reserved_id);
+	}
+	
 	public boolean unbookRoom(Integer room_id, Integer account_id, Date sDate, Date eDate) {
 		if(room_id < 1 || !sDate.before(eDate) || account_id<0) return false;
 		return rdb.unbookRoom(room_id, sDate, eDate, account_id);
 	}
 
-	public void deleteRooms(Integer hotel_id) {
+	public boolean deleteRooms(Integer hotel_id) {
+		List<Room> rooms = this.getRooms(hotel_id);
+		for(Room r : rooms) {
+			if(this.getRoomReservations(r.getRoomId()).isEmpty()) continue;
+			return false;
+		}
 		rdb.deleteRooms(hotel_id);
+		return true;
 	}
 	
 	
+	public Reservation getReservation(Integer reserved_id) {
+		return rdb.getReservation(reserved_id);
+	}
 }

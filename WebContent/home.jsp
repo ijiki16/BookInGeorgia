@@ -59,32 +59,44 @@
 				</div>
 			</section>
 		</section>
+		<% boolean wifi = request.getSession().getAttribute("wifi") == null ? false : request.getSession().getAttribute("wifi").equals("true");
+		boolean beach = request.getSession().getAttribute("beach") == null ? false : request.getSession().getAttribute("beach").equals("true");
+		boolean wood = request.getSession().getAttribute("wood") == null ? false : request.getSession().getAttribute("wood").equals("true");
+		boolean parking = request.getSession().getAttribute("parking") == null ? false : request.getSession().getAttribute("parking").equals("true");
+
+		String ar = (String)request.getSession().getAttribute("arr");
+		
+		boolean[] arr = new boolean[5];
+		for(int i = 0; i < 5; i++){
+			if(ar == null) arr[i] = false; 
+			else arr[i] = (ar.charAt(i) == '1') ? true : false;
+		}%>
 		<div class="filter">
 			<div class="filter-wrap">
 				<form action="#" method="get">
 					<h2>Filter by</h2>
 					<div class="check">
 						<h5>Star rating</h5>
-						<input type="checkbox" id="5st">
+						<input type="checkbox" id="5st" <%if(arr[4]){%> checked <%}%>>
 						<span class="checkmark"> 5 stars </span> <br>
-						<input type="checkbox" id="4st">
+						<input type="checkbox" id="4st" <%if(arr[3]){%> checked <%}%>>
 						<span class="checkmark"> 4 stars </span> <br>
-						<input type="checkbox" id="3st">
+						<input type="checkbox" id="3st" <%if(arr[2]){%> checked <%}%>>
 						<span class="checkmark"> 3 stars </span> <br>
-						<input type="checkbox" id="2st">
+						<input type="checkbox" id="2st" <%if(arr[1]){%> checked <%}%>>
 						<span class="checkmark"> 2 stars </span> <br>
-						<input type="checkbox" id="1st">
+						<input type="checkbox" id="1st" <%if(arr[0]){%> checked <%}%>>
 						<span class="checkmark"> 1 stars </span> <br>
 					</div>
 					<div class="check">
 						<h5>Facilities</h5>
-						<input type="checkbox" id="wi-fi">
+						<input type="checkbox" id="wi-fi" <%if(wifi){%> checked <%}%>>
 						<span class="checkmark"> Wi-Fi </span> <br>
-						<input type="checkbox" id="parking">
+						<input type="checkbox" id="parking" <%if(parking){%> checked <%}%>>
 						<span class="checkmark"> Parking </span> <br>
-						<input type="checkbox" id="beach">
+						<input type="checkbox" id="beach" <%if(beach){%> checked <%}%>>
 						<span class="checkmark"> Beachfront </span> <br>
-						<input type="checkbox" id="forest">
+						<input type="checkbox" id="forest" <%if(wood){%> checked <%}%>>
 						<span class="checkmark"> Near forest </span> <br>
 					</div>
 					<input class="filter-btn" type="button" name="" value="Filter"> 
@@ -93,17 +105,19 @@
 		</div>
 		
 		<div class="hotels">
-		<% 
-			List<Integer> IDs = (List<Integer>) request.getSession().getAttribute("searched");
-			if(IDs == null)	IDs = hm.getSearchedHotels(null, null);
+		<%  String city = (String)request.getSession().getAttribute("city");
+			String hotel_name = (String)request.getSession().getAttribute("hotel_name");
+			
+			List<Integer> IDs = hm.getSearchedHotels(city, hotel_name);
+			IDs = hm.intersectLists(IDs, hm.getFilteredHotels(arr, beach, wood, wifi, parking));
+			
 			for(Integer hotel_id : IDs){
+				if(hm.getHotel(hotel_id) == null) continue;
 				Hotel hotel = hm.getHotel(hotel_id);
-				request.setAttribute("hotel_id", hotel_id);
-			%>
+				request.setAttribute("hotel_id", hotel_id);%>
 				<jsp:include page="Post.jsp"/>
 			<%}%>
 		</div>
-		<jsp:include page="AboutUs.jsp"/>
 		
 		<%if(request.getSession().getAttribute("1st") == null) {
 			request.getSession().setAttribute("1st", "visited");%>
