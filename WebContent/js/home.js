@@ -124,7 +124,7 @@ $(document).ready(function(){
 	
 	$('.filter-btn').click(function(){
 		$('.moto').css({"visibility":"hidden"});
-		$.post('Filter', 
+		$.post('js/Filter.jsp', 
 				{
 					s1: $("#1st").is(':checked'),
 					s2: $("#2st").is(':checked'),
@@ -138,6 +138,13 @@ $(document).ready(function(){
 				}, 
 				function(response) {
 					location.reload(true);
+		});	
+	});
+	
+	$('.booking').click(function(){
+		$.post('js/clearAttrs.jsp', {}, 
+				function(response) {
+					window.location.replace("home.jsp");
 		});	
 	});
 });
