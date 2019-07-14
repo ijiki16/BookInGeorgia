@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -194,8 +195,12 @@ public class HotelManagerTests {
 		java.util.Date date1 = dateFormat.parse("1998-12-30");
 		java.util.Date date2 = dateFormat.parse("1998-12-31");
 		
-		assertTrue(HM.getMinPrice(hotel_id1) == 0);
-		assertTrue(HM.getMaxPrice(hotel_id1) == 0);
+		Integer zr = 0;
+		Integer f = 50;
+		Integer oneH = 100;
+		
+		assertEquals(zr, HM.getMinPrice(hotel_id1));
+		assertEquals(zr, HM.getMaxPrice(hotel_id1));
 		
 		RM.addRoom(date1, date2, 50, "none", hotel_id1, 2, false, false, false, false);
 		RM.addRoom(date1, date2, 100, "none", hotel_id1, 3, true, false, true, false);
@@ -203,9 +208,9 @@ public class HotelManagerTests {
 		Integer min_price = HM.getMinPrice(hotel_id1);
 		Integer max_price = HM.getMaxPrice(hotel_id1);
 
-		assertTrue(min_price == 50);
-		assertTrue(max_price == 100);
-		
+		assertEquals(f, min_price);
+		assertEquals(oneH, max_price);
+
 		boolean ratings[] = {false, false, true, true, true};
 		List<Integer> filter = HM.getFilteredHotels(ratings, false, false, false, false);
 		assertEquals(filter.size(), 3);
@@ -256,8 +261,29 @@ public class HotelManagerTests {
 		assertTrue(HM.deleteHotel(HM.getHotels(id2).get(0).getId()));
 		assertTrue(HM.deleteHotel(HM.getHotels(id2).get(0).getId()));
 
+	}
+	
+	@Test
+	@Order(5)
+	public void testComments() {
+		Integer hotel_id = HM.addHotel("Radison", 5, "iveria", "reworked", "+995 ...", id1);
+		HM.addComment(hotel_id, "devi", "great hotel! really nice! thnx");
+		HM.addComment(hotel_id, "devi", "thnx again");
+		HM.addComment(hotel_id, "sandro", "magadiaa");
+		
+		Map<String, List<String>> comments = HM.getComments(hotel_id);
+		assertEquals(comments.size(), 2);
+		assertEquals(comments.get("devi").size(), 2);
+		assertEquals(comments.get("devi").get(0), "great hotel! really nice! thnx");
+		assertEquals(comments.get("devi").get(1), "thnx again");
+		assertEquals(comments.get("sandro").size(), 1);
+		assertEquals(comments.get("sandro").get(0), "magadiaa");
+		
+		HM.deleteComments(hotel_id);
+		comments = HM.getComments(hotel_id);
+		assertEquals(comments.size(), 0);
+		
 		AM.deleteAccount("devidevuka@mail.ru", "0406");
 		AM.deleteAccount("dkhos17@freeuni.edu.ge", "0406");
 	}
-	
 }

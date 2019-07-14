@@ -101,10 +101,9 @@ public class Uploader extends HttpServlet {
 				
 				rmM.updateRoom(rmId, sDate, eDate, rPrice, items.get(0).getName().length() == 0 ? "images/defroom.jpg" : ("images/room" + id + ".jpg"), htId, numBeds, wifi, tv,
 						hotWater, airCo);
-				request.getRequestDispatcher("RoomAddChoose.jsp").forward(request, response);
+				request.getRequestDispatcher("home.jsp").forward(request, response);
 			}
 		} catch (Exception e) {
-			request.getRequestDispatcher("home.jsp").forward(request, response);
 			e.printStackTrace();
 		}
 		
