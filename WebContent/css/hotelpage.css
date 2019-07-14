@@ -46,7 +46,8 @@ tr{
 
 .status {
 	width: 100%;
-	height: 370px;
+	height: 310px;
+    margin-top: 25px;
 	border-bottom: 2px solid #7b0e0e;
 }
 
@@ -97,3 +98,19 @@ th, td {
 	color: white;
 }
 
+
+#showComment, #addComment {
+	width: 50%;
+	height: 200px;
+	overflow: scroll;
+}
+
+#showComment {
+	position: relative;
+	left: 0px;	
+}
+
+#addComment {
+	position: relative;
+	right: 0px;	
+}
