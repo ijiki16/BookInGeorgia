@@ -78,6 +78,7 @@ $(document).ready(function(){
 	});
 	
 	$('#save-room').click(function(){
+		alert("aeeeeeeeeee");
 		let _tv = $("#edit-tv").is(':checked');
 		let _wifi = $('#edit-wifi').is(':checked');
 		let _hotWater = $('#edit-hotWater').is(':checked');
@@ -88,6 +89,16 @@ $(document).ready(function(){
 		let _rPrice = $('#edit-rPrice').val();
 		let _hotel_id = $('#edit-hotel-id').val();
 		let _room_id = $('#edit-room-id').val();
+		alert(_tv);
+		alert(_wifi);
+		alert(_hotWater);
+		alert(_airCo);
+		alert(_numBeds);
+		alert(_sDate);
+		alert(_eDate);
+		alert(_rPrice);
+		alert(_hotel_id);
+		alert(_room_id);
 		$.post('EditRoom',
 				{
 					tv: _tv,

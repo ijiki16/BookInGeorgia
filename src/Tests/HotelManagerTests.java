@@ -283,6 +283,12 @@ public class HotelManagerTests {
 		comments = HM.getComments(hotel_id);
 		assertEquals(comments.size(), 0);
 		
+		HM.addComment(hotel_id, "devi", "great hotel! really nice! thnx");
+		HM.addComment(hotel_id, "devi", "thnx again");
+		HM.addComment(hotel_id, "sandro", "magadiaa");
+		
+		assertTrue(HM.deleteHotel(hotel_id));
+		
 		AM.deleteAccount("devidevuka@mail.ru", "0406");
 		AM.deleteAccount("dkhos17@freeuni.edu.ge", "0406");
 	}

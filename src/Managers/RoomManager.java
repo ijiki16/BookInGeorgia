@@ -53,6 +53,7 @@ public class RoomManager {
 	 */
 	public boolean deleteRoom(Integer room_id) {
 		if(room_id<0) return false;
+		if(!this.getRoomReservations(room_id).isEmpty()) return false;
 		return rdb.deleteRoom(room_id);
 	}
 
