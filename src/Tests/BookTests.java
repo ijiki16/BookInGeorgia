@@ -40,9 +40,7 @@ public class BookTests extends Mockito {
 		Date date1 = dateFormat.parse("1999-12-10");
 		Date date2 = dateFormat.parse("2007-07-23");
 		Date date3 = dateFormat.parse("2009-01-07");
-//		Date date4 = dateFormat.parse("2011-10-01");	
-//		Date date5 = dateFormat.parse("2011-10-10");
-//		Date date6 = dateFormat.parse("2015-03-14");
+
 		Date date7 = dateFormat.parse("2019-06-10");
 
 		Integer rmID = rmM.addRoom(date1, date7, 150, "nelazviadi.png", htlID1, 2, false, false, false, false);

@@ -139,7 +139,7 @@ public class RoomManagerTests {
 	
 	@Test
 	public void test2() {
-		System.out.println(room1.toString());
+		//System.out.println(room1.toString());
 		
 		assertTrue(roomM.bookRoom(room1.getRoomId(), Integer.parseInt(user1.getId()), date6, date7));
 		assertTrue(roomM.bookRoom(room1.getRoomId(), Integer.parseInt(user1.getId()), date4, date5));
@@ -152,8 +152,8 @@ public class RoomManagerTests {
 		assertEquals(accId, res1.getAccountId());
 		assertEquals(room1.getRoomId(), res1.getRoomId());
 		//
-		System.out.println(res1.getFrom().toString());
-		System.out.println(res1.getTo().toString());
+		//System.out.println(res1.getFrom().toString());
+		//System.out.println(res1.getTo().toString());
 		
 		Reservation res2 = roomM.getReservation(resS.get(1).getId());
 		assertEquals(accId, res2.getAccountId());
