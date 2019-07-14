@@ -219,6 +219,8 @@ public class HotelManagerTests {
 		ratings[3] = false; ratings[4] = false;
 		filter = HM.getFilteredHotels(ratings, false, false, false, false);
 		assertEquals(filter.size(), 3);
+		filter = HM.getFilteredHotels(ratings, true, false, false, false);
+		assertEquals(filter.size(), 2);
 		
 		List<Integer> search = HM.getSearchedHotels(null, null);
 		assertEquals(search.size(), 3);

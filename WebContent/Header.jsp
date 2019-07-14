@@ -17,7 +17,7 @@
 		<header class="header-section">
 				<div class="header">
 					<div class="site-logo">
-						<a href="./home.jsp">BookinGeorgia</a>
+						<a href="#" class="booking">BookinGeorgia</a>
 					</div>
 					<div class="user-panel">
 						<div id="log-and-reg">
@@ -42,7 +42,7 @@
 				<nav class="navbar navbar-expand-sm bg-light navbar-light">
 				  <ul class="navbar-nav">
 				    <li class="nav-item active">
-				      <a class="nav-link" href="home.jsp">Home</a>
+				      <a class="nav-link booking" href="#">Home</a>
 				    </li>
 				    <li class="nav-item active">
 				      <a class="nav-link" href="Profile.jsp" id="posts">Your Posts</a>

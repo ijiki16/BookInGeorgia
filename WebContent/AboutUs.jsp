@@ -8,8 +8,7 @@
 <link rel="stylesheet" href="css/about.css">
 </head>
 <body>
-	<div class="about">
-		<section class="card card-lg" id="about-about">
+		<jsp:include page="Header.jsp"/>
 			<h1 class="text-xxxl mb-sm mt-sm text-center">- BookinGeorgia -</h1>
 			<p class="text-sm mb-lg text-center">Here we are launching a public campaign - Spend your summer in Georgia. The campaign aims at boosting the image of Georgia and attracting more visitors via showing the world the tourism potential of our country. 
 		#spendyoursummeringeorgia</p>
@@ -29,8 +28,6 @@
 			Iuri Jikidze		<br>
 			Nika Basiashvili	<br>
 		</h3>
-		</section>
-	</div>
 	
 </body>
 </html>
