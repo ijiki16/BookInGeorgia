@@ -175,7 +175,7 @@ insert into Locations (city, address, hotel_id)
 VALUES ('Tbilisi', 'Merab Kostava St', (select hotel_id from Hotels where name = 'Panorama 360°'));
 
 insert into HotelInfo (facility, wifi, parking, beachfront, woodfront, hotel_id)
-VALUES ('', true, true, false, true, (select hotel_id from Hotels where name = 'Panorama 360°'));
+VALUES ('', true, true, true, true, (select hotel_id from Hotels where name = 'Panorama 360°'));
 
 # Hotel Rooms rooms
 insert into Rooms (price_per_day, img, reserved_start, reserved_end, number_of_beds, hotel_id)
