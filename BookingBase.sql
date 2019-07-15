@@ -176,3 +176,84 @@ VALUES ('Tbilisi', 'Merab Kostava St', (select hotel_id from Hotels where name =
 
 insert into HotelInfo (facility, wifi, parking, beachfront, woodfront, hotel_id)
 VALUES ('', true, true, false, true, (select hotel_id from Hotels where name = 'Panorama 360°'));
+
+# Hotel Rooms rooms
+insert into Rooms (price_per_day, img, reserved_start, reserved_end, number_of_beds, hotel_id)
+VALUES (94, 'images/rms1.jpg', '2019-05-07', '2022-10-23', 2, (select hotel_id from Hotels where name = 'Rooms'));
+
+insert into RoomInfo (wifi, tv, hot_water, air_conditioning, room_id)
+VALUES (true, false, true, true, (select room_id from Rooms where img = 'images/rms1.jpg'));
+
+insert into Rooms (price_per_day, img, reserved_start, reserved_end, number_of_beds, hotel_id)
+VALUES (116, 'images/rms2.jfif', '2018-05-07', '2020-11-17', 2, (select hotel_id from Hotels where name = 'Rooms'));
+
+insert into RoomInfo (wifi, tv, hot_water, air_conditioning, room_id)
+VALUES (true, true, true, true, (select room_id from Rooms where img = 'images/rms2.jfif'));
+
+# Radisson rooms
+insert into Rooms (price_per_day, img, reserved_start, reserved_end, number_of_beds, hotel_id)
+VALUES (135, 'images/blu1.jpg', '2017-11-07', '2019-12-26', 2, (select hotel_id from Hotels where name = 'Radisson Blu'));
+
+insert into RoomInfo (wifi, tv, hot_water, air_conditioning, room_id)
+VALUES (true, false, true, false, (select room_id from Rooms where img = 'images/blu1.jpg'));
+
+insert into Rooms (price_per_day, img, reserved_start, reserved_end, number_of_beds, hotel_id)
+VALUES (170, 'images/blu2.jpg', '2017-12-30', '2020-01-05', 4, (select hotel_id from Hotels where name = 'Radisson Blu'));
+
+insert into RoomInfo (wifi, tv, hot_water, air_conditioning, room_id)
+VALUES (true, true, true, true, (select room_id from Rooms where img = 'images/blu2.jpg'));
+
+
+# Marriot rooms
+insert into Rooms (price_per_day, img, reserved_start, reserved_end, number_of_beds, hotel_id)
+VALUES (190, 'images/marriot1.jpg', '2017-11-07', '2019-12-26', 2, (select hotel_id from Hotels where name = 'Tbilisi Marriott'));
+
+insert into RoomInfo (wifi, tv, hot_water, air_conditioning, room_id)
+VALUES (true, false, true, false, (select room_id from Rooms where img = 'images/marriot1.jpg'));
+
+insert into Rooms (price_per_day, img, reserved_start, reserved_end, number_of_beds, hotel_id)
+VALUES (230, 'images/marriot2.jpg', '2017-12-30', '2020-01-05', 4, (select hotel_id from Hotels where name = 'Tbilisi Marriott'));
+
+insert into RoomInfo (wifi, tv, hot_water, air_conditioning, room_id)
+VALUES (true, true, true, true, (select room_id from Rooms where img = 'images/marriot2.jpg'));
+
+# Fabrika rooms
+insert into Rooms (price_per_day, img, reserved_start, reserved_end, number_of_beds, hotel_id)
+VALUES (90, 'images/fab1.jpg', '2016-07-07', '2020-03-26', 2, (select hotel_id from Hotels where name = 'Fabrika Tbilisi'));
+
+insert into RoomInfo (wifi, tv, hot_water, air_conditioning, room_id)
+VALUES (true, false, true, false, (select room_id from Rooms where img = 'images/fab1.jpg'));
+
+insert into Rooms (price_per_day, img, reserved_start, reserved_end, number_of_beds, hotel_id)
+VALUES (50, 'images/fab2.jpg', '2016-07-30', '2020-03-05', 12, (select hotel_id from Hotels where name = 'Fabrika Tbilisi'));
+
+insert into RoomInfo (wifi, tv, hot_water, air_conditioning, room_id)
+VALUES (true, false, true, true, (select room_id from Rooms where img = 'images/fab2.jpg'));
+
+
+# The Biltmore rooms
+insert into Rooms (price_per_day, img, reserved_start, reserved_end, number_of_beds, hotel_id)
+VALUES (320, 'images/bilt1.jpg', '2015-06-07', '2020-03-26', 2, (select hotel_id from Hotels where name = 'The Biltmore'));
+
+insert into RoomInfo (wifi, tv, hot_water, air_conditioning, room_id)
+VALUES (true, false, true, false, (select room_id from Rooms where img = 'images/bilt1.jpg'));
+
+insert into Rooms (price_per_day, img, reserved_start, reserved_end, number_of_beds, hotel_id)
+VALUES (350, 'images/bilt2.jpg', '2015-06-30', '2020-03-05', 2, (select hotel_id from Hotels where name = 'The Biltmore'));
+
+insert into RoomInfo (wifi, tv, hot_water, air_conditioning, room_id)
+VALUES (true, false, true, true, (select room_id from Rooms where img = 'images/bilt2.jpg'));
+
+
+# Panorama 360° rooms
+insert into Rooms (price_per_day, img, reserved_start, reserved_end, number_of_beds, hotel_id)
+VALUES (15, 'images/pano1.jpg', '2015-06-07', '2020-03-26', 2, (select hotel_id from Hotels where name = 'Panorama 360°'));
+
+insert into RoomInfo (wifi, tv, hot_water, air_conditioning, room_id)
+VALUES (true, false, true, false, (select room_id from Rooms where img = 'images/pano1.jpg'));
+
+insert into Rooms (price_per_day, img, reserved_start, reserved_end, number_of_beds, hotel_id)
+VALUES (30, 'images/pano2.jfif', '2015-06-30', '2020-03-05', 2, (select hotel_id from Hotels where name = 'Panorama 360°'));
+
+insert into RoomInfo (wifi, tv, hot_water, air_conditioning, room_id)
+VALUES (true, false, true, true, (select room_id from Rooms where img = 'images/pano2.jfif'));
