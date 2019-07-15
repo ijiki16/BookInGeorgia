@@ -111,4 +111,68 @@ alter table comments add constraint frk_hotel_id foreign key(hotel_id) reference
 
 # add data in DB
 
+-- insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel4", 1, "none", "new hotel4", "551511300", 1);
+insert into Accounts (username, password, first_name, last_name, birth_date, email )values ('iuri', '1234iuri', 'iuri', 'jikidze','1999-08-07', 'ijiki');
+insert into Accounts (username, password, first_name, last_name, birth_date, email )values ('devi', '1234devi', 'devi', 'khositashvili','1999-08-07', 'dkhos');
+insert into Accounts (username, password, first_name, last_name, birth_date, email )values ('sandro', '1234sandro', 'sandro', 'pertaia','1999-08-07', 'spert');
+insert into Accounts (username, password, first_name, last_name, birth_date, email )values ('nika', '1234nika', 'nika', 'basiashvili','1999-08-07', 'nbasi');
 
+# Hotel Rooms
+insert into Hotels (name, rating, img, status, phone_number, account_id)
+values('Rooms', 5, 'images/roomsH.jpg', 'good', '032 202 00 99', (select account_id from Accounts where email = 'ijiki'));
+
+insert into Locations (city, address, hotel_id)
+VALUES ('Tbilisi', 'Kostava St', (select hotel_id from Hotels where name = 'Rooms'));
+
+insert into HotelInfo (facility, wifi, parking, beachfront, woodfront, hotel_id)
+VALUES ('', true, true, false, false, (select hotel_id from Hotels where name = 'Rooms'));
+
+# Radisson Blu Iveria
+insert into Hotels (name, rating, img, status, phone_number, account_id)
+values('Radisson Blu', 4, 'images/Radisson.jpg', 'good', '+995 32 240 22 00', (select account_id from Accounts where email = 'ijiki'));
+
+insert into Locations (city, address, hotel_id)
+VALUES ('Tbilisi', 'Rose Revolution Square', (select hotel_id from Hotels where name = 'Radisson Blu'));
+
+insert into HotelInfo (facility, wifi, parking, beachfront, woodfront, hotel_id)
+VALUES ('', true, true, false, true, (select hotel_id from Hotels where name = 'Radisson Blu'));
+
+# Fabrika Tbilisi
+insert into Hotels (name, rating, img, status, phone_number, account_id)
+values('Fabrika Tbilisi', 5, 'images/Fabrika.jpg', '', '+995 32 202 03 99', (select account_id from Accounts where email = 'spert'));
+
+insert into Locations (city, address, hotel_id)
+VALUES ('Tbilisi', 'Egnate Ninoshvili St', (select hotel_id from Hotels where name = 'Fabrika Tbilisi'));
+
+insert into HotelInfo (facility, wifi, parking, beachfront, woodfront, hotel_id)
+VALUES ('', true, true, false, false, (select hotel_id from Hotels where name = 'Fabrika Tbilisi'));
+
+# Tbilisi Marriott Hotel
+insert into Hotels (name, rating, img, status, phone_number, account_id)
+values('Tbilisi Marriott', 5, 'images/Marriott.jpg', '', '+995 32 277 92 00', (select account_id from Accounts where email = 'dkhos'));
+
+insert into Locations (city, address, hotel_id)
+VALUES ('Tbilisi', 'Shota Rustaveli Ave', (select hotel_id from Hotels where name = 'Tbilisi Marriott'));
+
+insert into HotelInfo (facility, wifi, parking, beachfront, woodfront, hotel_id)
+VALUES ('', true, true, false, false, (select hotel_id from Hotels where name = 'Tbilisi Marriott'));
+
+# The Biltmore Hotel Tbilisi
+insert into Hotels (name, rating, img, status, phone_number, account_id)
+values('The Biltmore', 3, 'images/Biltmore.jpg', '', '+995 32 272 72 72', (select account_id from Accounts where email = 'nbasi'));
+
+insert into Locations (city, address, hotel_id)
+VALUES ('Tbilisi', 'Shota Rustaveli Ave', (select hotel_id from Hotels where name = 'The Biltmore'));
+
+insert into HotelInfo (facility, wifi, parking, beachfront, woodfront, hotel_id)
+VALUES ('', true, true, false, false, (select hotel_id from Hotels where name = 'The Biltmore'));
+
+# Panorama 360°
+insert into Hotels (name, rating, img, status, phone_number, account_id)
+values('Panorama 360°', 2, 'images/Panorama.jpg', '', '+995 571 92 28 88', (select account_id from Accounts where email = 'nbasi'));
+
+insert into Locations (city, address, hotel_id)
+VALUES ('Tbilisi', 'Merab Kostava St', (select hotel_id from Hotels where name = 'Panorama 360°'));
+
+insert into HotelInfo (facility, wifi, parking, beachfront, woodfront, hotel_id)
+VALUES ('', true, true, false, true, (select hotel_id from Hotels where name = 'Panorama 360°'));
