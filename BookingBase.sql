@@ -112,10 +112,18 @@ alter table comments add constraint frk_hotel_id foreign key(hotel_id) reference
 # add data in DB
 
 -- insert into Hotels (name, rating, img, status, phone_number, account_id) values("hotel4", 1, "none", "new hotel4", "551511300", 1);
-insert into Accounts (username, password, first_name, last_name, birth_date, email )values ('iuri', '1234iuri', 'iuri', 'jikidze','1999-08-07', 'ijiki');
-insert into Accounts (username, password, first_name, last_name, birth_date, email )values ('devi', '1234devi', 'devi', 'khositashvili','1999-08-07', 'dkhos');
-insert into Accounts (username, password, first_name, last_name, birth_date, email )values ('sandro', '1234sandro', 'sandro', 'pertaia','1999-08-07', 'spert');
-insert into Accounts (username, password, first_name, last_name, birth_date, email )values ('nika', '1234nika', 'nika', 'basiashvili','1999-08-07', 'nbasi');
+insert into Accounts (username, password, first_name, last_name, birth_date, email )
+values ('iuri', '3859edd5b535a5258468fe518cb465fec14bc422eee7c28aee3361a166bee9e5e285ed5c16ca85c3c00794728a8c7c01116abbf8b35bb7abb8a651954a37da4f
+', 'iuri', 'jikidze','1999-08-07', 'ijiki');
+insert into Accounts (username, password, first_name, last_name, birth_date, email )
+values ('devi', '19853b9c8296484b3c5180e447e7ddb9b3d6dde5a2f096e2a7c74fb4b7048b4315556180197cdb64b14b2d93320458a7bb17e248f29df81f52161295c28a2995
+', 'devi', 'khositashvili','1999-08-07', 'dkhos');
+insert into Accounts (username, password, first_name, last_name, birth_date, email )
+values ('sandro', 'be20b1249e32cbcdd1f1c4e9bebaf35942fd4f200faa787814704e120af198a601f25ec420dd0b0953996d035607f70f72494c441f8c3986b2213c133363c314
+', 'sandro', 'pertaia','1999-08-07', 'spert');
+insert into Accounts (username, password, first_name, last_name, birth_date, email )
+values ('nika', 'd5dba73a71de478751783a255e9092bf5a7e7ed9001386e623aad06c812efb4d3447e1fb648c0dcab0e7a892d94f87701f44069ed08e2c0b3561d587d3e8e146
+', 'nika', 'basiashvili','1999-08-07', 'nbasi');
 
 # Hotel Rooms
 insert into Hotels (name, rating, img, status, phone_number, account_id)
@@ -176,6 +184,16 @@ VALUES ('Tbilisi', 'Merab Kostava St', (select hotel_id from Hotels where name =
 
 insert into HotelInfo (facility, wifi, parking, beachfront, woodfront, hotel_id)
 VALUES ('', true, true, true, true, (select hotel_id from Hotels where name = 'Panorama 360°'));
+
+# Sheraton Batumi
+insert into Hotels (name, rating, img, status, phone_number, account_id)
+values('Sheraton Batumi', 5, 'images/Sheraton.jpg', '', '0422 22 90 00', (select account_id from Accounts where email = 'nbasi'));
+
+insert into Locations (city, address, hotel_id)
+VALUES ('Batumi', 'Rustaveli St', (select hotel_id from Hotels where name = 'Sheraton Batumi'));
+
+insert into HotelInfo (facility, wifi, parking, beachfront, woodfront, hotel_id)
+VALUES ('', true, true, true, true, (select hotel_id from Hotels where name = 'Sheraton Batumi'));
 
 # Hotel Rooms rooms
 insert into Rooms (price_per_day, img, reserved_start, reserved_end, number_of_beds, hotel_id)

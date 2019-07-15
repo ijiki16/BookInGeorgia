@@ -582,8 +582,9 @@ public class HotelsDB {
 	public List<Pair<String,String>> getComments(Integer hotel_id) {
 		List<Pair<String,String>> comments = new ArrayList<>();
 		try {
-			String query = "select * from comments";
+			String query = "select * from comments where hotel_id = ?";
 			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setInt(1, hotel_id);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
 				String user = rs.getString("username");
