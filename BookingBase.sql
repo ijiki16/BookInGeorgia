@@ -130,7 +130,7 @@ insert into Hotels (name, rating, img, status, phone_number, account_id)
 values('Rooms', 5, 'images/roomsH.jpg', 'good', '032 202 00 99', (select account_id from Accounts where email = 'ijiki'));
 
 insert into Locations (city, address, hotel_id)
-VALUES ('Tbilisi', 'Kostava St', (select hotel_id from Hotels where name = 'Rooms'));
+VALUES ('Kutaisi', 'Kostava St', (select hotel_id from Hotels where name = 'Rooms'));
 
 insert into HotelInfo (facility, wifi, parking, beachfront, woodfront, hotel_id)
 VALUES ('', true, true, false, false, (select hotel_id from Hotels where name = 'Rooms'));
@@ -150,7 +150,7 @@ insert into Hotels (name, rating, img, status, phone_number, account_id)
 values('Fabrika Tbilisi', 5, 'images/Fabrika.jpg', '', '+995 32 202 03 99', (select account_id from Accounts where email = 'spert'));
 
 insert into Locations (city, address, hotel_id)
-VALUES ('Tbilisi', 'Egnate Ninoshvili St', (select hotel_id from Hotels where name = 'Fabrika Tbilisi'));
+VALUES ('Kobuleti', 'Egnate Ninoshvili St', (select hotel_id from Hotels where name = 'Fabrika Tbilisi'));
 
 insert into HotelInfo (facility, wifi, parking, beachfront, woodfront, hotel_id)
 VALUES ('', true, true, false, false, (select hotel_id from Hotels where name = 'Fabrika Tbilisi'));
@@ -275,3 +275,16 @@ VALUES (30, 'images/pano2.jfif', '2015-06-30', '2020-03-05', 2, (select hotel_id
 
 insert into RoomInfo (wifi, tv, hot_water, air_conditioning, room_id)
 VALUES (true, false, true, true, (select room_id from Rooms where img = 'images/pano2.jfif'));
+
+# Sheraton Batumi rooms
+insert into Rooms (price_per_day, img, reserved_start, reserved_end, number_of_beds, hotel_id)
+VALUES (55, 'images/sher1.jpg', '2009-06-07', '2020-03-26', 2, (select hotel_id from Hotels where name = 'Sheraton Batumi'));
+
+insert into RoomInfo (wifi, tv, hot_water, air_conditioning, room_id)
+VALUES (true, false, true, false, (select room_id from Rooms where img = 'images/sher1.jpg'));
+
+insert into Rooms (price_per_day, img, reserved_start, reserved_end, number_of_beds, hotel_id)
+VALUES (65, 'images/sher2.jpg', '2009-06-30', '2020-03-05', 2, (select hotel_id from Hotels where name = 'Sheraton Batumi'));
+
+insert into RoomInfo (wifi, tv, hot_water, air_conditioning, room_id)
+VALUES (true, false, true, true, (select room_id from Rooms where img = 'images/sher2.jpg'));
