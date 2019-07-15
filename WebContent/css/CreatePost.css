@@ -24,6 +24,14 @@ h1 {
 	padding: 10px 0;
 }
 
+.bulb{
+	font-weight: 900;
+    position: absolute;
+    top: 46%;
+    left: 37.75%;
+    font-size: 27px;
+}
+
 file {
 	background: none;
 }
@@ -58,7 +66,7 @@ file {
 .post-facility {
 	width: 280px;
 	position: absolute;
-	top: 30%;
+	top: 25%;
 	left: 55%;
 	color: white;
 }

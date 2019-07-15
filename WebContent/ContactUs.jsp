@@ -43,10 +43,10 @@
 
 				<div class="footer-icons">
 
-					<a href="https://www.facebook.com/groups/339180753670377/"><i class="fa fa-facebook"></i></a>
-					<a href="https://www.youtube.com/watch?v=yu9GPOwo0nw"><i class="fa fa-youtube"></i></a>
-					<a href="https://www.instagram.com/summerin_georgia/p/Bmdlo0NDWKf/"><i class="fa fa-instagram"></i></a>
-					<a href="https://github.com/ijiki16/BookInGeorgia"><i class="fa fa-github"></i></a>
+					<a href="https://www.facebook.com/groups/339180753670377/" target="_blank"><i class="fa fa-facebook"></i></a>
+					<a href="https://www.youtube.com/watch?v=yu9GPOwo0nw" target="_blank"><i class="fa fa-youtube"></i></a>
+					<a href="https://www.instagram.com/summerin_georgia/p/Bmdlo0NDWKf/" target="_blank"><i class="fa fa-instagram"></i></a>
+					<a href="https://github.com/ijiki16/BookInGeorgia" target="_blank"><i class="fa fa-github"></i></a>
 
 				</div>
 

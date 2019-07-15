@@ -86,9 +86,9 @@
 					<input type="file" name="chooseFile" id="chooseFile">
 				</div>
 			</div>
-			<button id="next" class="myButton">Next</button>
+			<button id="next" class="myButton" style="margin-top: 5px">Next</button>
 		</form>
-		<button id="save" class="myButton">Save changes</button>
+		<button id="save" class="myButton" style="margin-top: 5px">Upload</button>
 	</div>
 
 </body>

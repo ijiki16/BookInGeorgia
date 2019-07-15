@@ -34,6 +34,9 @@ $(document).ready(function() {
 				$('#next2').css({
 					"display" : "block"
 				});
+				$('.bulb').css({
+					"color":"yellow"
+				});
 			}
 		});
 	});

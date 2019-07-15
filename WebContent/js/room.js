@@ -4,6 +4,7 @@
 
 $(document).ready(function(){
 	  var val;
+	  var bool = false;
 	  $(".button").click(function (event) {
 		  event.stopPropagation();
 		  event.stopImmediatePropagation();
@@ -29,9 +30,12 @@ $(document).ready(function(){
 					}, 
 					function(response) {
 						if($.trim(response) == 'success') {
+							bool = true;
 							$("#" + val).addClass("onclic", 250, validate);
 						}else{
+							bool = false;
 							$("#" + val).addClass("onclic", 250, reject);
+							
 						}
 			});
 	  });
@@ -40,7 +44,9 @@ $(document).ready(function(){
 	    setTimeout(function () {
 	      $("#" + val).removeClass("onclic");
 	      $("#" + val).addClass("validate", 450, callback);
+	      
 	    }, 2250);
+	    
 	  }
 	  
 	  function reject() {
@@ -54,6 +60,7 @@ $(document).ready(function(){
 	    setTimeout(function () {
 	      $("#" + val).removeClass("validate");
 	      $("#" + val).removeClass("reject");
+	      if(bool == true) location.reload(true);
 	    }, 1250);
 	  }
 		

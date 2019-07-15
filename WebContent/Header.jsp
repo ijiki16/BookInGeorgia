@@ -45,7 +45,7 @@
 				      <a class="nav-link booking" href="#">Home</a>
 				    </li>
 				    <li class="nav-item active">
-				      <a class="nav-link" href="Profile.jsp" id="posts">Your Posts</a>
+				      <a class="nav-link" href="Profile.jsp" id="posts">Profile</a>
 				    </li>
 				    <li class="nav-item active">
 				      <a class="nav-link" href="CreatePost.jsp" id="add">Add Post</a>

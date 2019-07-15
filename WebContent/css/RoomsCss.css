@@ -12,7 +12,7 @@ input {
 	height: 250px;
 }
 
-button {
+.button {
   outline: none;
   height: 40px;
   text-align: center;
@@ -28,14 +28,14 @@ button {
   cursor: pointer;
   transition: all 0.25s ease;
 }
-button:hover {
+.button:hover {
   color: white;
   background: #156fa5;
 }
-button:active {
+.button:active {
   letter-spacing: 2px;
 }
-button:after {
+.button:after {
   content: "Book";
 }
 
