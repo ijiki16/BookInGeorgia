@@ -5,7 +5,41 @@ html, body {
     font-family: 'Josefin Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
     font-smoothing: antialiased;
+	background-image: url(../images/back.jpg);
+	background-attachment: fixed;
+	background-position: center; 
+	background-repeat: no-repeat;
+	background-size: cover;
     margin: 0px;
+}
+
+.homepage {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+    z-index: 5;
+	background: #000;
+	visibility: hidden;
+}
+
+.log-in {
+	position: fixed;
+    min-width: 100vw;
+    min-height: 100vh;
+    z-index: 777;
+    visibility:hidden;
+}
+
+.register-box {
+	position: fixed;
+    min-width: 100vw;
+    min-height: 100vh;
+    z-index: 777;
+    visibility:hidden;
 }
 
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section, div {
@@ -22,6 +56,7 @@ img {
 
 i {
 	font-style: italic;
+	color: white;
 }
 
 a {
@@ -29,54 +64,211 @@ a {
 	background-color: transparent;
 }
 
-.header-section {
-	width: 100%;
-	
-}
-
-.header {
+.site-logo {
 	display: block;
-	position: relative;
-	width:100%;
-	height: 50px;
-	background: #7b0e0e;
-	text-align: center;
-}
-
-.header a {
 	position: absolute;
-	font-size: 175%;
-	top: 13%;
 	left: 1%;
-	color: white;
-}
-
-.header a:hover {
-	color: white;
-	text-decoration: none;
-}
-
-.user-panel {
-	position:absolute;
-	right: 20px;
 	height: inherit;
-	align-content: center;
 }
 
-.user-panel i {
+.site-logo a {
+	display: table-cell;
+	position: sticky;
+	font-size: 175% !important;
+	top: 10%;
+	color: white !important;
+}
+
+
+
+.navbar {
+	display: block;
+    height: 50px !important;
+    background-color: #7b0e0e !important;
+}
+
+.nav-link {
+	font-size: 15px;
+	color: white !important;
+}
+
+.logged {
+	display: block;
+    position: absolute;
+    top: 20%;
+    right: 5%;
+}
+
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+
+.menu {
+  display: none;
+  position: absolute;
+  width: 20%;
+  right: 0%;
+  top: 25px;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.menu a {
+  display: inline-block;
+  color: black;
+  padding: 4.75% 4.75%;
+  text-decoration: none;
+  position: relative;
+  width: 100%;
+  font-size: 100%;
+}
+
+.menu-but:hover {
+	color: white;
+}
+
+.logged:hover .menu {
+	display: block;
+	color: white;
+}
+
+.logged:hover .menu a:hover {
+	background-color: #7b0e0e;
+	color: white;
+}
+
+
+.main h1 {
+	font-size: 70px;
+	position: absolute;
+	color:red;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #2c2c2c;
+    letter-spacing: .05em;
+    text-shadow: 4px 4px 0px #d5d5d5, 
+      			7px 7px 0px rgba(0, 0, 0, 0.2);
+}
+
+
+.flaticon-profile:before {
+    content: "\f13b";
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before, [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+    font-family: Flaticon;
+    font-style: normal;
+}
+
+.search-sec{
+    padding: 2rem;
+}
+.search-slt{
+    display: block;
+    width: 100%;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #55595c;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    height: calc(3rem + 2px) !important;
+    border-radius:0;
+}
+.wrn-btn{
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: capitalize;
+    height: calc(3rem + 2px) !important;
+    border-radius:0;
+}
+@media (min-width: 992px){
+    .search-sec{
+        position: absolute;
+        top: 100px;
+        width: 100%;
+        background: rgba(26, 70, 104, 0.51);
+    }
+}
+
+@media (max-width: 992px){
+    .search-sec{
+        background: #1A4668;
+    }
+}
+
+.btn {
+	background-color: #7b0e0e;
+	border-color: #7b0e0e;
+}
+
+.filter {
+	position: absolute;
+	top: 35%;
+    left: 1%;
+    width: 15%;
+    min-height: 100px;
+    border-top: none;
+    border-radius: 3px;
+    height: fit-content;
+    background-color: #7b0e0e; 
+    border-radius: 5px;
+}
+
+.filter-wrap {
+	padding: 6%;
+}
+
+.filter-wrap h2{
+	color: white;
+}
+
+.check h5{
+	margin-top: 5px;
+	color: white;
+}
+
+.check-box-container input {
+	background: none;
+}
+
+.check-box-container {
+	display: inline-block;
+	padding-left: 30px;
+	font-family: sans-serif;	
 	position: relative;
-    top: 13%;
+	cursor: pointer;
 }
 
-.user-panel a {
-	margin-right: 15px;
+.check-box-container {
+	width: 25px;
+	height: 25px;
+	background: #eee;
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: white !important;
+}
+
+.checkmark {
+	color:white;
+}
+
+.filter-btn {
     background: transparent;
     border: none;
     border-radius: 25px;
     box-sizing: border-box;
     color: white !important;
     cursor: pointer;
-    display: inline-block;
+    display: block;
     font-size: 15px;
     font-family: "pp-sans-small-regular",Helvetica Neue,Arial,sans-serif;
     font-weight: normal;
@@ -94,33 +286,48 @@ a {
     font-weight: bold;
     box-shadow: 0 0 0 1px #fff, 0 0 0 1px #fff;
     color: black;
-    top: 13%;
+    text-align: center;
+    width: inherit;
+    left:50%;
+    transform: translate(-50%, 0%);
+    margin-top: 10px;
 }
 
-.navbar {
-	display: block;
-    height: 50px !important;
-    background-color: #7b0e0e !important;
-}
-
-.nav-link {
-	font-size: 15px;
-	color: white !important;
-}
-
-.main h1 {
-	font-size: 80px;
+.hotels {
 	position: absolute;
-	top: 30%;
+	top: 35%;
+    left: 17%;
+    width: 82%;
+    height: fit-content;
+}
+
+.moto {
+	width: 25%;
+	position: absolute;
+	padding:30px;
+	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	background-color: rgba(0,0,0,0.5);
+	font-size: 18px;
+	font-style: oblique;
+	z-index: 777;
 }
 
-.flaticon-profile:before {
-    content: "\f13b";
+.moto a:link{
+	float: left !important;
+	left: 30px !important;
+	font-color: white !important;
+	font-size: 18px;
+	font-style: oblique;
 }
 
-[class^="flaticon-"]:before, [class*=" flaticon-"]:before, [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
-    font-family: Flaticon;
-    font-style: normal;
+.moto a:visited{
+	color: white !important;
+	font-size: 18px;
+	font-style: oblique;
+}
+
+#close-moto {
+	float: right;
 }

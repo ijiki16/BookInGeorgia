@@ -22,7 +22,7 @@ public class AccountManagerTests {
 	
 	@Before
 	public void setup() {
-		manager = new AccountManager();
+		manager = AccountManager.getInstance();
 	}
 	
 	@Test
@@ -34,14 +34,14 @@ public class AccountManagerTests {
 		assertFalse(manager.createAccount("Nika", "Basiashvili", "nbasi16@gmail.com", "nika97", "123456", "1997-12-19"));
 		assertFalse(manager.createAccount("Nika", "Basiashvili", "nbasi16@gmail.com", null, "123456", "1997-12-19"));
 		assertFalse(manager.createAccount("Nika", "Basiashvili", "nbasi16@gmail.com", "nikolaus97", null, "1997-12-19"));
-		assertTrue(manager.createAccount(null, null, "nbasi16@gmail.com", "nikusha97", "paroli", null));
-		assertTrue(manager.createAccount("Giorgi", "Kuprava", "gio's_mail@yahoo.com", "Gio's username", "giogio99", null));
+		assertFalse(manager.createAccount(null, null, "nbasi16@gmail.com", "nikusha97", "paroli", null));
+		assertTrue(manager.createAccount("Giorgi", "Kuprava", "gio's_mail@yahoo.com", "Gio's username", "giogio99", "1995-12-19"));
 	}
 	
 	@Test
 	@Order(2)
 	public void test2() {
-		assertTrue(manager.loginAccount("nbasi16@gmail.com", "paroli"));
+		assertFalse(manager.loginAccount("nbasi16@gmail.com", "paroli"));
 		assertTrue(manager.loginAccount("nbasi@gmail.com", "123456"));
 		assertTrue(manager.loginAccount("gio's_mail@yahoo.com", "giogio99"));
 		assertFalse(manager.loginAccount(null, null));
@@ -54,6 +54,8 @@ public class AccountManagerTests {
 	@Test
 	@Order(3)
 	public void test3() {
+		assertTrue(manager.updateAccount(manager.getAccount("nbasi@gmail.com"), "password", "newparoli"));
+		assertTrue(manager.loginAccount("nbasi@gmail.com", "newparoli"));
 		assertFalse(manager.deleteAccount(null, null));
 		assertFalse(manager.deleteAccount("nbasi16@gmail.com", null));
 		assertFalse(manager.deleteAccount("nb@gmail.com", null));
@@ -63,9 +65,9 @@ public class AccountManagerTests {
 		assertFalse(manager.deleteAccount("gio's_mail@yahoo.com", "gioogioooo99"));
 		assertFalse(manager.deleteAccount("nbasi16@gmail.com", "paroli77"));
 		
-		assertTrue(manager.deleteAccount("nbasi16@gmail.com", "paroli"));
-		assertTrue(manager.deleteAccount("nbasi@gmail.com", "123456"));
 		assertTrue(manager.deleteAccount("gio's_mail@yahoo.com", "giogio99"));
+		assertTrue(manager.deleteAccount("nbasi@gmail.com", "newparoli"));
+		assertFalse(manager.deleteAccount("gio's_mail@yahoo.com", "giogio99"));
 	}
 	
 	@Test

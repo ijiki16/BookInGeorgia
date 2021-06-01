@@ -1,0 +1,26 @@
+@charset "ISO-8859-1";
+body {
+	position: absolute;
+    background-image: url(../images/about4.jpg) !important;
+    height: fit-content;
+}
+
+p, h1, h2, h3 {
+	color: black;
+	font-family: sans-serif;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 21px;
+}
+
+.card {
+	background-color: #7b0e0e !important; 
+}
+
+h1 {
+	margin-top: 40px !important;
+	margin-bottom: 100px !important;
+}
+
+
+

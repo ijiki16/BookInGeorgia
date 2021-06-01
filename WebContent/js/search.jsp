@@ -1,0 +1,2 @@
+<%request.getSession().setAttribute("city", request.getParameter("city").equals("Select") ? null : request.getParameter("city"));
+request.getSession().setAttribute("hotel_name", request.getParameter("hotel_name").equals("") ? null : request.getParameter("hotel_name"));%>

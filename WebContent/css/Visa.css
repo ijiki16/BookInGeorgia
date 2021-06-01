@@ -1,0 +1,61 @@
+@charset "ISO-8859-1";
+
+body{
+	background: gray;
+}
+  
+h1{
+	color: white;
+  	text-align: center;
+}
+
+form{
+	width: 350px;
+  	margin: 0 auto;
+}
+
+.half{
+	width: 100%;
+}
+.half input{
+	display: block;
+	width: 33%;
+      float: left;
+      &:first-child;
+        margin-right: 3%;
+}
+    
+input, button{
+	box-sizing: border-box;
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 20px;
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    outline: none;
+    border: none;
+}
+    
+input{
+    color: dark-gray;
+}
+
+button{
+	color: dark-gray;
+    background: $white;
+    font-weight: bold;
+}
+
+img {
+	width: 22%;
+	height: 20%;
+}
+
+.checkout {
+	width: 300px;
+	height: 200px;
+	top: 50%;
+	left: 50%;
+}
+    
