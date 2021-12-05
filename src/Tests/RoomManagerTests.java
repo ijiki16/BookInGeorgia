@@ -1,19 +1,5 @@
 package Tests;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-
-
-import org.junit.Before;
-import org.junit.Test;
-
 import Managers.AccountManager;
 import Managers.HotelManager;
 import Managers.RoomManager;
@@ -21,6 +7,18 @@ import Models.Account;
 import Models.Hotel;
 import Models.Reservation;
 import Models.Room;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RoomManagerTests {
 	// user

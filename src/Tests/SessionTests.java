@@ -1,19 +1,17 @@
 package Tests;
 
-import static org.junit.Assert.*;
-
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import Pages.Session;
+import org.junit.Test;
+import org.mockito.Mockito;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.Mockito;
-
-import Pages.Session;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class SessionTests extends Mockito {
 	

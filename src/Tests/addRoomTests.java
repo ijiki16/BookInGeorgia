@@ -1,23 +1,21 @@
 package Tests;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.junit.Test;
-import org.mockito.Mockito;
-
 import Managers.AccountManager;
 import Managers.HotelManager;
 import Managers.RoomManager;
 import Models.Room;
 import Pages.addRoom;
+import org.junit.Test;
+import org.mockito.Mockito;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class addRoomTests extends Mockito {
 	@Test

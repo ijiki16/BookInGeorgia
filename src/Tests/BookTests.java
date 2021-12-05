@@ -1,28 +1,24 @@
 package Tests;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import Managers.AccountManager;
+import Managers.HotelManager;
+import Managers.RoomManager;
+import Models.Reservation;
+import Pages.Book;
+import org.junit.Test;
+import org.mockito.Mockito;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.junit.Test;
-import org.mockito.Mockito;
-
-import Managers.AccountManager;
-import Managers.HotelManager;
-import Managers.RoomManager;
-import Models.Reservation;
-import Models.Room;
-import Pages.Book;
-import Pages.addRoom;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class BookTests extends Mockito {
 

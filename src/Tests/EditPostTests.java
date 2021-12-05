@@ -1,30 +1,25 @@
 package Tests;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import Managers.AccountManager;
+import Managers.HotelManager;
+import Models.Hotel;
+import Pages.EditPost;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.mockito.Mockito;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
-import org.mockito.Mockito;
-
-import Managers.AccountManager;
-import Managers.HotelManager;
-import Models.Hotel;
-import Pages.EditPost;
-import Pages.Register;
+import static org.junit.Assert.assertTrue;
 
 @TestMethodOrder(OrderAnnotation.class)
 public class EditPostTests extends Mockito{

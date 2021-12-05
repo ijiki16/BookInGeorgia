@@ -3,8 +3,6 @@ package Models;
 import java.util.ArrayList;
 import java.util.List;
 
-import DataBases.HotelsDB;
-
 public class Hotel {
 	
 	/**

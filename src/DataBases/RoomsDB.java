@@ -1,6 +1,8 @@
 package DataBases;
 
-import java.math.BigDecimal;
+import Models.Reservation;
+import Models.Room;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -10,12 +12,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.xml.namespace.QName;
-
-import Models.Facilities;
-import Models.Reservation;
-import Models.Room;
 
 public class RoomsDB {
 	

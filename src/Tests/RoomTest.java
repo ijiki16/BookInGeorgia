@@ -1,17 +1,17 @@
 package Tests;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import DataBases.MyDBInfo;
+import Models.Room;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import org.junit.Before;
-import org.junit.Test;
 
-import DataBases.MyDBInfo;
-import Models.Room;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class RoomTest {
 	// date

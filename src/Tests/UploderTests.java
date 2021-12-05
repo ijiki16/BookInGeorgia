@@ -1,24 +1,7 @@
 package Tests;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.io.PrintWriter;
-import java.io.StringWriter;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.apache.commons.fileupload.FileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.junit.Test;
 import org.mockito.Mockito;
-
-import Managers.AccountManager;
-import Managers.HotelManager;
-import Pages.Session;
-import Pages.Uploader;
 
 public class UploderTests extends Mockito {
 	@Test

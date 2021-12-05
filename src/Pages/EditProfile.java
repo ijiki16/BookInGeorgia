@@ -1,14 +1,14 @@
 package Pages;
 
-import java.io.IOException;
+import Managers.AccountManager;
+import Models.Account;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import Managers.AccountManager;
-import Models.Account;
+import java.io.IOException;
 
 /**
  * Servlet implementation class EditProfile

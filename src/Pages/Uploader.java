@@ -1,26 +1,24 @@
 package Pages;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Date;
-import java.util.List;
+import Managers.AccountManager;
+import Managers.HotelManager;
+import Managers.RoomManager;
+import Models.Hotel;
+import Models.Room;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileItemFactory;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
-import Managers.AccountManager;
-import Managers.HotelManager;
-import Managers.RoomManager;
-import Models.Hotel;
-import Models.Room;
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Servlet implementation class Uploader

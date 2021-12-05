@@ -1,16 +1,16 @@
 package Pages;
 
-import java.io.IOException;
+import Managers.AccountManager;
+import Managers.HotelManager;
+import Models.Account;
+import Models.Hotel;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import Managers.AccountManager;
-import Managers.HotelManager;
-import Models.Account;
-import Models.Hotel;
+import java.io.IOException;
 
 /**
  * Servlet implementation class EditPost

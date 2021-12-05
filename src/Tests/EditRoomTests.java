@@ -1,25 +1,22 @@
 package Tests;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.text.SimpleDateFormat;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-
 import Managers.AccountManager;
 import Managers.HotelManager;
 import Managers.RoomManager;
 import Models.Account;
 import Models.Room;
 import Pages.EditRoom;
-import Pages.addRoom;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 class EditRoomTests extends Mockito {
 

@@ -1,7 +1,5 @@
 package Models;
 
-//Shecvlili.
-
 public class Account {
 	
 	private String firstName;

@@ -1,7 +1,5 @@
 package Models;
 
-import DataBases.HotelsDB;
-
 public class Facilities {
 	
 	/**

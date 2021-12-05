@@ -1,27 +1,24 @@
 package Tests;
 
-import static org.junit.Assert.*;
-
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.jupiter.api.Order;
-
 import Managers.AccountManager;
 import Managers.HotelManager;
 import Managers.RoomManager;
 import Models.Facilities;
 import Models.Hotel;
 import Models.Location;
-import Models.Room;
 import javafx.util.Pair;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.jupiter.api.Order;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class HotelManagerTests {
 	

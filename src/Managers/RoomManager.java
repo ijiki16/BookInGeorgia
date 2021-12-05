@@ -1,12 +1,11 @@
 package Managers;
 
-import java.util.Date;
-import java.util.List;
-
-import DataBases.HotelsDB;
 import DataBases.RoomsDB;
 import Models.Reservation;
 import Models.Room;
+
+import java.util.Date;
+import java.util.List;
 
 public class RoomManager {
 
